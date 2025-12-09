@@ -1,0 +1,78 @@
+import styles from "./ProductCatalog.module.css";
+
+export default function ProductCatalog() {
+    return (
+        <section className={styles.section} id="equipos">
+            <div className="container">
+                <div className={styles.header} data-aos="fade-up">
+                    <h2 className={styles.title}>Tecnología Mindray a tu Alcance</h2>
+                    <p className={styles.subtitle}>Equipos portátiles de alto rendimiento listos para tu consulta.</p>
+                </div>
+
+                <div className={styles.grid}>
+                    {/* Card Z6 */}
+                    <div className={`${styles.card} glass-card`} data-aos="fade-up">
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.productName}>Mindray Z6</h3>
+                            <span className={styles.tag}>El Caballo de Batalla</span>
+                        </div>
+
+                        <div className={styles.priceContainer}>
+                            <span className={styles.oldPrice}>$ 600.000</span>
+                            <div className={styles.currentPrice}>$ 450.000<span className={styles.period}>/mes</span></div>
+                        </div>
+
+                        <div className={styles.stock}>
+                            <span className={styles.dot}></span> ¡Solo 2 unidades disponibles!
+                        </div>
+
+                        <div className={styles.imagePlaceholder}>
+                            Imagen Mindray Z6
+                        </div>
+
+                        <ul className={styles.specs}>
+                            <li>✓ Ideal Obstetricia y Ginecología</li>
+                            <li>✓ Batería de 90 min de autonomía</li>
+                            <li>✓ <strong>3 Sondas Incluidas:</strong> Convexa, TV, Lineal</li>
+                            <li>✓ Ligero: Solo 6.5kg de peso</li>
+                        </ul>
+
+                        <button className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z6 Ahora</button>
+                    </div>
+
+                    {/* Card Z60 */}
+                    <div className={`${styles.card} glass-card ${styles.featured}`} data-aos="fade-up" data-aos-delay="100">
+                        <div className={styles.featuredBadge}>RECOMENDADO</div>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.productName}>Mindray Z60</h3>
+                            <span className={styles.tag}>Calidad Superior</span>
+                        </div>
+
+                        <div className={styles.priceContainer}>
+                            <span className={styles.oldPrice}>$ 750.000</span>
+                            <div className={styles.currentPrice}>$ 550.000<span className={styles.period}>/mes</span></div>
+                        </div>
+
+                        <div className={styles.stock}>
+                            <span className={styles.dot}></span> ¡Solo 2 unidades disponibles!
+                        </div>
+
+                        <div className={styles.imagePlaceholder}>
+                            Imagen Mindray Z60
+                        </div>
+
+                        <ul className={styles.specs}>
+                            <li>✓ <strong>Doppler Color Avanzado</strong></li>
+                            <li>✓ Pantalla Táctil de 15"</li>
+                            <li>✓ Tecnologías iClear / iBeam</li>
+                            <li>✓ Exportación DICOM nativa</li>
+                            <li>✓ 3 Sondas Incluidas</li>
+                        </ul>
+
+                        <button className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z60 Ahora</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+}

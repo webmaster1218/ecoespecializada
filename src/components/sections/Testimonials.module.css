@@ -1,0 +1,75 @@
+.section {
+    padding: 100px 0;
+    background-color: #f8f9fa;
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--color-dark);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.card {
+    background: white;
+    padding: 2rem;
+    border-radius: var(--radius-lg) var(--radius-lg) var(--radius-lg) 0;
+    /* Estilo burbuja de chat sutil */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    position: relative;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.quoteIcon {
+    font-size: 3rem;
+    color: rgba(0, 123, 255, 0.1);
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    line-height: 1;
+}
+
+.text {
+    font-size: 1.05rem;
+    color: var(--color-text-body);
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.authorMeta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    background: var(--color-primary);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.author {
+    font-weight: 700;
+    color: var(--color-dark);
+    font-size: 0.95rem;
+}
+
+.role {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+}

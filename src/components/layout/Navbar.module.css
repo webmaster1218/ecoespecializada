@@ -1,0 +1,131 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.scrolled {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(15px);
+    height: 70px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.logo {
+    font-family: var(--font-roboto);
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--color-dark);
+    letter-spacing: -0.5px;
+}
+
+.accent {
+    color: var(--color-primary);
+}
+
+.navLinks {
+    display: flex;
+    gap: 2rem;
+}
+
+.navLinks a {
+    font-weight: 500;
+    color: var(--color-text-body);
+    transition: color 0.2s;
+    position: relative;
+}
+
+.navLinks a:not(.mobileCta):hover {
+    color: var(--color-primary);
+}
+
+.navLinks a:not(.mobileCta)::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-primary);
+    transition: width 0.3s;
+}
+
+.navLinks a:not(.mobileCta):hover::after {
+    width: 100%;
+}
+
+.desktopCta {
+    display: block;
+}
+
+.mobileCta {
+    display: none;
+}
+
+.mobileToggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--color-dark);
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: white;
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease-in-out;
+        opacity: 0;
+    }
+
+    .navLinks.open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .navLinks a {
+        font-size: 1.1rem;
+        width: 100%;
+        text-align: center;
+    }
+
+    .desktopCta {
+        display: none;
+    }
+
+    .mobileCta {
+        display: block;
+        background: var(--color-primary);
+        color: white !important;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .mobileToggle {
+        display: block;
+    }
+}

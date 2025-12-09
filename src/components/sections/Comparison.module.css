@@ -1,0 +1,122 @@
+.section {
+    padding: 100px 0;
+    background-color: var(--color-bg-start);
+}
+
+.title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--color-dark);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.card {
+    padding: 3rem;
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+    position: relative;
+}
+
+.cardTitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.list li {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.icon {
+    font-size: 1.5rem;
+    margin-top: 2px;
+}
+
+.list strong {
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.list p {
+    color: var(--color-text-body);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Estilos Específicos - Dolor */
+.pain {
+    background: #f8f9fa;
+    border: 1px solid #e9ecef;
+}
+
+.pain .cardTitle {
+    color: var(--color-text-light);
+}
+
+.pain .list strong {
+    color: var(--color-text-body);
+}
+
+/* Estilos Específicos - Placer */
+.pleasure {
+    border: 2px solid var(--color-primary);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 248, 255, 0.95));
+    box-shadow: 0 20px 40px rgba(0, 123, 255, 0.15);
+    transform: scale(1.05);
+    /* Ligeramente más grande para destacar */
+    z-index: 10;
+}
+
+.pleasure .cardTitle {
+    color: var(--color-primary);
+}
+
+.pleasure .list strong {
+    color: var(--color-dark);
+}
+
+.badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+
+    .pleasure {
+        transform: scale(1);
+        order: -1;
+        /* Mostrar primero la opción recomendada en móvil */
+    }
+}

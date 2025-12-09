@@ -1,0 +1,59 @@
+.section {
+    padding: 100px 0;
+    background-color: var(--color-bg-start);
+}
+
+.sectionTitle {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 4rem;
+    color: var(--color-dark);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.card {
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    background: white;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 123, 255, 0.2);
+}
+
+.iconWrapper {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    background: rgba(0, 123, 255, 0.05);
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardTitle {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-dark);
+    font-weight: 700;
+}
+
+.cardDesc {
+    color: var(--color-text-body);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
