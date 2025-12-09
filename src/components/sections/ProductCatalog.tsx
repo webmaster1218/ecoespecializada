@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./ProductCatalog.module.css";
 
 export default function ProductCatalog() {
@@ -27,7 +28,12 @@ export default function ProductCatalog() {
                         </div>
 
                         <div className={styles.imagePlaceholder}>
-                            Imagen Mindray Z6
+                            <Image
+                                src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80"
+                                alt="Mindray Z6"
+                                fill
+                                style={{ objectFit: 'cover', borderRadius: '8px' }}
+                            />
                         </div>
 
                         <ul className={styles.specs}>
@@ -58,7 +64,12 @@ export default function ProductCatalog() {
                         </div>
 
                         <div className={styles.imagePlaceholder}>
-                            Imagen Mindray Z60
+                            <Image
+                                src="https://images.unsplash.com/photo-1583912267550-d4135e1975b9?auto=format&fit=crop&w=600&q=80"
+                                alt="Mindray Z60"
+                                fill
+                                style={{ objectFit: 'cover', borderRadius: '8px' }}
+                            />
                         </div>
 
                         <ul className={styles.specs}>

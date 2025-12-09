@@ -45,12 +45,14 @@ export default function Hero() {
 
                 <div className={styles.visual} data-aos="fade-left" data-aos-delay="200">
                     <div className={`${styles.imageWrapper} glass-card`}>
-                        {/* Placeholder para la imagen del equipo */}
-                        <div className={styles.placeholderImage}>
-                            <span>Ecógrafo Mindray Z60<br />Vista Principal</span>
-                        </div>
-                        {/* Idealmente aquí iría un componente Image de next con la foto real */}
-                        {/* <Image src="/mindray-z6.png" alt="Mindray Z6" width={600} height={400} /> */}
+                        <Image
+                            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80"
+                            alt="Ecógrafo Mindray Clínica"
+                            fill
+                            className={styles.heroImage}
+                            style={{ objectFit: 'cover', borderRadius: '12px' }}
+                            priority
+                        />
 
                         <div className={styles.floatCard}>
                             <span className={styles.floatTitle}>Doppler Color</span>
