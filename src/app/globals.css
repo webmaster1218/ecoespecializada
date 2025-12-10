@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* Medical Tech Palette */
   --color-primary: #007BFF;
@@ -24,6 +28,14 @@
   --radius-xl: 20px;
 
   --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+
+  /* Tailwind CSS Variables for shadcn components */
+  --foreground: 222.2 84% 4.9%;
+  --background: 0 0% 100%;
+  --muted: 210 40% 96.1%;
+  --muted-foreground: 215.4 16.3% 46.9%;
+  --secondary: 210 40% 96.1%;
+  --secondary-foreground: 222.2 47.4% 11.2%;
 }
 
 * {
