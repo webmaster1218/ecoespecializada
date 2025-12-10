@@ -1,8 +1,13 @@
 .section {
     padding: 120px 0;
     background-color: #fcfcfc;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=1200&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: scroll;
     border-top: 1px solid #eaeaea;
     border-bottom: 1px solid #eaeaea;
+    position: relative;
 }
 
 .header {

@@ -63,7 +63,7 @@ export default function HowItWorks() {
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Proceso Simplificado</span>
-                    <h2 className={styles.title}>Flujo de Alquiler Profesional</h2>
+                    <h2 className={styles.title}>Flujo de <span className="text-gradient">Alquiler Profesional</span></h2>
                     <p className={styles.subtitle}>Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica.</p>
                 </div>
 

@@ -22,7 +22,7 @@ export default function Hero() {
 
                     <div className={styles.actions}>
                         <a href="#contacto" className="btn-primary">
-                            Solicitar Demo Gratis
+                            Cotizar
                             <span className={styles.stockBadge}>🔥 3 Disponibles</span>
                         </a>
                         <a href="#ventajas" className={styles.btnOutline}>
@@ -46,7 +46,7 @@ export default function Hero() {
                 <div className={styles.visual} data-aos="fade-left" data-aos-delay="200">
                     <div className={`${styles.imageWrapper} glass-card`}>
                         <Image
-                            src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80"
+                            src="/images/hero-new.png"
                             alt="Ecógrafo Mindray Clínica"
                             fill
                             className={styles.heroImage}

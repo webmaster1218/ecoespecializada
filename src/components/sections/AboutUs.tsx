@@ -1,10 +1,12 @@
 import styles from "./AboutUs.module.css";
+import { IconCertificate, IconTrophy, IconClipboardCheck, IconShieldCheck, IconCheck } from "@tabler/icons-react";
 
 export default function AboutUs() {
     return (
         <section className={styles.section} id="nosotros">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
+                    <span className={styles.overline}>NUESTRA TRAYECTORIA</span>
                     <h2 className={styles.title}>Conoce a <span className="text-gradient">EcoAlquiler Colombia</span></h2>
                     <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico en Colombia con tecnología de punta y servicio confiable.</p>
                 </div>
@@ -49,21 +51,27 @@ export default function AboutUs() {
                             <h4 className={styles.certTitle}>Certificaciones y Respaldo</h4>
                             <div className={styles.certsList}>
                                 <div className={styles.certItem}>
-                                    <span className={styles.certIcon}>✅</span>
+                                    <div className={styles.certIconWrapper}>
+                                        <IconClipboardCheck className={styles.certIconSvg} />
+                                    </div>
                                     <div>
                                         <strong>INVIMA Certificado</strong>
                                         <p>Todos nuestros equipos cuentan con registro sanitario vigente</p>
                                     </div>
                                 </div>
                                 <div className={styles.certItem}>
-                                    <span className={styles.certIcon}>🏆</span>
+                                    <div className={styles.certIconWrapper}>
+                                        <IconTrophy className={styles.certIconSvg} />
+                                    </div>
                                     <div>
                                         <strong>Distribuidor Oficial Mindray</strong>
                                         <p>Respaldado por Equibiomedic, representante autorizado en Colombia</p>
                                     </div>
                                 </div>
                                 <div className={styles.certItem}>
-                                    <span className={styles.certIcon}>📋</span>
+                                    <div className={styles.certIconWrapper}>
+                                        <IconCertificate className={styles.certIconSvg} />
+                                    </div>
                                     <div>
                                         <strong>ISO 9001:2015</strong>
                                         <p>Procesos certificados de calidad y gestión técnica</p>
@@ -78,7 +86,7 @@ export default function AboutUs() {
                     <div className={`${styles.assuranceCard} glass-card`}>
                         <div className={styles.assuranceContent}>
                             <div className={styles.assuranceIcon}>
-                                <span className={styles.assuranceEmoji}>🛡️</span>
+                                <IconShieldCheck className={styles.assuranceIconSvg} stroke={1.5} />
                             </div>
                             <div className={styles.assuranceText}>
                                 <h3>Garantía Total de Confianza</h3>
@@ -92,7 +100,7 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className={styles.assuranceAction}>
-                            <a href="#contacto" className="btn-primary">Habla con un Experto</a>
+                            <a href="#contacto" className="btn-primary">Habla con un asesor</a>
                         </div>
                     </div>
                 </div>

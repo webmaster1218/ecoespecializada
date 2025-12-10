@@ -6,7 +6,8 @@ export default function ProductCatalog() {
         <section className={styles.section} id="equipos">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
-                    <h2 className={styles.title}>Tecnología Mindray a tu Alcance</h2>
+                    <span className={styles.overline}>Modelos Disponibles</span>
+                    <h2 className={styles.title}>Tecnología <span className="text-gradient">Mindray a tu Alcance</span></h2>
                     <p className={styles.subtitle}>Equipos portátiles de alto rendimiento listos para tu consulta.</p>
                 </div>
 
@@ -29,7 +30,7 @@ export default function ProductCatalog() {
 
                         <div className={styles.imagePlaceholder}>
                             <Image
-                                src="https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?auto=format&fit=crop&w=600&q=80"
+                                src="/images/z6-new.png"
                                 alt="Mindray Z6"
                                 fill
                                 style={{ objectFit: 'cover', borderRadius: '8px' }}
@@ -65,7 +66,7 @@ export default function ProductCatalog() {
 
                         <div className={styles.imagePlaceholder}>
                             <Image
-                                src="https://images.unsplash.com/photo-1583912267550-d4135e1975b9?auto=format&fit=crop&w=600&q=80"
+                                src="/images/z60-new.png"
                                 alt="Mindray Z60"
                                 fill
                                 style={{ objectFit: 'cover', borderRadius: '8px' }}

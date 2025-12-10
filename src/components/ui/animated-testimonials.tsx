@@ -117,13 +117,13 @@ export const AnimatedTestimonials = ({
                             ease: "easeInOut",
                         }}
                     >
-                        <h3 className="text-2xl font-bold text-foreground">
+                        <h3 className="text-2xl font-bold text-gray-900">
                             {testimonials[active].name}
                         </h3>
-                        <p className="text-sm text-muted-foreground">
+                        <p className="text-sm text-gray-600">
                             {testimonials[active].designation}
                         </p>
-                        <motion.p className="text-lg text-muted-foreground mt-8">
+                        <motion.p className="text-lg text-gray-700 mt-8">
                             {testimonials[active].quote.split(" ").map((word, index) => (
                                 <motion.span
                                     key={index}
@@ -152,15 +152,15 @@ export const AnimatedTestimonials = ({
                     <div className="flex gap-4 pt-12 md:pt-0">
                         <button
                             onClick={handlePrev}
-                            className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
+                            className="h-7 w-7 rounded-full bg-gray-200 flex items-center justify-center group/button hover:bg-gray-300 transition-colors"
                         >
-                            <IconArrowLeft className="h-5 w-5 text-foreground group-hover/button:rotate-12 transition-transform duration-300" />
+                            <IconArrowLeft className="h-5 w-5 text-gray-900 group-hover/button:rotate-12 transition-transform duration-300" />
                         </button>
                         <button
                             onClick={handleNext}
-                            className="h-7 w-7 rounded-full bg-secondary flex items-center justify-center group/button"
+                            className="h-7 w-7 rounded-full bg-gray-200 flex items-center justify-center group/button hover:bg-gray-300 transition-colors"
                         >
-                            <IconArrowRight className="h-5 w-5 text-foreground group-hover/button:-rotate-12 transition-transform duration-300" />
+                            <IconArrowRight className="h-5 w-5 text-gray-900 group-hover/button:-rotate-12 transition-transform duration-300" />
                         </button>
                     </div>
                 </div>

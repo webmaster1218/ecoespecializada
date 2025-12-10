@@ -22,18 +22,29 @@
     z-index: 1;
 }
 
-.title {
-    font-size: 3.5rem;
+.overline {
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
     font-weight: 700;
-    margin-bottom: 20px;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
     color: var(--color-dark);
     line-height: 1.2;
+    letter-spacing: -0.5px;
 }
 
 .subtitle {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     color: var(--color-text-body);
-    max-width: 700px;
+    max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
@@ -134,7 +145,19 @@
 
 .statsCard,
 .certificationsCard {
-    padding: 20px;
+    padding: 30px;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: var(--radius-xl);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    transition: all 0.3s ease;
+}
+
+.statsCard:hover,
+.certificationsCard:hover {
+    border-color: var(--color-primary);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.06);
+    transform: translateY(-5px);
 }
 
 .statsTitle,
@@ -196,9 +219,21 @@
     background: rgba(40, 167, 69, 0.1);
 }
 
-.certIcon {
-    font-size: 1.2rem;
+.certIconWrapper {
+    width: 42px;
+    height: 42px;
+    background-color: rgba(37, 99, 235, 0.1);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
     flex-shrink: 0;
+}
+
+.certIconSvg {
+    width: 24px;
+    height: 24px;
 }
 
 .certItem strong {
@@ -268,18 +303,21 @@
 
 .assuranceIcon {
     flex-shrink: 0;
-    width: 70px;
-    height: 70px;
-    background: linear-gradient(135deg, var(--color-success), #218838);
+    width: 80px;
+    height: 80px;
+    background: white;
+    border: 1px solid #e5e5e5;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.15);
+    color: var(--color-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
-.assuranceEmoji {
-    font-size: 2.2rem;
+.assuranceIconSvg {
+    width: 40px;
+    height: 40px;
 }
 
 .assuranceText {
@@ -321,7 +359,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: var(--color-success);
+    color: var(--color-primary);
     font-weight: 700;
     font-size: 1rem;
 }
@@ -457,8 +495,9 @@
         height: 60px;
     }
 
-    .assuranceEmoji {
-        font-size: 1.8rem;
+    .assuranceIconSvg {
+        width: 30px;
+        height: 30px;
     }
 
     .assuranceText h3 {

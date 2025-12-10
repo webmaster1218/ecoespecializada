@@ -23,14 +23,14 @@ export default function Testimonials() {
     ];
 
     return (
-        <section className="py-20 bg-gray-50" id="testimonios">
+        <section className="py-20 bg-white" id="testimonios">
             <div className="container mx-auto">
                 <div className="text-center mb-12">
-                    <span className="text-sm uppercase tracking-wider text-blue-600 font-semibold">Testimonios</span>
-                    <h2 className="text-4xl font-bold mt-2 mb-4">
+                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Testimonios</span>
+                    <h2 className="text-[2.5rem] font-bold mb-4 text-gray-900 leading-tight">
                         Lo que dicen <span className="text-gradient">tus colegas</span>
                     </h2>
-                    <p className="text-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Profesionales de la salud que confían en nuestros equipos para brindar el mejor diagnóstico.
                     </p>
                 </div>
