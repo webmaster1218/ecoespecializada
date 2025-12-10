@@ -19,8 +19,8 @@ export default function ProductCatalog() {
                         </div>
 
                         <div className={styles.priceContainer}>
-                            <span className={styles.oldPrice}>$ 600.000</span>
-                            <div className={styles.currentPrice}>$ 450.000<span className={styles.period}>/mes</span></div>
+                            <span className={styles.oldPrice}>$ 20.000</span>
+                            <div className={styles.currentPrice}>$ 350.000<span className={styles.period}>/día</span></div>
                         </div>
 
                         <div className={styles.stock}>
@@ -43,7 +43,7 @@ export default function ProductCatalog() {
                             <li>✓ Ligero: Solo 6.5kg de peso</li>
                         </ul>
 
-                        <button className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z6 Ahora</button>
+                        <a href="#contacto" className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z6 Ahora</a>
                     </div>
 
                     {/* Card Z60 */}
@@ -55,8 +55,8 @@ export default function ProductCatalog() {
                         </div>
 
                         <div className={styles.priceContainer}>
-                            <span className={styles.oldPrice}>$ 750.000</span>
-                            <div className={styles.currentPrice}>$ 550.000<span className={styles.period}>/mes</span></div>
+                            <span className={styles.oldPrice}>$ 25.000</span>
+                            <div className={styles.currentPrice}>$ 380.000<span className={styles.period}>/día</span></div>
                         </div>
 
                         <div className={styles.stock}>
@@ -80,7 +80,7 @@ export default function ProductCatalog() {
                             <li>✓ 3 Sondas Incluidas</li>
                         </ul>
 
-                        <button className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z60 Ahora</button>
+                        <a href="#contacto" className={`btn-primary ${styles.fullWidthBtn}`}>Reservar Z60 Ahora</a>
                     </div>
                 </div>
             </div>

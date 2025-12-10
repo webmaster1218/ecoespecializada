@@ -9,7 +9,7 @@ export default function Comparison() {
                 <div className={styles.grid}>
                     {/* Columna Dolor */}
                     <div className={`${styles.card} ${styles.pain}`} data-aos="fade-right">
-                        <h3 className={styles.cardTitle}>Comprar / Otros Proveedores</h3>
+                        <h3 className={styles.cardTitle}>❌ Comprar (Riesgo Alto)</h3>
                         <ul className={styles.list}>
                             <li>
                                 <span className={styles.icon}>💸</span>
@@ -45,13 +45,13 @@ export default function Comparison() {
                     {/* Columna Placer (EcoAlquiler) */}
                     <div className={`${styles.card} ${styles.pleasure} glass-card`} data-aos="fade-left">
                         <div className={styles.badge}>Mejor Opción</div>
-                        <h3 className={styles.cardTitle}>EcoAlquiler Colombia</h3>
+                        <h3 className={styles.cardTitle}>✅ EcoAlquiler (Cero Riesgo)</h3>
                         <ul className={styles.list}>
                             <li>
                                 <span className={styles.icon}>💎</span>
                                 <div>
-                                    <strong>Canon desde $450k/mes</strong>
-                                    <p>Sin cuota inicial millonaria. Flujo de caja libre.</p>
+                                    <strong>Alquiler desde $350/día</strong>
+                                    <p>Sin cuota inicial millonaria. Paga solo por los días que usas.</p>
                                 </div>
                             </li>
                             <li>

@@ -1,0 +1,518 @@
+.section {
+    padding: 100px 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+    position: relative;
+    overflow: hidden;
+}
+
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23007BFF' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--color-dark);
+    line-height: 1.2;
+}
+
+.subtitle {
+    font-size: 1.3rem;
+    color: var(--color-text-body);
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.twoColumnLayout {
+    display: flex;
+    gap: 50px;
+    margin-bottom: 80px;
+    position: relative;
+    z-index: 1;
+}
+
+.leftColumn {
+    flex: 1;
+    max-width: 45%;
+}
+
+.rightColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.storyCard {
+    background: white;
+    padding: 50px;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.storyTitle {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 25px;
+}
+
+.storyText {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--color-text-body);
+    margin-bottom: 20px;
+}
+
+.storyText:last-child {
+    margin-bottom: 0;
+}
+
+.valuesTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 25px;
+}
+
+.valuesGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.valueItem {
+    text-align: center;
+    padding: 25px 15px;
+    background: rgba(0, 123, 255, 0.05);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.valueItem:hover {
+    transform: translateY(-5px);
+    background: rgba(0, 123, 255, 0.1);
+}
+
+.valueIcon {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.valueItem h5 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-bottom: 10px;
+}
+
+.valueItem p {
+    font-size: 0.95rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+}
+
+.statsCard,
+.certificationsCard {
+    padding: 20px;
+}
+
+.statsTitle,
+.certTitle {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.statsGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.statItem {
+    text-align: center;
+    padding: 15px;
+    background: linear-gradient(135deg, var(--color-primary), #0056b3);
+    color: white;
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.statItem:hover {
+    transform: scale(1.05);
+}
+
+.statNumber {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.statLabel {
+    font-size: 0.85rem;
+    opacity: 0.95;
+}
+
+.certsList {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.certItem {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 12px;
+    background: rgba(40, 167, 69, 0.05);
+    border-radius: var(--radius-lg);
+    transition: var(--transition);
+}
+
+.certItem:hover {
+    background: rgba(40, 167, 69, 0.1);
+}
+
+.certIcon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+}
+
+.certItem strong {
+    font-size: 0.95rem;
+    color: var(--color-dark);
+    display: block;
+    margin-bottom: 3px;
+}
+
+.certItem p {
+    font-size: 0.85rem;
+    color: var(--color-text-body);
+    line-height: 1.4;
+}
+
+.imageContainer {
+    position: relative;
+    height: 300px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+}
+
+.imageOverlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    padding: 30px;
+    color: white;
+}
+
+.overlayText h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.overlayText p {
+    font-size: 0.95rem;
+    opacity: 0.95;
+}
+
+.assurance {
+    position: relative;
+    z-index: 1;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.assuranceCard {
+    padding: 40px 50px;
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.assuranceContent {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.assuranceIcon {
+    flex-shrink: 0;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--color-success), #218838);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 25px rgba(40, 167, 69, 0.15);
+}
+
+.assuranceEmoji {
+    font-size: 2.2rem;
+}
+
+.assuranceText {
+    flex: 1;
+}
+
+.assuranceText h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.assuranceText p {
+    font-size: 1rem;
+    color: var(--color-text-body);
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.assuranceList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.assuranceList li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+}
+
+.assuranceList li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-success);
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.assuranceList li:last-child {
+    margin-bottom: 0;
+}
+
+.assuranceAction {
+    flex-shrink: 0;
+    text-align: center;
+    min-width: 180px;
+}
+
+.assuranceAction .btn-primary {
+    width: 100%;
+    padding: 14px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+    margin-bottom: 8px;
+}
+
+.assuranceNote {
+    font-size: 0.85rem;
+    color: var(--color-success);
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .title {
+        font-size: 3rem;
+    }
+
+    .content {
+        gap: 40px;
+    }
+
+    .valuesGrid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .valueItem {
+        padding: 20px;
+    }
+
+    .assuranceCard {
+        gap: 30px;
+        padding: 35px 40px;
+    }
+
+    .assuranceAction {
+        min-width: 160px;
+    }
+}
+
+@media (max-width: 992px) {
+    .content {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .statsGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .assuranceCard {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+        padding: 30px 25px;
+    }
+
+    .assuranceContent {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+
+    .assuranceAction {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 70px 0;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .storyCard {
+        padding: 30px 20px;
+    }
+
+    .statsCard,
+    .certificationsCard {
+        padding: 30px 20px;
+    }
+
+    .statsTitle,
+    .certTitle {
+        font-size: 1.3rem;
+    }
+
+    .statNumber {
+        font-size: 2rem;
+    }
+
+    .imageContainer {
+        height: 250px;
+    }
+
+    .assuranceCard {
+        padding: 25px 20px;
+        gap: 25px;
+    }
+
+    .assuranceIcon {
+        width: 60px;
+        height: 60px;
+    }
+
+    .assuranceEmoji {
+        font-size: 1.8rem;
+    }
+
+    .assuranceText h3 {
+        font-size: 1.4rem;
+        margin-bottom: 12px;
+    }
+
+    .assuranceText p {
+        font-size: 0.95rem;
+        margin-bottom: 15px;
+    }
+
+    .assuranceList li {
+        font-size: 0.9rem;
+        padding-left: 22px;
+        margin-bottom: 8px;
+    }
+
+    .assuranceAction .btn-primary {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+    }
+
+    .assuranceNote {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        margin-bottom: 50px;
+    }
+
+    .content {
+        gap: 40px;
+    }
+
+    .story {
+        gap: 30px;
+    }
+
+    .values {
+        margin-top: 20px;
+    }
+
+    .imageOverlay {
+        padding: 20px;
+    }
+
+    .overlayText h4 {
+        font-size: 1.1rem;
+    }
+
+    .overlayText p {
+        font-size: 0.9rem;
+    }
+}

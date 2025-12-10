@@ -9,7 +9,7 @@ export default function ContactForm() {
                 <div className={styles.card} data-aos="zoom-in">
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para potenciar tu consulta?</h2>
-                        <p className={styles.subtitle}>Reserva hoy y obtén <strong>15% OFF</strong> en tu primer mes de alquiler.</p>
+                        <p className={styles.subtitle}>Reserva hoy y obtén <strong>15% OFF</strong> en tu primera semana de alquiler.</p>
                     </div>
 
                     <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
@@ -21,15 +21,21 @@ export default function ContactForm() {
                         </div>
                         <div className={styles.inputGroup}>
                             <select className={styles.select}>
-                                <option value="z6">Mindray Z6 - Obstetricia ($450k)</option>
-                                <option value="z60">Mindray Z60 - Doppler Avanzado ($550k)</option>
+                                <option value="z6">Mindray Z6 - Obstetricia ($350k/día)</option>
+                                <option value="z60">Mindray Z60 - Doppler Avanzado ($380k/día)</option>
                             </select>
                         </div>
 
                         <button type="submit" className={styles.submitBtn}>
-                            RESERVAR AHORA - 15% OFF
+                            Solicitar Reserva sin Riesgo
                         </button>
-                        <p className={styles.disclaimer}>* Sin cláusulas de permanencia ocultas.</p>
+
+                        <div className={styles.securityBadges} style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '15px', fontSize: '0.8rem', color: '#666' }}>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🔒 SSL Seguro</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🛡️ Datos Protegidos</span>
+                        </div>
+
+                        <p className={styles.disclaimer}>* Reserva no vinculante. Te contactaremos para validar disponibilidad.</p>
                     </form>
                 </div>
             </div>

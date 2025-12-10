@@ -4,6 +4,7 @@ import "./globals.css";
 import "aos/dist/aos.css";
 import { AOSInit } from "@/components/ui/AOSInit";
 import Navbar from "@/components/layout/Navbar";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default function RootLayout({
         <AOSInit />
         <Navbar />
         {children}
+        <WhatsAppButton />
       </body>
     </html>
   );

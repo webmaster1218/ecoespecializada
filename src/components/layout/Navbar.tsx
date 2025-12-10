@@ -26,14 +26,15 @@ export default function Navbar() {
                 <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>
                     <a href="#inicio" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
                     <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Equipos</a>
-                    <a href="#precios" onClick={() => setMobileMenuOpen(false)}>Precios</a>
-                    <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
-                    <a href="https://wa.me/573000000000" className={styles.mobileCta}>Cotizar WhatsApp</a>
+                    <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
+                    <a href="#comparativa" onClick={() => setMobileMenuOpen(false)}>¿Por qué alquilar?</a>
+                    <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Opiniones</a>
+                    <a href="https://wa.me/573000000000" className={styles.mobileCta}>Separar Equipo</a>
                 </div>
 
                 <div className={styles.actions}>
                     <a href="https://wa.me/573000000000" target="_blank" rel="noopener noreferrer" className={`btn-primary ${styles.desktopCta}`}>
-                        📞 Cotizar WhatsApp Ya
+                        📞 Separar Equipo
                     </a>
                     <button
                         className={styles.mobileToggle}

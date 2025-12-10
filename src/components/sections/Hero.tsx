@@ -7,38 +7,38 @@ export default function Hero() {
             <div className={`container ${styles.container}`}>
                 <div className={styles.content} data-aos="fade-up">
                     <div className={styles.badge}>
-                        <span className={styles.badgeIcon}>✓</span> Certificado INVIMA + Mantenimiento
+                        <span className={styles.badgeIcon}>✓</span> Envío Gratis + Mantenimiento Incluido
                     </div>
 
                     <h1 className={styles.headline}>
-                        Diagnóstico de Alta Gama <br />
-                        <span className="text-gradient">Sin Invertir 80 Millones.</span>
+                        ¿Buscas Alquiler de Ecógrafo? <br />
+                        <span className="text-gradient">Obtén Tecnología Premium sin Pagar $80M.</span>
                     </h1>
 
                     <p className={styles.subheadline}>
-                        Alquila Ecógrafos Mindray Z6 y Z60 Portátiles con respaldo oficial de Equibiomedic.
-                        Entrega exprés en 48h a toda Colombia.
+                        Alquila Ecógrafos Mindray Z6 y Z60 de Gama Alta sin la inversión inicial de $80M.
+                        <strong>Pruébalo por 7 días sin riesgo.</strong>
                     </p>
 
                     <div className={styles.actions}>
-                        <a href="#catalogo" className="btn-primary">
-                            Reserva tu Equipo
-                            <span className={styles.stockBadge}>Stock Limitado</span>
+                        <a href="#contacto" className="btn-primary">
+                            Solicitar Demo Gratis
+                            <span className={styles.stockBadge}>🔥 3 Disponibles</span>
                         </a>
-                        <a href="#specs" className={styles.btnOutline}>
-                            Ver Ficha Técnica
+                        <a href="#ventajas" className={styles.btnOutline}>
+                            ¿Por qué alquilar?
                         </a>
                     </div>
 
                     <div className={styles.trust}>
                         <div className={styles.trustItem}>
-                            <span>🚚</span> Envío Nacional
+                            <span>🏥</span> +200 Clínicas Confían
                         </div>
                         <div className={styles.trustItem}>
-                            <span>🔧</span> Soporte 24/7
+                            <span>⭐</span> 4.9/5 Calificación
                         </div>
                         <div className={styles.trustItem}>
-                            <span>🛡️</span> Garantía Total
+                            <span>🛡️</span> Garantía 100%
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,8 @@ export default function Hero() {
                         />
 
                         <div className={styles.floatCard}>
-                            <span className={styles.floatTitle}>Doppler Color</span>
-                            <span className={styles.floatValue}>Incluido</span>
+                            <span className={styles.floatTitle}>Disponibilidad</span>
+                            <span className={styles.floatValue} style={{ color: '#22c55e' }}>Inmediata</span>
                         </div>
                     </div>
                 </div>

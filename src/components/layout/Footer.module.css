@@ -1,0 +1,370 @@
+.footer {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: white;
+    padding: 60px 0 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 123, 255, 0.5), transparent);
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: 10px;
+}
+
+.description {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+.certifications {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.certBadge {
+    display: inline-block;
+    padding: 6px 12px;
+    background: rgba(0, 123, 255, 0.1);
+    border: 1px solid rgba(0, 123, 255, 0.3);
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    width: fit-content;
+}
+
+.columnHeader {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.columnHeader::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--color-primary);
+}
+
+.contactInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.contactItem {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: #b0b0b0;
+}
+
+.icon {
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    width: 20px;
+    text-align: center;
+}
+
+.quickForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.input, .select {
+    padding: 12px 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.select {
+    cursor: pointer;
+}
+
+.select option {
+    background: #1a1a1a;
+    color: white;
+}
+
+.input:focus, .select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.submitBtn {
+    padding: 12px 20px;
+    background: linear-gradient(135deg, var(--color-primary), #0056b3);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.submitBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.disclaimer {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+    margin-top: 5px;
+}
+
+.bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.bottomContent {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex: 1;
+}
+
+.copyright p {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.legalLinks {
+    display: flex;
+    gap: 25px;
+}
+
+.link {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.link:hover {
+    color: var(--color-primary);
+}
+
+.partners {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.partnerLabel {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.partnerLogos {
+    display: flex;
+    gap: 20px;
+}
+
+.partnerLogo {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 4px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .grid {
+        gap: 40px;
+    }
+
+    .bottom {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .bottomContent {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .partners {
+        align-items: center;
+    }
+}
+
+@media (max-width: 992px) {
+    .footer {
+        padding: 50px 0 20px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .column::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.1);
+        margin: 20px auto;
+    }
+
+    .column:last-child::after {
+        display: none;
+    }
+
+    .columnHeader::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .contactInfo {
+        align-items: center;
+    }
+
+    .certifications {
+        align-items: center;
+    }
+
+    .bottomContent {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .legalLinks {
+        justify-content: center;
+    }
+
+    .partners {
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 40px 0 15px;
+    }
+
+    .logo {
+        font-size: 1.3rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .quickForm {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .bottom {
+        padding-top: 20px;
+    }
+
+    .legalLinks {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .partnerLogos {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        padding: 30px 0 15px;
+    }
+
+    .grid {
+        gap: 30px;
+    }
+
+    .column {
+        gap: 15px;
+    }
+
+    .description {
+        font-size: 0.85rem;
+    }
+
+    .input, .select {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+    }
+
+    .submitBtn {
+        padding: 10px 16px;
+        font-size: 0.9rem;
+    }
+
+    .partnerLogos {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+}
