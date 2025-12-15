@@ -11,35 +11,51 @@ interface FAQItem {
 const faqData: FAQItem[] = [
     {
         question: "¿Cuánto tiempo demora la entrega del ecógrafo?",
-        answer: "Entregamos en todo el territorio colombiano en máximo 48 horas hábiles después de confirmar la reserva. Para Bogotá, Medellín y Cali la entrega es el mismo día si la reserva se confirma antes de las 12:00pm."
+        answer: "Entregamos en todo el territorio colombiano en máximo 48 horas hábiles. Para Bogotá, Medellín y Cali la entrega es el mismo día si la reserva se confirma antes de las 12:00pm. Contamos con stock permanente para entrega inmediata."
     },
     {
-        question: "¿El mantenimiento está incluido en el alquiler?",
-        answer: "Sí, el mantenimiento preventivo y correctivo está 100% incluido. Cubrimos calibraciones, actualizaciones de software, y cualquier reparación necesaria sin costo adicional."
+        question: "¿Cuáles son los precios de alquiler diario?",
+        answer: "Nuestras tarifas diarias son: Mindray Z6 a $350.000 COP/día y Mindray Z60 a $380.000 COP/día. Incluyen mantenimiento, calibración, 3 sondas estándar y soporte técnico 24/7 sin costos adicionales."
+    },
+    {
+        question: "¿Qué diferencia hay entre el Z6 y el Z60?",
+        answer: "El Z6 es ideal para consultorio y uso general con excelente calidad de imagen. El Z60 ofrece tecnología superior con Doppler color, más aplicaciones especializadas y mayor resolución, recomendado para clínicas y estudios más complejos."
+    },
+    {
+        question: "¿El mantenimiento y calibración están incluidos?",
+        answer: "Sí, el mantenimiento preventivo y correctivo está 100% incluido. Realizamos calibraciones periódicas con certificación oficial y actualizaciones de software sin costo adicional durante todo el contrato."
+    },
+    {
+        question: "¿Qué pasa si el equipo presenta fallas técnicas?",
+        answer: "Ofrecemos reemplazo inmediato del equipo dentro de 24 horas en ciudades principales y 48 horas en otras localidades. Mientras tanto, nuestro técnico especialista te asistirá remotamente para minimizar interrupciones."
+    },
+    {
+        question: "¿Ofrecen servicios además del alquiler?",
+        answer: "Sí, además del alquiler ofrecemos: calibración certificada de ecógrafos, mantenimiento especializado, y venta de equipos nuevos y reacondicionados con financiación flexible hasta 24 meses."
     },
     {
         question: "¿Cuántas sondas incluye cada equipo?",
-        answer: "Todos nuestros equipos incluyen 3 sondas estándar: sonda convexa (abdomen/general), sonda lineal (músculo-esquelético/vascular) y sonda transvaginal. Adicionales disponibles bajo solicitud."
+        answer: "Todos nuestros equipos incluyen 3 sondas estándar: sonda convexa (abdomen/general), sonda lineal (músculo-esquelético/vascular) y sonda transvaginal. Sondas adicionales disponibles bajo solicitud."
     },
     {
-        question: "¿Qué pasa si el equipo presenta fallas?",
-        answer: "Ofrecemos reemplazo inmediato del equipo dentro de 24 horas en ciudades principales y 48 horas en otras ciudades. Mientras tanto, el técnico especialista atenderá tu caso remotamente."
+        question: "¿Los equipos tienen certificación INVIMA?",
+        answer: "Sí, todos nuestros equipos cuentan con registro sanitario INVIMA vigente. Somos especialistas con respaldo oficial de Equibiomedic, distribuidor autorizado de Mindray en Colombia."
     },
     {
-        question: "¿Ofrecen capacitación para usar los equipos?",
-        answer: "Sí, incluimos capacitación personalizada presencial o virtual de 2 horas cubriendo: funcionamiento básico, configuración de estudios, optimización de imágenes y mantenimiento diario."
+        question: "¿Ofrecen capacitación para el uso del equipo?",
+        answer: "Sí, incluimos capacitación personalizada presencial o virtual de 2 horas cubriendo: funcionamiento básico, configuración de estudios, optimización de imágenes y protocolos de mantenimiento diario."
     },
     {
         question: "¿Cuál es el tiempo mínimo de alquiler?",
-        answer: "Nuestro alquiler es flexible desde 1 día para estudios específicos hasta contratos mensuales con descuentos especiales. No hay penalización por devolución anticipada."
+        answer: "Nuestro alquiler es flexible desde 1 día para estudios específicos hasta contratos mensuales con descuentos especiales. No hay penalización por devolución anticipada y adaptamos el plan a tus necesidades."
     },
     {
-        question: "¿Los equipos cuentan con garantía y certificación INVIMA?",
-        answer: "Todos nuestros equipos son 100% nuevos y certificados con registro INVIMA vigente. Ofrecemos garantía oficial de fábrica a través de Equibiomedic, distribuidor autorizado Mindray en Colombia."
+        question: "¿Qué cobertura tienen en Colombia?",
+        answer: "Contamos con presencia en más de 50 ciudades y cobertura nacional. Entregamos equipos en todo el territorio colombiano con tiempos máximos de 48 horas y despachos inmediatos a ciudades principales."
     },
     {
-        question: "¿Qué incluye el soporte técnico 24/7?",
-        answer: "Soporte telefónico y vía WhatsApp para resolución remota de problemas, asistencia durante procedimientos complejos, y coordinación de servicio técnico en sitio si es necesario."
+        question: "¿Qué incluye el kit completo de entrega?",
+        answer: "El kit incluye: el ecógrafo seleccionado con 3 sondas, maleta de transporte protectora, manual del usuario, certificado de calibración, capacitación inicial y soporte técnico permanente."
     }
 ];
 

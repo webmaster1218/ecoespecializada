@@ -2,113 +2,125 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Overview
+## Common Commands
 
-EcoAlquiler Colombia is a Next.js 16 landing page for medical equipment rental (ecógrafos/ultrasound machines). This is a modern React application using TypeScript, styled with CSS Modules, and enhanced with the AOS (Animate On Scroll) library for smooth animations.
-
-## Development Commands
-
-### Core Development
 ```bash
-npm run dev      # Start development server on http://localhost:3000
-npm run build    # Build production application
-npm start        # Start production server
-npm run lint     # Run ESLint for code quality checks
+# Development
+npm run dev          # Start development server (http://localhost:3000)
+npm run build        # Build for production
+npm run start        # Start production server
+npm run lint         # Run ESLint
+
+# Git
+git add .            # Stage all changes
+git commit -m "message"  # Commit with message
+git push origin main # Push to main branch
 ```
 
-### Type Checking
-The project uses TypeScript with strict mode enabled. Type errors are shown during development and build time.
+## Project Architecture
 
-## Architecture & Structure
+This is a Next.js 16 medical equipment rental landing page for EcoAlquiler Colombia, specializing in ultrasound equipment rentals with glass-morphism design system.
 
-### App Router Architecture (Next.js 16)
-- Uses Next.js App Router (`src/app/`) with React Server Components by default
-- Root layout defined in `src/app/layout.tsx` with global fonts (Inter, Roboto)
-- Main page rendered through `src/app/page.tsx` which orchestrates all sections
+### Tech Stack
+- **Framework**: Next.js 16 App Router with TypeScript
+- **Styling**: CSS Modules with custom CSS variables + Tailwind CSS utilities + shadcn/ui components
+- **Animation**: AOS (Animate On Scroll) for section animations + Framer Motion for advanced animations
+- **Icons**: Tabler Icons React, Lucide React for professional medical/tech icons
+- **Typography**: Inter (primary) and Roboto fonts optimized for Spanish content
+- **Utilities**: clsx + tailwind-merge for conditional styling
 
-### Component Organization
+### Key Architectural Patterns
+
+#### Component Structure
+- **Layout Components** (`src/components/layout/`): Navbar, Footer
+- **Section Components** (`src/components/sections/`): Individual landing page sections (13 total)
+- **UI Components** (`src/components/ui/`): Reusable components including AOSInit, WhatsAppButton, animated components
+
+#### Glass-Morphism Design System
+All card components use consistent glass-morphism styling:
+```css
+background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+backdrop-filter: blur(16px);
+-webkit-backdrop-filter: blur(16px);
+border: 1px solid rgba(0, 123, 255, 0.1);
+border-radius: 24px;
 ```
-src/
-├── app/                    # Next.js App Router pages and layouts
-│   ├── layout.tsx         # Root layout with fonts and global providers
-│   ├── page.tsx          # Home page composing all sections
-│   ├── globals.css       # Global styles and CSS variables
-│   └── favicon.ico       # Site favicon
-├── components/
-│   ├── layout/           # Layout components (Navbar, Footer)
-│   ├── sections/         # Landing page sections (Hero, Comparison, etc.)
-│   └── ui/              # Reusable UI components (AOSInit)
-```
 
-### Section-Based Landing Page
-The landing page follows a modular section-based architecture:
-- **Hero**: Main value proposition and CTA
-- **Comparison**: Feature comparison table
-- **ProductCatalog**: Equipment showcase
-- **Advantages**: Key benefits
-- **Testimonials**: Customer testimonials
-- **ContactForm**: Lead capture form
-- **Footer**: Site navigation and links
+#### Section Organization
+Sections follow a consistent pattern:
+- Each section has its own component file and CSS module
+- Sections use AOS data attributes for scroll animations (`data-aos="fade-up"`)
+- All sections are responsive with mobile-first design
+- Content is in Spanish targeting Colombian medical professionals
+- Standard header structure: overline, h2 with gradient, subtitle
 
-### Styling Strategy
-- **CSS Modules**: Each component has its own `.module.css` file for scoped styles
-- **CSS Variables**: Design tokens defined in `globals.css` for colors, shadows, transitions
-- **Medical Tech Theme**: Professional medical industry color palette with blue tones
-- **Glassmorphism Effects**: Modern UI with glass-like cards and subtle shadows
+#### Styling System
+- **CSS Variables**: Custom medical tech palette defined in `globals.css`
+- **Glass-morphism**: Key UI pattern with `glass-card` className
+- **Responsive Design**: Standard breakpoints (992px, 768px, 576px)
+- **Button Classes**: `.btn-primary`, `.btn-secondary` for consistent CTAs
+- **shadcn/ui Integration**: Modern component library with Tailwind CSS variables
 
-### Fonts & Typography
-- **Inter**: Primary font for body text
-- **Roboto**: Secondary font for headings (weights: 400, 700)
-- Both fonts use `display: swap` for performance optimization
+#### State Management
+- FAQ section uses React useState for accordion functionality
+- Footer has form state management for quick contact form
+- ProductGalleryModal uses useState for modal visibility
+- Testimonials use Framer Motion for animated carousel
+- Most components are static/markdown-based for performance
 
-### Animation System
-- **AOS (Animate On Scroll)**: declarative scroll animations via `data-aos` attributes
-- Initialized globally through `AOSInit` component in root layout
-- Configured for fade, fade-up, fade-left, and other animation effects
+### Content Architecture
 
-### Third-Party Integrations
-- **Unsplash Images**: Medical imagery via direct URLs in Image components
-- **WhatsApp Integration**: Direct contact links for lead generation
-- **External Links**: Strategic links to pricing, documentation, and contact channels
+The landing page follows AIDA conversion structure with 13 sections:
+1. **Hero**: Strong value proposition with urgency elements
+2. **Comparison**: Pain vs pleasure positioning
+3. **ProductCatalog**: Equipment showcase with pricing (daily rates)
+4. **HowItWorks**: Process simplification
+5. **AboutUs**: Trust building with metrics and certifications
+6. **Advantages**: Value reinforcement with glass-morphism cards
+7. **Testimonials**: Social proof with Framer Motion carousel
+8. **FAQ**: Two-column accordion layout for space efficiency
+9. **AdditionalServices**: Complementary services (calibration, maintenance, sales)
+10. **ClinicalApplications**: Medical use cases and scenarios
+11. **BookingWizard**: Multi-step equipment booking process
+12. **Footer**: Additional conversion point with contact form
+13. **Gracias**: Thank you page at `/gracias` route
 
-## Key Development Patterns
+### Business Logic
 
-### Component Patterns
-- Functional components with TypeScript interfaces
-- CSS Modules for co-located styling
-- Client components marked with `"use client"` directive when needed (e.g., for hooks)
-- Props interfaces defined inline or in component files
+#### Pricing Model
+- Daily rental rates (not monthly): Z6 ($350k/day), Z60 ($380k/day)
+- Nationwide delivery (48h max, same-day in major cities)
+- All equipment includes 3 standard probes (convex, linear, transvaginal)
+- Maintenance and support included at no extra cost
 
-### State Management
-- React hooks (`useState`, `useEffect`) for local component state
-- No global state management - landing page is largely stateless
-- Scroll-based UI changes (navbar appearance, mobile menu)
+#### Trust Elements
+- INVIMA certification emphasis
+- Official Mindray distributor partnership (Equibiomedic)
+- 10+ years experience, 500+ equipos, 50+ cities coverage
+- 24/7 technical support promise
 
-### Performance Considerations
-- Next.js Image component for optimized image loading
-- Font optimization with `next/font/google`
-- AOS animations for perceived performance
-- CSS containment and GPU-accelerated transforms
+### Important Notes
 
-### SEO & Metadata
-- Metadata configured in root layout for the entire site
-- SEO-friendly titles, descriptions, and keywords for medical equipment rental
-- Structured content hierarchy with proper heading levels
+#### Image Configuration
+- Remote images configured for Unsplash in `next.config.ts`
+- Local equipment images in `/public/images/` with subdirectories (z6/, z60/, clinical/)
+- All images optimized with Next.js Image component
 
-## Development Guidelines
+#### SEO & Performance
+- Spanish language targeting Colombian medical professionals
+- Schema-ready structure with proper semantic HTML
+- Font optimization with display: swap
+- Mobile-first responsive design
 
-### When Adding New Sections
-1. Create component in `src/components/sections/`
-2. Add corresponding `.module.css` file for styles
-3. Import and add to `src/app/page.tsx`
-4. Use AOS data attributes for scroll animations
-5. Follow existing naming conventions (PascalCase for components)
+#### Contact Flow
+- Multiple contact points: Footer form, WhatsApp button, section CTAs
+- All contact forms use placeholder functionality (actual integration pending)
+- Consistent "Habla con un asesor" messaging throughout
+- Gracias page provides confirmation with response time promise
 
-### Styling Guidelines
-- Use CSS variables from `globals.css` for consistent theming
-- Follow mobile-first responsive design
-- Implement glassmorphism effects where appropriate
-- Maintain consistent spacing and typography scales
-
-### WhatsApp Integration
-Current WhatsApp number is placeholder (`573000000000`). Update with actual contact number for production deployment.
+#### Component Implementation Details
+- **FAQ**: Two-column grid layout, accordion functionality, 12 real questions
+- **AdditionalServices**: Glass-morphism cards with service icons and feature lists
+- **Advantages**: Icon-based benefit cards with hover animations
+- **Gracias**: Success page with clock icon and 24-hour response promise
+- **AboutUs**: Stats grid and certifications with glass-morphism styling

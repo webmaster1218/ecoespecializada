@@ -2,8 +2,11 @@ import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import Comparison from "@/components/sections/Comparison";
 import ProductCatalog from "@/components/sections/ProductCatalog";
+import BookingWizard from "@/components/sections/BookingWizard";
+import ClinicalApplications from "@/components/sections/ClinicalApplications";
 import HowItWorks from "@/components/sections/HowItWorks";
 import AboutUs from "@/components/sections/AboutUs";
+import AdditionalServices from "@/components/sections/AdditionalServices";
 import Advantages from "@/components/sections/Advantages";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
@@ -16,8 +19,11 @@ export default function Home() {
       <Hero />
       <Comparison />
       <ProductCatalog />
+      <BookingWizard />
+      <ClinicalApplications />
       <HowItWorks />
       <AboutUs />
+      <AdditionalServices />
       <Advantages />
       <Testimonials />
       <FAQ />

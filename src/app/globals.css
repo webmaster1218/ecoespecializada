@@ -3,39 +3,66 @@
 @tailwind utilities;
 
 :root {
-  /* Medical Tech Palette */
+  /* Medical Tech Premium Palette */
   --color-primary: #007BFF;
-  --color-primary-hover: #0056b3;
-  --color-bg-start: #ffffff;
-  --color-bg-end: #f8f9fa;
-  --color-dark: #212529;
-  --color-text-body: #495057;
-  --color-urgent: #fd7e14;
-  --color-success: #28a745;
-  --color-white: #ffffff;
+  /* Fallback */
+  --color-primary-rgb: 0, 123, 255;
+  --color-primary-dark: #0056b3;
+
+  /* Brand Gradients */
+  --gradient-primary: linear-gradient(135deg, #0061f2 0%, #007BFF 100%);
+  /* Blue-600 to Blue-500 */
+  --gradient-hover: linear-gradient(135deg, #0056b3 0%, #0069d9 100%);
+
+  --color-bg-start: #f8fafc;
+  /* Slate-50 */
+  --color-bg-end: #ffffff;
+
+  --color-dark: #0f172a;
+  /* Slate-900 */
+  --color-text-body: #475569;
+  /* Slate-600 */
 
   /* Glassmorphism & UI */
-  --glass-bg: rgba(255, 255, 255, 0.7);
-  --glass-border: 1px solid rgba(255, 255, 255, 0.3);
-  --glass-blur: 12px;
+  --glass-bg: rgba(255, 255, 255, 0.8);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.6);
+  --glass-blur: 16px;
 
-  --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 30px rgba(0, 71, 160, 0.1);
-  /* Sutil tinte azul en la sombra */
+  --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+  --shadow-colored: 0 10px 30px -5px rgba(37, 99, 235, 0.3);
+  /* Blue tinted shadow */
 
   --radius-sm: 8px;
-  --radius-lg: 12px;
-  --radius-xl: 20px;
+  --radius-lg: 24px;
+  /* Increased for modern look */
+  --radius-full: 9999px;
 
-  --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-  /* Tailwind CSS Variables for shadcn components */
+  /* Tailwind CSS Variables for shadcn components - Keeping consistent with new palette */
   --foreground: 222.2 84% 4.9%;
   --background: 0 0% 100%;
   --muted: 210 40% 96.1%;
   --muted-foreground: 215.4 16.3% 46.9%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --border: 214.3 31.8% 91.4%;
+  --input: 214.3 31.8% 91.4%;
+  /* Primary mapped to Blue-600 (approx) */
+  --primary: 221.2 83.2% 53.3%;
+  --primary-foreground: 210 40% 98%;
   --secondary: 210 40% 96.1%;
   --secondary-foreground: 222.2 47.4% 11.2%;
+  --accent: 210 40% 96.1%;
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 221.2 83.2% 53.3%;
+  --radius: 0.75rem;
+  /* 12px default for shadcn, we might override in components */
 }
 
 * {
@@ -61,17 +88,17 @@ a {
 
 /* Utilities */
 .container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
 }
 
 .section-padding {
-  padding: 5rem 0;
+  padding: 6rem 0;
 }
 
 .text-gradient {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  background: var(--gradient-primary);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -82,21 +109,22 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: var(--color-primary);
+  background: var(--gradient-primary);
   color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 50px;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-full);
   font-weight: 600;
+  letter-spacing: 0.025em;
   transition: var(--transition);
   border: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  box-shadow: var(--shadow-colored);
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-hover);
+  background: var(--gradient-hover);
   transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+  box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.5);
 }
 
 .glass-card {
@@ -106,4 +134,11 @@ a {
   border: var(--glass-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(37, 99, 235, 0.2);
 }

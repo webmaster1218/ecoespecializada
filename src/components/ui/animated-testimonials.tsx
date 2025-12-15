@@ -43,8 +43,9 @@ export const AnimatedTestimonials = ({
         }
     }, [autoplay]);
 
-    const randomRotateY = () => {
-        return Math.floor(Math.random() * 21) - 10;
+    const getRotation = (id: number) => {
+        // Deterministic rotation to avoid hydration mismatches
+        return (id * 17 % 21) - 10;
     };
 
     return (
@@ -60,13 +61,13 @@ export const AnimatedTestimonials = ({
                                         opacity: 0,
                                         scale: 0.9,
                                         z: -100,
-                                        rotate: randomRotateY(),
+                                        rotate: getRotation(index),
                                     }}
                                     animate={{
                                         opacity: isActive(index) ? 1 : 0.7,
                                         scale: isActive(index) ? 1 : 0.95,
                                         z: isActive(index) ? 0 : -100,
-                                        rotate: isActive(index) ? 0 : randomRotateY(),
+                                        rotate: isActive(index) ? 0 : getRotation(index),
                                         zIndex: isActive(index)
                                             ? 999
                                             : testimonials.length + 2 - index,
@@ -76,7 +77,7 @@ export const AnimatedTestimonials = ({
                                         opacity: 0,
                                         scale: 0.9,
                                         z: 100,
-                                        rotate: randomRotateY(),
+                                        rotate: getRotation(index),
                                     }}
                                     transition={{
                                         duration: 0.4,
@@ -152,15 +153,15 @@ export const AnimatedTestimonials = ({
                     <div className="flex gap-4 pt-12 md:pt-0">
                         <button
                             onClick={handlePrev}
-                            className="h-7 w-7 rounded-full bg-gray-200 flex items-center justify-center group/button hover:bg-gray-300 transition-colors"
+                            className="rounded-full w-12 h-12 border border-slate-200 flex items-center justify-center hover:border-blue-500 hover:text-blue-500 transition-colors bg-white shadow-sm"
                         >
-                            <IconArrowLeft className="h-5 w-5 text-gray-900 group-hover/button:rotate-12 transition-transform duration-300" />
+                            <IconArrowLeft className="w-5 h-5" />
                         </button>
                         <button
                             onClick={handleNext}
-                            className="h-7 w-7 rounded-full bg-gray-200 flex items-center justify-center group/button hover:bg-gray-300 transition-colors"
+                            className="rounded-full w-12 h-12 bg-blue-600 flex items-center justify-center hover:bg-blue-700 shadow-lg shadow-blue-600/30 text-white transition-colors"
                         >
-                            <IconArrowRight className="h-5 w-5 text-gray-900 group-hover/button:-rotate-12 transition-transform duration-300" />
+                            <IconArrowRight className="w-5 h-5" />
                         </button>
                     </div>
                 </div>

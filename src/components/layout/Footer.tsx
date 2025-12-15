@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -27,7 +28,7 @@ export default function Footer() {
                 <div className={styles.grid}>
                     {/* Columna 1: Información de la empresa */}
                     <div className={styles.column}>
-                        <h3 className={styles.logo}>EcoAlquiler Colombia</h3>
+                        <h3 className={styles.logo}>Alquiler de Ecógrafos Colombia</h3>
                         <p className={styles.description}>
                             Especialistas en alquiler de ecógrafos Mindray con más de 10 años de experiencia transformando el diagnóstico médico en Colombia.
                         </p>
@@ -113,10 +114,10 @@ export default function Footer() {
                 <div className={styles.bottom}>
                     <div className={styles.bottomContent}>
                         <div className={styles.copyright}>
-                            <p>&copy; 2025 EcoAlquiler Colombia. Todos los derechos reservados.</p>
+                            <p>&copy; 2025 Alquiler de Ecógrafos Colombia. Todos los derechos reservados.</p>
                         </div>
                         <div className={styles.legalLinks}>
-                            <a href="#" className={styles.link}>Política de Privacidad</a>
+                            <Link href="/politicas" className={styles.link}>Política de Privacidad</Link>
                             <a href="#" className={styles.link}>Términos y Condiciones</a>
                             <a href="#" className={styles.link}>Garantía</a>
                         </div>

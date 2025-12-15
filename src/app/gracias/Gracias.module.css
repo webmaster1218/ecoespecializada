@@ -1,0 +1,239 @@
+.page {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #f8fafc 0%, #e8f4fd 100%);
+    display: flex;
+    align-items: center;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.page::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 123, 255, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.successIcon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #10b981, #059669);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 3rem;
+    box-shadow: 0 10px 40px rgba(16, 185, 129, 0.3);
+}
+
+.successIcon svg {
+    width: 50px;
+    height: 50px;
+    color: white;
+    stroke-width: 2;
+}
+
+.message {
+    margin-bottom: 4rem;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color-dark);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: var(--color-text-body);
+    line-height: 1.7;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contactInfo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4rem;
+}
+
+.contactInfo .contactCard {
+    max-width: 400px;
+    width: 100%;
+}
+
+.contactCard {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.95));
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(0, 123, 255, 0.1);
+    border-radius: 24px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
+}
+
+.contactCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px -12px rgba(0, 123, 255, 0.25);
+    border-color: rgba(0, 123, 255, 0.3);
+}
+
+.contactIcon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contactIcon svg {
+    width: 28px;
+    height: 28px;
+    color: white;
+    stroke-width: 1.5;
+}
+
+.contactText h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.contactText p {
+    font-size: 1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.backLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-text-body);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    font-size: 1rem;
+}
+
+.backLink:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+}
+
+.backIcon {
+    width: 20px;
+    height: 20px;
+    transition: var(--transition);
+}
+
+.backLink:hover .backIcon {
+    transform: translateX(-4px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .page {
+        padding: 1rem 0;
+        min-height: auto;
+    }
+
+    .successIcon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 2rem;
+    }
+
+    .successIcon svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .title {
+        font-size: 2.25rem;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+    }
+
+    .contactInfo {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-bottom: 3rem;
+    }
+
+    .contactCard {
+        padding: 1.5rem;
+    }
+
+    .contactIcon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .contactIcon svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .actions {
+        gap: 1rem;
+    }
+
+    .actions .btn-primary {
+        width: 100%;
+        justify-content: center;
+        padding: 1rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .contactCard {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}

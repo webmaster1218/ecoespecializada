@@ -115,68 +115,6 @@
     font-weight: 500;
 }
 
-.imageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4/3;
-    padding: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.placeholderImage {
-    width: 100%;
-    height: 100%;
-    background: #e9ecef;
-    border-radius: 8px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #adb5bd;
-    font-weight: 700;
-    font-size: 1.2rem;
-}
-
-.floatCard {
-    position: absolute;
-    bottom: 40px;
-    right: -20px;
-    background: white;
-    padding: 15px 25px;
-    border-radius: 12px;
-    box-shadow: var(--shadow-lg);
-    display: flex;
-    flex-direction: column;
-    animation: float 6s ease-in-out infinite;
-}
-
-.floatTitle {
-    font-size: 0.8rem;
-    color: var(--color-text-body);
-}
-
-.floatValue {
-    font-weight: 700;
-    color: var(--color-primary);
-    font-size: 1.1rem;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-
-    50% {
-        transform: translateY(-15px);
-    }
-
-    100% {
-        transform: translateY(0px);
-    }
-}
-
 @media (max-width: 968px) {
     .hero {
         padding-top: 120px;
@@ -204,9 +142,5 @@
     .trust {
         justify-content: center;
         flex-wrap: wrap;
-    }
-
-    .floatCard {
-        right: 0;
     }
 }

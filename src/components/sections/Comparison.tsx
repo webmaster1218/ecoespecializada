@@ -16,7 +16,7 @@ export default function Comparison() {
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Decisión Inteligente</span>
-                    <h2 className={styles.title}>¿Por qué <span className="text-gradient">EcoAlquiler</span>?</h2>
+                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">Alquiler de ecografos</span>?</h2>
                     <p className={styles.subtitle}>Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional.</p>
                 </div>
 
@@ -64,10 +64,10 @@ export default function Comparison() {
                         </ul>
                     </div>
 
-                    {/* Columna Placer (EcoAlquiler) */}
+                    {/* Columna Placer (Alquiler de Ecógrafos) */}
                     <div className={`${styles.card} ${styles.pleasure} glass-card`} data-aos="fade-left">
                         <div className={styles.badge}>Mejor Opción</div>
-                        <h3 className={styles.cardTitle}>✅ EcoAlquiler (Cero Riesgo)</h3>
+                        <h3 className={styles.cardTitle}>✅ Alquiler de Ecógrafos (Cero Riesgo)</h3>
                         <ul className={styles.list}>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
@@ -102,7 +102,7 @@ export default function Comparison() {
                                 </div>
                                 <div>
                                     <strong>3 Sondas Incluidas GRATIS</strong>
-                                    <p>Convexa, Lineal y Transvaginal listas para usar.</p>
+                                    <p>Convexo, Lineal y Transvaginal listas para usar.</p>
                                 </div>
                             </li>
                         </ul>

@@ -20,7 +20,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "EcoAlquiler Colombia | Alquiler de Ecógrafos Mindray",
+  title: "Alquiler de Ecógrafos Colombia | Mindray Portátiles",
   description: "Alquila Ecógrafos Mindray Z6 y Z60 Portátiles de alta gama con respaldo oficial de Equibiomedic. Entrega en 48h en toda Colombia.",
   keywords: ["alquiler ecografos", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
 };

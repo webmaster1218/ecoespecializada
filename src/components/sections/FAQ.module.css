@@ -58,9 +58,9 @@
 }
 
 .faqGrid {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
 }
 
 .faqItem {
@@ -156,7 +156,8 @@
     background: linear-gradient(135deg, var(--color-primary), #0056b3);
     color: white;
     padding: 40px;
-    border-radius: var(--radius-xl);
+    border-radius: 30px;
+    /* Consistent rounded look */
     text-align: center;
     box-shadow: var(--shadow-lg);
 }
@@ -207,6 +208,11 @@
 
     .subtitle {
         font-size: 1.1rem;
+    }
+
+    .faqGrid {
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
 

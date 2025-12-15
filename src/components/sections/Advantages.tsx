@@ -1,4 +1,4 @@
-import styles from "./Advantages.module.css";
+
 
 export default function Advantages() {
     const advantages = [
@@ -26,48 +26,49 @@ export default function Advantages() {
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                    <path d="M8 11h8"></path>
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
                 </svg>
             ),
-            title: "Prueba sin Riesgo",
-            desc: "7 días de garantía de satisfacción total. Si no cumple sus expectativas, devolvemos su dinero."
+            title: "Disponibilidad 24/7",
+            desc: "Stock permanente de equipos. Listos para entrega inmediata en cualquier momento del día."
         },
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
                 </svg>
             ),
-            title: "Todo Incluido",
-            desc: "Maleta de transporte, calibración certificada y capacitación especializada de manejo."
+            title: "Experiencia",
+            desc: "Más de 10 años en el mercado colombiano. Más de 500 equipos entregados y presencia en 50+ ciudades."
         }
     ];
 
     return (
-        <section className={styles.section} id="ventajas">
-            <div className="container">
-                <div className={styles.header} data-aos="fade-up">
-                    <span className={styles.overline}>Beneficios Exclusivos</span>
-                    <h2 className={styles.sectionTitle}>¿Por qué elegir <span className="text-gradient">EcoAlquiler?</span></h2>
-                    <p className={styles.subtitle}>Reducimos su riesgo operativo y maximizamos su rentabilidad clínica.</p>
+        <section className="py-24 bg-gradient-to-br from-blue-600 to-blue-900 relative overflow-hidden" id="ventajas">
+            {/* Background Decorations */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-400/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
+
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="text-center mb-16" data-aos="fade-up">
+                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios Exclusivos</span>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">¿Por qué elegir <span className="text-blue-200">Alquiler de Ecógrafos?</span></h2>
+                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
                 </div>
 
-                <div className={styles.grid}>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {advantages.map((adv, index) => (
                         <div
                             key={index}
-                            className={styles.card}
+                            className="bg-white p-8 rounded-[30px] border border-slate-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
                             data-aos="fade-up"
                             data-aos-delay={index * 100}
                         >
-                            <div className={styles.iconWrapper}>{adv.icon}</div>
-                            <h3 className={styles.cardTitle}>{adv.title}</h3>
-                            <p className={styles.cardDesc}>{adv.desc}</p>
+                            <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
+                                {adv.icon}
+                            </div>
+                            <h3 className="text-xl font-bold text-slate-900 mb-3">{adv.title}</h3>
+                            <p className="text-slate-500 leading-relaxed text-sm">{adv.desc}</p>
                         </div>
                     ))}
                 </div>
