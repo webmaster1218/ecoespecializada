@@ -47,7 +47,7 @@ export default function AdditionalServices() {
                 <div className="text-center mb-16" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">SERVICIOS ADICIONALES</span>
                     <h2 className="text-[2.5rem] font-bold mb-4 text-slate-900 leading-tight">
-                        Más allá del <span className="text-gradient">alquiler</span>
+                        Más allá de <span className="text-gradient">alquilar ecógrafos</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                         Soluciones integrales para el gestión completa de sus equipos de diagnóstico médico
