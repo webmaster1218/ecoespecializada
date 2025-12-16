@@ -70,6 +70,10 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
 
         setIsLoading(true);
         try {
+            if (!supabase) {
+                throw new Error('Supabase no está configurado');
+            }
+
             const { error } = await supabase
                 .from('bookings')
                 .delete()

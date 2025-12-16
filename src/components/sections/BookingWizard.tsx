@@ -122,6 +122,12 @@ export default function BookingWizard() {
 
             const totalPrice = getTotalPrice();
 
+            if (!supabase) {
+                alert('Lo sentimos, el sistema no está disponible en este momento. Por favor inténtalo más tarde.');
+                setIsSubmitting(false);
+                return false;
+            }
+
             const { error } = await supabase.from('bookings').insert({
                 client_name: formData.name,
                 client_email: formData.email,
