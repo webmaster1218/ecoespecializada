@@ -21,11 +21,19 @@ export async function POST(request: NextRequest) {
         }
 
         // Create Supabase client directly here
-        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+        const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+        const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
         console.log('🔗 Supabase URL:', supabaseUrl);
         console.log('🔑 Has Supabase Key:', !!supabaseKey);
+
+        if (!supabaseUrl || !supabaseKey) {
+            console.log('❌ Supabase not configured');
+            return NextResponse.json(
+                { error: 'Database not configured - missing environment variables' },
+                { status: 500 }
+            );
+        }
 
         const supabase = createClient(supabaseUrl, supabaseKey);
 

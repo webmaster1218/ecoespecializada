@@ -17,6 +17,15 @@ const TOTAL_STOCK = {
  */
 export async function checkAvailability(startDate: string, endDate: string): Promise<AvailabilityResult> {
     try {
+        if (!supabase) {
+            console.warn('Supabase not configured - returning maximum availability');
+            return {
+                z6: TOTAL_STOCK.z6,
+                z60: TOTAL_STOCK.z60,
+                available: true
+            };
+        }
+
         // Query bookings that overlap with the requested range
         // Condition: (start_date <= requested_end) AND (end_date >= requested_start)
         const { data: bookings, error } = await supabase

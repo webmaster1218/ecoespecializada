@@ -6,7 +6,7 @@ import { format, parse, startOfWeek, getDay } from "date-fns";
 import { es } from "date-fns/locale";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "./calendar.custom.css";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 
 const locales = {
     'es': es,
@@ -36,6 +36,12 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
     const [date, setDate] = useState(new Date()); // Control date state
 
     const fetchBookings = async () => {
+        if (!supabase) {
+            console.warn('Supabase not configured - showing demo data');
+            setEvents([]);
+            return;
+        }
+
         const { data, error } = await supabase
             .from('bookings')
             .select('*')
@@ -119,6 +125,29 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
     const onView = (newView: View) => {
         setView(newView);
     };
+
+    if (!isSupabaseConfigured) {
+        return (
+            <div className="w-full h-[600px] md:h-[750px] flex items-center justify-center bg-gray-50 rounded-lg border border-gray-200">
+                <div className="text-center p-8">
+                    <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-4">
+                        <svg className="w-12 h-12 mx-auto mb-3 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <h3 className="text-lg font-semibold text-gray-900 mb-2">Configuración Requerida</h3>
+                        <p className="text-gray-600 mb-4">Las variables de entorno de Supabase no están configuradas.</p>
+                        <div className="bg-gray-100 p-3 rounded text-sm text-gray-700 text-left">
+                            <p className="font-semibold mb-2">Variables necesarias en Vercel:</p>
+                            <code className="block bg-white p-2 rounded border border-gray-200 text-xs">
+                                NEXT_PUBLIC_SUPABASE_URL<br/>
+                                NEXT_PUBLIC_SUPABASE_ANON_KEY
+                            </code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        );
+    }
 
     return (
         <div className="w-full h-[600px] md:h-[750px]">

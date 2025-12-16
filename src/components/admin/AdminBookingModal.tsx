@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { IconX, IconDeviceHeartMonitor } from "@tabler/icons-react";
-import { supabase } from "@/lib/supabase";
+import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { checkAvailability } from "@/lib/availability";
 
 interface AdminBookingModalProps {
@@ -92,6 +92,9 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
         setIsLoading(true);
 
         try {
+            if (!supabase) {
+                throw new Error('Supabase no está configurado. Por favor configura las variables de entorno.');
+            }
             // ... (Price calc logic remains same)
             const PRICES = { z6: 350000, z60: 550000 };
             const CART_COST = 50000;
