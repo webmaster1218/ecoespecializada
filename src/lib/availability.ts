@@ -77,6 +77,13 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
  * Scans the next 60 days.
  */
 export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: number): Promise<string | null> {
+    if (!supabase) {
+        // Return tomorrow as next available date if Supabase is not configured
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        return tomorrow.toISOString().split('T')[0];
+    }
+
     const today = new Date();
     // Start checking from tomorrow
     const checkDate = new Date(today);
