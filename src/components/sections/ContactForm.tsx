@@ -22,7 +22,7 @@ export default function ContactForm() {
                         <div className={styles.inputGroup}>
                             <select className={styles.select}>
                                 <option value="z6">Mindray Z6 - Obstetricia ($350k/día)</option>
-                                <option value="z60">Mindray Z60 - Doppler Avanzado ($380k/día)</option>
+                                <option value="z60">Mindray Z60 - Doppler Avanzado ($550k/día)</option>
                             </select>
                         </div>
 

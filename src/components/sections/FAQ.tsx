@@ -15,7 +15,7 @@ const faqData: FAQItem[] = [
     },
     {
         question: "¿Cuáles son los precios de alquiler diario?",
-        answer: "Nuestras tarifas diarias son: Mindray Z6 a $350.000 COP/día y Mindray Z60 a $380.000 COP/día. Incluyen mantenimiento, calibración, 3 sondas estándar y soporte técnico 24/7 sin costos adicionales."
+        answer: "Nuestras tarifas diarias son: Mindray Z6 a $350.000 COP/día y Mindray Z60 a $550.000 COP/día. Incluyen mantenimiento, calibración, 3 sondas estándar y soporte técnico 24/7 sin costos adicionales."
     },
     {
         question: "¿Qué diferencia hay entre el Z6 y el Z60?",

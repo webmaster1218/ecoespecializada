@@ -28,6 +28,7 @@ export default function Navbar() {
                     <a href="#ventajas" onClick={() => setMobileMenuOpen(false)}>Ventajas</a>
                     <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                     <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Equipos</a>
+                    <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros Servicios</a>
                     <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Opiniones</a>
                     <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar Equipo</a>
                 </div>

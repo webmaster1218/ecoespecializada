@@ -56,8 +56,7 @@ export default function ClinicalApplications() {
                     La mejor solución <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">del Mercado</span>
                 </h2>
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                    Desde clínicas veterinarias en El Poblado hasta centros de radiología en Medellín. Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. <br />
-                    <span className="text-sm font-semibold text-blue-500 mt-4 block opacity-80">*Estas son solo ALGUNAS de las especialidades que atendemos.</span>
+                    Desde clínicas veterinarias en El Poblado hasta centros de radiología en Medellín. Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. Estas son algunas de la especialidades en las que se suele usar.<br />
                 </p>
             </div>
 

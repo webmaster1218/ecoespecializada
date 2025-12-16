@@ -88,7 +88,7 @@ The landing page follows AIDA conversion structure with 13 sections:
 ### Business Logic
 
 #### Pricing Model
-- Daily rental rates (not monthly): Z6 ($350k/day), Z60 ($380k/day)
+- Daily rental rates (not monthly): Z6 ($350k/day), Z60 ($550k/day)
 - Nationwide delivery (48h max, same-day in major cities)
 - All equipment includes 3 standard probes (convex, linear, transvaginal)
 - Maintenance and support included at no extra cost

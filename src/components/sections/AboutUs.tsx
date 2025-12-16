@@ -31,16 +31,16 @@ export default function AboutUs() {
                             <h4 className={styles.statsTitle}>Números que Hablan</h4>
                             <div className="grid grid-cols-2 gap-4 md:gap-6">
                                 <div className={styles.statItem}>
-                                    <div className={styles.statNumber}>10+</div>
+                                    <div className={styles.statNumber}>5+</div>
                                     <div className={styles.statLabel}>Años de Experiencia</div>
                                 </div>
                                 <div className={styles.statItem}>
-                                    <div className={styles.statNumber}>500+</div>
+                                    <div className={styles.statNumber}>200+</div>
                                     <div className={styles.statLabel}>Equipos Entregados</div>
                                 </div>
                                 <div className={styles.statItem}>
-                                    <div className={styles.statNumber}>50+</div>
-                                    <div className={styles.statLabel}>Ciudades Cubiertas</div>
+                                    <div className={styles.statNumber}>15+</div>
+                                    <div className={styles.statLabel}>Clinicas Cubiertas</div>
                                 </div>
                                 <div className={styles.statItem}>
                                     <div className={styles.statNumber}>24/7</div>

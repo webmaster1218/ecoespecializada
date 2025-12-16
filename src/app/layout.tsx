@@ -3,8 +3,6 @@ import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
 import "aos/dist/aos.css";
 import { AOSInit } from "@/components/ui/AOSInit";
-import Navbar from "@/components/layout/Navbar";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -34,9 +32,7 @@ export default function RootLayout({
     <html lang="es">
       <body className={`${inter.variable} ${roboto.variable}`}>
         <AOSInit />
-        <Navbar />
         {children}
-        <WhatsAppButton />
       </body>
     </html>
   );

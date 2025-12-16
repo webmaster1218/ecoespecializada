@@ -34,7 +34,7 @@ const Z60_DATA = {
     name: "Mindray Z60",
     tagline: "Potencia Clínica Superior",
     description: "Lleva tu consulta al siguiente nivel. Con tecnologías heredadas de sistemas de consola, el Z60 ofrece Doppler Color avanzado y una resolución de contraste excepcional para casos difíciles.",
-    price: "$ 380.000",
+    price: "$ 550.000",
     images: [
         "/images/z60/z-60-tripode.webp",
         "/images/z60/z-60-abierto-derecha.webp",
@@ -134,7 +134,7 @@ export default function ProductCatalog() {
 
                         <div className={styles.priceContainer}>
                             <span className={styles.oldPrice}>$ 25.000</span>
-                            <div className={`${styles.currentPrice} text-blue-600`}>$ 380.000<span className={styles.period}>/día</span></div>
+                            <div className={`${styles.currentPrice} text-blue-600`}>$ 550.000<span className={styles.period}>/día</span></div>
                         </div>
 
                         <div className={`${styles.stock} text-orange-600 font-bold`}>

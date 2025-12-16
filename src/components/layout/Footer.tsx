@@ -97,7 +97,7 @@ export default function Footer() {
                                 >
                                     <option value="">Selecciona equipo</option>
                                     <option value="z6">Mindray Z6 ($350/día)</option>
-                                    <option value="z60">Mindray Z60 ($380/día)</option>
+                                    <option value="z60">Mindray Z60 ($550/día)</option>
                                 </select>
                             </div>
                             <button type="submit" className={styles.submitBtn}>
