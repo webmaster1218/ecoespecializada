@@ -559,6 +559,7 @@ export default function BookingWizard() {
                                             <div className="text-2xl font-bold bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
                                                 ${getTotalPrice().toLocaleString()}
                                             </div>
+                                            <p className="text-[11px] text-blue-300/70 font-medium mt-1">*Incluye costo de envío*</p>
                                         </div>
                                         <div className="text-right flex flex-col items-end relative z-10">
                                             <div className="text-xs text-slate-400 mb-1">
