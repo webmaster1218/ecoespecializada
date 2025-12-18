@@ -17,6 +17,8 @@ interface BookingData {
     name: string;
     email: string;
     phone: string;
+    documentNumber: string;
+    taxId: string;
     clientType: 'medico' | 'clinica' | 'movil' | '';
 
     // Step 2
@@ -34,7 +36,7 @@ interface BookingData {
 }
 
 const INITIAL_DATA: BookingData = {
-    name: '', email: '', phone: '', clientType: '',
+    name: '', email: '', phone: '', documentNumber: '', taxId: '', clientType: '',
     startDate: '', endDate: '',
     quantities: { z6: 0, z60: 0 },
     includeCart: false,
@@ -133,6 +135,8 @@ export default function BookingWizard() {
                 client_email: formData.email,
                 client_phone: formData.phone,
                 client_type: formData.clientType,
+                client_document: formData.documentNumber,
+                client_tax_id: formData.taxId,
                 client_address: `${formData.address}, ${formData.city}`,
                 start_date: formData.startDate,
                 end_date: formData.endDate,
@@ -144,6 +148,54 @@ export default function BookingWizard() {
             });
 
             if (error) throw error;
+
+            // Send to Webhook
+            try {
+                const webhookUrl = "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
+                // Generate Equipment Summary
+                const summaryParts = [];
+                if (formData.quantities.z60 > 0) {
+                    summaryParts.push(`ECOGRAFO Z60${formData.includeCart ? ' CON CARRITO' : ''}`);
+                }
+                if (formData.quantities.z6 > 0) {
+                    summaryParts.push(`ECOGRAFO Z6${formData.includeCart ? ' CON CARRITO' : ''}`);
+                }
+                const equipmentSummary = summaryParts.join(' / ');
+
+                const payload = {
+                    client_name: formData.name,
+                    client_email: formData.email,
+                    client_phone: formData.phone,
+                    client_type: formData.clientType,
+                    document_number: formData.documentNumber,
+                    tax_id: formData.taxId,
+                    sector: formData.city,
+                    client_address: formData.address,
+                    full_address: `${formData.address}, ${formData.city}`,
+                    start_date: formData.startDate,
+                    end_date: formData.endDate,
+                    quantity_z6: formData.quantities.z6,
+                    quantity_z60: formData.quantities.z60,
+                    equipment_summary: equipmentSummary,
+                    include_cart: formData.includeCart,
+                    total_price: totalPrice,
+                    status: 'pending_delivery',
+                    created_at: new Date().toISOString()
+                };
+
+                fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                }).catch(err => console.error("Error sending to webhook:", err));
+
+            } catch (webhookErr) {
+                console.error("Webhook error:", webhookErr);
+                // We don't fail the booking if only the webhook fails
+            }
+
             return true;
 
         } catch (err) {
@@ -209,6 +261,8 @@ export default function BookingWizard() {
             if (!formData.email.trim()) newErrors.email = "El correo es obligatorio";
             else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Correo inválido";
             if (!formData.phone.trim()) newErrors.phone = "El teléfono es obligatorio";
+            if (!formData.documentNumber.trim()) newErrors.documentNumber = "El documento es obligatorio";
+            if (!formData.taxId.trim()) newErrors.taxId = formData.clientType === 'clinica' ? "El NIT es obligatorio" : "El RUT es obligatorio";
             if (!formData.clientType) newErrors.clientType = "Selecciona un tipo de cliente";
         } else if (currentStep === 2) {
             if (!formData.startDate) newErrors.startDate = "Fecha de inicio requerida";
@@ -217,7 +271,7 @@ export default function BookingWizard() {
             const totalUnits = formData.quantities.z6 + formData.quantities.z60;
             if (totalUnits === 0) newErrors.quantities = "Selecciona al menos un equipo";
         } else if (currentStep === 3) {
-            if (!formData.city.trim()) newErrors.city = "La ciudad es obligatoria";
+            if (!formData.city.trim()) newErrors.city = "El sector es obligatorio";
             if (!formData.address.trim()) newErrors.address = "La dirección es obligatoria";
         }
 
@@ -349,7 +403,7 @@ export default function BookingWizard() {
                                             />
                                             {errors.email && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.email}</span>}
                                         </div>
-                                        <div className="space-y-2 md:col-span-2">
+                                        <div className="space-y-2">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Teléfono / WhatsApp <span className="text-red-500">*</span></label>
                                             <input
                                                 type="tel"
@@ -359,6 +413,30 @@ export default function BookingWizard() {
                                                 onChange={(e) => updateData('phone', e.target.value)}
                                             />
                                             {errors.phone && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.phone}</span>}
+                                        </div>
+                                        <div className="space-y-2">
+                                            <label className="text-sm font-bold text-slate-700 ml-1">N° de Documento <span className="text-red-500">*</span></label>
+                                            <input
+                                                type="text"
+                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.documentNumber ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                placeholder="C.C. / C.E."
+                                                value={formData.documentNumber}
+                                                onChange={(e) => updateData('documentNumber', e.target.value)}
+                                            />
+                                            {errors.documentNumber && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.documentNumber}</span>}
+                                        </div>
+                                        <div className="space-y-2 md:col-span-2">
+                                            <label className="text-sm font-bold text-slate-700 ml-1">
+                                                {formData.clientType === 'clinica' ? 'NIT' : 'RUT'} <span className="text-red-500">*</span>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                placeholder={formData.clientType === 'clinica' ? 'NIT de la empresa' : 'RUT personal'}
+                                                value={formData.taxId}
+                                                onChange={(e) => updateData('taxId', e.target.value)}
+                                            />
+                                            {errors.taxId && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.taxId}</span>}
                                         </div>
                                     </div>
 
@@ -406,7 +484,7 @@ export default function BookingWizard() {
 
                                     {/* Dates Section */}
                                     <div className="space-y-3">
-                                        <div className="grid grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                                             <div className="space-y-2">
                                                 <label className="text-sm font-bold text-slate-700 ml-1">Fecha Inicio <span className="text-red-500">*</span></label>
                                                 <div className="relative">
@@ -552,7 +630,7 @@ export default function BookingWizard() {
                                     </div>
 
                                     {/* Total Footer */}
-                                    <div className="bg-slate-900 text-white p-6 rounded-[24px] flex justify-between items-center shadow-lg relative overflow-hidden">
+                                    <div className="bg-slate-900 text-white p-6 rounded-[24px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-lg relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                                         <div className="relative z-10">
                                             <p className="text-slate-400 text-xs font-medium mb-1">Total Estimado</p>
@@ -587,13 +665,13 @@ export default function BookingWizard() {
 
                                     <div className="space-y-5">
                                         <div className="space-y-2">
-                                            <label className="text-sm font-bold text-slate-700 ml-1">Ciudad <span className="text-red-500">*</span></label>
+                                            <label className="text-sm font-bold text-slate-700 ml-1">Sector <span className="text-red-500">*</span></label>
                                             <div className="relative">
                                                 <IconMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                                                 <input
                                                     type="text"
                                                     className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.city ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
-                                                    placeholder="Ej. Medellín, Bogotá..."
+                                                    placeholder="Ej. Laureles, Poblado..."
                                                     value={formData.city}
                                                     onChange={(e) => updateData('city', e.target.value)}
                                                 />
@@ -680,7 +758,7 @@ export default function BookingWizard() {
                                         </motion.div>
                                         <div className="absolute inset-0 border-4 border-green-200 rounded-full animate-ping opacity-20"></div>
                                     </div>
-                                    <h3 className="text-4xl font-bold text-slate-900 mb-4">¡Solicitud Realizada!</h3>
+                                    <h3 className="text-2xl md:text-4xl font-bold text-slate-900 mb-4">¡Solicitud Realizada!</h3>
                                     <p className="text-slate-600 max-w-md mx-auto mb-10 text-lg leading-relaxed">
                                         Hemos recibido tu solicitud de reserva. Un asesor comercial se pondrá en contacto contigo al <strong className="text-slate-900">{formData.phone}</strong> para coordinar el pago y la entrega.
                                     </p>

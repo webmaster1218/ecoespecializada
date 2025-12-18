@@ -15,6 +15,12 @@ npm run lint         # Run ESLint
 git add .            # Stage all changes
 git commit -m "message"  # Commit with message
 git push origin main # Push to main branch
+
+# Environment setup
+# Create .env.local with your Supabase credentials
+# Template:
+# NEXT_PUBLIC_SUPABASE_URL=your_supabase_project_url
+# NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 ```
 
 ## Project Architecture
@@ -60,6 +66,8 @@ Sections follow a consistent pattern:
 - **Responsive Design**: Standard breakpoints (992px, 768px, 576px)
 - **Button Classes**: `.btn-primary`, `.btn-secondary` for consistent CTAs
 - **shadcn/ui Integration**: Modern component library with Tailwind CSS variables
+- **Tailwind CSS Config**: Extended with shadcn/ui color system using HSL CSS variables
+- **CSS Modules**: Section-specific styling with consistent naming convention
 
 #### State Management
 - FAQ section uses React useState for accordion functionality
@@ -124,3 +132,51 @@ The landing page follows AIDA conversion structure with 13 sections:
 - **Advantages**: Icon-based benefit cards with hover animations
 - **Gracias**: Success page with clock icon and 24-hour response promise
 - **AboutUs**: Stats grid and certifications with glass-morphism styling
+- **BookingWizard**: Multi-step form with real-time availability checking via Supabase
+
+### Database & Backend Integration
+
+#### Supabase Configuration
+- **Client Setup**: Configured in `src/lib/supabase.ts` with graceful fallbacks
+- **Environment Variables**:
+  - `NEXT_PUBLIC_SUPABASE_URL`: Supabase project URL
+  - `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Public anon key for client access
+- **Graceful Degradation**: App functions without Supabase, showing maximum availability
+
+#### Availability Management
+- **Stock Levels**: Z6 (2 units), Z60 (2 units) defined in `src/lib/availability.ts`
+- **Real-time Checking**: `checkAvailability()` function queries overlapping bookings
+- **Booking Statuses**: confirmed, pending_delivery, delivered, pending_pickup block inventory
+- **Date Range Logic**: Overlap detection using `start_date <= end_date AND end_date >= start_date`
+- **Next Available Date**: `getNextAvailableDate()` scans 60 days ahead for booking windows
+
+### Additional Architecture Notes
+
+#### Route Structure
+- **Public Routes**: `(public)` group contains main landing page and thank you pages
+  - `/` - Main landing page with all 13 sections
+  - `/gracias` - Thank you page for form submissions
+  - `/politicas` - Privacy/legal policies page
+- **Admin Routes**: `(admin)` group for administrative functionality
+  - `/calendario` - Bookings calendar management interface
+- **API Routes**: RESTful endpoints in `app/api/`
+  - `/api/test` - Test endpoint for development
+  - `/api/admin/login` - Authentication for admin access
+
+#### Admin Calendar System
+- Uses react-big-calendar with Spanish localization
+- Custom CSS styling in `calendar.custom.css`
+- Color-coded booking statuses with filtering
+- Modal-based booking editing and management
+- Graceful fallback when Supabase is not configured
+
+#### Multi-Step Booking Wizard
+- 4-step booking process: Client info → Date/Equipment → Location → Confirmation
+- Real-time availability checking with Supabase integration
+- Dynamic pricing calculation with shipping and optional cart costs
+- Form validation and progress indicators
+- Responsive design with Framer Motion animations
+
+#### Path Aliases
+- `@/*` maps to `./src/*` for clean imports
+- Consistent use of path aliases throughout the codebase

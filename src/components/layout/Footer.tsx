@@ -43,20 +43,16 @@ export default function Footer() {
                         <h4 className={styles.columnHeader}>Contacto</h4>
                         <div className={styles.contactInfo}>
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}>📱</span>
-                                <span>(601) 000-0000</span>
-                            </div>
-                            <div className={styles.contactItem}>
                                 <span className={styles.icon}>💬</span>
-                                <span>WhatsApp: +57 300-000-0000</span>
+                                <span>WhatsApp: +57 3005212664</span>
                             </div>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}>📧</span>
-                                <span>info@ecoalquilercolombia.com</span>
+                                <span>ecoespecializada@gmail.com</span>
                             </div>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}>📍</span>
-                                <span>Calle 123 # 45-67, Bogotá D.C.</span>
+                                <span>Diagonal 47a #17sur-162 CS 105, Santa María de los Ángeles, Medellín</span>
                             </div>
                         </div>
                     </div>

@@ -21,7 +21,7 @@ export default function Advantages() {
                 </svg>
             ),
             title: "Logística Flash",
-            desc: "Despachos inmediatos a ciudades principales. Puesta en marcha en < 48 horas."
+            desc: "Despachos inmediatos en Medellín. Puesta en marcha en < 24 horas."
         },
         {
             icon: (
