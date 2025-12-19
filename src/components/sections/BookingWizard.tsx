@@ -492,7 +492,6 @@ export default function BookingWizard() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    transition={{ duration: 0.3 }}
                                     className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
