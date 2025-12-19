@@ -82,7 +82,7 @@ export default function AdditionalServices() {
 
                             <div className={styles.serviceAction}>
                                 <a
-                                    href={`#contacto?service=${encodeURIComponent(`Información sobre ${service.title}`)}`}
+                                    href={`https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0`}
                                     className={styles.serviceCta}
                                 >
                                     {service.cta}
@@ -104,7 +104,7 @@ export default function AdditionalServices() {
                             </p>
                         </div>
                         <div className={styles.ctaButton}>
-                            <a href="#contacto" className="btn-primary">
+                            <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">
                                 Hablar con un asesor
                             </a>
                         </div>

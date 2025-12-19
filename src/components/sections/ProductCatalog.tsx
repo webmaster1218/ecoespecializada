@@ -71,7 +71,7 @@ export default function ProductCatalog() {
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Modelos Disponibles</span>
                     <h2 className={styles.title}>Tecnología <span className="text-gradient">Mindray a tu Alcance</span></h2>
-                    <p className={styles.subtitle}>Equipos portátiles de alto rendimiento listos para tu consulta.</p>
+                    <p className={styles.subtitle}>Tecnología Mindray de última generación disponible para <strong>entrega inmediata en Medellín</strong> y despachos a nivel nacional.</p>
                 </div>
 
                 <div className={styles.grid}>

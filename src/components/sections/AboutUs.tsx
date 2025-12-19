@@ -8,7 +8,7 @@ export default function AboutUs() {
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>NUESTRA TRAYECTORIA</span>
                     <h2 className={styles.title}>Conoce a <span className="text-gradient">Alquiler de Ecógrafos</span></h2>
-                    <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico en Colombia con tecnología de punta y servicio confiable.</p>
+                    <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico desde <strong>Medellín para toda Colombia</strong> con tecnología de punta y servicio confiable.</p>
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12 lg:mb-20">
@@ -102,7 +102,7 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className={styles.assuranceAction}>
-                            <a href="#contacto" className="btn-primary">Habla con un asesor</a>
+                            <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">Habla con un asesor</a>
                         </div>
                     </div>
                 </div>

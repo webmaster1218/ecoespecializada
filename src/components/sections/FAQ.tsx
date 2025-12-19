@@ -106,7 +106,7 @@ export default function FAQ() {
                     <div className={styles.ctaCard}>
                         <h3>¿No encuentras lo que buscas?</h3>
                         <p>Nuestros especialistas están listos para resolver todas tus dudas</p>
-                        <a href="#contacto" className="btn-primary">Hablar con un asesor</a>
+                        <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">Hablar con un asesor</a>
                         <p className={styles.responseTime}>Respuesta garantizada en menos de 2 horas</p>
                     </div>
                 </div>

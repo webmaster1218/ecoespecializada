@@ -98,10 +98,11 @@ a {
 }
 
 .text-gradient {
-  background: var(--gradient-primary);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: rgb(37, 99, 235);
+  background: none;
+  -webkit-text-fill-color: initial;
+  background-clip: border-box;
+  -webkit-background-clip: border-box;
 }
 
 .btn-primary {

@@ -5,42 +5,44 @@ export default function Advantages() {
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="9" cy="7" r="4"></circle>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                 </svg>
             ),
-            title: "Aliados Directos",
-            desc: "Sin intermediarios. Especialistas Mindray con soporte técnico nacional certificado."
+            title: "Cero Inversión Inicial",
+            desc: "Ideal para Independientes. Inicie su práctica privada hoy mismo sin descapitalizarse comprando equipos costosos."
         },
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
             ),
-            title: "Logística Flash",
-            desc: "Despachos inmediatos en Medellín. Puesta en marcha en < 24 horas."
+            title: "Respaldo Corporativo",
+            desc: "Para Clínicas e IPS. Soporte biomédico prioritario, mantenimientos incluidos y cumplimiento normativo INVIMA total."
         },
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polyline points="12 6 12 12 16 14"></polyline>
+                    <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+                    <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+                    <line x1="12" y1="22.08" x2="12" y2="12" />
                 </svg>
             ),
-            title: "Disponibilidad 24/7",
-            desc: "Stock permanente de equipos. Listos para entrega inmediata en cualquier momento del día."
+            title: "Disponibilidad Inmediata",
+            desc: "Stock permanente en Medellín y principales ciudades. Puesta en marcha en su consultorio en menos de 24 horas."
         },
         {
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                    <polyline points="14 2 14 8 20 8" />
+                    <line x1="16" y1="13" x2="8" y2="13" />
+                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <polyline points="10 9 9 9 8 9" />
                 </svg>
             ),
-            title: "Experiencia",
-            desc: "Más de 10 años en el mercado colombiano. Más de 500 equipos entregados y presencia en 50+ ciudades."
+            title: "Sin Cláusulas Ocultas",
+            desc: "Contratos claros y transparentes. Flexibilidad para aumentar o cambiar equipos según la demanda de sus pacientes."
         }
     ];
 
@@ -52,7 +54,7 @@ export default function Advantages() {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios Exclusivos</span>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">¿Por qué <span className="text-blue-200">Nosotros?</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">¿Por qué <span className="text-blue-200">Nosotros?</span></h2>
                     <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
                 </div>
 

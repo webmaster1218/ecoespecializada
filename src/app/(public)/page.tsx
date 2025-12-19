@@ -1,6 +1,6 @@
-import Link from "next/link";
 import Hero from "@/components/sections/Hero";
 import Comparison from "@/components/sections/Comparison";
+import LogoLoop from "@/components/sections/LogoLoop";
 import ProductCatalog from "@/components/sections/ProductCatalog";
 import BookingWizard from "@/components/sections/BookingWizard";
 import ClinicalApplications from "@/components/sections/ClinicalApplications";
@@ -17,6 +17,7 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <LogoLoop />
       <Comparison />
       <ProductCatalog />
       <BookingWizard />

@@ -1,8 +1,8 @@
 import { IconShieldCheck, IconLock, IconFileDescription, IconUserCheck, IconClock, IconBuildingSkyscraper } from "@tabler/icons-react";
 
 export const metadata = {
-    title: "Política de Privacidad | Alquiler de Ecógrafos Colombia",
-    description: "Política de Tratamiento de Datos Personales de Alquiler de Ecógrafos Colombia.",
+    title: "Políticas de Privacidad y Devoluciones | Alquiler de Ecógrafos Colombia",
+    description: "Política de tratamiento de datos, privacidad y políticas de devolución de Alquiler de Ecógrafos Colombia.",
 };
 
 export default function PoliciesPage() {
@@ -15,7 +15,7 @@ export default function PoliciesPage() {
                         Marco Legal
                     </span>
                     <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                        Política de Tratamiento de <span className="text-blue-600">Datos Personales</span>
+                        Políticas de Privacidad y <span className="text-blue-600">Devoluciones</span>
                     </h1>
                     <p className="text-lg text-slate-600 leading-relaxed">
                         En cumplimiento de la Ley 1581 de 2012 y el Decreto 1377 de 2013, presentamos nuestra política de privacidad para garantizar la protección de sus derechos.
@@ -147,6 +147,35 @@ export default function PoliciesPage() {
                                     <p className="mt-2">Una vez cumplidos estos plazos y finalizadas las finalidades, procederemos a la destrucción segura o anonimización de la información.</p>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    {/* Sección 5: Devoluciones y Cancelaciones */}
+                    <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
+                        <div className="flex items-center gap-4 mb-6">
+                            <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
+                                <IconFileDescription size={24} stroke={1.5} />
+                            </div>
+                            <h2 className="text-2xl font-bold text-slate-900">5. Política de Devoluciones y Cancelaciones</h2>
+                        </div>
+                        <div className="space-y-4 text-slate-600 leading-relaxed">
+                            <p>
+                                Entendemos que pueden surgir imprevistos. Nuestra política de cancelaciones y devoluciones busca ser justa tanto para el cliente como para la operatividad de nuestros equipos.
+                            </p>
+                            <ul className="space-y-3 list-disc pl-5">
+                                <li>
+                                    <strong>Cancelaciones:</strong> Las reservas pueden cancelarse sin costo hasta <strong>24 horas antes</strong> de la fecha de inicio del alquiler. Cancelaciones con menos de 24 horas de antelación tendrán un cargo administrativo del 20% del valor del primer día de alquiler.
+                                </li>
+                                <li>
+                                    <strong>Devolución Anticipada:</strong> Si decide devolver el equipo antes de finalizar el periodo contratado, se recalculará la tarifa según los días efectivos de uso. No se aplicarán multas, pero se perderán los descuentos por volumen de tiempo si el nuevo periodo no cumple con las condiciones originales.
+                                </li>
+                                <li>
+                                    <strong>Fallas del Equipo:</strong> En el improbable caso de falla técnica no imputable al usuario, reemplazaremos el equipo en el menor tiempo posible (sujeto a disponibilidad) o reembolsaremos el 100% del dinero proporcional a los días no disfrutados.
+                                </li>
+                                <li>
+                                    <strong>Garantía de Satisfacción:</strong> Si al momento de la entrega el equipo no cumple con las especificaciones técnicas acordadas, puede rechazar la recepción y obtener un reembolso completo inmediato.
+                                </li>
+                            </ul>
                         </div>
                     </div>
 

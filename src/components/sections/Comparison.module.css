@@ -19,7 +19,7 @@
 }
 
 .title {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 15px;
     color: var(--color-dark);
     font-weight: 700;
@@ -155,6 +155,32 @@
     .pleasure {
         transform: scale(1);
         order: -1;
-        /* Mostrar primero la opción recomendada en móvil */
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .cardTitle {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .list {
+        gap: 1rem;
+    }
+
+    .list li {
+        gap: 0.75rem;
+    }
+
+    .iconWrapper {
+        width: 32px;
+        height: 32px;
+    }
+
+    .iconWrapper svg {
+        width: 20px;
+        height: 20px;
     }
 }

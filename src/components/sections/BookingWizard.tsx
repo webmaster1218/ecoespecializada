@@ -6,7 +6,7 @@ import {
     IconUser, IconBuildingHospital, IconAmbulance, IconCheck,
     IconChevronRight, IconChevronLeft, IconCalendar, IconMapPin,
     IconDeviceHeartMonitor, IconTruckDelivery, IconShoppingCart,
-    IconAlertCircle, IconPlus, IconMinus
+    IconAlertCircle, IconPlus, IconMinus, IconTag
 } from "@tabler/icons-react";
 import Image from "next/image";
 
@@ -43,7 +43,7 @@ const INITIAL_DATA: BookingData = {
     city: '', address: ''
 };
 
-const SHIPPING_COST = 20000;
+const SHIPPING_COST = 50000;
 const CART_COST = 50000;
 import { checkAvailability, getNextAvailableDate } from "@/lib/availability";
 import { supabase } from "@/lib/supabase";
@@ -321,24 +321,24 @@ export default function BookingWizard() {
     };
 
     return (
-        <section className="py-12 md:py-24 bg-gradient-to-br from-blue-600 to-blue-900 relative overflow-hidden" id="reservar">
+        <section className="py-10 md:py-16 bg-gradient-to-br from-blue-600 to-blue-900 relative overflow-hidden" id="reservar">
             {/* Background Decorations */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-blue-400/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
             <div className="container mx-auto px-4 relative z-10">
 
                 {/* Header */}
-                <div className="text-center mb-12" data-aos="fade-up">
-                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">RESERVA FÁCIL</span>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Reserva tu Equipo <span className="text-blue-100">en Minutos</span></h2>
-                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Sin papeleos innecesarios. Recibe tu ecógrafo ultrarapido.</p>
+                <div className="text-center mb-8" data-aos="fade-up">
+                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-2">RESERVA FÁCIL</span>
+                    <h2 className="text-3xl md:text-5xl font-bold mb-2 text-white">Reserva tu Equipo <span className="text-blue-100">en Minutos</span></h2>
+                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Reserva tu <strong>ecógrafo en Medellín</strong> o cualquier ciudad del país en minutos.</p>
                 </div>
 
                 {/* Wizard Component */}
                 <div className="max-w-4xl mx-auto bg-white overflow-hidden shadow-2xl rounded-[30px] border border-slate-100">
 
                     {/* Progress Bar */}
-                    <div className="border-b border-slate-100 p-8 bg-white">
+                    <div className="border-b border-slate-100 p-6 bg-white">
                         <div className="flex justify-between items-center max-w-2xl mx-auto relative">
                             {/* Line */}
                             <div className="absolute top-1/2 left-0 w-full h-1 bg-slate-200 rounded-full -z-0"></div>
@@ -354,7 +354,7 @@ export default function BookingWizard() {
                                 </div>
                             ))}
                         </div>
-                        <div className="flex justify-between max-w-2xl mx-auto mt-3 text-xs font-bold text-slate-500 uppercase tracking-widest px-2">
+                        <div className="flex justify-between max-w-2xl mx-auto mt-2 text-xs font-bold text-slate-500 uppercase tracking-widest px-2">
                             <span>Datos</span>
                             <span>Equipos</span>
                             <span>Entrega</span>
@@ -362,7 +362,19 @@ export default function BookingWizard() {
                     </div>
 
                     {/* Content */}
-                    <div className="p-5 md:p-12 min-h-[400px]">
+                    <div className="p-5 md:p-8 min-h-[350px]">
+                        {step < 4 && (
+                            <div className="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-4 flex items-center gap-4 shadow-sm relative overflow-hidden">
+                                <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-100/30 rounded-full -translate-y-1/2 translate-x-1/2"></div>
+                                <div className="bg-white p-2.5 rounded-xl text-emerald-600 shadow-sm z-10 flex-shrink-0">
+                                    <IconTag size={24} stroke={1.5} />
+                                </div>
+                                <div className="z-10">
+                                    <h4 className="font-bold text-emerald-900 leading-tight text-sm">¡10% de Descuento en tu Primera Reserva!</h4>
+                                    <p className="text-emerald-700 text-xs font-medium mt-0.5">Automáticamente aplicado al finalizar tu solicitud.</p>
+                                </div>
+                            </div>
+                        )}
                         <AnimatePresence mode="wait">
                             {step === 1 && (
                                 <motion.div
@@ -371,20 +383,20 @@ export default function BookingWizard() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="space-y-8"
+                                    className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-bold text-slate-900">Información de Contacto</h3>
                                         <p className="text-slate-500 text-sm mt-1">Todos los campos son obligatorios</p>
                                     </div>
 
-                                    <div className="grid md:grid-cols-2 gap-6">
-                                        <div className="space-y-2">
+                                    <div className="grid md:grid-cols-2 gap-5">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Nombre Completo <span className="text-red-500">*</span></label>
                                             <div className="relative group">
                                                 <input
                                                     type="text"
-                                                    className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.name ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 group-hover:border-blue-300'}`}
+                                                    className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.name ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 group-hover:border-blue-300'}`}
                                                     placeholder="Ej. Dr. Alejandro Gómez"
                                                     value={formData.name}
                                                     onChange={(e) => updateData('name', e.target.value)}
@@ -392,46 +404,46 @@ export default function BookingWizard() {
                                                 {errors.name && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.name}</span>}
                                             </div>
                                         </div>
-                                        <div className="space-y-2">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Correo Electrónico <span className="text-red-500">*</span></label>
                                             <input
                                                 type="email"
-                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.email ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.email ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
                                                 placeholder="doctor@ejemplo.com"
                                                 value={formData.email}
                                                 onChange={(e) => updateData('email', e.target.value)}
                                             />
                                             {errors.email && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.email}</span>}
                                         </div>
-                                        <div className="space-y-2">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Teléfono / WhatsApp <span className="text-red-500">*</span></label>
                                             <input
                                                 type="tel"
-                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.phone ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.phone ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
                                                 placeholder="+57 300 123 4567"
                                                 value={formData.phone}
                                                 onChange={(e) => updateData('phone', e.target.value)}
                                             />
                                             {errors.phone && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.phone}</span>}
                                         </div>
-                                        <div className="space-y-2">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">N° de Documento <span className="text-red-500">*</span></label>
                                             <input
                                                 type="text"
-                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.documentNumber ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.documentNumber ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
                                                 placeholder="C.C. / C.E."
                                                 value={formData.documentNumber}
                                                 onChange={(e) => updateData('documentNumber', e.target.value)}
                                             />
                                             {errors.documentNumber && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.documentNumber}</span>}
                                         </div>
-                                        <div className="space-y-2 md:col-span-2">
+                                        <div className="space-y-1.5 md:col-span-2">
                                             <label className="text-sm font-bold text-slate-700 ml-1">
                                                 {formData.clientType === 'clinica' ? 'NIT' : 'RUT'} <span className="text-red-500">*</span>
                                             </label>
                                             <input
                                                 type="text"
-                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
                                                 placeholder={formData.clientType === 'clinica' ? 'NIT de la empresa' : 'RUT personal'}
                                                 value={formData.taxId}
                                                 onChange={(e) => updateData('taxId', e.target.value)}
@@ -440,9 +452,9 @@ export default function BookingWizard() {
                                         </div>
                                     </div>
 
-                                    <div className="space-y-3">
+                                    <div className="space-y-2">
                                         <label className="text-sm font-bold text-slate-700 ml-1">Tipo de Cliente <span className="text-red-500">*</span></label>
-                                        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                        <div className="grid grid-cols-3 gap-3">
                                             {[
                                                 { id: 'medico', label: 'Médico Indep.', icon: IconUser },
                                                 { id: 'clinica', label: 'Clínica / IPS', icon: IconBuildingHospital },
@@ -451,7 +463,7 @@ export default function BookingWizard() {
                                                 <button
                                                     key={type.id}
                                                     onClick={() => updateData('clientType', type.id as any)}
-                                                    className={`p-4 rounded-2xl border-2 flex flex-col items-center gap-3 transition-all duration-200 ${formData.clientType === type.id
+                                                    className={`p-3 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all duration-200 ${formData.clientType === type.id
                                                         ? 'border-blue-500 bg-blue-50/50 text-blue-700 shadow-md scale-[1.02]'
                                                         : errors.clientType ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50'
                                                         }`}
@@ -459,7 +471,12 @@ export default function BookingWizard() {
                                                     <div className={`p-3 rounded-full ${formData.clientType === type.id ? 'bg-blue-100 text-blue-600' : 'bg-slate-100 text-slate-400'}`}>
                                                         <type.icon size={24} />
                                                     </div>
-                                                    <span className="font-bold text-sm">{type.label}</span>
+                                                    <span className="font-bold text-sm leading-tight">{type.label}</span>
+                                                    <span className={`text-[10px] md:text-[11px] leading-tight opacity-80 ${formData.clientType === type.id ? 'text-blue-500' : 'text-slate-400'}`}>
+                                                        {type.id === 'medico' && "Para consultorios"}
+                                                        {type.id === 'clinica' && "Corporativo / IPS"}
+                                                        {type.id === 'movil' && "Domiciliario"}
+                                                    </span>
                                                 </button>
                                             ))}
                                         </div>
@@ -475,7 +492,8 @@ export default function BookingWizard() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="space-y-8"
+                                    transition={{ duration: 0.3 }}
+                                    className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-bold text-slate-900">Selecciona tus Fechas</h3>
@@ -483,27 +501,27 @@ export default function BookingWizard() {
                                     </div>
 
                                     {/* Dates Section */}
-                                    <div className="space-y-3">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                                            <div className="space-y-2">
+                                    <div className="space-y-2">
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div className="space-y-1.5">
                                                 <label className="text-sm font-bold text-slate-700 ml-1">Fecha Inicio <span className="text-red-500">*</span></label>
                                                 <div className="relative">
-                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                                                     <input
                                                         type="date"
-                                                        className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.startDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
+                                                        className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.startDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
                                                         value={formData.startDate}
                                                         onChange={(e) => updateData('startDate', e.target.value)}
                                                     />
                                                 </div>
                                             </div>
-                                            <div className="space-y-2">
+                                            <div className="space-y-1.5">
                                                 <label className="text-sm font-bold text-slate-700 ml-1">Fecha Fin <span className="text-red-500">*</span></label>
                                                 <div className="relative">
-                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                                                     <input
                                                         type="date"
-                                                        className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.endDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
+                                                        className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.endDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
                                                         value={formData.endDate}
                                                         onChange={(e) => updateData('endDate', e.target.value)}
                                                     />
@@ -514,7 +532,7 @@ export default function BookingWizard() {
                                             <span className="text-xs text-red-500 flex items-center gap-1"><IconAlertCircle size={12} /> Selecciona fechas válidas</span>
                                         )}
                                         {totalDays > 0 && (
-                                            <div className="flex justify-between items-center bg-blue-50 text-blue-800 px-4 py-2 rounded-xl text-sm font-medium">
+                                            <div className="flex justify-between items-center bg-blue-50 text-blue-800 px-3 py-1.5 rounded-xl text-sm font-medium">
                                                 <span>Duración del alquiler:</span>
                                                 <span className="font-bold">{totalDays} días</span>
                                             </div>
@@ -522,8 +540,8 @@ export default function BookingWizard() {
                                     </div>
 
                                     {/* Availability / Equipment Selection */}
-                                    <div className="pt-4 border-t border-slate-100">
-                                        <h4 className="font-bold text-slate-800 mb-4 flex items-center justify-between">
+                                    <div className="pt-3 border-t border-slate-100">
+                                        <h4 className="font-bold text-slate-800 mb-2 flex items-center justify-between">
                                             Equipos Disponibles
                                             {/* Just a visual indicator that availability is checked */}
                                             {isCheckingAvailability ? (
@@ -533,29 +551,29 @@ export default function BookingWizard() {
                                             ))}
                                         </h4>
 
-                                        <div className="grid md:grid-cols-2 gap-6">
+                                        <div className="grid md:grid-cols-2 gap-4">
                                             {[
                                                 { id: 'z6', name: 'Mindray Z6', price: PRICES.z6, img: '/images/z6/z6-abierto-izquierda.webp', desc: 'Ideal Obstetricia' },
                                                 { id: 'z60', name: 'Mindray Z60', price: PRICES.z60, img: '/images/z60/z-60-abierto-izquierda.webp', badge: 'Popular', desc: 'Calidad Superior' }
                                             ].map((item) => (
                                                 <div
                                                     key={item.id}
-                                                    className={`relative p-5 rounded-[24px] border-2 transition-all duration-300 ${formData.quantities[item.id as 'z6' | 'z60'] > 0
-                                                        ? 'border-blue-500 bg-gradient-to-b from-blue-50/80 to-white shadow-xl'
+                                                    className={`relative p-3 rounded-[20px] border-2 transition-all duration-300 ${formData.quantities[item.id as 'z6' | 'z60'] > 0
+                                                        ? 'border-blue-500 bg-gradient-to-b from-blue-50/80 to-white shadow-lg'
                                                         : 'border-slate-100 bg-white hover:border-blue-200'
                                                         }`}
                                                 >
                                                     {item.badge && (
-                                                        <span className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-xl rounded-tr-[22px] shadow-sm">{item.badge}</span>
+                                                        <span className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg rounded-tr-[18px] shadow-sm">{item.badge}</span>
                                                     )}
 
-                                                    <div className="flex items-start gap-4 mb-4">
-                                                        <div className="w-20 h-20 relative bg-slate-50 rounded-xl p-2 border border-slate-100 flex-shrink-0">
+                                                    <div className="flex items-start gap-3 mb-3">
+                                                        <div className="w-16 h-16 relative bg-slate-50 rounded-lg p-1 border border-slate-100 flex-shrink-0">
                                                             <Image src={item.img} alt={item.name} fill className="object-contain p-1" />
                                                         </div>
                                                         <div className="flex-1">
-                                                            <h4 className="font-bold text-slate-900 leading-tight">{item.name}</h4>
-                                                            <p className="text-xs text-slate-500 mb-1">{item.desc}</p>
+                                                            <h4 className="font-bold text-slate-900 leading-tight text-sm">{item.name}</h4>
+                                                            <p className="text-[10px] text-slate-500 mb-0.5">{item.desc}</p>
                                                             <div className="text-blue-700 font-bold text-sm">
                                                                 ${item.price.toLocaleString()}
                                                             </div>
@@ -563,33 +581,33 @@ export default function BookingWizard() {
                                                     </div>
 
                                                     {/* Counter UI */}
-                                                    <div className="flex items-center justify-between bg-slate-50 rounded-xl p-2 border border-slate-100">
+                                                    <div className="flex items-center justify-between bg-slate-50 rounded-lg p-1.5 border border-slate-100">
                                                         <button
                                                             onClick={() => updateQuantity(item.id as 'z6' | 'z60', -1)}
-                                                            className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] > 0 ? 'bg-white text-slate-700 shadow-sm hover:text-blue-600' : 'text-slate-300 cursor-not-allowed'}`}
+                                                            className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] > 0 ? 'bg-white text-slate-700 shadow-sm hover:text-blue-600' : 'text-slate-300 cursor-not-allowed'}`}
                                                             disabled={formData.quantities[item.id as 'z6' | 'z60'] === 0}
                                                         >
-                                                            <IconMinus size={16} stroke={3} />
+                                                            <IconMinus size={14} stroke={3} />
                                                         </button>
 
-                                                        <span className="font-bold text-slate-900 w-8 text-center text-lg">
+                                                        <span className="font-bold text-slate-900 w-6 text-center text-sm">
                                                             {formData.quantities[item.id as 'z6' | 'z60']}
                                                         </span>
 
                                                         <button
                                                             onClick={() => updateQuantity(item.id as 'z6' | 'z60', 1)}
-                                                            className={`w-8 h-8 flex items-center justify-center rounded-lg transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] < maxAvailability[item.id as 'z6' | 'z60'] ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
+                                                            className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] < maxAvailability[item.id as 'z6' | 'z60'] ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
                                                             disabled={formData.quantities[item.id as 'z6' | 'z60'] >= maxAvailability[item.id as 'z6' | 'z60']}
                                                         >
-                                                            <IconPlus size={16} stroke={3} />
+                                                            <IconPlus size={14} stroke={3} />
                                                         </button>
                                                     </div>
 
                                                     {availabilitySuggestions[item.id as 'z6' | 'z60'] && (
-                                                        <div className="mt-3 text-[10px] sm:text-xs text-amber-600 font-medium bg-amber-50 p-2 rounded-lg border border-amber-100 flex items-start gap-1.5">
-                                                            <IconCalendar size={14} className="flex-shrink-0 mt-0.5" />
+                                                        <div className="mt-2 text-[10px] text-amber-600 font-medium bg-amber-50 p-1.5 rounded-lg border border-amber-100 flex items-start gap-1">
+                                                            <IconCalendar size={12} className="flex-shrink-0 mt-0.5" />
                                                             <span>
-                                                                No disponible. Próxima fecha libre: <strong className="text-amber-700">{availabilitySuggestions[item.id as 'z6' | 'z60']}</strong>
+                                                                No disponible. Próxima: <strong className="text-amber-700">{availabilitySuggestions[item.id as 'z6' | 'z60']}</strong>
                                                             </span>
                                                         </div>
                                                     )}
@@ -597,13 +615,13 @@ export default function BookingWizard() {
                                             ))}
                                         </div>
 
-                                        {errors.quantities && <span className="text-xs text-red-500 flex items-center mt-3 gap-1"><IconAlertCircle size={12} /> {errors.quantities}</span>}
+                                        {errors.quantities && <span className="text-xs text-red-500 flex items-center mt-2 gap-1"><IconAlertCircle size={12} /> {errors.quantities}</span>}
                                     </div>
 
                                     {/* Cart Option */}
-                                    <div className={`p-4 rounded-2xl border transition-colors ${formData.includeCart ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
-                                        <div className="flex items-center gap-4">
-                                            <div className="relative w-12 h-12 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
+                                    <div className={`p-3 rounded-2xl border transition-colors ${formData.includeCart ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
+                                        <div className="flex items-center gap-3">
+                                            <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
                                                 <Image src="/images/cart_thumbnail.png" alt="Carrito" fill className="object-cover" />
                                             </div>
                                             <div className="flex-1">
@@ -630,7 +648,7 @@ export default function BookingWizard() {
                                     </div>
 
                                     {/* Total Footer */}
-                                    <div className="bg-slate-900 text-white p-6 rounded-[24px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 shadow-lg relative overflow-hidden">
+                                    <div className="bg-slate-900 text-white p-4 rounded-[20px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-lg relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                                         <div className="relative z-10">
                                             <p className="text-slate-400 text-xs font-medium mb-1">Total Estimado</p>
@@ -656,21 +674,21 @@ export default function BookingWizard() {
                                     animate={{ opacity: 1, x: 0 }}
                                     exit={{ opacity: 0, x: -20 }}
                                     transition={{ duration: 0.3 }}
-                                    className="space-y-8"
+                                    className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
                                         <h3 className="text-2xl font-bold text-slate-900">Información de Entrega</h3>
                                         <p className="text-slate-500 text-sm mt-1">¿Dónde te llevamos los equipos?</p>
                                     </div>
 
-                                    <div className="space-y-5">
-                                        <div className="space-y-2">
+                                    <div className="space-y-4">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Sector <span className="text-red-500">*</span></label>
                                             <div className="relative">
-                                                <IconMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                                                <IconMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
                                                 <input
                                                     type="text"
-                                                    className={`w-full pl-12 pr-4 py-4 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.city ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
+                                                    className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.city ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
                                                     placeholder="Ej. Laureles, Poblado..."
                                                     value={formData.city}
                                                     onChange={(e) => updateData('city', e.target.value)}
@@ -678,11 +696,11 @@ export default function BookingWizard() {
                                             </div>
                                             {errors.city && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.city}</span>}
                                         </div>
-                                        <div className="space-y-2">
+                                        <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Dirección Exacta <span className="text-red-500">*</span></label>
                                             <input
                                                 type="text"
-                                                className={`w-full px-5 py-4 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.address ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
+                                                className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.address ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
                                                 placeholder="Calle, Carrera, Número, Oficina..."
                                                 value={formData.address}
                                                 onChange={(e) => updateData('address', e.target.value)}
@@ -691,17 +709,17 @@ export default function BookingWizard() {
                                         </div>
                                     </div>
 
-                                    <div className="bg-blue-50/50 p-5 md:p-8 rounded-[24px] border border-blue-100 relative overflow-hidden">
+                                    <div className="bg-blue-50/50 p-4 md:p-6 rounded-[20px] border border-blue-100 relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
 
-                                        <h4 className="font-bold text-slate-800 mb-6 flex items-center gap-3 relative z-10 text-lg">
-                                            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                                                <IconDeviceHeartMonitor size={18} />
+                                        <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2 relative z-10 text-base">
+                                            <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
+                                                <IconDeviceHeartMonitor size={16} />
                                             </div>
                                             Resumen de Reserva
                                         </h4>
 
-                                        <ul className="space-y-3 relative z-10">
+                                        <ul className="space-y-2 relative z-10">
                                             {/* Quantities Breakdown */}
                                             {formData.quantities.z6 > 0 && (
                                                 <li className="flex justify-between items-center text-sm">
@@ -775,11 +793,11 @@ export default function BookingWizard() {
 
                     {/* Footer Actions */}
                     {step < 4 && (
-                        <div className="p-6 md:p-8 border-t border-slate-100 flex justify-between bg-slate-50 items-center">
+                        <div className="p-4 md:p-6 border-t border-slate-100 flex justify-between bg-slate-50 items-center">
                             {step > 1 ? (
                                 <button
                                     onClick={prevStep}
-                                    className="px-4 py-3 md:px-6 md:py-4 rounded-full font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100/80 transition-all flex items-center gap-1 md:gap-2 text-sm md:text-base"
+                                    className="px-4 py-3 md:px-5 md:py-3 rounded-full font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100/80 transition-all flex items-center gap-1 md:gap-2 text-sm md:text-base"
                                 >
                                     <IconChevronLeft size={18} className="md:w-5 md:h-5" /> <span className="hidden xs:inline">Anterior</span>
                                 </button>
@@ -788,7 +806,7 @@ export default function BookingWizard() {
                             <button
                                 onClick={nextStep}
                                 disabled={isSubmitting}
-                                className={`btn-primary px-6 py-3 md:px-10 md:py-4 shadow-xl shadow-blue-500/20 hover:shadow-blue-600/30 flex items-center gap-2 text-base md:text-lg w-auto ml-auto ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
+                                className={`btn-primary px-6 py-3 md:px-8 md:py-3 shadow-xl shadow-blue-500/20 hover:shadow-blue-600/30 flex items-center gap-2 text-base md:text-lg w-auto ml-auto ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
                             >
                                 {isSubmitting ? 'Procesando...' : (step === 3 ? 'Confirmar Reserva' : 'Continuar')} <IconChevronRight size={20} className="md:w-[22px]" />
                             </button>

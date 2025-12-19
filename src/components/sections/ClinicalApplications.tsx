@@ -42,6 +42,22 @@ const scenarios = [
         description: "Visualización superior de tendones y nervios. Herramienta esencial para fisiatría, ortopedia y medicina deportiva.",
         imageSrc: "https://images.unsplash.com/photo-1584515933487-9d3005c010c7?q=80&w=1000&auto=format&fit=crop",
         thumbnailSrc: "https://images.unsplash.com/photo-1584515933487-9d3005c010c7?q=80&w=150&h=150&auto=format&fit=crop"
+    },
+    {
+        id: 6,
+        title: "Radiología",
+        subtitle: "Diagnóstico Avanzado",
+        description: "Diagnóstico especializado de alta resolución. Optimice el flujo de trabajo en radiología convencional y doppler avanzado con herramientas de cuantificación precisa.",
+        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop",
+        thumbnailSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=150&h=150&auto=format&fit=crop"
+    },
+    {
+        id: 7,
+        title: "Cirujanos Plásticos",
+        subtitle: "Guía Quirúrgica",
+        description: "Visualización superior para procedimientos estéticos y reconstructivos. Identifique trayectos vasculares y estructuras dérmicas con máxima seguridad.",
+        imageSrc: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1000&auto=format&fit=crop",
+        thumbnailSrc: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=150&h=150&auto=format&fit=crop"
     }
 ];
 
@@ -53,7 +69,7 @@ export default function ClinicalApplications() {
                     Versatilidad Clínica
                 </span>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-8 leading-tight">
-                    La mejor solución <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">del Mercado</span>
+                    La mejor solución <span className="text-blue-600">del Mercado</span>
                 </h2>
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
                     Desde clínicas veterinarias en El Poblado hasta centros de radiología en Medellín. Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. Estas son algunas de la especialidades en las que se suele usar.<br />
@@ -62,10 +78,10 @@ export default function ClinicalApplications() {
 
             <ScenariosSlider scenarios={scenarios} className="py-0 bg-transparent mb-16" />
 
-            <div className="container mx-auto px-4 text-center" data-aos="fade-up">
-                <a href="#reservar" className="inline-flex items-center gap-3 bg-slate-900 text-white px-8 py-4 rounded-full font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all group text-lg">
+            <div className="container mx-auto px-2 text-center" data-aos="fade-up">
+                <a href="#reservar" className="btn-primary text-lg">
                     Obtén la Mejor Solución del Mercado
-                    <svg xmlns="http://www.w3.org/2000/svg" className="group-hover:translate-x-1 transition-transform" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
                 </a>
             </div>
         </div>

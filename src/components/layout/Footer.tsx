@@ -57,52 +57,15 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Columna 3: Formulario de contacto rápido */}
+                    {/* Columna 3: Servicios y Enlaces */}
                     <div className={styles.column}>
-                        <h4 className={styles.columnHeader}>Reserva Rápida</h4>
-                        <form className={styles.quickForm} onSubmit={handleSubmit}>
-                            <div className={styles.inputGroup}>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Tu nombre"
-                                    value={formData.name}
-                                    onChange={handleInputChange}
-                                    className={styles.input}
-                                    required
-                                />
-                            </div>
-                            <div className={styles.inputGroup}>
-                                <input
-                                    type="text"
-                                    name="city"
-                                    placeholder="Ciudad"
-                                    value={formData.city}
-                                    onChange={handleInputChange}
-                                    className={styles.input}
-                                    required
-                                />
-                            </div>
-                            <div className={styles.inputGroup}>
-                                <select
-                                    name="equipment"
-                                    value={formData.equipment}
-                                    onChange={handleInputChange}
-                                    className={styles.select}
-                                    required
-                                >
-                                    <option value="">Selecciona equipo</option>
-                                    <option value="z6">Mindray Z6 ($350/día)</option>
-                                    <option value="z60">Mindray Z60 ($550/día)</option>
-                                </select>
-                            </div>
-                            <button type="submit" className={styles.submitBtn}>
-                                Solicitar Información
-                            </button>
-                            <p className={styles.disclaimer}>
-                                Te contactaremos en menos de 2 horas
-                            </p>
-                        </form>
+                        <h4 className={styles.columnHeader}>Servicios</h4>
+                        <div className={styles.serviceLinks}>
+                            <a href="#equipos" className={styles.link}>Alquiler de Ecógrafos</a>
+                            <a href="#servicios-complementarios" className={styles.link}>Calibración de Equipos</a>
+                            <a href="#comparativa" className={styles.link}>Por qué Alquilar</a>
+                            <a href="#servicios-complementarios" className={styles.link}>Soporte Técnico</a>
+                        </div>
                     </div>
                 </div>
 
@@ -114,8 +77,7 @@ export default function Footer() {
                         </div>
                         <div className={styles.legalLinks}>
                             <Link href="/politicas" className={styles.link}>Política de Privacidad</Link>
-                            <a href="#" className={styles.link}>Términos y Condiciones</a>
-                            <a href="#" className={styles.link}>Garantía</a>
+                            <Link href="/politicas" className={styles.link}>Términos y Condiciones</Link>
                         </div>
                     </div>
                     <div className={styles.partners}>
