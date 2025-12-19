@@ -619,6 +619,11 @@
         max-width: 300px;
         margin: 0 auto;
     }
+
+    .storyCard {
+        text-align: center;
+        align-items: center;
+    }
 }
 
 @media (max-width: 768px) {
@@ -626,8 +631,13 @@
         padding: 70px 0;
     }
 
+    .statsCard,
+    .certificationsCard {
+        padding: 1.25rem !important;
+    }
+
     .title {
-        font-size: 2.5rem;
+        font-size: 1.875rem;
     }
 
     .subtitle {

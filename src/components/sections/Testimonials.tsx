@@ -27,8 +27,8 @@ export default function Testimonials() {
             <div className="container mx-auto">
                 <div className="text-center mb-12">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Testimonios</span>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-4 text-slate-900 leading-tight">
-                        Lo que dicen <span className="text-gradient">tus colegas</span>
+                    <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-tight">
+                        Lo que dicen <span className="text-blue-600">tus colegas</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Profesionales de la salud que confían en nuestros equipos para brindar el mejor diagnóstico.

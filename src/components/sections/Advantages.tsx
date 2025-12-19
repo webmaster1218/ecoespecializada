@@ -54,8 +54,9 @@ export default function Advantages() {
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios Exclusivos</span>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">¿Por qué <span className="text-blue-200">Nosotros?</span></h2>
-                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
+                        Por qué elegir <span className="text-blue-400">EcoAlquiler</span>
+                    </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
                 </div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -90,11 +90,17 @@
     }
 
     .logoGrid {
-        gap: 3rem;
+        gap: 2rem;
+        padding: 0 1rem;
+    }
+
+    .logoItem {
+        min-width: 100px;
+        height: 60px;
     }
 
     .logoImage {
-        max-height: 40px;
-        max-width: 140px;
+        max-height: 35px;
+        max-width: 100px;
     }
 }

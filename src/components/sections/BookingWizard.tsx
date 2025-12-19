@@ -330,7 +330,9 @@ export default function BookingWizard() {
                 {/* Header */}
                 <div className="text-center mb-8" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-2">RESERVA FÁCIL</span>
-                    <h2 className="text-3xl md:text-5xl font-bold mb-2 text-white">Reserva tu Equipo <span className="text-blue-100">en Minutos</span></h2>
+                    <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+                        Personaliza tu <span className="text-blue-400">Solución</span>
+                    </h2>
                     <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Reserva tu <strong>ecógrafo en Medellín</strong> o cualquier ciudad del país en minutos.</p>
                 </div>
 
@@ -813,6 +815,6 @@ export default function BookingWizard() {
                     )}
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

@@ -17,6 +17,8 @@ const roboto = Roboto({
   display: 'swap',
 });
 
+import Script from "next/script";
+
 export const metadata: Metadata = {
   title: "Alquiler de Ecógrafos en Medellín y Colombia | Mindray Portátiles",
   description: "Alquiler de ecógrafos en Medellín y toda Colombia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
@@ -31,6 +33,18 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body className={`${inter.variable} ${roboto.variable}`}>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=AW-17807317804"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'AW-17807317804');
+          `}
+        </Script>
         <AOSInit />
         {children}
       </body>
