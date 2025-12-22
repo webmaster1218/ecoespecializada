@@ -6,7 +6,7 @@ import {
     IconUser, IconBuildingHospital, IconAmbulance, IconCheck,
     IconChevronRight, IconChevronLeft, IconCalendar, IconMapPin,
     IconDeviceHeartMonitor, IconTruckDelivery, IconShoppingCart,
-    IconAlertCircle, IconPlus, IconMinus, IconTag
+    IconAlertCircle, IconPlus, IconMinus, IconTag, IconPrinter, IconClock
 } from "@tabler/icons-react";
 import Image from "next/image";
 
@@ -29,10 +29,14 @@ interface BookingData {
         z60: number;
     };
     includeCart: boolean;
+    includePrinter: boolean;
 
     // Step 3
     city: string;
     address: string;
+
+    // Transducers (Step 2)
+    selectedTransducers: string[];
 }
 
 const INITIAL_DATA: BookingData = {
@@ -40,11 +44,14 @@ const INITIAL_DATA: BookingData = {
     startDate: '', endDate: '',
     quantities: { z6: 0, z60: 0 },
     includeCart: false,
-    city: '', address: ''
+    includePrinter: false,
+    city: '', address: '',
+    selectedTransducers: []
 };
 
 const SHIPPING_COST = 50000;
 const CART_COST = 50000;
+const PRINTER_COST = 120000;
 import { checkAvailability, getNextAvailableDate } from "@/lib/availability";
 import { supabase } from "@/lib/supabase";
 
@@ -143,6 +150,7 @@ export default function BookingWizard() {
                 quantity_z6: formData.quantities.z6,
                 quantity_z60: formData.quantities.z60,
                 include_cart: formData.includeCart,
+                include_printer: formData.includePrinter,
                 total_price: totalPrice,
                 status: 'pending_delivery'
             });
@@ -160,6 +168,12 @@ export default function BookingWizard() {
                 if (formData.quantities.z6 > 0) {
                     summaryParts.push(`ECOGRAFO Z6${formData.includeCart ? ' CON CARRITO' : ''}`);
                 }
+                if (formData.includePrinter) {
+                    summaryParts.push('IMPRESORA');
+                }
+                if (formData.selectedTransducers?.length > 0) {
+                    summaryParts.push(`TRANSDUCTOR: ${formData.selectedTransducers.join(', ')}`);
+                }
                 const equipmentSummary = summaryParts.join(' / ');
 
                 const payload = {
@@ -176,8 +190,10 @@ export default function BookingWizard() {
                     end_date: formData.endDate,
                     quantity_z6: formData.quantities.z6,
                     quantity_z60: formData.quantities.z60,
+                    quantity_z60: formData.quantities.z60,
                     equipment_summary: equipmentSummary,
                     include_cart: formData.includeCart,
+                    include_printer: formData.includePrinter,
                     total_price: totalPrice,
                     status: 'pending_delivery',
                     created_at: new Date().toISOString()
@@ -241,6 +257,21 @@ export default function BookingWizard() {
         }
     };
 
+    const toggleTransducer = (name: string) => {
+        setFormData(prev => {
+            const current = prev.selectedTransducers || [];
+            const updated = current.includes(name) ? [] : [name];
+            return { ...prev, selectedTransducers: updated };
+        });
+        if (errors.transducers) {
+            setErrors(prev => {
+                const newErrors = { ...prev };
+                delete newErrors.transducers;
+                return newErrors;
+            });
+        }
+    };
+
     // Calculate days whenever dates change
     useEffect(() => {
         if (formData.startDate && formData.endDate) {
@@ -270,6 +301,10 @@ export default function BookingWizard() {
 
             const totalUnits = formData.quantities.z6 + formData.quantities.z60;
             if (totalUnits === 0) newErrors.quantities = "Selecciona al menos un equipo";
+
+            if (totalUnits > 0 && (formData.selectedTransducers || []).length === 0) {
+                newErrors.transducers = "Selecciona al menos un transductor";
+            }
         } else if (currentStep === 3) {
             if (!formData.city.trim()) newErrors.city = "El sector es obligatorio";
             if (!formData.address.trim()) newErrors.address = "La dirección es obligatoria";
@@ -314,10 +349,13 @@ export default function BookingWizard() {
         // User didn't specify, keeping it flat but assuming 'Include Carts' means carts for all units or just a general service fee.
         // Let's keep it flat: "Base Rodable" = 50k total (maybe it's a rental fee per reservation). 
         // Actually, usually it's per unit. Let's make it smarter: If carts selected, add 50k * total units? 
+        // Let's keep it flat: "Base Rodable" = 50k total (maybe it's a rental fee per reservation). 
+        // Actually, usually it's per unit. Let's make it smarter: If carts selected, add 50k * total units? 
         // Returning to original logic: it was a toggle. Let's keep it simple: Fixed cost for "Service Cart/Stand".
         const cartTotal = formData.includeCart ? CART_COST : 0;
+        const printerTotal = formData.includePrinter ? PRINTER_COST : 0;
 
-        return subtotal + SHIPPING_COST + cartTotal;
+        return subtotal + SHIPPING_COST + cartTotal + printerTotal;
     };
 
     return (
@@ -365,6 +403,7 @@ export default function BookingWizard() {
 
                     {/* Content */}
                     <div className="p-5 md:p-8 min-h-[350px]">
+
                         {step < 4 && (
                             <div className="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-4 flex items-center gap-4 shadow-sm relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-100/30 rounded-full -translate-y-1/2 translate-x-1/2"></div>
@@ -619,29 +658,96 @@ export default function BookingWizard() {
                                         {errors.quantities && <span className="text-xs text-red-500 flex items-center mt-2 gap-1"><IconAlertCircle size={12} /> {errors.quantities}</span>}
                                     </div>
 
-                                    {/* Cart Option */}
-                                    <div className={`p-3 rounded-2xl border transition-colors ${formData.includeCart ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
-                                        <div className="flex items-center gap-3">
-                                            <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
-                                                <Image src="/images/cart_thumbnail.png" alt="Carrito" fill className="object-cover" />
-                                            </div>
-                                            <div className="flex-1">
-                                                <div className="flex items-center justify-between">
-                                                    <div>
-                                                        <h4 className="font-bold text-slate-900 text-sm">Incluir Base Rodable</h4>
-                                                        <p className="text-slate-500 text-[10px]">Facilita el transporte</p>
+                                    {/* Transductors Selection */}
+                                    <div className="pt-3 border-t border-slate-100">
+                                        <h4 className="font-bold text-slate-800 mb-3 flex items-center justify-between">
+                                            Selección de Transductor
+                                            <span className="text-[10px] uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Elige uno</span>
+                                        </h4>
+                                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                            {[
+                                                { id: 'Transvaginal', label: 'Transvaginal', desc: 'Ginecología/Obst.' },
+                                                { id: 'Convexo', label: 'Convexo', desc: 'Abdominal/General' },
+                                                { id: 'Lineal', label: 'Lineal', desc: 'Pequeñas partes/Vasc.' }
+                                            ].map((t) => (
+                                                <button
+                                                    key={t.id}
+                                                    onClick={() => toggleTransducer(t.id)}
+                                                    className={`p-3 rounded-2xl border-2 text-left transition-all duration-200 ${(formData.selectedTransducers || []).includes(t.id)
+                                                        ? 'border-blue-500 bg-blue-50/50 text-blue-700 shadow-md scale-[1.02]'
+                                                        : 'border-slate-100 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50'
+                                                        }`}
+                                                >
+                                                    <div className="flex flex-col">
+                                                        <div className="flex items-center justify-between mb-1">
+                                                            <span className="font-bold text-sm">{t.label}</span>
+                                                            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${(formData.selectedTransducers || []).includes(t.id) ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>
+                                                                {(formData.selectedTransducers || []).includes(t.id) && <IconCheck size={10} className="text-white" stroke={4} />}
+                                                            </div>
+                                                        </div>
+                                                        <span className="text-[10px] leading-tight opacity-70">{t.desc}</span>
                                                     </div>
-                                                    <div className="text-right">
-                                                        <div className="font-bold text-slate-900 text-sm">+${CART_COST.toLocaleString()}</div>
-                                                        <label className="relative inline-flex items-center cursor-pointer mt-0.5">
-                                                            <input
-                                                                type="checkbox"
-                                                                className="sr-only peer"
-                                                                checked={formData.includeCart}
-                                                                onChange={(e) => updateData('includeCart', e.target.checked)}
-                                                            />
-                                                            <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
-                                                        </label>
+                                                </button>
+                                            ))}
+                                        </div>
+                                        {errors.transducers && <span className="text-xs text-red-500 flex items-center mt-2 gap-1"><IconAlertCircle size={12} /> {errors.transducers}</span>}
+                                    </div>
+
+                                    {/* Extras Section */}
+                                    <div className="grid md:grid-cols-2 gap-4">
+                                        {/* Cart Option */}
+                                        <div className={`p-3 rounded-2xl border transition-colors ${formData.includeCart ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
+                                            <div className="flex items-center gap-3">
+                                                <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
+                                                    <Image src="/images/cart_thumbnail.png" alt="Carrito" fill className="object-cover" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between">
+                                                        <div>
+                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir Base Rodable</h4>
+                                                            <p className="text-slate-500 text-[10px]">Facilita el transporte</p>
+                                                        </div>
+                                                        <div className="text-right">
+                                                            <div className="font-bold text-slate-900 text-sm">+${CART_COST.toLocaleString()}</div>
+                                                            <label className="relative inline-flex items-center cursor-pointer mt-0.5">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="sr-only peer"
+                                                                    checked={formData.includeCart}
+                                                                    onChange={(e) => updateData('includeCart', e.target.checked)}
+                                                                />
+                                                                <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        {/* Printer Option */}
+                                        <div className={`p-3 rounded-2xl border transition-colors ${formData.includePrinter ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
+                                            <div className="flex items-center gap-3">
+                                                <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
+                                                    <Image src="/images/printer_sony.png" alt="Impresora Sony" fill className="object-cover" />
+                                                </div>
+                                                <div className="flex-1">
+                                                    <div className="flex items-center justify-between">
+                                                        <div>
+                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir Impresora</h4>
+                                                            <p className="text-slate-500 text-[10px]">Sony UP-X898MD</p>
+                                                        </div>
+                                                        <div className="text-right">
+                                                            <div className="font-bold text-slate-900 text-sm">+${PRINTER_COST.toLocaleString()}</div>
+                                                            <label className="relative inline-flex items-center cursor-pointer mt-0.5">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="sr-only peer"
+                                                                    checked={formData.includePrinter}
+                                                                    onChange={(e) => updateData('includePrinter', e.target.checked)}
+                                                                />
+                                                                <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -656,7 +762,7 @@ export default function BookingWizard() {
                                             <div className="text-2xl font-bold bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
                                                 ${getTotalPrice().toLocaleString()}
                                             </div>
-                                            <p className="text-[11px] text-blue-300/70 font-medium mt-1">*Incluye costo de envío*</p>
+                                            <p className="text-[11px] text-blue-300/70 font-medium mt-1">*Costo de envío y recogida $50.000*</p>
                                         </div>
                                         <div className="text-right flex flex-col items-end relative z-10">
                                             <div className="text-xs text-slate-400 mb-1">
@@ -708,6 +814,18 @@ export default function BookingWizard() {
                                             />
                                             {errors.address && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.address}</span>}
                                         </div>
+
+                                        <div className="bg-orange-50 border border-orange-100 rounded-xl p-3 flex items-start gap-3">
+                                            <div className="bg-white p-1.5 rounded-lg text-orange-500 shadow-sm flex-shrink-0">
+                                                <IconClock size={16} stroke={2} />
+                                            </div>
+                                            <div>
+                                                <h5 className="text-sm font-bold text-orange-800">Horarios de Entrega y Recogida</h5>
+                                                <p className="text-xs text-orange-700/80 leading-relaxed">
+                                                    Las entregas se realizan a partir de las <strong>7:00 AM</strong> y la recogida de los equipos es a las <strong>7:00 PM</strong> del día final.
+                                                </p>
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div className="bg-blue-50/50 p-4 md:p-6 rounded-[20px] border border-blue-100 relative overflow-hidden">
@@ -735,6 +853,19 @@ export default function BookingWizard() {
                                                 </li>
                                             )}
 
+                                            {formData.selectedTransducers?.length > 0 && (
+                                                <li className="flex flex-col gap-1 py-1">
+                                                    <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">Transductor Incluido</span>
+                                                    <div className="flex flex-wrap gap-1.5">
+                                                        {formData.selectedTransducers.map(t => (
+                                                            <span key={t} className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-md text-[10px] font-bold">
+                                                                {t}
+                                                            </span>
+                                                        ))}
+                                                    </div>
+                                                </li>
+                                            )}
+
                                             <div className="h-px bg-blue-200/50 my-2"></div>
 
                                             <li className="flex justify-between items-center">
@@ -749,6 +880,12 @@ export default function BookingWizard() {
                                                 <li className="flex justify-between items-center">
                                                     <span className="text-slate-500 text-sm">Base Rodable (Carrito)</span>
                                                     <span className="font-bold text-slate-800">${CART_COST.toLocaleString()}</span>
+                                                </li>
+                                            )}
+                                            {formData.includePrinter && (
+                                                <li className="flex justify-between items-center">
+                                                    <span className="text-slate-500 text-sm">Impresora Sony BP</span>
+                                                    <span className="font-bold text-slate-800">${PRINTER_COST.toLocaleString()}</span>
                                                 </li>
                                             )}
                                             <li className="pt-4 mt-2 border-t border-blue-200/50 flex justify-between items-center">

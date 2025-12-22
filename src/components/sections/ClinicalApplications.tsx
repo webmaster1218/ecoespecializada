@@ -23,9 +23,9 @@ const scenarios = [
         id: 2,
         title: "Ginecología y Obstetricia",
         subtitle: "Salud Femenina",
-        description: "Monitorización fetal detallada. Visualice el desarrollo del embarazo con claridad excepcional 3D/4D para brindar tranquilidad total.",
-        imageSrc: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=1000&auto=format&fit=crop",
-        thumbnailSrc: "https://images.unsplash.com/photo-1579154204601-01588f351e67?q=80&w=150&h=150&auto=format&fit=crop"
+        description: "Monitorización fetal detallada. Visualice el desarrollo del embarazo con claridad excepcional para brindar tranquilidad total.",
+        imageSrc: "/images/clinical/ginecologia_v2.png",
+        thumbnailSrc: "/images/clinical/ginecologia_v2.png"
     },
     {
         id: 4,
@@ -40,8 +40,8 @@ const scenarios = [
         title: "Musculoesquelético",
         subtitle: "Tejidos Blandos",
         description: "Visualización superior de tendones y nervios. Herramienta esencial para fisiatría, ortopedia y medicina deportiva.",
-        imageSrc: "https://images.unsplash.com/photo-1584515933487-9d3005c010c7?q=80&w=1000&auto=format&fit=crop",
-        thumbnailSrc: "https://images.unsplash.com/photo-1584515933487-9d3005c010c7?q=80&w=150&h=150&auto=format&fit=crop"
+        imageSrc: "/images/clinical/msk_v2.png",
+        thumbnailSrc: "/images/clinical/msk_v2.png"
     },
     {
         id: 6,
