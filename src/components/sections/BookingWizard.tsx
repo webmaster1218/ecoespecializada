@@ -190,7 +190,6 @@ export default function BookingWizard() {
                     end_date: formData.endDate,
                     quantity_z6: formData.quantities.z6,
                     quantity_z60: formData.quantities.z60,
-                    quantity_z60: formData.quantities.z60,
                     equipment_summary: equipmentSummary,
                     include_cart: formData.includeCart,
                     include_printer: formData.includePrinter,
