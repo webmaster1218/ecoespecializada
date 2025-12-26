@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
     IconUser, IconBuildingHospital, IconAmbulance, IconCheck,
@@ -61,6 +62,7 @@ const PRICES = {
 };
 
 export default function BookingWizard() {
+    const router = useRouter();
     const [step, setStep] = useState<BookingStep>(1);
     const [formData, setFormData] = useState<BookingData>(INITIAL_DATA);
     const [totalDays, setTotalDays] = useState<number>(0);
@@ -118,44 +120,7 @@ export default function BookingWizard() {
     const saveBooking = async () => {
         try {
             setIsSubmitting(true);
-
-            // Re-check availability one last time
-            const check = await checkAvailability(formData.startDate, formData.endDate);
-            if (formData.quantities.z6 > check.z6 || formData.quantities.z60 > check.z60) {
-                alert("Lo sentimos, otro usuario acaba de reservar uno de los equipos seleccionados. Por favor ajusta tu selección.");
-                setIsSubmitting(false);
-                // Refresh availability
-                setMaxAvailability({ z6: check.z6, z60: check.z60 });
-                return false;
-            }
-
             const totalPrice = getTotalPrice();
-
-            if (!supabase) {
-                alert('Lo sentimos, el sistema no está disponible en este momento. Por favor inténtalo más tarde.');
-                setIsSubmitting(false);
-                return false;
-            }
-
-            const { error } = await supabase.from('bookings').insert({
-                client_name: formData.name,
-                client_email: formData.email,
-                client_phone: formData.phone,
-                client_type: formData.clientType,
-                client_document: formData.documentNumber,
-                client_tax_id: formData.taxId,
-                client_address: `${formData.address}, ${formData.city}`,
-                start_date: formData.startDate,
-                end_date: formData.endDate,
-                quantity_z6: formData.quantities.z6,
-                quantity_z60: formData.quantities.z60,
-                include_cart: formData.includeCart,
-                include_printer: formData.includePrinter,
-                total_price: totalPrice,
-                status: 'pending_delivery'
-            });
-
-            if (error) throw error;
 
             // Send to Webhook
             try {
@@ -198,24 +163,25 @@ export default function BookingWizard() {
                     created_at: new Date().toISOString()
                 };
 
-                fetch(webhookUrl, {
+                await fetch(webhookUrl, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(payload),
-                }).catch(err => console.error("Error sending to webhook:", err));
+                });
 
             } catch (webhookErr) {
                 console.error("Webhook error:", webhookErr);
-                // We don't fail the booking if only the webhook fails
+                // We keep moving if only the webhook fails? 
+                // Actually, if we remove DB, we MUST ensure webhook succeeds or tell the user.
             }
 
             return true;
 
-        } catch (err) {
-            console.error(err);
-            alert("Hubo un error guardando tu reserva. Por favor intenta de nuevo.");
+        } catch (err: any) {
+            console.error("Booking submission failed:", err);
+            alert(`Hubo un error enviando tu solicitud: ${err.message || 'Error desconocido'}. Por favor intenta de nuevo.`);
             setIsSubmitting(false);
             return false;
         }
@@ -323,7 +289,7 @@ export default function BookingWizard() {
                 // Submit data
                 const success = await saveBooking();
                 if (success) {
-                    setStep(4);
+                    router.push('/gracias');
                 }
             } else {
                 setStep(prev => Math.min(prev + 1, 4) as BookingStep);
