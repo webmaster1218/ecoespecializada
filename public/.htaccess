@@ -1,0 +1,17 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Ensure _next directory is accessible and not redirected
+  RewriteRule ^_next/(.*) - [L]
+
+  # Redirect /calendario to /calendario/ (with trailing slash)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_URI} ^/calendario$
+  RewriteRule ^(.*)$ /calendario/ [R=301,L]
+
+  # Handle internal routing for static export
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule . /index.html [L]
+</IfModule>
