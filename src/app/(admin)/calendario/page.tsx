@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import LoginScreen from "@/components/admin/LoginScreen";
 import BookingsCalendar from "@/components/admin/BookingsCalendar";
-
 import AdminBookingModal from "@/components/admin/AdminBookingModal";
+import Image from "next/image";
 
 export default function CalendarPage() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -14,7 +14,7 @@ export default function CalendarPage() {
     const [selectedBooking, setSelectedBooking] = useState<any>(null);
 
     useEffect(() => {
-        // Check session storage
+        // ... (check session storage)
         const auth = sessionStorage.getItem("admin_auth");
         if (auth === "true") {
             setIsAuthenticated(true);
@@ -36,14 +36,23 @@ export default function CalendarPage() {
     return (
         <div className="min-h-screen bg-slate-50">
             <header className="bg-white/90 backdrop-blur-md border-b border-slate-200 px-4 py-3 md:px-8 md:py-4 flex justify-between items-center sticky top-0 z-50">
-                <div className="flex items-center gap-2">
-                    {/* Logo imitation */}
-                    <span className="text-lg md:text-xl font-bold text-slate-900 leading-tight">
-                        Alquiler de <span className="text-blue-600 block md:inline">Ecógrafos</span>
-                    </span>
-                    <span className="hidden md:inline-block bg-slate-100 text-slate-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider ml-2 border border-slate-200">
-                        Admin
-                    </span>
+                <div className="flex items-center gap-4">
+                    <div className="relative w-32 h-10 overflow-hidden">
+                        <Image
+                            src="/images/logo/logo.jpg"
+                            alt="Logo"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-sm md:text-base font-bold text-slate-900 leading-tight">
+                            Panel Administrativo
+                        </span>
+                        <span className="text-[10px] font-bold text-blue-600 uppercase tracking-wider">
+                            Alquiler de Ecógrafos
+                        </span>
+                    </div>
                 </div>
 
                 <div className="flex gap-3">

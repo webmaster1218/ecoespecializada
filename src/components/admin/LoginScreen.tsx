@@ -1,8 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { IconLock, IconUser, IconEye, IconEyeOff } from "@tabler/icons-react";
+import { IconLock, IconUser, IconEye, IconEyeOff, IconArrowLeft } from "@tabler/icons-react";
 import { supabase } from "@/lib/supabase";
+import Image from "next/image";
+import Link from "next/link";
 
 interface LoginScreenProps {
     onLogin: () => void;
@@ -16,6 +18,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: React.FormEvent) => {
+        // ... (keep logic same)
         e.preventDefault();
         setError("");
         setIsLoading(true);
@@ -61,26 +64,46 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
     };
 
     return (
-        <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-sm w-full">
-                <div className="w-16 h-16 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <IconLock size={32} />
+        <div className="min-h-screen bg-slate-900 flex items-center justify-center p-4 relative">
+            {/* Volver al Home Button */}
+            <Link
+                href="/"
+                className="absolute top-6 left-6 text-slate-400 hover:text-white flex items-center gap-2 font-bold transition-colors bg-slate-800/50 px-4 py-2 rounded-xl backdrop-blur-sm"
+            >
+                <IconArrowLeft size={20} />
+                <span>Volver al Inicio</span>
+            </Link>
+
+            <div className="bg-white rounded-[30px] shadow-2xl p-8 max-w-sm w-full relative overflow-hidden">
+                {/* Decorative background */}
+                <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
+
+                <div className="flex flex-col items-center mb-8">
+                    <div className="mb-6 relative w-48 h-12 overflow-hidden">
+                        <Image
+                            src="/images/logo/logo.jpg"
+                            alt="Logo"
+                            fill
+                            className="object-contain"
+                        />
+                    </div>
+
+                    <h2 className="text-2xl font-bold text-slate-900 mb-1 text-center font-sans tracking-tight">Acceso Administrativo</h2>
+                    <p className="text-slate-500 text-sm font-medium text-center">Calendario de Reservas</p>
                 </div>
 
-                <h2 className="text-2xl font-bold text-slate-900 mb-2 text-center">Acceso Administrativo</h2>
-                <p className="text-slate-500 mb-8 text-center">Calendario de Reservas</p>
-
                 <form onSubmit={handleSubmit} className="space-y-4">
+                    {/* ... (rest of form remains same) */}
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Usuario</label>
+                        <label className="block text-xs font-black text-slate-400 tracking-widest uppercase mb-2 ml-1">Usuario</label>
                         <div className="relative">
-                            <IconUser className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                            <IconUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input
                                 type="text"
                                 value={username}
                                 onChange={(e) => { setUsername(e.target.value); setError(""); }}
-                                placeholder="admin"
-                                className="w-full pl-10 pr-4 py-3 border-2 border-slate-200 rounded-xl outline-none focus:border-blue-500 transition-colors"
+                                placeholder="Ingresa tu usuario"
+                                className="w-full pl-12 pr-4 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
                                 autoFocus
                                 disabled={isLoading}
                             />
@@ -88,20 +111,21 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-2">Contraseña</label>
+                        <label className="block text-xs font-black text-slate-400 tracking-widest uppercase mb-2 ml-1">Contraseña</label>
                         <div className="relative">
+                            <IconLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input
                                 type={showPassword ? "text" : "password"}
                                 value={password}
                                 onChange={(e) => { setPassword(e.target.value); setError(""); }}
                                 placeholder="••••••••"
-                                className="w-full px-4 py-3 pr-12 border-2 border-slate-200 rounded-xl outline-none focus:border-blue-500 transition-colors"
+                                className="w-full pl-12 pr-12 py-3.5 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:bg-white focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 transition-all font-medium"
                                 disabled={isLoading}
                             />
                             <button
                                 type="button"
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
+                                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                                 tabIndex={-1}
                             >
                                 {showPassword ? <IconEyeOff size={20} /> : <IconEye size={20} />}
@@ -109,14 +133,18 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                         </div>
                     </div>
 
-                    {error && <p className="text-red-500 text-sm font-medium text-center animate-pulse">{error}</p>}
+                    {error && (
+                        <div className="bg-red-50 text-red-600 p-3 rounded-xl text-xs font-bold text-center border border-red-100 animate-shake">
+                            {error}
+                        </div>
+                    )}
 
                     <button
                         type="submit"
                         disabled={isLoading}
-                        className="w-full bg-slate-900 text-white font-bold py-4 rounded-xl hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20 disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="w-full bg-slate-900 text-white font-bold py-4 rounded-2xl hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10 disabled:opacity-50 disabled:cursor-not-allowed transform active:scale-[0.98]"
                     >
-                        {isLoading ? 'Verificando...' : 'Ingresar'}
+                        {isLoading ? 'Verificando...' : 'Ingresar al Panel'}
                     </button>
                 </form>
             </div>

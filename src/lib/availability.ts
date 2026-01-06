@@ -31,8 +31,8 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
         const { data: bookings, error } = await supabase
             .from('bookings')
             .select('quantity_z6, quantity_z60')
-            // Count all active statuses that hold inventory
-            .in('status', ['confirmed', 'pending_delivery', 'delivered', 'pending_pickup'])
+            // Match calendar logic: count everything except cancelled and completed
+            .not('status', 'in', '("cancelled", "completed")')
             .lte('start_date', endDate)
             .gte('end_date', startDate);
 

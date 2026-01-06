@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import styles from "./Navbar.module.css";
 
+import Image from "next/image";
+
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -20,7 +22,13 @@ export default function Navbar() {
         <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
-                    Alquiler de <span className={styles.accent}>ecógrafos</span>
+                    <Image
+                        src="/images/logo/logo.jpg"
+                        alt="Logo"
+                        width={140}
+                        height={40}
+                        className="rounded-md"
+                    />
                 </Link>
 
                 <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>

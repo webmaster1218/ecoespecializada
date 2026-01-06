@@ -87,51 +87,18 @@
 
 .rbc-month-row {
     border-top: 1px solid #e2e8f0;
+    min-height: 145px;
+    /* Balanced height for 4-5 events */
 }
 
-.rbc-day-bg+.rbc-day-bg {
-    border-left: 1px solid #f1f5f9;
+/* Ensure event container allows growth */
+.rbc-events-container {
+    width: 100%;
 }
 
-.rbc-off-range-bg {
-    background-color: #f8fafc;
-    /* Slate 50 */
+.rbc-row-content {
+    min-height: 100%;
 }
-
-.rbc-today {
-    background-color: transparent;
-}
-
-.rbc-date-cell {
-    padding: 0.5rem;
-    font-weight: 500;
-    font-size: 0.875rem;
-    color: #475569;
-}
-
-/* Highlight today's number circle style */
-.rbc-now .rbc-button-link {
-    background-color: #2563eb;
-    color: white;
-    border-radius: 50%;
-    width: 24px;
-    height: 24px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Events */
-.rbc-event {
-    border-radius: 4px;
-    padding: 2px 6px;
-    border: none;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    font-size: 0.75rem;
-    font-weight: 500;
-    margin: 1px 4px;
-}
-
 
 .rbc-event-custom {
     border-radius: 8px;
@@ -139,13 +106,16 @@
     color: white;
     border: 0px !important;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    font-size: 0.9rem;
+    font-size: 0.75rem;
     font-weight: 700;
-    padding: 6px 12px;
-    min-height: 42px;
-    margin: 3px 0 !important;
+    padding: 2px 8px;
+    min-height: 24px;
+    margin: 2px 0 !important;
     display: flex;
     align-items: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 @media (max-width: 768px) {
@@ -163,19 +133,26 @@
     .rbc-toolbar {
         padding: 0.75rem;
         gap: 0.5rem;
-        flex-direction: column;
-        align-items: stretch;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .rbc-toolbar-label {
         font-size: 1.1rem;
         text-align: center;
         margin: 0.25rem 0;
+        width: 100%;
+        order: -1;
     }
 
     .rbc-header {
         font-size: 0.65rem;
         padding: 0.5rem 0;
+    }
+
+    .rbc-month-row {
+        min-height: 120px;
     }
 
     .rbc-date-cell {

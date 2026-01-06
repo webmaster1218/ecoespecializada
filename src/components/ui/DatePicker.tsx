@@ -15,9 +15,10 @@ interface DatePickerProps {
     label: string;
     minDate?: string;
     error?: string;
+    labelClassName?: string;
 }
 
-export default function CustomDatePicker({ value, onChange, label, minDate, error }: DatePickerProps) {
+export default function CustomDatePicker({ value, onChange, label, minDate, error, labelClassName }: DatePickerProps) {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
 
@@ -37,19 +38,19 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
 
     return (
         <div className="relative" ref={containerRef}>
-            <label className="text-sm font-bold text-slate-700 ml-1 block mb-1.5">{label} <span className="text-red-500">*</span></label>
+            <label className={labelClassName || "text-sm font-bold text-slate-700 ml-1 block"}>{label} <span className="text-red-500">*</span></label>
             <div className="relative group">
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`w-full pl-11 pr-10 py-3 rounded-2xl bg-white border text-left outline-none font-medium transition-all flex items-center shadow-sm ${error ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'
+                    className={`w-full pl-9 pr-7 py-3 rounded-2xl bg-white border text-left outline-none font-semibold transition-all flex items-center shadow-sm text-xs sm:text-sm ${error ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'
                         }`}
                 >
-                    <IconCalendar className={`absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${isOpen ? 'text-blue-500' : 'text-slate-400'}`} size={18} />
+                    <IconCalendar className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isOpen ? 'text-blue-500' : 'text-slate-400'}`} size={16} />
                     <span className={value ? "text-slate-700" : "text-slate-400"}>
                         {value ? format(new Date(value + 'T12:00:00'), "dd/MM/yyyy") : "dd/mm/aaaa"}
                     </span>
-                    <IconChevronDown className={`absolute right-4 top-1/2 -translate-y-1/2 text-slate-300 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} size={16} />
+                    <IconChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} size={14} />
                 </button>
             </div>
 

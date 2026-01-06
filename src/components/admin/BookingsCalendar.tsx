@@ -139,7 +139,7 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
                         <div className="bg-gray-100 p-3 rounded text-sm text-gray-700 text-left">
                             <p className="font-semibold mb-2">Variables necesarias en Vercel:</p>
                             <code className="block bg-white p-2 rounded border border-gray-200 text-xs">
-                                NEXT_PUBLIC_SUPABASE_URL<br/>
+                                NEXT_PUBLIC_SUPABASE_URL<br />
                                 NEXT_PUBLIC_SUPABASE_ANON_KEY
                             </code>
                         </div>
@@ -150,13 +150,14 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
     }
 
     return (
-        <div className="w-full h-[600px] md:h-[750px]">
+        <div className="w-full h-[750px] md:h-[850px]">
             <Calendar
                 localizer={localizer}
                 events={events}
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: '100%' }}
+                showAllEvents={true}
 
                 // Controlled Props
                 view={view}

@@ -1,12 +1,18 @@
 import Link from "next/link";
 import { IconCheck, IconArrowLeft, IconClock } from "@tabler/icons-react";
 import styles from "./Gracias.module.css";
+import Image from "next/image";
 
 export default function Gracias() {
     return (
         <div className={styles.page}>
             <div className="container">
                 <div className={styles.content}>
+                    {/* Logo */}
+                    <div className="flex justify-center mb-8">
+                        <Image src="/images/logo/logo.jpg" alt="Logo" width={180} height={60} className="rounded-lg shadow-sm" />
+                    </div>
+
                     {/* Icono de éxito */}
                     <div className={styles.successIcon} data-aos="zoom-in">
                         <IconCheck />
@@ -39,7 +45,8 @@ export default function Gracias() {
 
                     {/* CTA para volver al inicio */}
                     <div className={styles.actions} data-aos="fade-up" data-aos-delay="300">
-                        <Link href="/" className="btn-primary">
+                        <Link href="/" className="btn-primary flex items-center gap-2">
+                            <IconArrowLeft size={20} />
                             Volver al inicio
                         </Link>
                     </div>
