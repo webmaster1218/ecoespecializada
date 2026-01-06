@@ -73,7 +73,6 @@ export default function BookingWizard() {
     const [formData, setFormData] = useState<BookingData>(INITIAL_DATA);
     const [totalDays, setTotalDays] = useState<number>(0);
     const [errors, setErrors] = useState<Record<string, string>>({});
-    const router = useRouter();
 
     // Dynamic Availability State
     const [maxAvailability, setMaxAvailability] = useState<{ z6: number; z60: number }>({ z6: 0, z60: 0 });
