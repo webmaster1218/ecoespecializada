@@ -17,13 +17,13 @@ export default function Home() {
   return (
     <main>
       <Hero />
-      <LogoLoop />
       <Comparison />
       <ProductCatalog />
       <BookingWizard />
       <ClinicalApplications />
       <HowItWorks />
       <AboutUs />
+      <LogoLoop />
       <AdditionalServices />
       <Advantages />
       <Testimonials />

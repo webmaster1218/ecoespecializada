@@ -32,7 +32,7 @@ export default function Gracias() {
                             </div>
                             <div className={styles.contactText}>
                                 <h3>Tiempo de respuesta</h3>
-                                <p>Menos de 24 horas hábiles</p>
+                                <p>Menos de 2 horas hábiles</p>
                             </div>
                         </div>
                     </div>

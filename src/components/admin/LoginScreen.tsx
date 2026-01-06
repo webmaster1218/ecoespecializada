@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { IconLock, IconUser, IconEye, IconEyeOff } from "@tabler/icons-react";
+import { supabase } from "@/lib/supabase";
 
 interface LoginScreenProps {
     onLogin: () => void;
@@ -20,21 +21,35 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         setIsLoading(true);
 
         try {
-            const response = await fetch('/api/admin/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ username, password })
-            });
+            if (!supabase) {
+                setError("Error de configuración: Supabase no detectado");
+                return;
+            }
 
-            const data = await response.json();
+            const { data: users, error: dbError } = await supabase
+                .from('admin_users')
+                .select('*')
+                .eq('username', username)
+                .eq('is_active', true);
 
-            if (response.ok && data.success) {
+            if (dbError) {
+                setError(dbError.message);
+                return;
+            }
+
+            const user = users?.[0];
+
+            if (user && user.password_hash === password) {
                 // Store auth in sessionStorage
                 sessionStorage.setItem('admin_auth', 'true');
-                sessionStorage.setItem('admin_user', JSON.stringify(data.user));
+                sessionStorage.setItem('admin_user', JSON.stringify({
+                    id: user.id,
+                    username: user.username,
+                    full_name: user.full_name
+                }));
                 onLogin();
             } else {
-                setError(data.error || 'Credenciales inválidas');
+                setError('Credenciales inválidas');
                 setPassword("");
             }
         } catch (err) {

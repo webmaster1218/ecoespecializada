@@ -15,23 +15,23 @@ export default function Comparison() {
         <section className={styles.section} id="comparativa">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
-                    <span className={styles.overline}>Decisión Inteligente</span>
-                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">Alquiler de ecografos</span></h2>
+                    <span className={styles.overline}>Decisión inteligente</span>
+                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">alquiler de ecografos</span></h2>
                     <p className={styles.subtitle}>Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional.</p>
                 </div>
 
                 <div className={styles.grid}>
                     {/* Columna Dolor */}
                     <div className={`${styles.card} ${styles.pain}`} data-aos="fade-right">
-                        <h3 className={styles.cardTitle}>❌ Comprar (Riesgo Alto)</h3>
+                        <h3 className={styles.cardTitle}>❌ Comprar</h3>
                         <ul className={styles.list}>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
                                     <IconWalletOff size={24} />
                                 </div>
                                 <div>
-                                    <strong>Inversión Masiva</strong>
-                                    <p>Inviertes $80 Millones de contado o a crédito.</p>
+                                    <strong>Inversión masiva</strong>
+                                    <p>Inviertes $80 millones de contado o a crédito.</p>
                                 </div>
                             </li>
                             <li>
@@ -39,7 +39,7 @@ export default function Comparison() {
                                     <IconTrendingDown size={24} />
                                 </div>
                                 <div>
-                                    <strong>Depreciación Inmediata</strong>
+                                    <strong>Depreciación inmediata</strong>
                                     <p>Tu equipo pierde valor desde el día 1.</p>
                                 </div>
                             </li>
@@ -48,7 +48,7 @@ export default function Comparison() {
                                     <IconTools size={24} />
                                 </div>
                                 <div>
-                                    <strong>Mantenimiento Costoso</strong>
+                                    <strong>Mantenimiento costoso</strong>
                                     <p>Repuestos y visitas técnicas por tu cuenta.</p>
                                 </div>
                             </li>
@@ -57,7 +57,7 @@ export default function Comparison() {
                                     <IconAlertTriangle size={24} />
                                 </div>
                                 <div>
-                                    <strong>Riesgo de "Reacondicionados"</strong>
+                                    <strong>Riesgo de "reacondicionados"</strong>
                                     <p>Equipos usados sin garantía real o dudosa procedencia.</p>
                                 </div>
                             </li>
@@ -66,8 +66,8 @@ export default function Comparison() {
 
                     {/* Columna Placer (Alquiler de Ecógrafos) */}
                     <div className={`${styles.card} ${styles.pleasure} glass-card`} data-aos="fade-left">
-                        <div className={styles.badge}>Mejor Opción</div>
-                        <h3 className={styles.cardTitle}>✅ Alquiler de Ecógrafos (Cero Riesgo)</h3>
+                        <div className={styles.badge}>Mejor opción</div>
+                        <h3 className={styles.cardTitle}>✅ Alquiler de ecógrafos (Cero riesgo)</h3>
                         <ul className={styles.list}>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
@@ -83,7 +83,7 @@ export default function Comparison() {
                                     <IconRocket size={24} />
                                 </div>
                                 <div>
-                                    <strong>Tecnología Siempre Actual</strong>
+                                    <strong>Tecnología siempre actual</strong>
                                     <p>Cambia de equipo cuando quieras. Cero obsolescencia.</p>
                                 </div>
                             </li>
@@ -92,7 +92,7 @@ export default function Comparison() {
                                     <IconShieldCheck size={24} />
                                 </div>
                                 <div>
-                                    <strong>Mantenimiento & Soporte $0</strong>
+                                    <strong>Mantenimiento & soporte $0</strong>
                                     <p>Cubierto 100% por Equibiomedic. Respaldo oficial.</p>
                                 </div>
                             </li>
@@ -101,7 +101,7 @@ export default function Comparison() {
                                     <IconGift size={24} />
                                 </div>
                                 <div>
-                                    <strong>3 Sondas Incluidas GRATIS</strong>
+                                    <strong>3 sondas incluidas gratis</strong>
                                     <p>Convexo, Lineal y Transvaginal listas para usar.</p>
                                 </div>
                             </li>

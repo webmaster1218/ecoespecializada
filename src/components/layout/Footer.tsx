@@ -33,7 +33,7 @@ export default function Footer() {
                             Especialistas en alquiler de ecógrafos Mindray con más de 10 años de experiencia transformando el diagnóstico médico en Colombia.
                         </p>
                         <div className={styles.certifications}>
-                            <span className={styles.certBadge}>INVIMA Certificado</span>
+                            <span className={styles.certBadge}>INVIMA certificado</span>
                             <span className={styles.certBadge}>ISO 9001:2015</span>
                         </div>
                     </div>
@@ -61,10 +61,10 @@ export default function Footer() {
                     <div className={styles.column}>
                         <h4 className={styles.columnHeader}>Servicios</h4>
                         <div className={styles.serviceLinks}>
-                            <a href="#equipos" className={styles.link}>Alquiler de Ecógrafos</a>
-                            <a href="#servicios-complementarios" className={styles.link}>Calibración de Equipos</a>
-                            <a href="#comparativa" className={styles.link}>Por qué Alquilar</a>
-                            <a href="#servicios-complementarios" className={styles.link}>Soporte Técnico</a>
+                            <a href="#equipos" className={styles.link}>Alquiler de ecógrafos</a>
+                            <a href="#servicios-complementarios" className={styles.link}>Calibración de equipos</a>
+                            <a href="#comparativa" className={styles.link}>¿Por qué alquilar?</a>
+                            <a href="#servicios-complementarios" className={styles.link}>Soporte técnico</a>
                         </div>
                     </div>
                 </div>
@@ -76,8 +76,8 @@ export default function Footer() {
                             <p>&copy; 2025 Alquiler de Ecógrafos Colombia. Todos los derechos reservados.</p>
                         </div>
                         <div className={styles.legalLinks}>
-                            <Link href="/politicas" className={styles.link}>Política de Privacidad</Link>
-                            <Link href="/politicas" className={styles.link}>Términos y Condiciones</Link>
+                            <Link href="/politicas" className={styles.link}>Política de privacidad</Link>
+                            <Link href="/politicas" className={styles.link}>Términos y condiciones</Link>
                         </div>
                     </div>
                     <div className={styles.partners}>

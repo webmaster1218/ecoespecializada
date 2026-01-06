@@ -70,8 +70,8 @@ export default function FAQ() {
         <section className={styles.section} id="faq">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
-                    <span className={styles.overline}>RESOLVEMOS TUS DUDAS</span>
-                    <h2 className={styles.title}>Preguntas <span className="text-gradient">Frecuentes</span></h2>
+                    <span className={styles.overline}>Resolvemos tus dudas</span>
+                    <h2 className={styles.title}>Preguntas <span className="text-gradient">frecuentes</span></h2>
                     <p className={styles.subtitle}>Todo lo que necesitas saber sobre nuestros servicios de alquiler de ecógrafos</p>
                 </div>
 

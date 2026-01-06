@@ -4,7 +4,7 @@ export default function HowItWorks() {
     const steps = [
         {
             id: "01",
-            title: "Selección del Equipo",
+            title: "Selección del equipo",
             desc: "Identifique el modelo Mindray (Z6 o Z60) acorde a sus requerimientos clínicos.",
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -18,7 +18,7 @@ export default function HowItWorks() {
         },
         {
             id: "02",
-            title: "Validación de Datos",
+            title: "Validación de datos",
             desc: "Complete el formulario de registro para validación de identidad y disponibilidad.",
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -45,7 +45,7 @@ export default function HowItWorks() {
         },
         {
             id: "04",
-            title: "Entrega Certificada",
+            title: "Entrega certificada",
             desc: "Recepción del equipo calibrado en su consultorio en 24-48 horas hábiles.",
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -62,8 +62,8 @@ export default function HowItWorks() {
         <section className={styles.section} id="como-funciona">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
-                    <span className={styles.overline}>Proceso Simplificado</span>
-                    <h2 className={styles.title}>Flujo de <span className="text-gradient">Alquiler Profesional</span></h2>
+                    <span className={styles.overline}>Proceso simplificado</span>
+                    <h2 className={styles.title}>Flujo de <span className="text-gradient">alquiler profesional</span></h2>
                     <p className={styles.subtitle}>Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica.</p>
                 </div>
 
@@ -89,7 +89,7 @@ export default function HowItWorks() {
 
                 <div className={styles.ctaWrapper} data-aos="fade-up" data-aos-delay="400">
                     <a href="#reservar" className="btn-primary">
-                        Comenzar Reserva
+                        Comenzar reserva
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                             <polyline points="12 5 19 12 12 19"></polyline>

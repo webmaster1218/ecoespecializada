@@ -20,7 +20,7 @@ export default function Navbar() {
         <nav className={`${styles.navbar} ${scrolled ? styles.scrolled : ""}`}>
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
-                    Alquiler de <span className={styles.accent}>Ecógrafos</span>
+                    Alquiler de <span className={styles.accent}>ecógrafos</span>
                 </Link>
 
                 <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>
@@ -28,14 +28,14 @@ export default function Navbar() {
                     <a href="#ventajas" onClick={() => setMobileMenuOpen(false)}>Ventajas</a>
                     <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                     <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Equipos</a>
-                    <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros Servicios</a>
+                    <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros servicios</a>
                     <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Opiniones</a>
-                    <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar Equipo</a>
+                    <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar equipo</a>
                 </div>
 
                 <div className={styles.actions}>
                     <a href="#reservar" className={`btn-primary ${styles.desktopCta}`}>
-                        <span className="mr-2 text-xl">📅</span> Separar Equipo
+                        <span className="mr-2 text-xl">📅</span> Separar equipo
                     </a>
                     <button
                         className={styles.mobileToggle}

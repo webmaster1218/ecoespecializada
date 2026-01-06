@@ -21,7 +21,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        <span className={styles.badgeIcon}>✓</span> Envío Gratis + Mantenimiento Incluido
+                        <span className={styles.badgeIcon}>✓</span> Envío gratis + mantenimiento incluido
                     </motion.div>
 
                     <motion.h1
@@ -30,8 +30,8 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        ¿Necesitas un Ecógrafo Ya? <br />
-                        <span className="text-gradient">Alquílalo Hoy y Atiende sin Detener tu Consultorio.</span>
+                        Alquiler de ecógrafos, listos para usar <br />
+                        <span className="text-gradient">Recibe tu equipo rápido y sigue facturando.</span>
                     </motion.h1>
 
                     <motion.p
@@ -40,7 +40,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        La mejor opción de <strong>alquiler de ecógrafos en Medellín</strong> y toda Colombia. Mindray Z6 y Z60 de Gama Alta sin grandes inversiones.
+                        La mejor opción de <strong>alquiler de ecógrafos en Medellín</strong> y toda Colombia. Mindray Z6 y Z60 de gama alta sin grandes inversiones.
                     </motion.p>
 
                     <motion.div
@@ -50,9 +50,9 @@ export default function Hero() {
                         transition={{ delay: 0.5 }}
                     >
                         <a href="#contacto" className="btn-primary">
-                            Cotizar Ahora
+                            Cotizar ahora
                             <span className="ml-2 bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                🔥 4 Disp.
+                                🔥 4 disp.
                             </span>
                         </a>
                         <a href="#ventajas" className="px-8 py-3 rounded-full font-semibold text-slate-600 bg-white border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all shadow-sm">
@@ -67,10 +67,10 @@ export default function Hero() {
                         transition={{ delay: 0.6 }}
                     >
                         <div className={styles.trustItem}>
-                            <span>🏥</span> +200 Clínicas Confían
+                            <span>🏥</span> +10 clínicas confían
                         </div>
                         <div className={styles.trustItem}>
-                            <span>⭐</span> 4.9/5 Calificación
+                            <span>⭐</span> 4.9/5 calificación
                         </div>
                         <div className={styles.trustItem}>
                             <span>🛡️</span> Garantía 100%

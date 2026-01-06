@@ -8,7 +8,7 @@ export default function Advantages() {
                     <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
                 </svg>
             ),
-            title: "Cero Inversión Inicial",
+            title: "Cero inversión inicial",
             desc: "Ideal para Independientes. Inicie su práctica privada hoy mismo sin descapitalizarse comprando equipos costosos."
         },
         {
@@ -17,7 +17,7 @@ export default function Advantages() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
             ),
-            title: "Respaldo Corporativo",
+            title: "Respaldo corporativo",
             desc: "Para Clínicas e IPS. Soporte biomédico prioritario, mantenimientos incluidos y cumplimiento normativo INVIMA total."
         },
         {
@@ -28,7 +28,7 @@ export default function Advantages() {
                     <line x1="12" y1="22.08" x2="12" y2="12" />
                 </svg>
             ),
-            title: "Disponibilidad Inmediata",
+            title: "Disponibilidad inmediata",
             desc: "Stock permanente en Medellín y principales ciudades. Puesta en marcha en su consultorio en menos de 24 horas."
         },
         {
@@ -41,7 +41,7 @@ export default function Advantages() {
                     <polyline points="10 9 9 9 8 9" />
                 </svg>
             ),
-            title: "Sin Cláusulas Ocultas",
+            title: "Sin cláusulas ocultas",
             desc: "Contratos claros y transparentes. Flexibilidad para aumentar o cambiar equipos según la demanda de sus pacientes."
         }
     ];
@@ -53,7 +53,7 @@ export default function Advantages() {
 
             <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center mb-16" data-aos="fade-up">
-                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios Exclusivos</span>
+                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
                         Por qué elegir <span className="text-blue-400">EcoAlquiler</span>
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>

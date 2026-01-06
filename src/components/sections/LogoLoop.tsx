@@ -27,7 +27,7 @@ export default function LogoLoop() {
 
             <div className="container mx-auto px-4 mb-12 text-center" data-aos="fade-up">
                 <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
-                    Confianza Comprobada
+                    Confianza comprobada
                 </span>
                 <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
                     Empresas que confían <span className="text-blue-600">en nosotros</span>

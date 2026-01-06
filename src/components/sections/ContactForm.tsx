@@ -78,10 +78,10 @@ export default function ContactForm() {
 
                     <form className={styles.form} onSubmit={handleSubmit}>
                         <div className={styles.inputGroup}>
-                            <input name="name" type="text" placeholder="Nombre del Especialista" required className={styles.input} />
+                            <input name="name" type="text" placeholder="Nombre del especialista" required className={styles.input} />
                         </div>
                         <div className={styles.inputGroup}>
-                            <input name="city" type="text" placeholder="Ciudad de Entrega" required className={styles.input} />
+                            <input name="city" type="text" placeholder="Ciudad de entrega" required className={styles.input} />
                         </div>
                         <div className={styles.inputGroup}>
                             <select name="equipment" className={styles.select}>
@@ -91,7 +91,7 @@ export default function ContactForm() {
                         </div>
 
                         <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
-                            {isSubmitting ? "Enviando..." : "Solicitar Reserva sin Riesgo"}
+                            {isSubmitting ? "Enviando..." : "Solicitar reserva sin riesgo"}
                         </button>
 
                         {error && (
@@ -101,8 +101,8 @@ export default function ContactForm() {
                         )}
 
                         <div className={styles.securityBadges} style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginTop: '15px', fontSize: '0.8rem', color: '#666' }}>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🔒 SSL Seguro</span>
-                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🛡️ Datos Protegidos</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🔒 SSL seguro</span>
+                            <span style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>🛡️ Datos protegidos</span>
                         </div>
 
                         <p className={styles.disclaimer}>* Reserva no vinculante. Te contactaremos para validar disponibilidad.</p>

@@ -5,7 +5,7 @@ export default function AdditionalServices() {
     const services = [
         {
             icon: <IconTool className={styles.serviceIcon} />,
-            title: "Calibración de Ecógrafos",
+            title: "Calibración de ecógrafos",
             description: "Mantenga la precisión y confiabilidad de sus equipos. Certificación oficial y trazabilidad metrológica.",
             features: [
                 "Certificado de calibración con validez oficial",
@@ -17,7 +17,7 @@ export default function AdditionalServices() {
         },
         {
             icon: <IconSettings className={styles.serviceIcon} />,
-            title: "Mantenimiento Especializado",
+            title: "Mantenimiento especializado",
             description: "Servicio técnico preventivo y correctivo para prolongar la vida útil de sus equipos de diagnóstico.",
             features: [
                 "Mantenimiento preventivo programado",
@@ -29,7 +29,7 @@ export default function AdditionalServices() {
         },
         {
             icon: <IconShoppingBag className={styles.serviceIcon} />,
-            title: "Venta de Equipos",
+            title: "Venta de equipos",
             description: "Adquiera su propio ecógrafo Mindray con financing flexible y garantía completa del fabricante.",
             features: [
                 "Equipos nuevos y reacondicionados",
@@ -45,12 +45,12 @@ export default function AdditionalServices() {
         <section className={styles.section} id="servicios-complementarios">
             <div className="container">
                 <div className="text-center mb-16" data-aos="fade-up">
-                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">SERVICIOS ADICIONALES</span>
+                    <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Servicios adicionales</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
-                        Servicios <span className="text-blue-600">Complementarios</span>
+                        Servicios <span className="text-blue-600">complementarios</span>
                     </h2>
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                        Soluciones integrales para el gestión completa de sus equipos de diagnóstico médico
+                        Soluciones integrales para la gestión completa de sus equipos de diagnóstico médico
                     </p>
                 </div>
 

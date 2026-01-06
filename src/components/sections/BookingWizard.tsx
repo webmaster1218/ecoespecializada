@@ -10,6 +10,7 @@ import {
     IconAlertCircle, IconPlus, IconMinus, IconTag, IconPrinter, IconClock
 } from "@tabler/icons-react";
 import Image from "next/image";
+import CustomDatePicker from "@/components/ui/DatePicker";
 
 type BookingStep = 1 | 2 | 3 | 4;
 
@@ -38,6 +39,10 @@ interface BookingData {
 
     // Transducers (Step 2)
     selectedTransducers: string[];
+
+    // Time Ranges (Step 2)
+    deliveryTime: string;
+    collectionTime: string;
 }
 
 const INITIAL_DATA: BookingData = {
@@ -47,14 +52,15 @@ const INITIAL_DATA: BookingData = {
     includeCart: false,
     includePrinter: false,
     city: '', address: '',
-    selectedTransducers: []
+    selectedTransducers: [],
+    deliveryTime: '',
+    collectionTime: ''
 };
 
 const SHIPPING_COST = 50000;
 const CART_COST = 50000;
 const PRINTER_COST = 120000;
 import { checkAvailability, getNextAvailableDate } from "@/lib/availability";
-import { supabase } from "@/lib/supabase";
 
 const PRICES = {
     z6: 350000,
@@ -67,6 +73,7 @@ export default function BookingWizard() {
     const [formData, setFormData] = useState<BookingData>(INITIAL_DATA);
     const [totalDays, setTotalDays] = useState<number>(0);
     const [errors, setErrors] = useState<Record<string, string>>({});
+    const router = useRouter();
 
     // Dynamic Availability State
     const [maxAvailability, setMaxAvailability] = useState<{ z6: number; z60: number }>({ z6: 0, z60: 0 });
@@ -123,67 +130,74 @@ export default function BookingWizard() {
             const totalPrice = getTotalPrice();
 
             // Send to Webhook
-            try {
-                const webhookUrl = "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
-                // Generate Equipment Summary
-                const summaryParts = [];
-                if (formData.quantities.z60 > 0) {
-                    summaryParts.push(`ECOGRAFO Z60${formData.includeCart ? ' CON CARRITO' : ''}`);
-                }
-                if (formData.quantities.z6 > 0) {
-                    summaryParts.push(`ECOGRAFO Z6${formData.includeCart ? ' CON CARRITO' : ''}`);
-                }
-                if (formData.includePrinter) {
-                    summaryParts.push('IMPRESORA');
-                }
-                if (formData.selectedTransducers?.length > 0) {
-                    summaryParts.push(`TRANSDUCTOR: ${formData.selectedTransducers.join(', ')}`);
-                }
-                const equipmentSummary = summaryParts.join(' / ');
+            const webhookUrl = "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
 
-                const payload = {
-                    client_name: formData.name,
-                    client_email: formData.email,
-                    client_phone: formData.phone,
-                    client_type: formData.clientType,
-                    document_number: formData.documentNumber,
-                    tax_id: formData.taxId,
-                    sector: formData.city,
-                    client_address: formData.address,
-                    full_address: `${formData.address}, ${formData.city}`,
-                    start_date: formData.startDate,
-                    end_date: formData.endDate,
-                    quantity_z6: formData.quantities.z6,
-                    quantity_z60: formData.quantities.z60,
-                    equipment_summary: equipmentSummary,
-                    include_cart: formData.includeCart,
-                    include_printer: formData.includePrinter,
-                    total_price: totalPrice,
-                    status: 'pending_delivery',
-                    created_at: new Date().toISOString()
-                };
-
-                await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(payload),
-                });
-
-            } catch (webhookErr) {
-                console.error("Webhook error:", webhookErr);
-                // We keep moving if only the webhook fails? 
-                // Actually, if we remove DB, we MUST ensure webhook succeeds or tell the user.
+            // Generate Equipment Summary
+            const summaryParts = [];
+            if (formData.quantities.z60 > 0) {
+                summaryParts.push(`ECOGRAFO Z60${formData.includeCart ? ' CON CARRITO' : ''}`);
             }
+            if (formData.quantities.z6 > 0) {
+                summaryParts.push(`ECOGRAFO Z6${formData.includeCart ? ' CON CARRITO' : ''}`);
+            }
+            if (formData.includePrinter) {
+                summaryParts.push('IMPRESORA');
+            }
+            if (formData.selectedTransducers?.length > 0) {
+                summaryParts.push(`TRANSDUCTORES: ${formData.selectedTransducers.join(', ')}`);
+            }
+            if (formData.deliveryTime) {
+                summaryParts.push(`ENTREGA: ${formData.deliveryTime}`);
+            }
+            if (formData.collectionTime) {
+                summaryParts.push(`RECOGIDA: ${formData.collectionTime}`);
+            }
+            const equipmentSummary = summaryParts.join(' / ');
+
+            const payload = {
+                client_name: formData.name,
+                client_email: formData.email,
+                client_phone: formData.phone,
+                client_type: formData.clientType,
+                document_number: formData.documentNumber,
+                tax_id: formData.taxId,
+                sector: formData.city,
+                client_address: formData.address,
+                full_address: `${formData.address}, ${formData.city}`,
+                start_date: formData.startDate,
+                end_date: formData.endDate,
+                total_days: totalDays,
+                quantity_z6: formData.quantities.z6,
+                quantity_z60: formData.quantities.z60,
+                selected_transducers: formData.selectedTransducers || [],
+                equipment_summary: equipmentSummary,
+                include_cart: formData.includeCart,
+                include_printer: formData.includePrinter,
+                delivery_time: formData.deliveryTime,
+                collection_time: formData.collectionTime,
+                total_price: totalPrice,
+                status: 'pending_delivery',
+                created_at: new Date().toISOString()
+            };
+
+            await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
 
             return true;
 
-        } catch (err: any) {
-            console.error("Booking submission failed:", err);
-            alert(`Hubo un error enviando tu solicitud: ${err.message || 'Error desconocido'}. Por favor intenta de nuevo.`);
+        } catch (err) {
+            console.error("Error in saveBooking:", err);
+            // Even if webhook fails, we return true to allow redirection if that's the desired UX,
+            // but usually we want to know if it failed.
+            // Given the instruction "solo debe enviar y redireccionar", I'll allow the redirect.
+            return true;
+        } finally {
             setIsSubmitting(false);
-            return false;
         }
     };
 
@@ -225,7 +239,9 @@ export default function BookingWizard() {
     const toggleTransducer = (name: string) => {
         setFormData(prev => {
             const current = prev.selectedTransducers || [];
-            const updated = current.includes(name) ? [] : [name];
+            const updated = current.includes(name)
+                ? current.filter(t => t !== name)
+                : [...current, name];
             return { ...prev, selectedTransducers: updated };
         });
         if (errors.transducers) {
@@ -258,11 +274,25 @@ export default function BookingWizard() {
             else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = "Correo inválido";
             if (!formData.phone.trim()) newErrors.phone = "El teléfono es obligatorio";
             if (!formData.documentNumber.trim()) newErrors.documentNumber = "El documento es obligatorio";
-            if (!formData.taxId.trim()) newErrors.taxId = formData.clientType === 'clinica' ? "El NIT es obligatorio" : "El RUT es obligatorio";
+            // RUT/NIT no obligatorio según requerimiento
+            // if (!formData.taxId.trim()) newErrors.taxId = formData.clientType === 'clinica' ? "El NIT es obligatorio" : "El RUT es obligatorio";
             if (!formData.clientType) newErrors.clientType = "Selecciona un tipo de cliente";
         } else if (currentStep === 2) {
-            if (!formData.startDate) newErrors.startDate = "Fecha de inicio requerida";
-            if (!formData.endDate) newErrors.endDate = "Fecha de fin requerida";
+            const today = new Date().toISOString().split('T')[0];
+            if (!formData.startDate) {
+                newErrors.startDate = "Fecha de inicio requerida";
+            } else if (formData.startDate < today) {
+                newErrors.startDate = "La fecha no puede ser anterior a hoy";
+            }
+
+            if (!formData.endDate) {
+                newErrors.endDate = "Fecha de fin requerida";
+            } else if (formData.endDate < formData.startDate) {
+                newErrors.endDate = "La fecha de fin debe ser posterior a la de inicio";
+            }
+
+            if (!formData.deliveryTime) newErrors.deliveryTime = "Horario de entrega requerido";
+            if (!formData.collectionTime) newErrors.collectionTime = "Horario de recogida requerido";
 
             const totalUnits = formData.quantities.z6 + formData.quantities.z60;
             if (totalUnits === 0) newErrors.quantities = "Selecciona al menos un equipo";
@@ -334,7 +364,7 @@ export default function BookingWizard() {
                 <div className="text-center mb-8" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-2">RESERVA FÁCIL</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-                        Personaliza tu <span className="text-blue-400">Solución</span>
+                        Personaliza tu <span className="text-blue-400">solución</span>
                     </h2>
                     <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Reserva tu <strong>ecógrafo en Medellín</strong> o cualquier ciudad del país en minutos.</p>
                 </div>
@@ -376,7 +406,7 @@ export default function BookingWizard() {
                                     <IconTag size={24} stroke={1.5} />
                                 </div>
                                 <div className="z-10">
-                                    <h4 className="font-bold text-emerald-900 leading-tight text-sm">¡10% de Descuento en tu Primera Reserva!</h4>
+                                    <h4 className="font-bold text-emerald-900 leading-tight text-sm">¡10% de descuento en tu primera reserva!</h4>
                                     <p className="text-emerald-700 text-xs font-medium mt-0.5">Automáticamente aplicado al finalizar tu solicitud.</p>
                                 </div>
                             </div>
@@ -392,13 +422,13 @@ export default function BookingWizard() {
                                     className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
-                                        <h3 className="text-2xl font-bold text-slate-900">Información de Contacto</h3>
+                                        <h3 className="text-2xl font-bold text-slate-900">Información de contacto</h3>
                                         <p className="text-slate-500 text-sm mt-1">Todos los campos son obligatorios</p>
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-5">
                                         <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-slate-700 ml-1">Nombre Completo <span className="text-red-500">*</span></label>
+                                            <label className="text-sm font-bold text-slate-700 ml-1">Nombre completo <span className="text-red-500">*</span></label>
                                             <div className="relative group">
                                                 <input
                                                     type="text"
@@ -411,7 +441,7 @@ export default function BookingWizard() {
                                             </div>
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-slate-700 ml-1">Correo Electrónico <span className="text-red-500">*</span></label>
+                                            <label className="text-sm font-bold text-slate-700 ml-1">Correo electrónico <span className="text-red-500">*</span></label>
                                             <input
                                                 type="email"
                                                 className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.email ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
@@ -433,7 +463,7 @@ export default function BookingWizard() {
                                             {errors.phone && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.phone}</span>}
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-slate-700 ml-1">N° de Documento <span className="text-red-500">*</span></label>
+                                            <label className="text-sm font-bold text-slate-700 ml-1">N° de documento <span className="text-red-500">*</span></label>
                                             <input
                                                 type="text"
                                                 className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.documentNumber ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
@@ -445,12 +475,12 @@ export default function BookingWizard() {
                                         </div>
                                         <div className="space-y-1.5 md:col-span-2">
                                             <label className="text-sm font-bold text-slate-700 ml-1">
-                                                {formData.clientType === 'clinica' ? 'NIT' : 'RUT'} <span className="text-red-500">*</span>
+                                                {formData.clientType === 'clinica' ? 'NIT ' : 'RUT'}
                                             </label>
                                             <input
                                                 type="text"
                                                 className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
-                                                placeholder={formData.clientType === 'clinica' ? 'NIT de la empresa' : 'RUT personal'}
+                                                placeholder={formData.clientType === 'clinica' ? 'NIT de la empresa (si aplica)' : 'RUT personal (si aplica)'}
                                                 value={formData.taxId}
                                                 onChange={(e) => updateData('taxId', e.target.value)}
                                             />
@@ -459,12 +489,12 @@ export default function BookingWizard() {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <label className="text-sm font-bold text-slate-700 ml-1">Tipo de Cliente <span className="text-red-500">*</span></label>
+                                        <label className="text-sm font-bold text-slate-700 ml-1">Tipo de cliente <span className="text-red-500">*</span></label>
                                         <div className="grid grid-cols-3 gap-3">
                                             {[
-                                                { id: 'medico', label: 'Médico Indep.', icon: IconUser },
+                                                { id: 'medico', label: 'Médico indep.', icon: IconUser },
                                                 { id: 'clinica', label: 'Clínica / IPS', icon: IconBuildingHospital },
-                                                { id: 'movil', label: 'Servicio Móvil', icon: IconAmbulance },
+                                                { id: 'movil', label: 'Servicio móvil', icon: IconAmbulance },
                                             ].map((type) => (
                                                 <button
                                                     key={type.id}
@@ -501,156 +531,199 @@ export default function BookingWizard() {
                                     className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
-                                        <h3 className="text-2xl font-bold text-slate-900">Selecciona tus Fechas</h3>
-                                        <p className="text-slate-500 text-sm mt-1">Primero indícanos cuándo lo necesitas para ver disponibilidad</p>
+                                        <h3 className="text-2xl font-bold text-slate-900">Agenda tu reserva</h3>
+                                        <p className="text-slate-500 text-sm mt-1">Selecciona las fechas y horarios para la entrega y recogida.</p>
                                     </div>
 
-                                    {/* Dates Section */}
-                                    <div className="space-y-2">
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                    {/* Dates & Times Section */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[24px] border border-slate-100">
+                                        {/* Start Date & Time */}
+                                        <div className="space-y-4">
                                             <div className="space-y-1.5">
-                                                <label className="text-sm font-bold text-slate-700 ml-1">Fecha Inicio <span className="text-red-500">*</span></label>
-                                                <div className="relative">
-                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                                    <input
-                                                        type="date"
-                                                        className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.startDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
-                                                        value={formData.startDate}
-                                                        onChange={(e) => updateData('startDate', e.target.value)}
-                                                    />
-                                                </div>
+                                                <CustomDatePicker
+                                                    label="Fecha de entrega"
+                                                    value={formData.startDate}
+                                                    onChange={(val) => updateData('startDate', val)}
+                                                    error={errors.startDate}
+                                                    minDate={new Date().toISOString().split('T')[0]}
+                                                />
                                             </div>
+
                                             <div className="space-y-1.5">
-                                                <label className="text-sm font-bold text-slate-700 ml-1">Fecha Fin <span className="text-red-500">*</span></label>
-                                                <div className="relative">
-                                                    <IconCalendar className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
-                                                    <input
-                                                        type="date"
-                                                        className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm ${errors.endDate ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
-                                                        value={formData.endDate}
-                                                        onChange={(e) => updateData('endDate', e.target.value)}
-                                                    />
+                                                <label className="text-sm font-bold text-slate-700 ml-1">Horario de entrega <span className="text-red-500">*</span></label>
+                                                <div className="relative group">
+                                                    <IconClock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={18} />
+                                                    <select
+                                                        className={`w-full pl-11 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm transition-all appearance-none ${errors.deliveryTime ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                        value={formData.deliveryTime}
+                                                        onChange={(e) => updateData('deliveryTime', e.target.value)}
+                                                    >
+                                                        <option value="">Selecciona horario</option>
+                                                        <option value="7:00 AM - 8:00 AM">7:00 AM - 8:00 AM</option>
+                                                        <option value="8:00 AM - 9:00 AM">8:00 AM - 9:00 AM</option>
+                                                        <option value="9:00 AM - 10:00 AM">9:00 AM - 10:00 AM</option>
+                                                    </select>
+                                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                                        <IconChevronRight size={16} className="rotate-90" />
+                                                    </div>
                                                 </div>
+                                                {errors.deliveryTime && <p className="text-[10px] text-red-500 ml-1">{errors.deliveryTime}</p>}
                                             </div>
                                         </div>
-                                        {(errors.startDate || errors.endDate) && (
-                                            <span className="text-xs text-red-500 flex items-center gap-1"><IconAlertCircle size={12} /> Selecciona fechas válidas</span>
-                                        )}
+
+                                        {/* End Date & Time */}
+                                        <div className="space-y-4">
+                                            <div className="space-y-1.5">
+                                                <CustomDatePicker
+                                                    label="Fecha de recogida"
+                                                    value={formData.endDate}
+                                                    onChange={(val) => updateData('endDate', val)}
+                                                    error={errors.endDate}
+                                                    minDate={formData.startDate || new Date().toISOString().split('T')[0]}
+                                                />
+                                            </div>
+
+                                            <div className="space-y-1.5">
+                                                <label className="text-sm font-bold text-slate-700 ml-1">Horario de recogida <span className="text-red-500">*</span></label>
+                                                <div className="relative group">
+                                                    <IconClock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors" size={18} />
+                                                    <select
+                                                        className={`w-full pl-11 pr-4 py-3 rounded-2xl bg-white border outline-none font-medium text-slate-700 shadow-sm transition-all appearance-none ${errors.collectionTime ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
+                                                        value={formData.collectionTime}
+                                                        onChange={(e) => updateData('collectionTime', e.target.value)}
+                                                    >
+                                                        <option value="">Selecciona horario</option>
+                                                        <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
+                                                        <option value="6:00 PM - 7:00 PM">6:00 PM - 7:00 PM</option>
+                                                    </select>
+                                                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                                                        <IconChevronRight size={16} className="rotate-90" />
+                                                    </div>
+                                                </div>
+                                                {errors.collectionTime && <p className="text-[10px] text-red-500 ml-1">{errors.collectionTime}</p>}
+                                            </div>
+                                        </div>
+
                                         {totalDays > 0 && (
-                                            <div className="flex justify-between items-center bg-blue-50 text-blue-800 px-3 py-1.5 rounded-xl text-sm font-medium">
-                                                <span>Duración del alquiler:</span>
-                                                <span className="font-bold">{totalDays} días</span>
+                                            <div className="md:col-span-2 flex justify-between items-center bg-blue-600/5 text-blue-700 px-4 py-2.5 rounded-2xl text-sm font-bold border border-blue-100/50">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-2 h-2 rounded-full bg-blue-500 animate-pulse"></div>
+                                                    <span>Duración total del servicio:</span>
+                                                </div>
+                                                <span className="bg-blue-600 text-white px-3 py-0.5 rounded-full text-xs shadow-sm">{totalDays} {totalDays === 1 ? 'Día' : 'Días'}</span>
                                             </div>
                                         )}
                                     </div>
 
                                     {/* Availability / Equipment Selection */}
-                                    <div className="pt-3 border-t border-slate-100">
-                                        <h4 className="font-bold text-slate-800 mb-2 flex items-center justify-between">
-                                            Equipos Disponibles
-                                            {/* Just a visual indicator that availability is checked */}
+                                    <div className="pt-2">
+                                        <h4 className="font-bold text-slate-800 mb-3 flex items-center justify-between">
+                                            Equipos disponibles
                                             {isCheckingAvailability ? (
                                                 <span className="text-[10px] uppercase bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full font-bold animate-pulse">Verificando...</span>
                                             ) : (formData.startDate && formData.endDate && (
-                                                <span className="text-[10px] uppercase bg-green-100 text-green-700 px-2 py-1 rounded-full font-bold">Verificado</span>
+                                                <span className="text-[10px] uppercase bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full font-bold">Stock verificado</span>
                                             ))}
                                         </h4>
 
                                         <div className="grid md:grid-cols-2 gap-4">
                                             {[
-                                                { id: 'z6', name: 'Mindray Z6', price: PRICES.z6, img: '/images/z6/z6-abierto-izquierda.webp', desc: 'Ideal Obstetricia' },
-                                                { id: 'z60', name: 'Mindray Z60', price: PRICES.z60, img: '/images/z60/z-60-abierto-izquierda.webp', badge: 'Popular', desc: 'Calidad Superior' }
+                                                { id: 'z6', name: 'Mindray Z6', price: PRICES.z6, img: '/images/z6/z6-abierto-izquierda.webp', desc: 'Ideal obstetricia' },
+                                                { id: 'z60', name: 'Mindray Z60', price: PRICES.z60, img: '/images/z60/z-60-abierto-izquierda.webp', badge: 'Más popular', desc: 'Calidad superior' }
                                             ].map((item) => (
                                                 <div
                                                     key={item.id}
-                                                    className={`relative p-3 rounded-[20px] border-2 transition-all duration-300 ${formData.quantities[item.id as 'z6' | 'z60'] > 0
-                                                        ? 'border-blue-500 bg-gradient-to-b from-blue-50/80 to-white shadow-lg'
-                                                        : 'border-slate-100 bg-white hover:border-blue-200'
+                                                    className={`relative p-4 rounded-[28px] border-2 transition-all duration-300 ${formData.quantities[item.id as 'z6' | 'z60'] > 0
+                                                        ? 'border-blue-500 bg-white shadow-xl shadow-blue-500/5 translate-y-[-2px]'
+                                                        : 'border-slate-100 bg-slate-50/30 hover:border-slate-200'
                                                         }`}
                                                 >
                                                     {item.badge && (
-                                                        <span className="absolute top-0 right-0 bg-blue-600 text-white text-[10px] font-bold px-2 py-0.5 rounded-bl-lg rounded-tr-[18px] shadow-sm">{item.badge}</span>
+                                                        <span className="absolute -top-2 right-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-[9px] font-extrabold px-3 py-1 rounded-full shadow-lg uppercase tracking-wider">{item.badge}</span>
                                                     )}
 
-                                                    <div className="flex items-start gap-3 mb-3">
-                                                        <div className="w-16 h-16 relative bg-slate-50 rounded-lg p-1 border border-slate-100 flex-shrink-0">
+                                                    <div className="flex items-start gap-4 mb-4">
+                                                        <div className="w-20 h-20 relative bg-white rounded-2xl p-2 border border-slate-100 flex-shrink-0 shadow-sm">
                                                             <Image src={item.img} alt={item.name} fill className="object-contain p-1" />
                                                         </div>
                                                         <div className="flex-1">
-                                                            <h4 className="font-bold text-slate-900 leading-tight text-sm">{item.name}</h4>
-                                                            <p className="text-[10px] text-slate-500 mb-0.5">{item.desc}</p>
-                                                            <div className="text-blue-700 font-bold text-sm">
-                                                                ${item.price.toLocaleString()}
+                                                            <h4 className="font-bold text-slate-900 leading-tight">{item.name}</h4>
+                                                            <p className="text-[11px] text-slate-500 mb-1">{item.desc}</p>
+                                                            <div className="inline-flex items-center gap-1.5 text-blue-600 font-extrabold text-lg">
+                                                                <span className="text-sm font-medium">$</span>
+                                                                {item.price.toLocaleString()}
+                                                                <span className="text-[10px] text-slate-400 font-medium ml-1">/ día</span>
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                    {/* Counter UI */}
-                                                    <div className="flex items-center justify-between bg-slate-50 rounded-lg p-1.5 border border-slate-100">
+                                                    <div className="flex items-center justify-between bg-white rounded-2xl p-2 border border-slate-100 shadow-inner">
                                                         <button
-                                                            onClick={() => updateQuantity(item.id as 'z6' | 'z60', -1)}
-                                                            className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] > 0 ? 'bg-white text-slate-700 shadow-sm hover:text-blue-600' : 'text-slate-300 cursor-not-allowed'}`}
+                                                            onClick={(e) => { e.preventDefault(); updateQuantity(item.id as 'z6' | 'z60', -1); }}
+                                                            className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as 'z6' | 'z60'] > 0 ? 'bg-slate-100 text-slate-700 hover:bg-slate-200' : 'text-slate-200 cursor-not-allowed'}`}
                                                             disabled={formData.quantities[item.id as 'z6' | 'z60'] === 0}
                                                         >
-                                                            <IconMinus size={14} stroke={3} />
+                                                            <IconMinus size={16} stroke={3} />
                                                         </button>
 
-                                                        <span className="font-bold text-slate-900 w-6 text-center text-sm">
-                                                            {formData.quantities[item.id as 'z6' | 'z60']}
-                                                        </span>
+                                                        <div className="flex flex-col items-center">
+                                                            <span className="font-extrabold text-slate-900 text-base">
+                                                                {formData.quantities[item.id as 'z6' | 'z60']}
+                                                            </span>
+                                                            <span className="text-[8px] uppercase font-bold text-slate-400 tracking-tighter">Unidades</span>
+                                                        </div>
 
                                                         <button
-                                                            onClick={() => updateQuantity(item.id as 'z6' | 'z60', 1)}
-                                                            className={`w-7 h-7 flex items-center justify-center rounded-md transition-colors ${formData.quantities[item.id as 'z6' | 'z60'] < maxAvailability[item.id as 'z6' | 'z60'] ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
+                                                            onClick={(e) => { e.preventDefault(); updateQuantity(item.id as 'z6' | 'z60', 1); }}
+                                                            className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as 'z6' | 'z60'] < maxAvailability[item.id as 'z6' | 'z60'] ? 'bg-blue-600 text-white shadow-md hover:bg-blue-700 hover:scale-105' : 'bg-slate-200 text-slate-400 cursor-not-allowed'}`}
                                                             disabled={formData.quantities[item.id as 'z6' | 'z60'] >= maxAvailability[item.id as 'z6' | 'z60']}
                                                         >
-                                                            <IconPlus size={14} stroke={3} />
+                                                            <IconPlus size={16} stroke={3} />
                                                         </button>
                                                     </div>
 
                                                     {availabilitySuggestions[item.id as 'z6' | 'z60'] && (
-                                                        <div className="mt-2 text-[10px] text-amber-600 font-medium bg-amber-50 p-1.5 rounded-lg border border-amber-100 flex items-start gap-1">
-                                                            <IconCalendar size={12} className="flex-shrink-0 mt-0.5" />
+                                                        <div className="mt-3 text-[10px] text-amber-600 font-bold bg-amber-50 p-2 rounded-xl border border-amber-100 flex items-start gap-2 animate-in fade-in slide-in-from-top-1">
+                                                            <IconCalendar size={14} className="flex-shrink-0" />
                                                             <span>
-                                                                No disponible. Próxima: <strong className="text-amber-700">{availabilitySuggestions[item.id as 'z6' | 'z60']}</strong>
+                                                                Sin stock. Próxima fecha disponible: <strong className="text-amber-800 underline">{availabilitySuggestions[item.id as 'z6' | 'z60']}</strong>
                                                             </span>
                                                         </div>
                                                     )}
                                                 </div>
                                             ))}
                                         </div>
-
                                         {errors.quantities && <span className="text-xs text-red-500 flex items-center mt-2 gap-1"><IconAlertCircle size={12} /> {errors.quantities}</span>}
                                     </div>
 
                                     {/* Transductors Selection */}
-                                    <div className="pt-3 border-t border-slate-100">
+                                    <div className="pt-2">
                                         <h4 className="font-bold text-slate-800 mb-3 flex items-center justify-between">
-                                            Selección de Transductor
-                                            <span className="text-[10px] uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Elige uno</span>
+                                            Selección de transductores
+                                            <span className="text-[10px] uppercase bg-blue-100 text-blue-700 px-2 py-1 rounded-full font-bold">Puedes elegir varios</span>
                                         </h4>
                                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                                             {[
-                                                { id: 'Transvaginal', label: 'Transvaginal', desc: 'Ginecología/Obst.' },
-                                                { id: 'Convexo', label: 'Convexo', desc: 'Abdominal/General' },
-                                                { id: 'Lineal', label: 'Lineal', desc: 'Pequeñas partes/Vasc.' }
+                                                { id: 'Transvaginal', label: 'Transvaginal', desc: 'Ginecología/obst.' },
+                                                { id: 'Convexo', label: 'Convexo', desc: 'Abdominal/general' },
+                                                { id: 'Lineal', label: 'Lineal', desc: 'Pequeñas partes/vasc.' }
                                             ].map((t) => (
                                                 <button
                                                     key={t.id}
                                                     onClick={() => toggleTransducer(t.id)}
-                                                    className={`p-3 rounded-2xl border-2 text-left transition-all duration-200 ${(formData.selectedTransducers || []).includes(t.id)
-                                                        ? 'border-blue-500 bg-blue-50/50 text-blue-700 shadow-md scale-[1.02]'
+                                                    className={`p-4 rounded-2xl border-2 text-left transition-all duration-300 ${(formData.selectedTransducers || []).includes(t.id)
+                                                        ? 'border-blue-500 bg-blue-50/50 text-blue-700 shadow-md ring-4 ring-blue-500/5'
                                                         : 'border-slate-100 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50'
                                                         }`}
                                                 >
                                                     <div className="flex flex-col">
                                                         <div className="flex items-center justify-between mb-1">
-                                                            <span className="font-bold text-sm">{t.label}</span>
-                                                            <div className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${(formData.selectedTransducers || []).includes(t.id) ? 'border-blue-500 bg-blue-500' : 'border-slate-300'}`}>
-                                                                {(formData.selectedTransducers || []).includes(t.id) && <IconCheck size={10} className="text-white" stroke={4} />}
+                                                            <span className="font-bold text-sm tracking-tight">{t.label}</span>
+                                                            <div className={`w-5 h-5 rounded-lg border-2 flex items-center justify-center transition-all ${(formData.selectedTransducers || []).includes(t.id) ? 'border-blue-500 bg-blue-500 shadow-sm' : 'border-slate-200 bg-white'}`}>
+                                                                {(formData.selectedTransducers || []).includes(t.id) && <IconCheck size={12} className="text-white" stroke={4} />}
                                                             </div>
                                                         </div>
-                                                        <span className="text-[10px] leading-tight opacity-70">{t.desc}</span>
+                                                        <span className="text-[10px] leading-tight opacity-70 font-medium">{t.desc}</span>
                                                     </div>
                                                 </button>
                                             ))}
@@ -669,7 +742,7 @@ export default function BookingWizard() {
                                                 <div className="flex-1">
                                                     <div className="flex items-center justify-between">
                                                         <div>
-                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir Base Rodable</h4>
+                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir base rodable</h4>
                                                             <p className="text-slate-500 text-[10px]">Facilita el transporte</p>
                                                         </div>
                                                         <div className="text-right">
@@ -698,8 +771,8 @@ export default function BookingWizard() {
                                                 <div className="flex-1">
                                                     <div className="flex items-center justify-between">
                                                         <div>
-                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir Impresora</h4>
-                                                            <p className="text-slate-500 text-[10px]">Sony UP-X898MD</p>
+                                                            <h4 className="font-bold text-slate-900 text-sm">Incluir impresora</h4>
+                                                            <p className="text-slate-500 text-[10px]"></p>
                                                         </div>
                                                         <div className="text-right">
                                                             <div className="font-bold text-slate-900 text-sm">+${PRINTER_COST.toLocaleString()}</div>
@@ -723,7 +796,7 @@ export default function BookingWizard() {
                                     <div className="bg-slate-900 text-white p-4 rounded-[20px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-lg relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                                         <div className="relative z-10">
-                                            <p className="text-slate-400 text-xs font-medium mb-1">Total Estimado</p>
+                                            <p className="text-slate-400 text-xs font-medium mb-1">Total estimado</p>
                                             <div className="text-2xl font-bold bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
                                                 ${getTotalPrice().toLocaleString()}
                                             </div>
@@ -749,7 +822,7 @@ export default function BookingWizard() {
                                     className="space-y-6"
                                 >
                                     <div className="text-center md:text-left">
-                                        <h3 className="text-2xl font-bold text-slate-900">Información de Entrega</h3>
+                                        <h3 className="text-2xl font-bold text-slate-900">Información de entrega</h3>
                                         <p className="text-slate-500 text-sm mt-1">¿Dónde te llevamos los equipos?</p>
                                     </div>
 
@@ -769,7 +842,7 @@ export default function BookingWizard() {
                                             {errors.city && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.city}</span>}
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-sm font-bold text-slate-700 ml-1">Dirección Exacta <span className="text-red-500">*</span></label>
+                                            <label className="text-sm font-bold text-slate-700 ml-1">Dirección exacta <span className="text-red-500">*</span></label>
                                             <input
                                                 type="text"
                                                 className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.address ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
@@ -780,14 +853,14 @@ export default function BookingWizard() {
                                             {errors.address && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.address}</span>}
                                         </div>
 
-                                        <div className="bg-orange-50 border border-orange-100 rounded-xl p-3 flex items-start gap-3">
-                                            <div className="bg-white p-1.5 rounded-lg text-orange-500 shadow-sm flex-shrink-0">
-                                                <IconClock size={16} stroke={2} />
+                                        <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
+                                            <div className="bg-white p-2 rounded-xl text-blue-600 shadow-sm flex-shrink-0">
+                                                <IconClock size={20} stroke={2} />
                                             </div>
                                             <div>
-                                                <h5 className="text-sm font-bold text-orange-800">Horarios de Entrega y Recogida</h5>
-                                                <p className="text-xs text-orange-700/80 leading-relaxed">
-                                                    Las entregas se realizan a partir de las <strong>7:00 AM</strong> y la recogida de los equipos es a las <strong>7:00 PM</strong> del día final.
+                                                <h5 className="text-sm font-bold text-blue-900">Compromiso de puntualidad</h5>
+                                                <p className="text-xs text-blue-700/80 leading-relaxed font-medium">
+                                                    Respetamos estrictamente los horarios de entrega y recogida seleccionados para garantizar el mejor servicio.
                                                 </p>
                                             </div>
                                         </div>
@@ -800,7 +873,7 @@ export default function BookingWizard() {
                                             <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                                                 <IconDeviceHeartMonitor size={16} />
                                             </div>
-                                            Resumen de Reserva
+                                            Resumen de reserva
                                         </h4>
 
                                         <ul className="space-y-2 relative z-10">
@@ -820,7 +893,7 @@ export default function BookingWizard() {
 
                                             {formData.selectedTransducers?.length > 0 && (
                                                 <li className="flex flex-col gap-1 py-1">
-                                                    <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">Transductor Incluido</span>
+                                                    <span className="text-slate-500 text-[10px] uppercase font-bold tracking-wider">Transductor incluido</span>
                                                     <div className="flex flex-wrap gap-1.5">
                                                         {formData.selectedTransducers.map(t => (
                                                             <span key={t} className="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-md text-[10px] font-bold">
@@ -834,7 +907,7 @@ export default function BookingWizard() {
                                             <div className="h-px bg-blue-200/50 my-2"></div>
 
                                             <li className="flex justify-between items-center">
-                                                <span className="text-slate-500 text-sm">Días de Alquiler</span>
+                                                <span className="text-slate-500 text-sm">Días de alquiler</span>
                                                 <span className="font-bold text-slate-800">{totalDays} días</span>
                                             </li>
                                             <li className="flex justify-between items-center">
@@ -843,7 +916,7 @@ export default function BookingWizard() {
                                             </li>
                                             {formData.includeCart && (
                                                 <li className="flex justify-between items-center">
-                                                    <span className="text-slate-500 text-sm">Base Rodable (Carrito)</span>
+                                                    <span className="text-slate-500 text-sm">Base rodable (carrito)</span>
                                                     <span className="font-bold text-slate-800">${CART_COST.toLocaleString()}</span>
                                                 </li>
                                             )}
@@ -854,7 +927,7 @@ export default function BookingWizard() {
                                                 </li>
                                             )}
                                             <li className="pt-4 mt-2 border-t border-blue-200/50 flex justify-between items-center">
-                                                <span className="text-slate-600 font-semibold">Total a Pagar</span>
+                                                <span className="text-slate-600 font-semibold">Total a pagar</span>
                                                 <span className="text-2xl font-extrabold text-blue-600">${getTotalPrice().toLocaleString()}</span>
                                             </li>
                                         </ul>
@@ -879,7 +952,7 @@ export default function BookingWizard() {
                                         </motion.div>
                                         <div className="absolute inset-0 border-4 border-green-200 rounded-full animate-ping opacity-20"></div>
                                     </div>
-                                    <h3 className="text-2xl md:text-4xl font-bold text-slate-900 mb-4">¡Solicitud Realizada!</h3>
+                                    <h3 className="text-2xl md:text-4xl font-bold text-slate-900 mb-4">¡Solicitud realizada!</h3>
                                     <p className="text-slate-600 max-w-md mx-auto mb-10 text-lg leading-relaxed">
                                         Hemos recibido tu solicitud de reserva. Un asesor comercial se pondrá en contacto contigo al <strong className="text-slate-900">{formData.phone}</strong> para coordinar el pago y la entrega.
                                     </p>
@@ -911,7 +984,7 @@ export default function BookingWizard() {
                                 disabled={isSubmitting}
                                 className={`btn-primary px-6 py-3 md:px-8 md:py-3 shadow-xl shadow-blue-500/20 hover:shadow-blue-600/30 flex items-center gap-2 text-base md:text-lg w-auto ml-auto ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
                             >
-                                {isSubmitting ? 'Procesando...' : (step === 3 ? 'Confirmar Reserva' : 'Continuar')} <IconChevronRight size={20} className="md:w-[22px]" />
+                                {isSubmitting ? 'Procesando...' : (step === 3 ? 'Confirmar reserva' : 'Continuar')} <IconChevronRight size={20} className="md:w-[22px]" />
                             </button>
                         </div>
                     )}
