@@ -7,7 +7,8 @@ import {
     IconDiamond,
     IconRocket,
     IconShieldCheck,
-    IconGift
+    IconGift,
+    IconSettingsFilled
 } from "@tabler/icons-react";
 
 export default function Comparison() {
@@ -61,6 +62,15 @@ export default function Comparison() {
                                     <p>Equipos usados sin garantía real o dudosa procedencia.</p>
                                 </div>
                             </li>
+                            <li>
+                                <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
+                                    <IconSettingsFilled size={24} />
+                                </div>
+                                <div>
+                                    <strong>Calibracion costosa</strong>
+                                    <p>Constante calibracion de equipos por tu cuenta.</p>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 
@@ -101,7 +111,7 @@ export default function Comparison() {
                                     <IconGift size={24} />
                                 </div>
                                 <div>
-                                    <strong>3 sondas incluidas gratis</strong>
+                                    <strong>Elige tus sondas</strong>
                                     <p>Convexo, Lineal y Transvaginal listas para usar.</p>
                                 </div>
                             </li>

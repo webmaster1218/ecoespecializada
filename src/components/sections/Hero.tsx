@@ -21,7 +21,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
                     >
-                        <span className={styles.badgeIcon}>✓</span> Envío gratis + mantenimiento incluido
+                        <span className={styles.badgeIcon}>✓</span> Disponibilidad inmediata para envío hoy mismo
                     </motion.div>
 
                     <motion.h1
