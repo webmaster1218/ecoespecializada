@@ -114,7 +114,7 @@ export default function Hero() {
                             priority
                             fetchPriority="high"
                             decoding="sync"
-                            sizes="(max-width: 768px) 100vw, 600px"
+                            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 480px, 600px"
                         />
                     </motion.div>
 

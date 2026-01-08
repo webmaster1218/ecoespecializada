@@ -32,6 +32,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es">
+      <head>
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://scripts.clarity.ms" />
+      </head>
       <body className={`${inter.variable} ${roboto.variable}`}>
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -44,7 +48,7 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         {/* Google Tag Manager */}
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        <Script id="google-tag-manager" strategy="lazyOnload">
           {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -54,9 +58,9 @@ export default function RootLayout({
         {/* End Google Tag Manager */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=AW-17807317804"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics" strategy="afterInteractive">
+        <Script id="google-analytics" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -67,9 +71,9 @@ export default function RootLayout({
         {/* Google tag (gtag.js) */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-Y0ZQV2PWF1"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
-        <Script id="google-analytics-ga4" strategy="afterInteractive">
+        <Script id="google-analytics-ga4" strategy="lazyOnload">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

@@ -47,7 +47,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                         }`}
                 >
                     <IconCalendar className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isOpen ? 'text-blue-500' : 'text-slate-400'}`} size={16} />
-                    <span className={value ? "text-slate-700" : "text-slate-400"}>
+                    <span className={value ? "text-slate-700" : "text-slate-500 font-medium"}>
                         {value ? format(new Date(value + 'T12:00:00'), "dd/MM/yyyy") : "dd/mm/aaaa"}
                     </span>
                     <IconChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} size={14} />
@@ -84,7 +84,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                             </button>
                             <button
                                 onClick={() => { onChange(""); setIsOpen(false); }}
-                                className="px-4 py-2 rounded-xl text-xs font-bold text-slate-400 hover:text-slate-500 transition-colors"
+                                className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-700 transition-colors"
                             >
                                 Limpiar
                             </button>

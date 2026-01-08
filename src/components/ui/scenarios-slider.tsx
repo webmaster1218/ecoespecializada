@@ -2,6 +2,7 @@
 
 import * as React from "react";
 import { useState } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -79,10 +80,9 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                     {/* === Left Column: Meta and Thumbnails === */}
                     <div className="md:col-span-3 flex flex-col justify-between order-2 md:order-1 h-auto md:h-full md:min-h-[300px] gap-6 md:gap-0">
                         <div className="flex flex-row md:flex-col justify-between md:justify-start space-x-4 md:space-x-0 md:space-y-4">
-                            <span className="text-sm text-slate-400 font-mono">
+                            <span className="text-sm text-slate-500 font-bold font-mono">
                                 {String(currentIndex + 1).padStart(2, "0")} / {String(scenarios.length).padStart(2, "0")}
                             </span>
-                            {/* Vertical text removed */}
                         </div>
 
                         <div className="flex space-x-3 mt-8 md:mt-0">
@@ -92,6 +92,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                                     <button
                                         key={scenario.id}
                                         onClick={() => handleThumbnailClick(originalIndex)}
+                                        aria-label={`Ver escenario: ${scenario.title}`}
                                         className="overflow-hidden rounded-lg w-16 h-20 md:w-20 md:h-24 opacity-60 hover:opacity-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 hover:scale-105 shadow-md"
                                     >
                                         <img src={scenario.thumbnailSrc} alt={scenario.title} className="w-full h-full object-cover" />
@@ -104,18 +105,25 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                     {/* === Center Column: Main Image === */}
                     <div className="md:col-span-5 relative h-[350px] md:h-[500px] order-1 md:order-2 rounded-2xl overflow-hidden shadow-2xl">
                         <AnimatePresence initial={false} custom={direction}>
-                            <motion.img
+                            <motion.div
                                 key={currentIndex}
-                                src={activeScenario.imageSrc}
-                                alt={activeScenario.title}
+                                className="absolute inset-0"
                                 custom={direction}
                                 variants={imageVariants}
                                 initial="enter"
                                 animate="center"
                                 exit="exit"
                                 transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-                                className="absolute inset-0 w-full h-full object-cover"
-                            />
+                            >
+                                <Image
+                                    src={activeScenario.imageSrc}
+                                    alt={activeScenario.title}
+                                    fill
+                                    className="object-cover"
+                                    sizes="(max-width: 768px) 90vw, 500px"
+                                    priority={currentIndex === 0}
+                                />
+                            </motion.div>
                         </AnimatePresence>
                     </div>
 
@@ -149,6 +157,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                             <Button
                                 variant="outline"
                                 size="icon"
+                                aria-label="Escenario anterior"
                                 className="rounded-full w-12 h-12 border-slate-200 hover:border-blue-500 hover:text-blue-500 transition-colors"
                                 onClick={handlePrev}
                             >
@@ -157,6 +166,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                             <Button
                                 variant="default"
                                 size="icon"
+                                aria-label="Siguiente escenario"
                                 className="rounded-full w-12 h-12 bg-blue-600 hover:bg-blue-700 shadow-lg shadow-blue-600/30"
                                 onClick={handleNext}
                             >

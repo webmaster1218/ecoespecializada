@@ -498,6 +498,7 @@ export default function BookingWizard() {
                                                 <button
                                                     key={type.id}
                                                     onClick={() => updateData('clientType', type.id as any)}
+                                                    aria-label={`Seleccionar tipo de cliente: ${type.label}`}
                                                     className={`p-3 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all duration-200 ${formData.clientType === type.id
                                                         ? 'border-blue-500 bg-blue-50/50 text-blue-700 shadow-md scale-[1.02]'
                                                         : errors.clientType ? 'border-red-300 bg-red-50' : 'border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50'
@@ -507,7 +508,7 @@ export default function BookingWizard() {
                                                         <type.icon size={24} />
                                                     </div>
                                                     <span className="font-bold text-sm leading-tight">{type.label}</span>
-                                                    <span className={`text-[10px] md:text-[11px] leading-tight opacity-80 ${formData.clientType === type.id ? 'text-blue-500' : 'text-slate-400'}`}>
+                                                    <span className={`text-[10px] md:text-[11px] leading-tight opacity-100 ${formData.clientType === type.id ? 'text-blue-600' : 'text-slate-500'}`}>
                                                         {type.id === 'medico' && "Para consultorios"}
                                                         {type.id === 'clinica' && "Corporativo / IPS"}
                                                         {type.id === 'movil' && "Domiciliario"}
@@ -752,6 +753,7 @@ export default function BookingWizard() {
                                                                     className="sr-only peer"
                                                                     checked={formData.includeCart}
                                                                     onChange={(e) => updateData('includeCart', e.target.checked)}
+                                                                    aria-label="Incluir base rodable"
                                                                 />
                                                                 <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
                                                             </label>
@@ -781,6 +783,7 @@ export default function BookingWizard() {
                                                                     className="sr-only peer"
                                                                     checked={formData.includePrinter}
                                                                     onChange={(e) => updateData('includePrinter', e.target.checked)}
+                                                                    aria-label="Incluir impresora"
                                                                 />
                                                                 <div className="w-9 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-blue-600"></div>
                                                             </label>
@@ -795,14 +798,14 @@ export default function BookingWizard() {
                                     <div className="bg-slate-900 text-white p-4 rounded-[20px] flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 shadow-lg relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
                                         <div className="relative z-10">
-                                            <p className="text-slate-400 text-xs font-medium mb-1">Total estimado</p>
+                                            <p className="text-slate-500 text-xs font-medium mb-1">Total estimado</p>
                                             <div className="text-2xl font-bold bg-gradient-to-r from-blue-200 to-white bg-clip-text text-transparent">
                                                 ${getTotalPrice().toLocaleString()}
                                             </div>
                                             <p className="text-[11px] text-blue-300/70 font-medium mt-1">*Costo de envío y recogida $50.000*</p>
                                         </div>
                                         <div className="text-right flex flex-col items-end relative z-10">
-                                            <div className="text-xs text-slate-400 mb-1">
+                                            <div className="text-xs text-slate-500 mb-1">
                                                 {formData.quantities.z6 + formData.quantities.z60} Equipos
                                             </div>
                                             {totalDays > 0 && <div className="text-xs text-slate-500">{totalDays} días</div>}
@@ -829,13 +832,14 @@ export default function BookingWizard() {
                                         <div className="space-y-1.5">
                                             <label className="text-sm font-bold text-slate-700 ml-1">Sector <span className="text-red-500">*</span></label>
                                             <div className="relative">
-                                                <IconMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={18} />
+                                                <IconMapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500" size={18} />
                                                 <input
                                                     type="text"
                                                     className={`w-full pl-10 pr-4 py-3 rounded-2xl bg-white border outline-none shadow-sm font-medium text-slate-700 ${errors.city ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10'}`}
                                                     placeholder="Ej. Laureles, Poblado..."
                                                     value={formData.city}
                                                     onChange={(e) => updateData('city', e.target.value)}
+                                                    aria-label="Sector de entrega"
                                                 />
                                             </div>
                                             {errors.city && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.city}</span>}
@@ -848,6 +852,7 @@ export default function BookingWizard() {
                                                 placeholder="Calle, Carrera, Número, Oficina..."
                                                 value={formData.address}
                                                 onChange={(e) => updateData('address', e.target.value)}
+                                                aria-label="Dirección exacta de entrega"
                                             />
                                             {errors.address && <span className="text-xs text-red-500 mt-1 flex items-center gap-1"><IconAlertCircle size={12} /> {errors.address}</span>}
                                         </div>
@@ -857,7 +862,7 @@ export default function BookingWizard() {
                                                 <IconClock size={20} stroke={2} />
                                             </div>
                                             <div>
-                                                <h5 className="text-sm font-bold text-blue-900">Compromiso de puntualidad</h5>
+                                                <h4 className="text-sm font-bold text-blue-900">Compromiso de puntualidad</h4>
                                                 <p className="text-xs text-blue-700/80 leading-relaxed font-medium">
                                                     Respetamos estrictamente los horarios de entrega y recogida seleccionados para garantizar el mejor servicio.
                                                 </p>
@@ -868,12 +873,12 @@ export default function BookingWizard() {
                                     <div className="bg-blue-50/50 p-4 md:p-6 rounded-[20px] border border-blue-100 relative overflow-hidden">
                                         <div className="absolute top-0 right-0 w-64 h-64 bg-blue-200/20 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2"></div>
 
-                                        <h4 className="font-bold text-slate-800 mb-4 flex items-center gap-2 relative z-10 text-base">
+                                        <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2 relative z-10 text-base">
                                             <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
                                                 <IconDeviceHeartMonitor size={16} />
                                             </div>
                                             Resumen de reserva
-                                        </h4>
+                                        </h3>
 
                                         <ul className="space-y-2 relative z-10">
                                             {/* Quantities Breakdown */}
@@ -958,6 +963,7 @@ export default function BookingWizard() {
                                     <button
                                         onClick={() => { setStep(1); setFormData(INITIAL_DATA); }}
                                         className="text-blue-600 font-bold hover:text-blue-700 transition-colors flex items-center gap-2 group"
+                                        aria-label="Hacer otra reserva"
                                     >
                                         <span className="group-hover:-translate-x-1 transition-transform"><IconChevronLeft size={20} /></span> Hacer otra reserva
                                     </button>

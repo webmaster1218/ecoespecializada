@@ -97,6 +97,7 @@ export default function ProductCatalog() {
                                 alt="Mindray Z6"
                                 fill
                                 style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 444px"
                             />
                             <button
                                 className={styles.galleryBtn}
@@ -147,6 +148,7 @@ export default function ProductCatalog() {
                                 alt="Mindray Z60"
                                 fill
                                 style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 444px"
                             />
                             <button
                                 className={styles.galleryBtn}
