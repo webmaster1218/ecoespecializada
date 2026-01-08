@@ -23,6 +23,10 @@ export const metadata: Metadata = {
   title: "Alquiler de Ecógrafos en Medellín y Antioquia | Mindray Portátiles",
   description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
   keywords: ["alquiler ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
+  icons: {
+    icon: "/images/logo/logo-pestaña.webp",
+    apple: "/images/logo/logo-pestaña.webp",
+  }
 };
 
 export default function RootLayout({
