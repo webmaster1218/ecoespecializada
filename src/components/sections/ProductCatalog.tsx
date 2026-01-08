@@ -96,7 +96,7 @@ export default function ProductCatalog() {
                                 src="/images/z6/z6-abierto-izquierda.webp"
                                 alt="Mindray Z6"
                                 fill
-                                style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                style={{ objectFit: 'contain' }}
                                 sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 444px"
                             />
                             <button
@@ -147,7 +147,7 @@ export default function ProductCatalog() {
                                 src="/images/z60/z-60-abierto-izquierda.webp"
                                 alt="Mindray Z60"
                                 fill
-                                style={{ objectFit: 'cover', borderRadius: '16px' }}
+                                style={{ objectFit: 'contain' }}
                                 sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 444px"
                             />
                             <button

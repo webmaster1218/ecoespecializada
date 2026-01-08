@@ -67,6 +67,22 @@ export default function Footer() {
                             <a href="#servicios-complementarios" className={styles.link}>Soporte técnico</a>
                         </div>
                     </div>
+
+                    {/* Columna 4: Ubicación */}
+                    <div className={styles.column}>
+                        <h4 className={styles.columnHeader}>Ubicación</h4>
+                        <div className={styles.mapContainer}>
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d-75.5747532!3d6.1944771!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e44282b42afefe5%3A0x4eb9c71716356023!2sDiagonal%2047a%20%2317sur-162%2C%20Medell%C3%ADn%2C%20Antioquia!5e0!3m2!1ses-419!2sco!4v1736369400000!5m2!1ses-419!2sco"
+                                width="100%"
+                                height="150"
+                                style={{ border: 0, borderRadius: '12px' }}
+                                allowFullScreen={true}
+                                loading="lazy"
+                                referrerPolicy="no-referrer-when-downgrade"
+                            ></iframe>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Bottom footer */}

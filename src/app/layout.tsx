@@ -20,8 +20,8 @@ const roboto = Roboto({
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Alquiler de Ecógrafos en Medellín y Colombia | Mindray Portátiles",
-  description: "Alquiler de ecógrafos en Medellín y toda Colombia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
+  title: "Alquiler de Ecógrafos en Medellín y Antioquia | Mindray Portátiles",
+  description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
   keywords: ["alquiler ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
 };
 

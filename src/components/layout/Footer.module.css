@@ -18,8 +18,8 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 50px;
+    grid-template-columns: 1.5fr 1.25fr 0.75fr 1.5fr;
+    gap: 40px;
     margin-bottom: 50px;
 }
 
@@ -104,6 +104,15 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+}
+
+.mapContainer {
+    width: 100%;
+    margin-top: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    line-height: 0;
 }
 
 .bottom {

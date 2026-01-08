@@ -40,7 +40,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.4 }}
                     >
-                        La mejor opción de <strong>alquiler de ecógrafos en Medellín</strong> y toda Colombia. Mindray Z6 y Z60 de gama alta sin grandes inversiones.
+                        La mejor opción de <strong>alquiler de ecógrafos en Medellín</strong> y toda Antioquia. Mindray Z6 y Z60 de gama alta sin grandes inversiones.
                     </motion.p>
 
                     <motion.div
