@@ -1,7 +1,8 @@
+import { memo } from "react";
 import styles from "./AdditionalServices.module.css";
 import { IconTool, IconSettings, IconShoppingBag, IconCheck, IconArrowRight } from "@tabler/icons-react";
 
-export default function AdditionalServices() {
+function AdditionalServices() {
     const services = [
         {
             icon: <IconTool className={styles.serviceIcon} />,
@@ -114,3 +115,5 @@ export default function AdditionalServices() {
         </section>
     );
 }
+
+export default memo(AdditionalServices);

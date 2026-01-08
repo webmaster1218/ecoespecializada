@@ -1,6 +1,7 @@
+import { memo } from "react";
 import styles from "./HowItWorks.module.css";
 
-export default function HowItWorks() {
+function HowItWorks() {
     const steps = [
         {
             id: "01",
@@ -100,3 +101,5 @@ export default function HowItWorks() {
         </section>
     );
 }
+
+export default memo(HowItWorks);

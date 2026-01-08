@@ -23,7 +23,7 @@ export default function Navbar() {
             <div className={`container ${styles.container}`}>
                 <Link href="/" className={styles.logo}>
                     <Image
-                        src="/images/logo/logo.jpg"
+                        src="/images/logo/logo.webp"
                         alt="Logo"
                         width={140}
                         height={40}

@@ -765,7 +765,7 @@ export default function BookingWizard() {
                                         <div className={`p-3 rounded-2xl border transition-colors ${formData.includePrinter ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
                                             <div className="flex items-center gap-3">
                                                 <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
-                                                    <Image src="/images/printer_sony.png" alt="Impresora Sony" fill className="object-cover" />
+                                                    <Image src="/images/printer_sony.webp" alt="Impresora Sony" fill className="object-cover" />
                                                 </div>
                                                 <div className="flex-1">
                                                     <div className="flex items-center justify-between">

@@ -1,5 +1,6 @@
 "use client";
 
+import { memo } from "react";
 import { ScenariosSlider } from "@/components/ui/scenarios-slider";
 
 const scenarios = [
@@ -8,24 +9,24 @@ const scenarios = [
         title: "Medicina Interna",
         subtitle: "Diagnóstico abdominal",
         description: "Sondeo rápido y preciso. Identifique patologías hepáticas, renales y vesiculares en segundos con transductores convexos de alta densidad.",
-        imageSrc: "/images/clinical/medicina_interna.png",
-        thumbnailSrc: "/images/clinical/medicina_interna.png"
+        imageSrc: "/images/clinical/medicina_interna.webp",
+        thumbnailSrc: "/images/clinical/medicina_interna.webp"
     },
     {
         id: 1,
         title: "Veterinaria",
         subtitle: "Diagnóstico animal",
         description: "Imágenes nítidas para el cuidado de pequeñas especies. Evalúe anomalías abdominales y cardíacas en perros y gatos con nuestros equipos Mindray Vetus.",
-        imageSrc: "/images/clinical/veterinaria.png",
-        thumbnailSrc: "/images/clinical/veterinaria.png"
+        imageSrc: "/images/clinical/veterinaria.webp",
+        thumbnailSrc: "/images/clinical/veterinaria.webp"
     },
     {
         id: 2,
         title: "Ginecología y Obstetricia",
         subtitle: "Salud femenina",
         description: "Monitorización fetal detallada. Visualice el desarrollo del embarazo con claridad excepcional para brindar tranquilidad total.",
-        imageSrc: "/images/clinical/ginecologia_v2.png",
-        thumbnailSrc: "/images/clinical/ginecologia_v2.png"
+        imageSrc: "/images/clinical/ginecologia_v2.webp",
+        thumbnailSrc: "/images/clinical/ginecologia_v2.webp"
     },
     {
         id: 4,
@@ -40,8 +41,8 @@ const scenarios = [
         title: "Musculoesquelético",
         subtitle: "Tejidos blandos",
         description: "Visualización superior de tendones y nervios. Herramienta esencial para fisiatría, ortopedia y medicina deportiva.",
-        imageSrc: "/images/clinical/msk_v2.png",
-        thumbnailSrc: "/images/clinical/msk_v2.png"
+        imageSrc: "/images/clinical/msk_v2.webp",
+        thumbnailSrc: "/images/clinical/msk_v2.webp"
     },
     {
         id: 6,
@@ -61,7 +62,7 @@ const scenarios = [
     }
 ];
 
-export default function ClinicalApplications() {
+function ClinicalApplications() {
     return (
         <div className="w-full bg-slate-50 py-24 lg:py-32">
             <div className="container mx-auto px-4 mb-16 text-center" data-aos="fade-up">
@@ -87,3 +88,5 @@ export default function ClinicalApplications() {
         </div>
     );
 }
+
+export default memo(ClinicalApplications);

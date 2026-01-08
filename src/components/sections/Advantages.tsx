@@ -1,6 +1,7 @@
 
+import { memo } from "react";
 
-export default function Advantages() {
+function Advantages() {
     const advantages = [
         {
             icon: (
@@ -79,3 +80,5 @@ export default function Advantages() {
         </section>
     );
 }
+
+export default memo(Advantages);

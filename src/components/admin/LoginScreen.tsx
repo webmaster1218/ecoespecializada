@@ -81,7 +81,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                 <div className="flex flex-col items-center mb-8">
                     <div className="mb-6 relative w-48 h-12 overflow-hidden">
                         <Image
-                            src="/images/logo/logo.jpg"
+                            src="/images/logo/logo.webp"
                             alt="Logo"
                             fill
                             className="object-contain"

@@ -1,3 +1,4 @@
+
 import Hero from "@/components/sections/Hero";
 import Comparison from "@/components/sections/Comparison";
 import LogoLoop from "@/components/sections/LogoLoop";
@@ -10,7 +11,6 @@ import AdditionalServices from "@/components/sections/AdditionalServices";
 import Advantages from "@/components/sections/Advantages";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
-
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {

@@ -112,6 +112,9 @@ export default function Hero() {
                             className="w-full h-auto object-contain drop-shadow-2xl"
                             style={{ mixBlendMode: 'multiply' }}
                             priority
+                            fetchPriority="high"
+                            decoding="sync"
+                            sizes="(max-width: 768px) 100vw, 600px"
                         />
                     </motion.div>
 

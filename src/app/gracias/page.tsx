@@ -10,7 +10,7 @@ export default function Gracias() {
                 <div className={styles.content}>
                     {/* Logo */}
                     <div className="flex justify-center mb-8">
-                        <Image src="/images/logo/logo.jpg" alt="Logo" width={180} height={60} className="rounded-lg shadow-sm" />
+                        <Image src="/images/logo/logo.webp" alt="Logo" width={180} height={60} className="rounded-lg shadow-sm" />
                     </div>
 
                     {/* Icono de éxito */}
