@@ -33,25 +33,25 @@ function HowItWorks() {
         },
         {
             id: "03",
-            title: "Formalización",
-            desc: "Proceso de pago seguro y firma digital del contrato de alquiler.",
+            title: "Asesoría y pago",
+            desc: "Contacto con un asesor para validar sus datos y proceder con el pago de forma segura.",
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                    <rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect>
-                    <line x1="1" y1="10" x2="23" y2="10"></line>
-                    <path d="M16 16h2"></path>
-                    <path d="M12 16h.01"></path>
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                    <path d="M12 7v4"></path>
+                    <path d="M12 15h.01"></path>
                 </svg>
             )
         },
         {
             id: "04",
-            title: "Entrega certificada",
-            desc: "Recepción del equipo calibrado en su consultorio en 24-48 horas hábiles.",
+            title: "Entrega y recogida",
+            desc: "Entrega técnica en su ubicación y recogida al finalizar el periodo de alquiler.",
             icon: (
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect>
                     <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon>
+                    <path d="M12 12h11"></path>
                     <circle cx="5.5" cy="18.5" r="2.5"></circle>
                     <circle cx="18.5" cy="18.5" r="2.5"></circle>
                 </svg>

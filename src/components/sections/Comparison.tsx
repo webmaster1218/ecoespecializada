@@ -84,7 +84,7 @@ export default function Comparison() {
                                     <IconDiamond size={24} />
                                 </div>
                                 <div>
-                                    <strong>Alquiler desde $350/día</strong>
+                                    <strong>Alquiler desde $350.000 pesos/día</strong>
                                     <p>Sin cuota inicial millonaria. Paga solo por los días que usas.</p>
                                 </div>
                             </li>

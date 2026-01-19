@@ -17,7 +17,7 @@ export default function AboutUs() {
                         <div className={`${styles.storyCard} glass-card p-6 md:p-10 lg:p-12 h-full flex flex-col justify-center`}>
                             <h3 className={styles.storyTitle}>Nuestra historia</h3>
                             <p className={styles.storyText}>
-                                <strong>Alquiler de ecógrafos</strong> nació de una necesidad real: los profesionales médicos colombianos requerían acceso a tecnología de diagnóstico de alta gama sin el peso financiero de una inversión millonaria. Somos especialistas en ecógrafos con respaldo oficial de <strong>Equibiomedic</strong>, el distribuidor autorizado de Mindray en Colombia.
+                                Hacemos parte integral de <strong>Equibiomedic</strong>, empresa líder en tecnología médica, pero nos enfocamos de manera especializada en el <strong>alquiler de ecógrafos</strong>. Nacimos de una necesidad real: facilitar el acceso a tecnología de diagnóstico de alta gama sin el peso financiero de una inversión millonaria.
                             </p>
                             <p className={styles.storyText}>
                                 Entendemos el día a día de los consultorios, clínicas y servicios de diagnóstico móvil. Por eso ofrecemos una solución flexible que se adapta a tus necesidades, con equipos de última generación y soporte técnico real.

@@ -4,6 +4,7 @@ import React from 'react';
 import styles from './LogoLoop.module.css';
 
 const logoData = [
+    { name: "Equibiomedic", url: "/images/logo/equibiomedic-new.png" },
     { name: "Sura", url: "https://images.seeklogo.com/logo-png/32/1/sura-logo-png_seeklogo-328191.png" },
     { name: "Hospital Pablo Tobón Uribe", url: "https://images.seeklogo.com/logo-png/25/1/hospital-pablo-tobon-uribe-logo-png_seeklogo-251956.png" },
     { name: "Clínica del Country", url: "https://images.seeklogo.com/logo-png/35/1/clinica-internacional-logo-png_seeklogo-359473.png" },
