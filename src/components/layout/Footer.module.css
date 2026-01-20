@@ -30,10 +30,21 @@
 }
 
 .logo {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     font-weight: 700;
     color: var(--color-primary);
+}
+
+.headerWithLogo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
     margin-bottom: 10px;
+}
+
+.footerLogoImg {
+    object-fit: contain;
 }
 
 .description {

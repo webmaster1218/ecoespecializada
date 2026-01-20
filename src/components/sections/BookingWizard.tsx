@@ -479,7 +479,7 @@ export default function BookingWizard() {
                                             <input
                                                 type="text"
                                                 className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'}`}
-                                                placeholder={formData.clientType === 'clinica' ? 'NIT de la empresa (si aplica)' : 'RUT personal (si aplica)'}
+                                                placeholder={formData.clientType === 'clinica' ? 'Agregar para la facturacion electronica' : 'Agregar para la facturacion electronica'}
                                                 value={formData.taxId}
                                                 onChange={(e) => updateData('taxId', e.target.value)}
                                             />
@@ -737,7 +737,7 @@ export default function BookingWizard() {
                                         <div className={`p-3 rounded-2xl border transition-colors ${formData.includeCart ? 'bg-indigo-50 border-indigo-200' : 'bg-slate-50 border-slate-100'}`}>
                                             <div className="flex items-center gap-3">
                                                 <div className="relative w-10 h-10 rounded-lg overflow-hidden bg-white border border-slate-200 flex-shrink-0">
-                                                    <Image src="/images/cart_thumbnail.png" alt="Carrito" fill className="object-cover" />
+                                                    <Image src="/images/cart_thumbnail.webp" alt="Carrito" fill className="object-cover" />
                                                 </div>
                                                 <div className="flex-1">
                                                     <div className="flex items-center justify-between">

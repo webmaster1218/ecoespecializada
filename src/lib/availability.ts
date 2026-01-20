@@ -64,11 +64,13 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
         };
 
     } catch (err) {
-        console.error('Availability check failed:', err);
-        // Fallback or re-throw? 
-        // Logic: if check fails, maybe assume no availability to prevent overbooking?
-        // Or assume full availability? Safer to return 0.
-        return { z6: 0, z60: 0, available: false };
+        console.warn('Availability check failed (Supabase might be paused) - falling back to full stock:', err);
+        // Fallback: If Supabase fails, assume everything is available
+        return {
+            z6: TOTAL_STOCK.z6,
+            z60: TOTAL_STOCK.z60,
+            available: true
+        };
     }
 }
 
@@ -77,64 +79,70 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
  * Scans the next 60 days.
  */
 export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: number): Promise<string | null> {
-    if (!supabase) {
-        // Return tomorrow as next available date if Supabase is not configured
+    try {
+        if (!supabase) {
+            // Return tomorrow as next available date if Supabase is not configured
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            return tomorrow.toISOString().split('T')[0];
+        }
+
+        const today = new Date();
+        // Start checking from tomorrow
+        const checkDate = new Date(today);
+        checkDate.setDate(checkDate.getDate() + 1);
+
+        const maxDate = new Date(today);
+        maxDate.setDate(maxDate.getDate() + 60); // Check next 60 days
+
+        // 1. Fetch all active bookings for this model in the next 60 days
+        const { data: bookings } = await supabase
+            .from('bookings')
+            .select(`start_date, end_date, quantity_${model}`)
+            .filter('status', 'in', '("confirmed","pending_delivery","delivered","pending_pickup")')
+            .lte('start_date', maxDate.toISOString())
+            .gte('end_date', checkDate.toISOString());
+
+        const activeBookings = bookings || [];
+        const stock = TOTAL_STOCK[model];
+
+        // 2. Iterate day by day to find a gap of 'durationDays'
+        while (checkDate <= maxDate) {
+            let isWindowAvailable = true;
+
+            // Check if the window [checkDate, checkDate + duration] is clear
+            for (let i = 0; i < durationDays; i++) {
+                const currentDay = new Date(checkDate);
+                currentDay.setDate(currentDay.getDate() + i);
+                const dateStr = currentDay.toISOString().split('T')[0];
+
+                // Count usage on this specific day
+                let usage = 0;
+                activeBookings.forEach(b => {
+                    if (b.start_date <= dateStr && b.end_date >= dateStr) {
+                        usage += (b[`quantity_${model}` as keyof typeof b] as number) || 0;
+                    }
+                });
+
+                if (stock - usage <= 0) {
+                    isWindowAvailable = false;
+                    break; // Stop checking this window, try next start date
+                }
+            }
+
+            if (isWindowAvailable) {
+                return checkDate.toISOString().split('T')[0];
+            }
+
+            // Increment start date
+            checkDate.setDate(checkDate.getDate() + 1);
+        }
+
+        return null; // No slot found
+    } catch (err) {
+        console.warn('Next available date check failed - falling back to tomorrow:', err);
         const tomorrow = new Date();
         tomorrow.setDate(tomorrow.getDate() + 1);
         return tomorrow.toISOString().split('T')[0];
     }
-
-    const today = new Date();
-    // Start checking from tomorrow
-    const checkDate = new Date(today);
-    checkDate.setDate(checkDate.getDate() + 1);
-
-    const maxDate = new Date(today);
-    maxDate.setDate(maxDate.getDate() + 60); // Check next 60 days
-
-    // 1. Fetch all active bookings for this model in the next 60 days
-    const { data: bookings } = await supabase
-        .from('bookings')
-        .select(`start_date, end_date, quantity_${model}`)
-        //.in('status', ['confirmed', 'pending_delivery', 'delivered', 'pending_pickup']) -- Fixed syntax error potential
-        .filter('status', 'in', '("confirmed","pending_delivery","delivered","pending_pickup")')
-        .lte('start_date', maxDate.toISOString())
-        .gte('end_date', checkDate.toISOString());
-
-    const activeBookings = bookings || [];
-    const stock = TOTAL_STOCK[model];
-
-    // 2. Iterate day by day to find a gap of 'durationDays'
-    while (checkDate <= maxDate) {
-        let isWindowAvailable = true;
-
-        // Check if the window [checkDate, checkDate + duration] is clear
-        for (let i = 0; i < durationDays; i++) {
-            const currentDay = new Date(checkDate);
-            currentDay.setDate(currentDay.getDate() + i);
-            const dateStr = currentDay.toISOString().split('T')[0];
-
-            // Count usage on this specific day
-            let usage = 0;
-            activeBookings.forEach(b => {
-                if (b.start_date <= dateStr && b.end_date >= dateStr) {
-                    usage += (b[`quantity_${model}` as keyof typeof b] as number) || 0;
-                }
-            });
-
-            if (stock - usage <= 0) {
-                isWindowAvailable = false;
-                break; // Stop checking this window, try next start date
-            }
-        }
-
-        if (isWindowAvailable) {
-            return checkDate.toISOString().split('T')[0];
-        }
-
-        // Increment start date
-        checkDate.setDate(checkDate.getDate() + 1);
-    }
-
-    return null; // No slot found
 }

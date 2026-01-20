@@ -56,40 +56,68 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
 
             <AnimatePresence>
                 {isOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-                        className="absolute z-[100] mt-2 p-0 bg-white rounded-[32px] shadow-2xl overflow-hidden border border-slate-100 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-auto md:right-0 origin-top"
-                    >
-                        <Calendar
-                            mode="single"
-                            selected={selectedDate}
-                            onSelect={(date) => {
-                                if (date) {
-                                    onChange(format(date, "yyyy-MM-dd"));
-                                    setIsOpen(false);
-                                }
-                            }}
-                            disabled={(date) => isBefore(date, min) && !isSameDay(date, min)}
-                            locale={es}
-                            initialFocus
+                    <>
+                        {/* Backdrop for mobile */}
+                        <motion.div
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsOpen(false)}
+                            className="fixed inset-0 bg-slate-900/40 backdrop-blur-[2px] z-[90] md:hidden"
                         />
-                        <div className="p-3 bg-slate-50/50 border-t border-slate-50 flex justify-between gap-2">
-                            <button
-                                onClick={() => { onChange(format(new Date(), "yyyy-MM-dd")); setIsOpen(false); }}
-                                className="flex-1 py-2 rounded-xl text-xs font-bold text-blue-600 hover:bg-white transition-colors border border-transparent hover:border-blue-100"
-                            >
-                                Seleccionar Hoy
-                            </button>
-                            <button
-                                onClick={() => { onChange(""); setIsOpen(false); }}
-                                className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-700 transition-colors"
-                            >
-                                Limpiar
-                            </button>
-                        </div>
-                    </motion.div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                            animate={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                                transition: { type: 'spring', damping: 25, stiffness: 300 }
+                            }}
+                            exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                            className="fixed md:absolute z-[100] mt-2 p-0 bg-white rounded-[32px] shadow-2xl overflow-hidden border border-slate-100 
+                                       inset-x-4 top-[20%] mx-auto max-w-[320px] h-fit
+                                       md:inset-auto md:top-full md:left-1/2 md:-translate-x-1/2 md:origin-top lg:left-auto lg:right-0 lg:translate-x-0"
+                        >
+                            <div className="p-4 border-b border-slate-50 md:hidden flex justify-between items-center bg-slate-50/50">
+                                <span className="font-bold text-slate-800 text-sm">{label}</span>
+                                <button
+                                    onClick={() => setIsOpen(false)}
+                                    className="p-1.5 rounded-full hover:bg-slate-200 text-slate-400 transition-colors"
+                                >
+                                    <IconChevronDown size={18} />
+                                </button>
+                            </div>
+
+                            <Calendar
+                                mode="single"
+                                selected={selectedDate}
+                                onSelect={(date) => {
+                                    if (date) {
+                                        onChange(format(date, "yyyy-MM-dd"));
+                                        setIsOpen(false);
+                                    }
+                                }}
+                                disabled={(date) => isBefore(date, min) && !isSameDay(date, min)}
+                                locale={es}
+                                initialFocus
+                            />
+                            <div className="p-3 bg-slate-50/50 border-t border-slate-50 flex justify-between gap-2">
+                                <button
+                                    onClick={() => { onChange(format(new Date(), "yyyy-MM-dd")); setIsOpen(false); }}
+                                    className="flex-1 py-2 rounded-xl text-xs font-bold text-blue-600 hover:bg-white transition-colors border border-transparent hover:border-blue-100"
+                                >
+                                    Seleccionar Hoy
+                                </button>
+                                <button
+                                    onClick={() => { onChange(""); setIsOpen(false); }}
+                                    className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 hover:text-slate-700 transition-colors"
+                                >
+                                    Limpiar
+                                </button>
+                            </div>
+                        </motion.div>
+                    </>
                 )}
             </AnimatePresence>
         </div>

@@ -1,36 +1,37 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import LoginScreen from "@/components/admin/LoginScreen";
+import { useRouter } from "next/navigation";
 import BookingsCalendar from "@/components/admin/BookingsCalendar";
 import AdminBookingModal from "@/components/admin/AdminBookingModal";
 import Image from "next/image";
 
 export default function CalendarPage() {
+    const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
-
     const [selectedBooking, setSelectedBooking] = useState<any>(null);
 
     useEffect(() => {
-        // ... (check session storage)
         const auth = sessionStorage.getItem("admin_auth");
         if (auth === "true") {
             setIsAuthenticated(true);
+            setIsLoading(false);
+        } else {
+            router.push("/login");
         }
-        setIsLoading(false);
-    }, []);
+    }, [router]);
 
-    const handleLogin = () => {
-        sessionStorage.setItem("admin_auth", "true");
-        setIsAuthenticated(true);
-    };
-
-    if (isLoading) return null;
-
-    if (!isAuthenticated) {
-        return <LoginScreen onLogin={handleLogin} />;
+    if (isLoading || !isAuthenticated) {
+        return (
+            <div className="min-h-screen bg-slate-50 flex items-center justify-center">
+                <div className="flex flex-col items-center gap-4">
+                    <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin"></div>
+                    <p className="text-slate-500 font-medium font-sans">Verificando sesión...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -39,7 +40,7 @@ export default function CalendarPage() {
                 <div className="flex items-center gap-4">
                     <div className="relative w-32 h-10 overflow-hidden">
                         <Image
-                            src="/images/logo/logo.jpg"
+                            src="/images/logo/logo_alquilerdeecografos.webp"
                             alt="Logo"
                             fill
                             className="object-contain"
@@ -63,7 +64,10 @@ export default function CalendarPage() {
                         <span className="text-base md:text-lg">+</span> <span className="hidden md:inline">Nueva Reserva</span><span className="md:hidden">Reserva</span>
                     </button>
                     <button
-                        onClick={() => { sessionStorage.removeItem("admin_auth"); window.location.reload(); }}
+                        onClick={() => {
+                            sessionStorage.removeItem("admin_auth");
+                            router.push("/login");
+                        }}
                         className="text-xs md:text-sm text-slate-500 hover:text-red-600 font-semibold px-2 py-2 md:px-4 hover:bg-red-50 rounded-full transition-colors flex items-center gap-1"
                     >
                         <span className="hidden md:inline">Salir</span>
