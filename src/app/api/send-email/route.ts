@@ -2,11 +2,21 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-    // Verificación ultra-temprana
-    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    // 1. Diagnóstico de variables de entorno
+    const vars = {
+        host: process.env.SMTP_HOST,
+        port: process.env.SMTP_PORT,
+        user: process.env.SMTP_USER,
+        pass: !!process.env.SMTP_PASS ? 'PRESENTE' : 'FALTA'
+    };
+
+    if (!vars.user || !vars.pass || !vars.host) {
         return NextResponse.json({
-            error: "Faltan SMTP_USER o SMTP_PASS en el servidor.",
-            envKeysFound: Object.keys(process.env).filter(k => k.includes('SMTP'))
+            error: "Faltan variables SMTP en el servidor Hostinger.",
+            details: "Asegúrate de haber guardado las variables en el panel de Node.js y haber reiniciado la app.",
+            diagnostics: {
+                keysFound: Object.keys(process.env).filter(k => k.includes('SMTP'))
+            }
         }, { status: 500 });
     }
 
@@ -22,43 +32,42 @@ export async function POST(req: Request) {
             full_address
         } = body;
 
-        // Diagnóstico: Validar presencia de variables (sin mostrar valores sensibles)
-        const missingVars = [];
-        if (!process.env.SMTP_USER) missingVars.push('SMTP_USER');
-        if (!process.env.SMTP_PASS) missingVars.push('SMTP_PASS');
-        if (!process.env.SMTP_HOST) missingVars.push('SMTP_HOST');
-
-        if (missingVars.length > 0) {
-            console.error('SMTP MISSING VARS:', missingVars);
-            return NextResponse.json({
-                error: `Configuración SMTP incompleta. Faltan: ${missingVars.join(', ')}`,
-                diagnostics: {
-                    keysAvailable: Object.keys(process.env).filter(key => key.includes('SMTP') || key.includes('NEXT_PUBLIC'))
-                }
-            }, { status: 500 });
-        }
-
+        // Configuración refinada para Hostinger
         const transporter = nodemailer.createTransport({
-            host: process.env.SMTP_HOST,
-            port: parseInt(process.env.SMTP_PORT || '587'),
-            secure: process.env.SMTP_PORT === '465', // Solo true para 465
+            host: vars.host,
+            port: parseInt(vars.port || '587'),
+            secure: vars.port === '465',
             auth: {
-                user: process.env.SMTP_USER,
+                user: vars.user,
                 pass: process.env.SMTP_PASS,
             },
             tls: {
-                rejectUnauthorized: false
-            }
+                rejectUnauthorized: false,
+                minVersion: 'TLSv1.2'
+            },
+            debug: true, // Habilitar debug interno
+            logger: true // Loguear a la consola del servidor
         });
 
-        const mailOptions = {
-            from: `"Alquiler de Ecógrafos" <${process.env.SMTP_USER}>`,
-            to: client_email,
-            bcc: process.env.SMTP_USER,
-            subject: '✅ Confirmación de Solicitud de Reserva - Alquiler de Ecógrafos',
-        };
+        // Verificar conexión antes de intentar enviar
+        try {
+            await transporter.verify();
+        } catch (verifyError: any) {
+            console.error('SMTP Verify Error:', verifyError);
+            return NextResponse.json({
+                error: "Error de autenticación/conexión con Hostinger.",
+                smtp_error: verifyError.message,
+                code: verifyError.code,
+                command: verifyError.command
+            }, { status: 500 });
+        }
 
-        const htmlContent = `
+        const mailOptions = {
+            from: `"Alquiler de Ecógrafos" <${vars.user}>`,
+            to: client_email,
+            bcc: vars.user,
+            subject: '✅ Confirmación de Solicitud de Reserva - Alquiler de Ecógrafos',
+            html: `
             <!DOCTYPE html>
             <html>
             <head>
@@ -133,21 +142,18 @@ export async function POST(req: Request) {
                 </div>
             </body>
             </html>
-        `;
+        `,
+        };
 
-        await transporter.sendMail({
-            ...mailOptions,
-            html: htmlContent
-        });
-
+        await transporter.sendMail(mailOptions);
         return NextResponse.json({ success: true });
+
     } catch (error: any) {
-        console.error('SERVER ERROR SENDING EMAIL:', error);
+        console.error('SERVER ERROR:', error);
         return NextResponse.json({
             error: error.message,
             code: error.code,
-            command: error.command,
-            info: error.response // Información extra de la conexión SMTP
+            command: error.command
         }, { status: 500 });
     }
 }
