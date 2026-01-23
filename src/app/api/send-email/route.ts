@@ -14,10 +14,21 @@ export async function POST(req: Request) {
             full_address
         } = body;
 
+        // Diagnóstico: Validar presencia de variables (sin mostrar valores sensibles)
+        if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.SMTP_HOST) {
+            console.error('SMTP MISSING VARS:', {
+                user: !!process.env.SMTP_USER,
+                pass: !!process.env.SMTP_PASS,
+                host: !!process.env.SMTP_HOST,
+                port: !!process.env.SMTP_PORT
+            });
+            throw new Error('Configuración SMTP incompleta en las variables de entorno del servidor.');
+        }
+
         const transporter = nodemailer.createTransport({
             host: process.env.SMTP_HOST,
-            port: parseInt(process.env.SMTP_PORT || '465'),
-            secure: true, // true for 465
+            port: parseInt(process.env.SMTP_PORT || '587'),
+            secure: process.env.SMTP_PORT === '465', // Solo true para 465
             auth: {
                 user: process.env.SMTP_USER,
                 pass: process.env.SMTP_PASS,
@@ -123,7 +134,7 @@ export async function POST(req: Request) {
             error: error.message,
             code: error.code,
             command: error.command,
-            stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+            info: error.response // Información extra de la conexión SMTP
         }, { status: 500 });
     }
 }

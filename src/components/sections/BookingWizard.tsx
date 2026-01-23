@@ -187,17 +187,23 @@ export default function BookingWizard() {
                 body: JSON.stringify(payload),
             });
 
-            // Re-estableciendo el envío de correo
+            // Re-estableciendo el envío de correo con diagnóstico detallado
             try {
-                await fetch('/api/send-email', {
+                const emailResponse = await fetch('/api/send-email', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(payload),
                 });
+
+                if (!emailResponse.ok) {
+                    const errorDetails = await emailResponse.json();
+                    console.error("DEBUG - Email Error:", JSON.stringify(errorDetails, null, 2));
+                    // Si falla por variables faltantes, lo sabremos aquí
+                }
             } catch (emailErr) {
-                console.error("Error enviando el correo:", emailErr);
+                console.error("Critical error calling email API:", emailErr);
             }
 
             return true;
