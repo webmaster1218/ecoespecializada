@@ -187,6 +187,19 @@ export default function BookingWizard() {
                 body: JSON.stringify(payload),
             });
 
+            // Re-estableciendo el envío de correo
+            try {
+                await fetch('/api/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(payload),
+                });
+            } catch (emailErr) {
+                console.error("Error enviando el correo:", emailErr);
+            }
+
             return true;
 
         } catch (err) {
