@@ -2,24 +2,6 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-    // 1. Diagnóstico de variables de entorno
-    const vars = {
-        host: process.env.SMTP_HOST,
-        port: process.env.SMTP_PORT,
-        user: process.env.SMTP_USER,
-        pass: !!process.env.SMTP_PASS ? 'PRESENTE' : 'FALTA'
-    };
-
-    if (!vars.user || !vars.pass || !vars.host) {
-        return NextResponse.json({
-            error: "Faltan variables SMTP en el servidor Hostinger.",
-            details: "Asegúrate de haber guardado las variables en el panel de Node.js y haber reiniciado la app.",
-            diagnostics: {
-                keysFound: Object.keys(process.env).filter(k => k.includes('SMTP'))
-            }
-        }, { status: 500 });
-    }
-
     try {
         const body = await req.json();
         const {
@@ -32,40 +14,29 @@ export async function POST(req: Request) {
             full_address
         } = body;
 
-        // Configuración refinada para Hostinger
+        // VALORES PLAN B: Fallback directo para Hostinger
+        const SMTP_HOST = process.env.SMTP_HOST || 'smtp.hostinger.com';
+        const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
+        const SMTP_USER = process.env.SMTP_USER || 'info@alquilerdeecografos.com';
+        const SMTP_PASS = process.env.SMTP_PASS || 'Fb12188$';
+
         const transporter = nodemailer.createTransport({
-            host: vars.host,
-            port: parseInt(vars.port || '587'),
-            secure: vars.port === '465',
+            host: SMTP_HOST,
+            port: SMTP_PORT,
+            secure: SMTP_PORT === 465,
             auth: {
-                user: vars.user,
-                pass: process.env.SMTP_PASS,
+                user: SMTP_USER,
+                pass: SMTP_PASS,
             },
             tls: {
-                rejectUnauthorized: false,
-                minVersion: 'TLSv1.2'
-            },
-            debug: true, // Habilitar debug interno
-            logger: true // Loguear a la consola del servidor
+                rejectUnauthorized: false
+            }
         });
 
-        // Verificar conexión antes de intentar enviar
-        try {
-            await transporter.verify();
-        } catch (verifyError: any) {
-            console.error('SMTP Verify Error:', verifyError);
-            return NextResponse.json({
-                error: "Error de autenticación/conexión con Hostinger.",
-                smtp_error: verifyError.message,
-                code: verifyError.code,
-                command: verifyError.command
-            }, { status: 500 });
-        }
-
         const mailOptions = {
-            from: `"Alquiler de Ecógrafos" <${vars.user}>`,
+            from: `"Alquiler de Ecógrafos" <${SMTP_USER}>`,
             to: client_email,
-            bcc: vars.user,
+            bcc: SMTP_USER,
             subject: '✅ Confirmación de Solicitud de Reserva - Alquiler de Ecógrafos',
             html: `
             <!DOCTYPE html>
@@ -142,7 +113,7 @@ export async function POST(req: Request) {
                 </div>
             </body>
             </html>
-        `,
+            `,
         };
 
         await transporter.sendMail(mailOptions);
