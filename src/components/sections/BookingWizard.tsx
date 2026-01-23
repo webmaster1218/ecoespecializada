@@ -198,13 +198,16 @@ export default function BookingWizard() {
                 });
 
                 if (!emailResponse.ok) {
-                    const errorDetails = await emailResponse.json();
-                    console.error("DEBUG - Email Error:", JSON.stringify(errorDetails, null, 2));
-                    alert(`⚠️ Error al enviar correo: ${errorDetails.error || 'Error desconocido'}\n\nRevisa la configuración de Hostinger.`);
+                    let errorText = await emailResponse.text();
+                    try {
+                        const errorDetails = JSON.parse(errorText);
+                        alert(`⚠️ Error SMTP: ${errorDetails.error || 'Error desconocido'}`);
+                    } catch (e) {
+                        alert(`⚠️ Error del Servidor (500): ${errorText.substring(0, 100)}`);
+                    }
                 }
-            } catch (emailErr) {
-                console.error("Critical error calling email API:", emailErr);
-                alert("❌ Error crítico al intentar conectar con el servicio de correos.");
+            } catch (emailErr: any) {
+                alert(`❌ Error de conexión: ${emailErr.message}`);
             }
 
             return true;

@@ -2,6 +2,14 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
+    // Verificación ultra-temprana
+    if (!process.env.SMTP_USER || !process.env.SMTP_PASS) {
+        return NextResponse.json({
+            error: "Faltan SMTP_USER o SMTP_PASS en el servidor.",
+            envKeysFound: Object.keys(process.env).filter(k => k.includes('SMTP'))
+        }, { status: 500 });
+    }
+
     try {
         const body = await req.json();
         const {
