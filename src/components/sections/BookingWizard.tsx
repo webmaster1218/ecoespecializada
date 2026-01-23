@@ -200,10 +200,11 @@ export default function BookingWizard() {
                 if (!emailResponse.ok) {
                     const errorDetails = await emailResponse.json();
                     console.error("DEBUG - Email Error:", JSON.stringify(errorDetails, null, 2));
-                    // Si falla por variables faltantes, lo sabremos aquí
+                    alert(`⚠️ Error al enviar correo: ${errorDetails.error || 'Error desconocido'}\n\nRevisa la configuración de Hostinger.`);
                 }
             } catch (emailErr) {
                 console.error("Critical error calling email API:", emailErr);
+                alert("❌ Error crítico al intentar conectar con el servicio de correos.");
             }
 
             return true;

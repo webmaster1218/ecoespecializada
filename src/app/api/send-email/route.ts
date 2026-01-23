@@ -15,14 +15,19 @@ export async function POST(req: Request) {
         } = body;
 
         // Diagnóstico: Validar presencia de variables (sin mostrar valores sensibles)
-        if (!process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.SMTP_HOST) {
-            console.error('SMTP MISSING VARS:', {
-                user: !!process.env.SMTP_USER,
-                pass: !!process.env.SMTP_PASS,
-                host: !!process.env.SMTP_HOST,
-                port: !!process.env.SMTP_PORT
-            });
-            throw new Error('Configuración SMTP incompleta en las variables de entorno del servidor.');
+        const missingVars = [];
+        if (!process.env.SMTP_USER) missingVars.push('SMTP_USER');
+        if (!process.env.SMTP_PASS) missingVars.push('SMTP_PASS');
+        if (!process.env.SMTP_HOST) missingVars.push('SMTP_HOST');
+
+        if (missingVars.length > 0) {
+            console.error('SMTP MISSING VARS:', missingVars);
+            return NextResponse.json({
+                error: `Configuración SMTP incompleta. Faltan: ${missingVars.join(', ')}`,
+                diagnostics: {
+                    keysAvailable: Object.keys(process.env).filter(key => key.includes('SMTP') || key.includes('NEXT_PUBLIC'))
+                }
+            }, { status: 500 });
         }
 
         const transporter = nodemailer.createTransport({
