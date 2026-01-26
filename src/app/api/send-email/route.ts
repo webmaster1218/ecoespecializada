@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+export const dynamic = 'force-dynamic';
+
 export async function POST(req: Request) {
     try {
         const body = await req.json();
@@ -19,6 +21,19 @@ export async function POST(req: Request) {
         const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
         const SMTP_USER = process.env.SMTP_USER;
         const SMTP_PASS = process.env.SMTP_PASS;
+
+        // Validación de configuración
+        if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+            console.error('ERROR DE CONFIGURACIÓN SMTP: Faltan variables de entorno.', {
+                hasHost: !!SMTP_HOST,
+                hasUser: !!SMTP_USER,
+                hasPass: !!SMTP_PASS
+            });
+            return NextResponse.json({
+                error: 'Error de configuración del servidor de correo. Por favor, reinicia el servidor de desarrollo para cargar el archivo .env.',
+                code: 'CONFIG_ERROR'
+            }, { status: 500 });
+        }
 
         const transporter = nodemailer.createTransport({
             host: SMTP_HOST,

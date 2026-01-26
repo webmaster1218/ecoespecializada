@@ -45,8 +45,8 @@ export default function Gracias() {
 
                     {/* CTA para volver al inicio */}
                     <div className={styles.actions} data-aos="fade-up" data-aos-delay="300">
-                        <Link href="/" className="btn-primary flex items-center gap-2">
-                            <IconArrowLeft size={20} />
+                        <Link href="/" className="btn-primary flex items-center gap-2 px-8 py-4 text-lg">
+                            <IconArrowLeft size={24} />
                             Volver al inicio
                         </Link>
                     </div>
