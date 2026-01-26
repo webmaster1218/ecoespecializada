@@ -14,11 +14,11 @@ export async function POST(req: Request) {
             full_address
         } = body;
 
-        // VALORES PLAN B: Fallback directo para Hostinger
-        const SMTP_HOST = process.env.SMTP_HOST || 'smtp.hostinger.com';
+        // Usar variables de entorno para las credenciales
+        const SMTP_HOST = process.env.SMTP_HOST;
         const SMTP_PORT = parseInt(process.env.SMTP_PORT || '587');
-        const SMTP_USER = process.env.SMTP_USER || 'info@alquilerdeecografos.com';
-        const SMTP_PASS = process.env.SMTP_PASS || 'Fb12188$';
+        const SMTP_USER = process.env.SMTP_USER;
+        const SMTP_PASS = process.env.SMTP_PASS;
 
         const transporter = nodemailer.createTransport({
             host: SMTP_HOST,
