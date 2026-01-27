@@ -35,7 +35,7 @@ export default function PoliciesPage() {
                             <p><strong className="text-slate-900">Razón Social:</strong> Alquiler de Ecógrafos Colombia</p>
                             <p><strong className="text-slate-900">NIT:</strong> 900.000.000-0</p>
                             <p><strong className="text-slate-900">Dirección Principal:</strong> Calle 123 # 45-67, Medellín, Colombia</p>
-                            <p><strong className="text-slate-900">Email:</strong> info@ecoalquilercolombia.com</p>
+                            <p><strong className="text-slate-900">Email:</strong>info@alquilerdeecografos.com</p>
                             <p><strong className="text-slate-900">Teléfono:</strong> (601) 000-0000</p>
                             <p><strong className="text-slate-900">Sitio Web:</strong> www.alquilerdeecografos.com.co</p>
                         </div>
@@ -107,7 +107,7 @@ export default function PoliciesPage() {
                                 </div>
                             </div>
                             <p>
-                                Para ejercer estos derechos, puede enviar su solicitud a través del correo electrónico <strong>info@ecoalquilercolombia.com</strong> o mediante nuestra página web. Sus solicitudes (Peticiones, Quejas, Reclamos - PQRS) serán atendidas en un plazo máximo de <strong>10 a 15 días hábiles</strong>.
+                                Para ejercer estos derechos, puede enviar su solicitud a través del correo electrónico <strong>info@alquilerdeecografos.com</strong> o mediante nuestra página web. Sus solicitudes (Peticiones, Quejas, Reclamos - PQRS) serán atendidas en un plazo máximo de <strong>10 a 15 días hábiles</strong>.
                             </p>
                             <p className="mt-4 text-sm text-slate-500">
                                 Si considera que sus derechos han sido vulnerados, puede acudir a la <strong>Superintendencia de Industria y Comercio (SIC)</strong>. Implementamos medidas de seguridad técnicas, humanas y administrativas estrictas para evitar la adulteración, pérdida, consulta o acceso no autorizado de su información.

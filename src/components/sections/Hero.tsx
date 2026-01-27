@@ -49,7 +49,7 @@ export default function Hero() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.5 }}
                     >
-                        <a href="#contacto" className="btn-primary">
+                        <a href="#reservar" className="btn-primary">
                             Cotizar ahora
                             <span className="ml-2 bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
                                 🔥 4 disp.

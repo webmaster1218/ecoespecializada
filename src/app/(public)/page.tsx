@@ -11,21 +11,23 @@ import AdditionalServices from "@/components/sections/AdditionalServices";
 import Advantages from "@/components/sections/Advantages";
 import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
+import ExperienceVideo from "@/components/sections/ExperienceVideo";
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
     <main>
       <Hero />
-      <Comparison />
+      <ExperienceVideo />
+      <Advantages />
       <ProductCatalog />
-      <BookingWizard />
       <ClinicalApplications />
+      <BookingWizard />
       <HowItWorks />
+      <Comparison />
       <AboutUs />
       <LogoLoop />
       <AdditionalServices />
-      <Advantages />
       <Testimonials />
       <FAQ />
 

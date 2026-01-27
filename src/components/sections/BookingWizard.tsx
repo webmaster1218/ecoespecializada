@@ -388,7 +388,7 @@ export default function BookingWizard() {
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
                         Personaliza tu <span className="text-blue-400">solución</span>
                     </h2>
-                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Reserva tu <strong>ecógrafo en Medellín</strong> o cualquier ciudad del país en minutos.</p>
+                    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">Proceso 100% digital. Reserva tu <strong>ecógrafo en Medellín</strong> en minutos.</p>
                 </div>
 
                 {/* Wizard Component */}

@@ -97,12 +97,15 @@
     margin-bottom: 0.75rem;
 }
 
-.oldPrice {
-    text-decoration: line-through;
-    color: #adb5bd;
-    font-size: 1.1rem;
+.equipmentDescription {
+    color: #64748b;
+    font-size: 0.85rem;
+    line-height: 1.4;
     display: block;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.75rem;
+    min-height: 2.8rem;
+    /* Enough for 2 lines */
+    text-align: center;
 }
 
 .currentPrice {

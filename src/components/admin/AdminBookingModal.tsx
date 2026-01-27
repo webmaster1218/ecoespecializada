@@ -235,7 +235,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                             <h3 className="font-black text-2xl tracking-tight leading-none mb-1">
                                 {bookingToEdit ? 'Gestionar Logística' : 'Nueva Reserva Manual'}
                             </h3>
-                            <p className="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">EcoAlquiler Admin</p>
+                            <p className="text-white/80 text-xs font-bold uppercase tracking-[0.2em]">Alquiler de Ecógrafos Admin</p>
                         </div>
                     </div>
                     <button onClick={onClose} className="bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all hover:rotate-90">

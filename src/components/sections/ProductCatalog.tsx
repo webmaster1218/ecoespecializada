@@ -70,7 +70,7 @@ export default function ProductCatalog() {
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Modelos disponibles</span>
-                    <h2 className={styles.title}>Tecnología <span className="text-gradient">Mindray a tu alcance</span></h2>
+                    <h2 className={styles.title}>Tecnología <span className="text-gradient">mindray a tu alcance</span></h2>
                     <p className={styles.subtitle}>Tecnología Mindray de última generación disponible para <strong>entrega inmediata en Medellín</strong> y despachos a nivel nacional.</p>
                 </div>
 
@@ -79,11 +79,13 @@ export default function ProductCatalog() {
                     <div className={`${styles.card} glass-card hover:shadow-lg transition-all`} data-aos="fade-up">
                         <div className={styles.cardHeader}>
                             <h3 className={styles.productName}>Mindray Z6</h3>
-                            <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">El caballo de batalla</span>
+                            <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">Funcionalidad y precio</span>
                         </div>
 
                         <div className={styles.priceContainer}>
-                            <span className={styles.oldPrice}>$ 20.000</span>
+                            <p className={styles.equipmentDescription}>
+                                Portabilidad y versatilidad para diagnósticos generales. Calidad de imagen sorprendente para su segmento.
+                            </p>
                             <div className={`${styles.currentPrice} text-slate-900`}>$ 350.000<span className={styles.period}>/día</span></div>
                         </div>
 
@@ -130,11 +132,13 @@ export default function ProductCatalog() {
                         <div className={`${styles.featuredBadge} bg-blue-600 text-white shadow-lg`}>Recomendado</div>
                         <div className={styles.cardHeader}>
                             <h3 className={styles.productName}>Mindray Z60</h3>
-                            <span className={`${styles.tag} bg-blue-50 text-blue-700 font-bold border border-blue-100`}>Calidad superior</span>
+                            <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">Sofware moderno, mejor resolución</span>
                         </div>
 
                         <div className={styles.priceContainer}>
-                            <span className={styles.oldPrice}>$ 25.000</span>
+                            <p className={styles.equipmentDescription}>
+                                Doppler avanzado y resolución superior para casos difíciles. El equilibrio perfecto entre potencia y diseño.
+                            </p>
                             <div className={`${styles.currentPrice} text-blue-600`}>$ 550.000<span className={styles.period}>/día</span></div>
                         </div>
 

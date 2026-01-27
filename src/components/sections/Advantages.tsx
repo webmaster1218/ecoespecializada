@@ -18,8 +18,8 @@ function Advantages() {
                     <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
                 </svg>
             ),
-            title: "Respaldo corporativo",
-            desc: "Para Clínicas e IPS. Soporte biomédico prioritario, mantenimientos incluidos y cumplimiento normativo INVIMA total."
+            title: "Respaldo",
+            desc: "Soporte biomédico prioritario, mantenimientos incluidos y cumplimiento normativo INVIMA total."
         },
         {
             icon: (
@@ -30,7 +30,7 @@ function Advantages() {
                 </svg>
             ),
             title: "Disponibilidad inmediata",
-            desc: "Stock permanente en Medellín y principales ciudades. Puesta en marcha en su consultorio en menos de 24 horas."
+            desc: "Stock permanente en Medellín. Puesta en marcha en su consultorio en menos de 24 horas."
         },
         {
             icon: (
@@ -56,7 +56,7 @@ function Advantages() {
                 <div className="text-center mb-16" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
-                        Por qué elegir <span className="text-blue-400">EcoAlquiler</span>
+                        Por qué elegir <span className="text-blue-400">alquilerdeecografos.com</span>
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
                 </div>
 

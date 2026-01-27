@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { IconBrandWhatsapp, IconMail, IconMapPin } from "@tabler/icons-react";
+import { IconBrandWhatsapp, IconMail, IconMapPin, IconBrandYoutube } from "@tabler/icons-react";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -42,6 +42,10 @@ export default function Footer() {
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconBrandWhatsapp size={20} className="text-emerald-500" /></span>
                                 <a href="https://wa.me/573005212664" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">WhatsApp: +57 3005212664</a>
+                            </div>
+                            <div className={styles.contactItem}>
+                                <span className={styles.icon}><IconBrandYoutube size={20} className="text-red-600" /></span>
+                                <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">Alquiler de Ecógrafos</a>
                             </div>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconMail size={20} className="text-blue-400" /></span>
