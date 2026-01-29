@@ -38,14 +38,18 @@ export async function POST(req: Request) {
         const transporter = nodemailer.createTransport({
             host: SMTP_HOST,
             port: SMTP_PORT,
-            secure: SMTP_PORT === 465,
+            secure: SMTP_PORT === 465, // True para puerto 465, false para otros
             auth: {
                 user: SMTP_USER,
                 pass: SMTP_PASS,
             },
             tls: {
+                // Ayuda a evitar errores de certificado en algunos servidores de hosting
                 rejectUnauthorized: false
-            }
+            },
+            // Aumentar el tiempo de espera para evitar timeouts en servidores lentos
+            connectionTimeout: 10000,
+            greetingTimeout: 10000,
         });
 
         const mailOptions = {
