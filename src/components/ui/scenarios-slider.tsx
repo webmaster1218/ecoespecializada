@@ -93,9 +93,15 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                                         key={scenario.id}
                                         onClick={() => handleThumbnailClick(originalIndex)}
                                         aria-label={`Ver escenario: ${scenario.title}`}
-                                        className="overflow-hidden rounded-lg w-16 h-20 md:w-20 md:h-24 opacity-60 hover:opacity-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 hover:scale-105 shadow-md"
+                                        className="overflow-hidden rounded-lg w-16 h-20 md:w-20 md:h-24 opacity-60 hover:opacity-100 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 hover:scale-105 shadow-md relative"
                                     >
-                                        <img src={scenario.thumbnailSrc} alt={scenario.title} className="w-full h-full object-cover" />
+                                        <Image
+                                            src={scenario.thumbnailSrc}
+                                            alt={scenario.title}
+                                            fill
+                                            className="object-cover"
+                                            sizes="80px"
+                                        />
                                     </button>
                                 );
                             })}

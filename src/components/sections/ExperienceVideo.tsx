@@ -1,6 +1,11 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./ExperienceVideo.module.css";
 
 export default function ExperienceVideo() {
+    const [showVideo, setShowVideo] = useState(false);
+
     return (
         <section className={styles.section} id="experiencia-video">
             <div className={styles.container}>
@@ -16,12 +21,33 @@ export default function ExperienceVideo() {
 
                 <div className={styles.contentRow}>
                     <div className={styles.videoWrapper}>
-                        <iframe
-                            src="https://www.youtube.com/embed/t77PUxAS_6Q"
-                            title="Testimonio Alquiler de Ecógrafos"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                        ></iframe>
+                        {!showVideo ? (
+                            <div
+                                className={styles.videoPlaceholder}
+                                onClick={() => setShowVideo(true)}
+                                style={{
+                                    backgroundImage: 'url("https://img.youtube.com/vi/t77PUxAS_6Q/maxresdefault.jpg")',
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    cursor: 'pointer',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center'
+                                }}
+                            >
+                                <div className={styles.playButton}>
+                                    <div className={styles.playArrow}></div>
+                                </div>
+                                <div className="absolute inset-0 bg-black/20 hover:bg-black/10 transition-colors" />
+                            </div>
+                        ) : (
+                            <iframe
+                                src="https://www.youtube.com/embed/t77PUxAS_6Q?autoplay=1"
+                                title="Testimonio Alquiler de Ecógrafos"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                allowFullScreen
+                            ></iframe>
+                        )}
                     </div>
 
 

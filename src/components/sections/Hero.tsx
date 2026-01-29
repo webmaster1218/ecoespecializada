@@ -26,9 +26,9 @@ export default function Hero() {
 
                     <motion.h1
                         className={styles.headline}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ duration: 0.5, delay: 0.1 }}
                     >
                         Alquiler de ecógrafos, listos para usar <br />
                         <span className="text-gradient">Recibe tu equipo rápido y sigue facturando.</span>
@@ -99,22 +99,22 @@ export default function Hero() {
 
                     {/* Layer 3: The Product Image */}
                     <motion.div
-                        initial={{ opacity: 0, y: 40 }}
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
                         className="relative z-30 flex items-center justify-center w-[350px] md:w-[480px]"
                     >
                         <Image
                             src="/images/z60/z-60-abierto-izquierda.webp"
                             alt="Ecógrafo Mindray Z60"
-                            width={600}
-                            height={600}
+                            width={500}
+                            height={500}
                             className="w-full h-auto object-contain drop-shadow-2xl"
                             style={{ mixBlendMode: 'multiply' }}
                             priority
                             fetchPriority="high"
                             decoding="sync"
-                            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 480px, 600px"
+                            sizes="(max-width: 640px) 90vw, (max-width: 1024px) 480px, 500px"
                         />
                     </motion.div>
 
