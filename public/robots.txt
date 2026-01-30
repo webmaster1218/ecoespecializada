@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Allow: /gracias
+Allow: /politicas
+Disallow: /admin
+Disallow: /login
+Disallow: /api
+Disallow: /_next
+
+Sitemap: https://alquilerdeecografos.com/sitemap.xml
