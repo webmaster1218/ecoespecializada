@@ -5,6 +5,7 @@ import Link from "next/link";
 import styles from "./Navbar.module.css";
 
 import Image from "next/image";
+import CallButton from "../ui/CallButton";
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
@@ -45,14 +46,19 @@ export default function Navbar() {
                     <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>
                         <a href="#inicio" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
                         <a href="#ventajas" onClick={() => setMobileMenuOpen(false)}>Ventajas</a>
-                        <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                         <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Equipos</a>
+                        <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                         <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros servicios</a>
-                        <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Opiniones</a>
+                        <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
                         <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar equipo</a>
                     </div>
 
                     <div className={styles.actions}>
+                        <CallButton 
+                            text="Llamar" 
+                            variant="outline" 
+                            className={styles.desktopCta} 
+                        />
                         <a href="#reservar" className={`btn-primary ${styles.desktopCta}`}>
                             <span className="mr-2 text-xl">📅</span> Separar equipo
                         </a>

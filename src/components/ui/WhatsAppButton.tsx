@@ -9,7 +9,7 @@ export default function WhatsAppButton() {
       className={styles.whatsappFloat}
       aria-label="Contactar por WhatsApp"
     >
-      <div className={styles.tooltip}>¿Necesitas ayuda? ¡Aqui te doy información!</div>
+      <div className={styles.tooltip}>Chatea o llámanos</div>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"

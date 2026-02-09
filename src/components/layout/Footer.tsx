@@ -47,10 +47,7 @@ export default function Footer() {
                                 <span className={styles.icon}><IconBrandYoutube size={20} className="text-red-600" /></span>
                                 <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">Alquiler de Ecógrafos</a>
                             </div>
-                            <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconMail size={20} className="text-blue-400" /></span>
-                                <a href="mailto:info@alquilerdeecografos.com" className="hover:text-blue-300 transition-colors">info@alquilerdeecografos.com</a>
-                            </div>
+
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconMapPin size={20} className="text-rose-500" /></span>
                                 <span>Diagonal 47a #17sur-162 CS 105, Santa María de los Ángeles, Medellín</span>

@@ -5,6 +5,7 @@ import Image from "next/image";
 import { IconEye } from "@tabler/icons-react";
 import styles from "./ProductCatalog.module.css";
 import ProductGalleryModal from "../ui/ProductGalleryModal";
+import CallButton from "../ui/CallButton";
 
 const Z6_DATA = {
     id: 'z6',
@@ -124,6 +125,7 @@ export default function ProductCatalog() {
                                 Ver detalles
                             </button>
                             <a href="#reservar" className="btn-primary w-full">Reservar ahora</a>
+                            <CallButton text="Llamar" variant="outline" className="w-full" />
                         </div>
                     </div>
 
@@ -179,6 +181,7 @@ export default function ProductCatalog() {
                                 Ver detalles
                             </button>
                             <a href="#reservar" className="btn-primary w-full shadow-lg shadow-blue-600/20">Reservar ahora</a>
+                            <CallButton text="Llamar" variant="outline" className="w-full" />
                         </div>
                     </div>
                 </div>

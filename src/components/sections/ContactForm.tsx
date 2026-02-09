@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styles from "./ContactForm.module.css";
+import CallButton from "../ui/CallButton";
 
 export default function ContactForm() {
     const router = useRouter();
@@ -106,6 +107,11 @@ export default function ContactForm() {
                         </div>
 
                         <p className={styles.disclaimer}>* Reserva no vinculante. Te contactaremos para validar disponibilidad.</p>
+                        
+                        <div className={styles.callSection}>
+                            <p className={styles.callText}>¿Prefieres atención inmediata?</p>
+                            <CallButton text="Llamar directamente" variant="outline" />
+                        </div>
                     </form>
                 </div>
             </div>

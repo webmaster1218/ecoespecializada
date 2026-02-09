@@ -102,8 +102,14 @@
     width: 100%;
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
 .desktopCta {
-    display: block;
+    display: inline-flex;
 }
 
 .mobileCta {
@@ -160,5 +166,24 @@
 
     .mobileToggle {
         display: block;
+    }
+
+    .brandingBar {
+        font-size: 0.8rem;
+        padding: 5px 0;
+        gap: 8px;
+    }
+
+    .brandLogo {
+        height: 18px;
+    }
+
+    .logo img {
+        width: 110px !important;
+        height: auto !important;
+    }
+
+    .actions {
+        gap: 8px;
     }
 }

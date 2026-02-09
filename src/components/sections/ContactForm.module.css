@@ -86,3 +86,19 @@
     color: var(--color-text-light);
     margin-top: 1rem;
 }
+
+.callSection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.callText {
+    font-size: 0.95rem;
+    color: var(--color-text-body);
+    font-weight: 500;
+}

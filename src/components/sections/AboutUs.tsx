@@ -1,5 +1,6 @@
 import styles from "./AboutUs.module.css";
 import { IconCertificate, IconTrophy, IconClipboardCheck, IconShieldCheck, IconCheck } from "@tabler/icons-react";
+import CallButton from "../ui/CallButton";
 
 export default function AboutUs() {
     return (
@@ -102,7 +103,7 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className={styles.assuranceAction}>
-                            <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">Habla con un asesor</a>
+                            <CallButton text="Llamar a un asesor" variant="primary" />
                         </div>
                     </div>
                 </div>
