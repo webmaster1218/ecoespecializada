@@ -107,10 +107,10 @@ export default function ContactForm() {
                         </div>
 
                         <p className={styles.disclaimer}>* Reserva no vinculante. Te contactaremos para validar disponibilidad.</p>
-                        
+
                         <div className={styles.callSection}>
                             <p className={styles.callText}>¿Prefieres atención inmediata?</p>
-                            <CallButton text="Llamar directamente" variant="outline" />
+                            <CallButton text="Llamar directamente" subtext="300 521 2664" variant="highlight" />
                         </div>
                     </form>
                 </div>

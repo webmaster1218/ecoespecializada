@@ -54,10 +54,11 @@ export default function Navbar() {
                     </div>
 
                     <div className={styles.actions}>
-                        <CallButton 
-                            text="Llamar" 
-                            variant="outline" 
-                            className={styles.desktopCta} 
+                        <CallButton
+                            text="Llamar"
+                            subtext="300 521 2664"
+                            variant="highlight"
+                            className={styles.desktopCta}
                         />
                         <a href="#reservar" className={`btn-primary ${styles.desktopCta}`}>
                             <span className="mr-2 text-xl">📅</span> Separar equipo

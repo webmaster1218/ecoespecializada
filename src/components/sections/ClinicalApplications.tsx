@@ -2,6 +2,7 @@
 
 import { memo } from "react";
 import { ScenariosSlider } from "@/components/ui/scenarios-slider";
+import CallButton from "../ui/CallButton";
 
 const scenarios = [
     {
@@ -80,10 +81,14 @@ function ClinicalApplications() {
             <ScenariosSlider scenarios={scenarios} className="py-0 bg-transparent mb-16" />
 
             <div className="container mx-auto px-2 text-center" data-aos="fade-up">
-                <a href="#reservar" className="btn-primary text-lg">
-                    Obtén la mejor solución del mercado
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-                </a>
+                <CallButton
+                    text="Cotizar con un asesor"
+                    subtext="300 521 2664"
+                    iconType="whatsapp"
+                    variant="highlight"
+                    href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                    className="text-lg px-10 py-4"
+                />
             </div>
         </div>
     );

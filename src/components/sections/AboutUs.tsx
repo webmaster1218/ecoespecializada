@@ -103,7 +103,7 @@ export default function AboutUs() {
                             </div>
                         </div>
                         <div className={styles.assuranceAction}>
-                            <CallButton text="Llamar a un asesor" variant="primary" />
+                            <CallButton text="Llamar a un asesor" subtext="300 521 2664" variant="highlight" />
                         </div>
                     </div>
                 </div>

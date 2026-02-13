@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./FAQ.module.css";
+import CallButton from "../ui/CallButton";
 
 interface FAQItem {
     question: string;
@@ -90,7 +91,13 @@ export default function FAQ() {
                     <div className={styles.ctaCard}>
                         <h3>¿No encuentras lo que buscas?</h3>
                         <p>Nuestros especialistas están listos para resolver todas tus dudas</p>
-                        <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">Hablar con un asesor</a>
+                        <CallButton
+                            text="Hablar con un asesor"
+                            subtext="300 521 2664"
+                            iconType="whatsapp"
+                            variant="highlight"
+                            href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                        />
                         <p className={styles.responseTime}>Respuesta garantizada en menos de 2 horas</p>
                     </div>
                 </div>

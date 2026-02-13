@@ -119,13 +119,18 @@ export default function ProductCatalog() {
 
                         <div className={styles.actions}>
                             <button
-                                className={`px-6 py-3 rounded-full font-semibold border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all text-slate-600 w-full`}
+                                className={`px-6 py-3 rounded-full font-semibold border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all text-slate-600 w-full hover:bg-slate-50`}
                                 onClick={() => handleOpenGallery(Z6_DATA)}
                             >
                                 Ver detalles
                             </button>
                             <a href="#reservar" className="btn-primary w-full">Reservar ahora</a>
-                            <CallButton text="Llamar" variant="outline" className="w-full" />
+                            <CallButton
+                                text="Llamar"
+                                subtext="300 521 2664"
+                                variant="highlight"
+                                className="w-full"
+                            />
                         </div>
                     </div>
 
@@ -181,7 +186,12 @@ export default function ProductCatalog() {
                                 Ver detalles
                             </button>
                             <a href="#reservar" className="btn-primary w-full shadow-lg shadow-blue-600/20">Reservar ahora</a>
-                            <CallButton text="Llamar" variant="outline" className="w-full" />
+                            <CallButton
+                                text="Llamar"
+                                subtext="300 521 2664"
+                                variant="highlight"
+                                className="w-full"
+                            />
                         </div>
                     </div>
                 </div>

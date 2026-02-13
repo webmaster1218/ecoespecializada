@@ -16,7 +16,26 @@ const logoData = [
 ];
 
 // Fallback to text if image fails to load keeps it clean
-const getPlaceholder = (name: string) => `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=transparent&color=334155&size=128&font-size=0.3&bold=true&length=2`;
+const logoDataWithIds = logoData.map((logo, idx) => ({ ...logo, id: idx }));
+
+function LogoImage({ name, url }: { name: string; url: string }) {
+    const [hasError, setHasError] = React.useState(false);
+
+    if (hasError) {
+        return <span className={styles.logoFallback}>{name}</span>;
+    }
+
+    return (
+        <img
+            src={url}
+            alt={name}
+            className={styles.logoImage}
+            title={name}
+            loading="lazy"
+            onError={() => setHasError(true)}
+        />
+    );
+}
 
 export default function LogoLoop() {
     // Duplicate multiple times for smooth infinite loop
@@ -43,22 +62,7 @@ export default function LogoLoop() {
                     <div className={styles.logoGrid}>
                         {allLogos.map((item, index) => (
                             <div key={index} className={styles.logoItem}>
-                                <img
-                                    src={item.url}
-                                    alt={item.name}
-                                    className={styles.logoImage}
-                                    title={item.name}
-                                    loading="lazy"
-                                    onError={(e) => {
-                                        // On error try a simple text fallback styling
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'none';
-                                        target.parentElement!.innerText = item.name;
-                                        target.parentElement!.style.color = '#64748b';
-                                        target.parentElement!.style.fontWeight = '700';
-                                        target.parentElement!.style.fontSize = '1.2rem';
-                                    }}
-                                />
+                                <LogoImage name={item.name} url={item.url} />
                             </div>
                         ))}
                     </div>

@@ -1,6 +1,9 @@
+"use client";
+
 import { memo } from "react";
 import styles from "./AdditionalServices.module.css";
 import { IconTool, IconSettings, IconShoppingBag, IconCheck, IconArrowRight } from "@tabler/icons-react";
+import CallButton from "../ui/CallButton";
 
 function AdditionalServices() {
     const services = [
@@ -105,9 +108,14 @@ function AdditionalServices() {
                             </p>
                         </div>
                         <div className={styles.ctaButton}>
-                            <a href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0" className="btn-primary">
-                                Hablar con un asesor
-                            </a>
+                            <CallButton
+                                text="Hablar con un asesor"
+                                subtext="300 521 2664"
+                                iconType="whatsapp"
+                                variant="highlight"
+                                href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                                className="w-full md:w-auto"
+                            />
                         </div>
                     </div>
                 </div>

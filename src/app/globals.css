@@ -11,8 +11,13 @@
 
   /* Brand Gradients */
   --gradient-primary: linear-gradient(135deg, #0061f2 0%, #007BFF 100%);
-  /* Blue-600 to Blue-500 */
   --gradient-hover: linear-gradient(135deg, #0056b3 0%, #0069d9 100%);
+
+  /* Highlight Palette (Amber/Orange) */
+  --color-highlight: #f59e0b;
+  --color-highlight-hover: #d97706;
+  --gradient-highlight: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+  --shadow-highlight: 0 10px 30px -5px rgba(245, 158, 11, 0.4);
 
   --color-bg-start: #f8fafc;
   /* Slate-50 */
@@ -126,6 +131,29 @@ a {
   background: var(--gradient-hover);
   transform: translateY(-2px);
   box-shadow: 0 15px 35px -5px rgba(37, 99, 235, 0.5);
+}
+
+.btn-highlight {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: var(--gradient-highlight);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  letter-spacing: 0.025em;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-highlight);
+}
+
+.btn-highlight:hover {
+  background: var(--color-highlight-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 35px -5px rgba(245, 158, 11, 0.6);
 }
 
 .glass-card {
