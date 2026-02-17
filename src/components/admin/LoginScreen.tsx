@@ -24,6 +24,20 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
         setIsLoading(true);
 
         try {
+            // Priority 1: Check against NEXT_PUBLIC_ADMIN_PIN from .env
+            const ADMIN_PIN = process.env.NEXT_PUBLIC_ADMIN_PIN;
+
+            if (ADMIN_PIN && (username === "admin" || username === "master") && password === ADMIN_PIN) {
+                sessionStorage.setItem('admin_auth', 'true');
+                sessionStorage.setItem('admin_user', JSON.stringify({
+                    id: 'admin-fallback',
+                    username: username,
+                    full_name: 'Administrador (PIN)'
+                }));
+                onLogin();
+                return;
+            }
+
             if (!supabase) {
                 setError("Error de configuración: Supabase no detectado");
                 return;
@@ -36,7 +50,14 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                 .eq('is_active', true);
 
             if (dbError) {
-                setError(dbError.message);
+                // If the table doesn't exist, we just show invalid credentials if PIN didn't match
+                // or we can show a more specific error if we want.
+                console.error("Supabase Error:", dbError);
+                if (dbError.code === '42P01') { // Table not found
+                    setError('Acceso denegado. El usuario no existe en la base de datos.');
+                } else {
+                    setError('Error al conectar con la base de datos');
+                }
                 return;
             }
 
