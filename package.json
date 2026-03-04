@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
+    "@react-pdf/renderer": "^4.3.2",
     "@supabase/supabase-js": "^2.87.3",
     "@tabler/icons-react": "^3.35.0",
     "@types/react-big-calendar": "^1.16.3",

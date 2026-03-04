@@ -32,7 +32,7 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
             .from('bookings')
             .select('quantity_z6, quantity_z60')
             // Match calendar logic: count everything except cancelled and completed
-            .not('status', 'in', '("cancelled", "completed")')
+            .not('status', 'in', ['cancelled', 'completed'])
             .lte('start_date', endDate)
             .gte('end_date', startDate);
 
@@ -99,7 +99,7 @@ export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: nu
         const { data: bookings } = await supabase
             .from('bookings')
             .select(`start_date, end_date, quantity_${model}`)
-            .filter('status', 'in', '("confirmed","pending_delivery","delivered","pending_pickup")')
+            .in('status', ['confirmed', 'pending_delivery', 'delivered', 'pending_pickup'])
             .lte('start_date', maxDate.toISOString())
             .gte('end_date', checkDate.toISOString());
 

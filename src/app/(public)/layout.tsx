@@ -12,12 +12,15 @@ export default function PublicLayout({
     const pathname = usePathname();
     // Using startsWith in case there are query params or trailing slashes
     const isLoginPage = pathname?.startsWith("/login");
+    const isPoliticasPage = pathname?.startsWith("/politicas");
 
-    console.log("Current path:", pathname, "isLoginPage:", isLoginPage);
+    const hideNavbar = isLoginPage || isPoliticasPage;
+
+    console.log("Current path:", pathname, "hideNavbar:", hideNavbar);
 
     return (
         <>
-            {!isLoginPage && <Navbar />}
+            {!hideNavbar && <Navbar />}
             <main>{children}</main>
             {!isLoginPage && <WhatsAppButton />}
         </>

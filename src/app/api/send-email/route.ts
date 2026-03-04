@@ -9,11 +9,14 @@ export async function POST(req: Request) {
         const {
             client_name,
             client_email,
+            client_phone,
             equipment_summary,
             start_date,
             end_date,
+            duration,
             total_price,
-            full_address
+            full_address,
+            pdfBase64
         } = body;
 
         // Usar variables de entorno para las credenciales
@@ -24,13 +27,8 @@ export async function POST(req: Request) {
 
         // Validación de configuración
         if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
-            console.error('ERROR DE CONFIGURACIÓN SMTP: Faltan variables de entorno.', {
-                hasHost: !!SMTP_HOST,
-                hasUser: !!SMTP_USER,
-                hasPass: !!SMTP_PASS
-            });
             return NextResponse.json({
-                error: 'Error de configuración del servidor de correo. Por favor, reinicia el servidor de desarrollo para cargar el archivo .env.',
+                error: 'Error de configuración del servidor de correo.',
                 code: 'CONFIG_ERROR'
             }, { status: 500 });
         }
@@ -38,101 +36,107 @@ export async function POST(req: Request) {
         const transporter = nodemailer.createTransport({
             host: SMTP_HOST,
             port: SMTP_PORT,
-            secure: SMTP_PORT === 465, // True para puerto 465 (SSL), false para otros (STARTTLS)
+            secure: SMTP_PORT === 465,
             auth: {
                 user: SMTP_USER,
                 pass: SMTP_PASS,
             },
             tls: {
-                // Ayuda a evitar errores de certificado en algunos servidores de hosting
                 rejectUnauthorized: false
-            },
-            // Aumentar el tiempo de espera para evitar timeouts en servidores lentos
-            connectionTimeout: 10000,
-            greetingTimeout: 10000,
+            }
         });
 
         const mailOptions = {
             from: `"Alquiler de Ecógrafos" <${SMTP_USER}>`,
             to: client_email,
             bcc: SMTP_USER,
-            subject: '✅ Confirmación de Solicitud de Reserva - Alquiler de Ecógrafos',
+            subject: `📄 Contrato de Alquiler y Confirmación - ${client_name}`,
             html: `
             <!DOCTYPE html>
             <html>
             <head>
                 <style>
-                    body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-                    .container { max-width: 600px; mx-auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; margin: 20px auto; }
-                    .header { background: linear-gradient(135deg, #2563eb, #1e40af); color: white; padding: 30px; text-align: center; border-radius: 10px 10px 0 0; }
-                    .content { padding: 30px; background-color: #ffffff; }
-                    .footer { text-align: center; padding: 20px; font-size: 12px; color: #666; background-color: #f9fafb; border-radius: 0 0 10px 10px; }
-                    .button { display: inline-block; padding: 12px 24px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 20px; }
-                    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; padding: 15px; background-color: #f3f4f6; border-radius: 8px; }
-                    .info-item { margin-bottom: 10px; }
-                    .label { font-weight: bold; color: #4b5563; font-size: 13px; text-transform: uppercase; }
-                    .value { font-size: 15px; color: #111827; }
-                    .highlight { color: #2563eb; font-weight: bold; }
+                    body { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; line-height: 1.6; color: #1a1a1a; margin: 0; padding: 0; background-color: #f4f7f9; }
+                    .wrapper { background-color: #f4f7f9; padding: 20px; }
+                    .container { max-width: 600px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+                    .header { background-color: #0a161e; color: #ffffff; padding: 40px 20px; text-align: center; }
+                    .header h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+                    .content { padding: 40px 30px; }
+                    .welcome-text { font-size: 18px; color: #0070c0; font-weight: bold; margin-bottom: 20px; }
+                    .bank-box { background-color: #f8fbff; border: 1px solid #d0e3ff; border-radius: 12px; padding: 25px; margin: 30px 0; }
+                    .bank-title { font-weight: bold; color: #004a80; font-size: 14px; text-transform: uppercase; margin-bottom: 15px; display: block; }
+                    .bank-details { font-size: 16px; color: #111; line-height: 1.4; border-left: 4px solid #0070c0; padding-left: 15px; }
+                    .action-banner { background-color: #fff4e5; border-left: 4px solid #ff9900; padding: 15px; margin: 20px 0; font-weight: 500; }
+                    .info-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+                    .info-table td { padding: 12px 0; border-bottom: 1px solid #eee; }
+                    .label { color: #666; font-size: 12px; text-transform: uppercase; font-weight: bold; width: 40%; }
+                    .value { color: #111; font-weight: 600; font-size: 14px; }
+                    .footer { text-align: center; padding: 30px; background-color: #0a161e; color: #999; font-size: 12px; }
+                    .footer a { color: #0070c0; text-decoration: none; }
                 </style>
             </head>
             <body>
-                <div class="container">
-                    <div class="header">
-                        <h1 style="margin:0;">¡Hola, ${client_name}!</h1>
-                        <p style="margin: 10px 0 0; opacity: 0.9;">Hemos recibido tu solicitud de reserva</p>
-                    </div>
-                    <div class="content">
-                        <p>Gracias por confiar en <strong>Alquiler de Ecógrafos</strong>. Queremos confirmarte que tu información ha sido registrada correctamente en nuestro sistema.</p>
-                        
-                        <p style="font-size: 16px; color: #1e40af; font-weight: bold; background-color: #eff6ff; padding: 15px; border-left: 4px solid #2563eb; border-radius: 4px;">
-                            🚀 En un momento un asesor se pondrá en contacto contigo para finalizar los detalles y confirmar la disponibilidad.
-                        </p>
+                <div class="wrapper">
+                    <div class="container">
+                        <div class="header">
+                            <h1>ALQUILER DE ECOGRAFOS</h1>
+                            <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Especialistas en alquiler de ecógrafos</p>
+                        </div>
+                        <div class="content">
+                            <p class="welcome-text">¡Hola, ${client_name}!</p>
+                            <p>Hemos recibido tu solicitud y hemos generado el contrato correspondiente. Para avanzar con el proceso, por favor sigue estos pasos:</p>
+                            
+                            <div class="action-banner">
+                                🔔 Por favor, revisa el <strong>contrato adjunto</strong>, fírmalo y envíanoslo de vuelta por este mismo medio o vía WhatsApp.
+                            </div>
 
-                        <h3 style="border-bottom: 2px solid #e5e7eb; padding-bottom: 10px; margin-top: 30px;">Resumen de tu solicitud:</h3>
-                        
-                        <div style="background-color: #f8fafc; padding: 20px; border-radius: 12px; border: 1px solid #e2e8f0;">
-                            <div style="margin-bottom: 12px;">
-                                <span style="display:block; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 1px;">Cliente</span>
-                                <span style="font-size: 14px; font-weight: 600; color: #1e293b;">${client_name} - ${body.client_phone || 'N/A'}</span>
-                                <span style="display:block; font-size: 13px; color: #64748b;">${client_email}</span>
-                            </div>
-                            <div style="margin-bottom: 12px;">
-                                <span style="display:block; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 1px;">Equipos</span>
-                                <span style="font-size: 14px; font-weight: 600; color: #1e293b;">${equipment_summary}</span>
-                            </div>
-                            <div style="display: flex; justify-content: space-between; gap: 20px;">
-                                <div style="flex: 1;">
-                                    <span style="display:block; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase;">Desde</span>
-                                    <span style="font-size: 14px; color: #1e293b;">${start_date}</span>
-                                </div>
-                                <div style="flex: 1;">
-                                    <span style="display:block; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase;">Hasta</span>
-                                    <span style="font-size: 14px; color: #1e293b;">${end_date}</span>
+                            <div class="bank-box">
+                                <span class="bank-title">Información Bancaria para Pagos:</span>
+                                <div class="bank-details">
+                                    <strong>BANCOLOMBIA</strong><br/>
+                                    Cuenta Corriente: <strong>37666021081</strong><br/>
+                                    A nombre de: <strong>ECO ESPECIALIZADA SAS</strong><br/>
                                 </div>
                             </div>
-                            <div style="margin-top: 12px;">
-                                <span style="display:block; font-size: 11px; font-weight: bold; color: #64748b; text-transform: uppercase;">Ubicación</span>
-                                <span style="font-size: 14px; color: #1e293b;">${full_address}</span>
-                            </div>
-                            <div style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
-                                <span style="font-weight: bold; color: #1e293b;">Inversión estimada:</span>
-                                <span style="font-size: 18px; font-weight: 800; color: #2563eb;">$${total_price.toLocaleString()} COP</span>
-                            </div>
-                        </div>
 
-                        <p style="margin-top: 30px;">Si tienes alguna duda urgente, puedes contactarnos directamente:</p>
-                        <div style="text-align: center;">
-                            <a href="https://wa.me/573147175217" class="button" style="color: white !important;">Hablar con un asesor por WhatsApp</a>
+                            <h3 style="margin-top: 40px; border-bottom: 2px solid #0070c0; padding-bottom: 5px;">Detalles de la Solicitud:</h3>
+                            <table class="info-table">
+                                <tr>
+                                    <td class="label">Equipo(s)</td>
+                                    <td class="value">${equipment_summary}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Periodo</td>
+                                    <td class="value">${duration || `${start_date} hasta ${end_date}`}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Ubicación</td>
+                                    <td class="value">${full_address}</td>
+                                </tr>
+                                <tr>
+                                    <td class="label">Inversión</td>
+                                    <td class="value" style="color: #0070c0; font-size: 18px;">$${total_price.toLocaleString()} COP</td>
+                                </tr>
+                            </table>
+
+                            <p style="margin-top: 40px;">Si tienes alguna pregunta, no dudes en contactarnos vía WhatsApp al <a href="https://wa.me/573005212664" style="color: #25d366; text-decoration: none; font-weight: bold;">+57 300 5212664</a> o respondiendo a este correo.</p>
                         </div>
-                    </div>
-                    <div class="footer">
-                        <p>© 2026 Alquiler de Ecógrafos Medellín. Todos los derechos reservados.</p>
-                        <p>info@alquilerdeecografos.com | +57 314 717 5217</p>
+                        <div class="footer">
+                            <p><strong>Alquiler de Ecógrafos</strong></p>
+                            <p>Medellín, Colombia</p>
+                            <p><a href="https://alquilerdeecografos.com">www.alquilerdeecografos.com</a></p>
+                            <p style="margin-top: 20px;">Este es un mensaje automático generado desde nuestro sistema de reservas.</p>
+                        </div>
                     </div>
                 </div>
             </body>
             </html>
             `,
+            attachments: pdfBase64 ? [{
+                filename: `Contrato_Alquiler_Ecografos_${client_name.replace(/\s+/g, '_')}.pdf`,
+                content: pdfBase64,
+                encoding: 'base64'
+            }] : []
         };
 
         await transporter.sendMail(mailOptions);
@@ -142,8 +146,7 @@ export async function POST(req: Request) {
         console.error('SERVER ERROR:', error);
         return NextResponse.json({
             error: error.message,
-            code: error.code,
-            command: error.command
+            code: error.code
         }, { status: 500 });
     }
 }

@@ -11,6 +11,8 @@ import {
 } from "@tabler/icons-react";
 import Image from "next/image";
 import CustomDatePicker from "@/components/ui/DatePicker";
+import { pdf } from '@react-pdf/renderer';
+import TestContractPDF, { ContractData } from '@/components/pdf/TestContractPDF';
 
 type BookingStep = 1 | 2 | 3 | 4;
 
@@ -145,13 +147,34 @@ export default function BookingWizard() {
             if (formData.selectedTransducers?.length > 0) {
                 summaryParts.push(`TRANSDUCTORES: ${formData.selectedTransducers.join(', ')}`);
             }
-            if (formData.deliveryTime) {
-                summaryParts.push(`ENTREGA: ${formData.deliveryTime}`);
-            }
-            if (formData.collectionTime) {
-                summaryParts.push(`RECOGIDA: ${formData.collectionTime}`);
-            }
-            const equipmentSummary = summaryParts.join(' / ');
+            const equipmentSummary = summaryParts.join('\n');
+
+            // Prepare PDF Data
+            const contractData: ContractData = {
+                clientName: (formData.name || '').toUpperCase(),
+                documentNumber: formData.documentNumber,
+                monthlyValue: totalPrice.toString(),
+                equipment: equipmentSummary,
+                startDate: formData.startDate,
+                fullAddress: `${formData.address}, ${formData.city}`,
+                clientType: formData.clientType === 'medico' ? 'MEDICO' :
+                    formData.clientType === 'clinica' ? 'CLINICA / IPS' : 'SERVICIO MOVIL',
+                taxId: formData.taxId,
+                term: `${totalDays} ${totalDays === 1 ? 'DÍA' : 'DÍAS'}`
+            };
+
+            // Generate PDF Blob in memory
+            const blob = await pdf(<TestContractPDF data={contractData} />).toBlob();
+
+            // Convert Blob to Base64 for the API
+            const pdfBase64 = await new Promise<string>((resolve) => {
+                const reader = new FileReader();
+                reader.onloadend = () => {
+                    const base64String = reader.result as string;
+                    resolve(base64String.split(',')[1]);
+                };
+                reader.readAsDataURL(blob);
+            });
 
             const payload = {
                 client_name: formData.name,
@@ -165,6 +188,7 @@ export default function BookingWizard() {
                 full_address: `${formData.address}, ${formData.city}`,
                 start_date: formData.startDate,
                 end_date: formData.endDate,
+                duration: `${totalDays} ${totalDays === 1 ? 'día' : 'días'}`,
                 total_days: totalDays,
                 quantity_z6: formData.quantities.z6,
                 quantity_z60: formData.quantities.z60,
@@ -176,6 +200,7 @@ export default function BookingWizard() {
                 collection_time: formData.collectionTime,
                 total_price: totalPrice,
                 status: 'pending_delivery',
+                pdfBase64: pdfBase64,
                 created_at: new Date().toISOString()
             };
 
@@ -1012,7 +1037,7 @@ export default function BookingWizard() {
                                 disabled={isSubmitting}
                                 className={`btn-primary px-6 py-3 md:px-8 md:py-3 shadow-xl shadow-blue-500/20 hover:shadow-blue-600/30 flex items-center gap-2 text-base md:text-lg w-auto ml-auto ${isSubmitting ? 'opacity-70 cursor-wait' : ''}`}
                             >
-                                {isSubmitting ? 'Procesando...' : (step === 3 ? 'Confirmar reserva' : 'Continuar')} <IconChevronRight size={20} className="md:w-[22px]" />
+                                {isSubmitting ? 'Procesando, no te salgas de la pagina...' : (step === 3 ? 'Confirmar reserva' : 'Continuar')} <IconChevronRight size={20} className="md:w-[22px]" />
                             </button>
                         </div>
                     )}
