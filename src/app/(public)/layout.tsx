@@ -13,8 +13,10 @@ export default function PublicLayout({
     // Using startsWith in case there are query params or trailing slashes
     const isLoginPage = pathname?.startsWith("/login");
     const isPoliticasPage = pathname?.startsWith("/politicas");
+    const isZ60Page = pathname?.startsWith("/ecografo-z60");
+    const isZ6Page = pathname?.startsWith("/ecografo-z6");
 
-    const hideNavbar = isLoginPage || isPoliticasPage;
+    const hideNavbar = isLoginPage || isPoliticasPage || isZ60Page || isZ6Page;
 
     console.log("Current path:", pathname, "hideNavbar:", hideNavbar);
 

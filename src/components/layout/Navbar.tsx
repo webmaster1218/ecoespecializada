@@ -46,7 +46,22 @@ export default function Navbar() {
                     <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>
                         <a href="#inicio" onClick={() => setMobileMenuOpen(false)}>Inicio</a>
                         <a href="#ventajas" onClick={() => setMobileMenuOpen(false)}>Ventajas</a>
-                        <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Equipos</a>
+                        
+                        {/* Dropdown Equipos */}
+                        <div className={styles.dropdown}>
+                            <a href="#equipos" className={styles.dropdownTrigger} onClick={() => setMobileMenuOpen(false)}>
+                                Equipos
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <div className={styles.dropdownMenu}>
+                                <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Ver Todos</a>
+                                <Link href="/ecografo-z6" onClick={() => setMobileMenuOpen(false)}>Mindray Z6</Link>
+                                <Link href="/ecografo-z60" onClick={() => setMobileMenuOpen(false)}>Mindray Z60</Link>
+                            </div>
+                        </div>
+
                         <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                         <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros servicios</a>
                         <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>

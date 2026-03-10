@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# internal tools
+.skills/
+.agents/
+.agent/
+_agents/
+_agent/
+brain/
+nul
