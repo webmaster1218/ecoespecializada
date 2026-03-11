@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { IconBrandWhatsapp, IconMail, IconMapPin, IconBrandYoutube } from "@tabler/icons-react";
+import { IconBrandWhatsapp, IconMail, IconMapPin, IconBrandYoutube, IconBrandLinkedin, IconBrandInstagram, IconBrandFacebook } from "@tabler/icons-react";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -45,7 +45,22 @@ export default function Footer() {
                             </div>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconBrandYoutube size={20} className="text-red-600" /></span>
-                                <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">Alquiler de Ecógrafos</a>
+                                <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">YouTube</a>
+                            </div>
+
+                            <div className={styles.contactItem}>
+                                <span className={styles.icon}><IconBrandLinkedin size={20} className="text-blue-700" /></span>
+                                <a href="https://www.linkedin.com/company/alquiler-de-ec%C3%B3grafos-com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">LinkedIn</a>
+                            </div>
+
+                            <div className={styles.contactItem}>
+                                <span className={styles.icon}><IconBrandInstagram size={20} className="text-pink-600" /></span>
+                                <a href="https://www.instagram.com/alquiler.de.ecografos/" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors">Instagram</a>
+                            </div>
+
+                            <div className={styles.contactItem}>
+                                <span className={styles.icon}><IconBrandFacebook size={20} className="text-blue-600" /></span>
+                                <a href="https://www.facebook.com/profile.php?id=61587750932611" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Facebook</a>
                             </div>
 
                             <div className={styles.contactItem}>
