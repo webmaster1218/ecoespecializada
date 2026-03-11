@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Footer from "@/components/layout/Footer";
+import LogoLoop from "@/components/sections/LogoLoop";
+import CallButton from "@/components/ui/CallButton";
 
 const whatsappNumber = "573005212664";
 const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Z60");
@@ -24,14 +26,14 @@ export default function EcografoZ60Page() {
             </div>
             <span className="font-semibold text-slate-700 group-hover:text-blue-600 transition-colors">Volver al Inicio</span>
           </Link>
-          <div className="hidden sm:block">
-            <Link href="/" className="block">
+          <div className="flex-shrink-0">
+            <Link href="/" className="block relative h-10 w-32 sm:h-12 sm:w-48">
               <Image
                 src="/images/logo/logo_alquilerdeecografos.webp"
                 alt="Logo"
-                width={160}
-                height={45}
-                className="h-auto w-auto"
+                fill
+                className="object-contain object-right"
+                priority
               />
             </Link>
           </div>
@@ -39,7 +41,7 @@ export default function EcografoZ60Page() {
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white pt-20 pb-16 md:pt-24 md:pb-24">
+      <section className="relative overflow-hidden bg-white pt-32 pb-16 md:pt-40 md:pb-24 min-h-[90vh] flex items-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/50 via-white to-white -z-10"></div>
         <div className="absolute left-0 top-0 w-full h-full bg-[url('/images/grid.svg')] opacity-[0.05] pointer-events-none"></div>
 
@@ -59,34 +61,66 @@ export default function EcografoZ60Page() {
                 </span>
                 Rendimiento Portátil Superior
               </div>
+
+              <div className="flex items-center gap-2 text-amber-600 font-bold text-sm bg-amber-50 px-3 py-1 rounded-lg border border-amber-100 w-fit animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Solo 2 unidades disponibles para entrega inmediata
+              </div>
               
-              <h1 className="text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1]">
+              <h1 className="text-[2.5rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1]">
                 Ecógrafo <br/>
                 <span className="text-gradient">Mindray Z60</span>
               </h1>
               
-              <p className="text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
+              <p className="text-lg md:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
                 Equipamiento de alta gama a tu alcance. Solución integral para diagnósticos precisos en cualquier entorno clínico.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <a 
-                  href={whatsappUrl} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white transition-all duration-300 bg-gradient-to-r from-green-500 to-green-600 rounded-full shadow-lg shadow-green-500/30 hover:shadow-green-500/50 hover:-translate-y-1"
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-3" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                  </svg>
-                  Solicitar Alquiler
-                </a>
-                <a 
-                  href="#caracteristicas" 
-                  className="inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-600 bg-white border-2 border-slate-200 rounded-full hover:border-blue-300 hover:text-blue-600 transition-all duration-300 pointer-events-auto"
+                <CallButton 
+                  text="Solicitar Alquiler"
+                  subtext="Respuesta inmediata"
+                  iconType="whatsapp"
+                  variant="primary"
+                  href={whatsappUrl}
+                  className="w-full sm:w-auto"
+                />
+                <Link
+                  href="#caracteristicas"
+                  className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-600 bg-white border-2 border-slate-200 rounded-full hover:border-blue-300 hover:text-blue-600 transition-all duration-300 pointer-events-auto"
                 >
                   Explorar características
-                </a>
+                </Link>
+              </div>
+
+              {/* Trust Badges - Sync with Z6 */}
+              <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 border-t border-slate-100">
+                <div className="flex items-center gap-2 text-slate-500">
+                  <div className="bg-slate-100 p-1 rounded-lg shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                    </svg>
+                  </div>
+                  <span className="text-[10px] md:text-xs font-bold leading-tight uppercase tracking-wide">Certificado INVIMA</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-500">
+                  <div className="bg-slate-100 p-1 rounded-lg shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </div>
+                  <span className="text-[10px] md:text-xs font-bold leading-tight uppercase tracking-wide">Garantía Repuesto</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-500">
+                  <div className="bg-slate-100 p-1 rounded-lg shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                    </svg>
+                  </div>
+                  <span className="text-[10px] md:text-xs font-bold leading-tight uppercase tracking-wide">Soporte 24/7</span>
+                </div>
               </div>
             </motion.div>
 
@@ -94,7 +128,7 @@ export default function EcografoZ60Page() {
                initial={{ opacity: 0, scale: 0.9 }}
                animate={{ opacity: 1, scale: 1 }}
                transition={{ duration: 1, delay: 0.2 }}
-               className="relative h-[400px] md:h-[500px] lg:h-[600px] w-full flex items-center justify-center -mx-4 lg:mx-0"
+               className="relative h-[380px] md:h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:mx-0"
             >
               {/* Layer 1: Atmosphere Glow */}
               <motion.div
@@ -109,7 +143,7 @@ export default function EcografoZ60Page() {
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="absolute z-20 h-[280px] w-[280px] rounded-full border border-blue-50 bg-gradient-to-b from-blue-50/50 to-white shadow-2xl shadow-blue-200/40 lg:h-[450px] lg:w-[450px]"
+                  className="absolute z-20 h-[220px] w-[220px] md:h-[450px] md:w-[450px] rounded-full border border-blue-50 bg-gradient-to-b from-blue-50/50 to-white shadow-2xl shadow-blue-200/40"
               />
               
               <Image
@@ -126,7 +160,7 @@ export default function EcografoZ60Page() {
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
-                className="absolute bottom-10 -left-4 md:left-4 z-20 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/50"
+                className="absolute bottom-4 left-0 md:left-4 z-20 bg-white/90 backdrop-blur-md p-3 md:p-4 rounded-2xl shadow-xl border border-white/50"
               >
                 <div className="flex items-center gap-3">
                     <div className="bg-blue-100 p-2 rounded-full text-blue-600">
@@ -146,14 +180,17 @@ export default function EcografoZ60Page() {
       </section>
 
       {/* Gallery & Highlights Section */}
-      <section id="caracteristicas" className="py-24 bg-slate-50">
+      <section id="caracteristicas" className="py-12 md:py-24 bg-slate-50">
         <div className="container mx-auto px-4 md:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-20 animate-on-scroll">
-                <h2 className="text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Un Vistazo al <span className="text-gradient">Futuro del Diagnóstico</span></h2>
-                <p className="text-lg text-slate-600">Diseño ergonómico y tecnología punta combinados en un equipo ligero y potente.</p>
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20 animate-on-scroll">
+                <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
+                  Rendimiento Avanzado
+                </span>
+                <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Un Vistazo al <span className="text-gradient">Futuro del Diagnóstico</span></h2>
+                <p className="text-base md:text-lg text-slate-600">Diseño ergonómico y tecnología punta combinados en un equipo ligero y potente.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 mb-16">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
                 <motion.div 
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -168,8 +205,8 @@ export default function EcografoZ60Page() {
                     <div className="relative h-48 mb-6 flex items-center justify-center">
                         <Image src="/images/z60/z-60.webp" alt="Mindray Z60 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 relative z-10">Diseño Compacto</h3>
-                    <p className="text-slate-600 relative z-10">Con solo 7.7 kg de peso, es la herramienta perfecta para moverte entre consultorios sin complicaciones.</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Diseño Compacto</h3>
+                    <p className="text-sm md:text-base text-slate-600 relative z-10">Con solo 7.7 kg de peso, es la herramienta perfecta para moverte entre consultorios sin complicaciones.</p>
                 </motion.div>
 
                 <motion.div 
@@ -187,8 +224,8 @@ export default function EcografoZ60Page() {
                     <div className="relative h-48 mb-6 flex items-center justify-center">
                         <Image src="/images/z60/z-60-abierto-izquierda.webp" alt="Mindray Z60 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de 15″</h3>
-                    <p className="text-slate-600 relative z-10">Pantalla de alta resolución con inclinación ajustable hasta 30 grados, visualización nítida en cada toma.</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de 15″</h3>
+                    <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de alta resolución con inclinación ajustable hasta 30 grados, visualización nítida en cada toma.</p>
                 </motion.div>
 
                 <motion.div 
@@ -206,18 +243,18 @@ export default function EcografoZ60Page() {
                     <div className="relative h-48 mb-6 flex items-center justify-center">
                         <Image src="/images/z60/z-60-espalda.webp" alt="Mindray Z60 Conexiones" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 relative z-10">3 Puertos Activos</h3>
-                    <p className="text-slate-600 relative z-10">Mayor eficiencia. Cambia de transductor sin desconectar, optimizando el tiempo con tus pacientes.</p>
+                    <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">3 Puertos Activos</h3>
+                    <p className="text-sm md:text-base text-slate-600 relative z-10">Mayor eficiencia. Cambia de transductor sin desconectar, optimizando el tiempo con tus pacientes.</p>
                 </motion.div>
             </div>
         </div>
       </section>
 
       {/* Tech Specifications */}
-      <section className="py-24 bg-white relative overflow-hidden">
+      <section className="py-12 md:py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-50/50 skew-y-3 origin-bottom-right transform scale-110 -z-10"></div>
         <div className="container mx-auto px-4 md:px-8">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
+            <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
                 <motion.div 
                     initial={{ opacity: 0, x: -50 }}
                     whileInView={{ opacity: 1, x: 0 }}
@@ -230,10 +267,13 @@ export default function EcografoZ60Page() {
                     </div>
                 </motion.div>
                 
-                <div className="space-y-10">
+                <div className="space-y-8 md:space-y-10">
                     <div>
-                        <h2 className="text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Potencia <span className="text-gradient">Tecnológica Excepcional</span></h2>
-                        <p className="text-xl text-slate-600 leading-relaxed font-medium">Equipado con herramientas patentadas que transforman la calidad de imagen diagnóstica.</p>
+                        <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
+                          Potencia Mindray
+                        </span>
+                        <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Potencia <span className="text-gradient">Tecnológica Excepcional</span></h2>
+                        <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">Equipado con herramientas patentadas que transforman la calidad de imagen diagnóstica.</p>
                     </div>
 
                     <div className="space-y-6">
@@ -242,8 +282,8 @@ export default function EcografoZ60Page() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
                             </div>
                             <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2">iBeam™ e iClear™</h3>
-                                <p className="text-slate-600 text-lg">Composición espacial superior y supresión de grano para visualizar bordes impecablemente definidos, sin ruido.</p>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">iBeam™ e iClear™</h3>
+                                <p className="text-slate-600 text-base leading-relaxed">Composición espacial superior y supresión de grano para visualizar bordes impecablemente definidos, sin ruido.</p>
                             </div>
                         </div>
 
@@ -252,8 +292,8 @@ export default function EcografoZ60Page() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             </div>
                             <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2">iNeedle™ e iScape™</h3>
-                                <p className="text-slate-600 text-lg">Realiza biopsias con mayor seguridad gracias a una visión clara de la aguja y crea vistas panorámicas de grandes estructuras.</p>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">iNeedle™ e iScape™</h3>
+                                <p className="text-slate-600 text-base leading-relaxed">Realiza biopsias con mayor seguridad gracias a una visión clara de la aguja y crea vistas panorámicas de grandes estructuras.</p>
                             </div>
                         </div>
 
@@ -262,8 +302,8 @@ export default function EcografoZ60Page() {
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                             </div>
                             <div>
-                                <h3 className="text-2xl font-bold text-slate-900 mb-2">Smart OB & PSHI</h3>
-                                <p className="text-slate-600 text-lg">Cálculos fetales automáticos en un clic, además de Armónica de Inversión de Fase (PSHI) para un contraste profundo.</p>
+                                <h3 className="text-xl font-bold text-slate-900 mb-1">Smart OB & PSHI</h3>
+                                <p className="text-slate-600 text-base leading-relaxed">Cálculos fetales automáticos en un clic, además de Armónica de Inversión de Fase (PSHI) para un contraste profundo.</p>
                             </div>
                         </div>
                     </div>
@@ -272,57 +312,40 @@ export default function EcografoZ60Page() {
         </div>
       </section>
 
-      {/* CTA Section - Redesigned to match Home */}
-      <section className="py-24 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 to-white -z-10"></div>
+      {/* Social Proof & CTA Section */}
+      <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+        <div className="absolute inset-0 bg-white/40 -z-10"></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
+            
+            {/* LogoLoop First - Social Proof */}
+            <div className="mb-12 md:mb-20">
+              <LogoLoop />
+            </div>
+
             <motion.div 
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="max-w-5xl mx-auto bg-white rounded-[3rem] p-10 md:p-20 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-slate-100 relative overflow-hidden"
+                className="max-w-7xl mx-auto bg-blue-600 rounded-[2rem] md:rounded-[2.5rem] p-6 md:p-14 shadow-xl border border-blue-500/20 relative overflow-hidden"
             >
-                {/* Decorative background element matching Hero */}
-                <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-50 rounded-full blur-3xl opacity-60"></div>
-                <div className="absolute -bottom-24 -left-24 w-64 h-64 bg-emerald-50 rounded-full blur-3xl opacity-60"></div>
-
                 <div className="relative z-10">
-                    <div className="inline-block px-4 py-1.5 rounded-full bg-blue-50 text-blue-600 font-bold text-sm mb-8 tracking-wide border border-blue-100 uppercase">
-                        Solución Inmediata
-                    </div>
-                    
-                    <h2 className="text-[3rem] font-extrabold text-slate-900 mb-8 leading-tight">
-                        ¿Listo para alquilar tu <br className="hidden md:block"/>
-                        <span className="text-gradient">Mindray Z60?</span>
+                    <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
+                        ¿No encuentras lo que buscas?
                     </h2>
                     
-                    <p className="text-xl text-slate-600 mb-12 max-w-2xl mx-auto font-medium">
-                        Únete a las más de 10 clínicas que confían en nosotros. Recibe tu equipo hoy mismo con garantía total y soporte técnico incluido.
+                    <p className="text-base md:text-xl text-blue-50 mb-8 md:mb-10 max-w-2xl mx-auto font-medium opacity-90">
+                        Nuestros especialistas están listos para resolver todas tus dudas sobre el <span className="font-bold">Mindray Z60</span>
                     </p>
                     
-                    <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-                        <a 
-                          href={whatsappUrl} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          className="inline-flex items-center justify-center px-10 py-5 text-xl font-bold text-white transition-all duration-300 bg-green-500 rounded-full shadow-xl shadow-green-500/20 hover:shadow-green-500/40 hover:-translate-y-1 hover:bg-green-600 min-w-[280px]"
-                        >
-                          <svg xmlns="http://www.w3.org/2000/svg" className="w-7 h-7 mr-3" fill="currentColor" viewBox="0 0 16 16">
-                            <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z" />
-                          </svg>
-                          Chatear con un Asesor
-                        </a>
-                        
-                        <div className="flex flex-col items-center sm:items-start">
-                            <div className="flex text-amber-400 mb-1">
-                                {[...Array(5)].map((_, i) => (
-                                    <svg key={i} xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 fill-current" viewBox="0 0 20 20">
-                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.1.21-.45.45l-2.845-2.06a1 1 0 00-1.175 0l-2.845 2.06c-.35.24-.75-.471-.45-1.391l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                    </svg>
-                                ))}
-                            </div>
-                            <p className="text-slate-500 font-semibold italic text-sm">"Excelente equipo y soporte técnico"</p>
-                        </div>
+                    <div className="flex flex-col items-center justify-center gap-6">
+                        <CallButton 
+                          text="Hablar con un asesor"
+                          subtext="300 521 2664"
+                          iconType="whatsapp"
+                          variant="highlight"
+                          href={whatsappUrl}
+                        />
+                        <p className="text-blue-100/90 font-semibold text-sm mt-2">Respuesta garantizada en menos de 2 horas</p>
                     </div>
                 </div>
             </motion.div>

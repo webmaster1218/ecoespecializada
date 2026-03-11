@@ -34,13 +34,16 @@ export default function Navbar() {
             <div className={styles.navMain}>
                 <div className={`container ${styles.container}`}>
                     <Link href="/" className={styles.logo}>
-                        <Image
-                            src="/images/logo/logo_alquilerdeecografos.webp"
-                            alt="Logo"
-                            width={140}
-                            height={40}
-                            className="rounded-md"
-                        />
+                        <div className={styles.logoWrapper}>
+                            <Image
+                                src="/images/logo/logo_alquilerdeecografos.webp"
+                                alt="Logo"
+                                fill
+                                sizes="(max-width: 768px) 110px, 140px"
+                                priority
+                                className={styles.logoImg}
+                            />
+                        </div>
                     </Link>
 
                     <div className={`${styles.navLinks} ${mobileMenuOpen ? styles.open : ""}`}>
@@ -65,7 +68,15 @@ export default function Navbar() {
                         <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
                         <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros servicios</a>
                         <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
-                        <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar equipo</a>
+                        <div className={styles.mobileButtons}>
+                            <CallButton
+                                text="Llamar"
+                                subtext="300 521 2664"
+                                variant="highlight"
+                                className={styles.mobileCallButton}
+                            />
+                            <a href="#reservar" onClick={() => setMobileMenuOpen(false)} className={styles.mobileCta}>Separar equipo</a>
+                        </div>
                     </div>
 
                     <div className={styles.actions}>
@@ -79,11 +90,13 @@ export default function Navbar() {
                             <span className="mr-2 text-xl">📅</span> Separar equipo
                         </a>
                         <button
-                            className={styles.mobileToggle}
+                            className={`${styles.mobileToggle} ${mobileMenuOpen ? styles.toggleOpen : ""}`}
                             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                             aria-label="Toggle menu"
                         >
-                            ☰
+                            <span></span>
+                            <span></span>
+                            <span></span>
                         </button>
                     </div>
                 </div>

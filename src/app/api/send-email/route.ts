@@ -87,7 +87,7 @@ export async function POST(req: Request) {
                 <div class="wrapper">
                     <div class="container">
                         <div class="header">
-                            <h1>ECO ESPECIALIZADA</h1>
+                            <h1>ALQUILER DE ECOGRAFOS</h1>
                             <p style="font-size: 14px; opacity: 0.8; margin-top: 10px;">Tu contrato está listo para firmar</p>
                         </div>
                         <div class="content">
@@ -154,13 +154,13 @@ export async function POST(req: Request) {
                                     <td class="value">${duration || `${start_date} hasta ${end_date}`}</td>
                                 </tr>
                                 <tr>
-                                    <td class="label">Inversión</td>
+                                    <td class="label">VALOR TOTAL</td>
                                     <td class="value" style="color: #0070c0; font-size: 18px;">$${total_price.toLocaleString()} COP</td>
                                 </tr>
                             </table>
                         </div>
                         <div class="footer">
-                            <p><strong>Eco Especializada SAS</strong></p>
+                            <p><strong>Alquiler de Ecógrafos SAS</strong></p>
                             <p>Medellín, Colombia</p>
                             <p><a href="https://alquilerdeecografos.com">www.alquilerdeecografos.com</a></p>
                         </div>
