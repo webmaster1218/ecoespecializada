@@ -24,7 +24,7 @@ const faqData: FAQItem[] = [
     },
     {
         question: "¿Los equipos cuentan con registro sanitario INVIMA?",
-        answer: "Sí, el 100% de nuestra flota cuenta con registro sanitario INVIMA vigente y certificación de calibración. Somos distribuidores autorizados con más de 10 años de experiencia en el sector médico colombiano."
+        answer: "Sí, el 100% de nuestra Stockcuenta con registro sanitario INVIMA vigente y certificación de calibración. Somos distribuidores autorizados con más de 10 años de experiencia en el sector médico colombiano."
     },
     {
         question: "¿Hay un tiempo mínimo de alquiler?",

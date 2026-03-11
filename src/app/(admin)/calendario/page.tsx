@@ -4,20 +4,31 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import BookingsCalendar from "@/components/admin/BookingsCalendar";
 import AdminBookingModal from "@/components/admin/AdminBookingModal";
+import StockSettingsModal from "@/components/admin/StockSettingsModal";
 import Image from "next/image";
+import { getTotalStock } from "@/lib/availability";
+import { IconSettings } from "@tabler/icons-react";
 
 export default function CalendarPage() {
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
+    const [showStockModal, setShowStockModal] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState<any>(null);
+    const [totalInventory, setTotalInventory] = useState({ z6: 0, z60: 0 });
+
+    const fetchInventory = async () => {
+        const stock = await getTotalStock();
+        setTotalInventory(stock);
+    };
 
     useEffect(() => {
         const auth = sessionStorage.getItem("admin_auth");
         if (auth === "true") {
             setIsAuthenticated(true);
             setIsLoading(false);
+            fetchInventory();
         } else {
             router.push("/login");
         }
@@ -57,6 +68,13 @@ export default function CalendarPage() {
                 </div>
 
                 <div className="flex gap-3">
+                    <button
+                        onClick={() => setShowStockModal(true)}
+                        className="p-2.5 rounded-full bg-slate-100 text-slate-500 hover:bg-blue-50 hover:text-blue-600 transition-all border border-slate-200"
+                        title="Configurar Inventario"
+                    >
+                        <IconSettings size={20} />
+                    </button>
                     <button
                         onClick={() => { setSelectedBooking(null); setShowModal(true); }}
                         className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 md:px-6 md:py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-600/20 flex items-center gap-2 text-xs md:text-sm"
@@ -125,29 +143,29 @@ export default function CalendarPage() {
                         {/* Inventory Card */}
                         <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
                             <h3 className="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider border-b border-slate-100 pb-2">
-                                Flota Total
+                                StockTotal
                             </h3>
                             <div className="space-y-4">
                                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
                                     <div>
                                         <p className="font-bold text-slate-700">Mindray Z6</p>
-                                        <p className="text-xs text-slate-400">Gama Media</p>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Gama Media</p>
                                     </div>
                                     <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
-                                        2 Unds.
+                                        {totalInventory.z6} Unds.
                                     </div>
                                 </div>
                                 <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
                                     <div>
                                         <p className="font-bold text-slate-700">Mindray Z60</p>
-                                        <p className="text-xs text-slate-400">Gama Alta</p>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Gama Alta</p>
                                     </div>
                                     <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
-                                        2 Unds.
+                                        {totalInventory.z60} Unds.
                                     </div>
                                 </div>
                             </div>
-                            <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-xs rounded-lg border border-blue-100 leading-relaxed">
+                            <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-[11px] rounded-lg border border-blue-100 leading-relaxed font-medium">
                                 <strong>Nota:</strong> Revisa el calendario para ver la disponibilidad real en fechas específicas.
                             </div>
                         </div>
@@ -161,6 +179,14 @@ export default function CalendarPage() {
                 onClose={() => { setShowModal(false); setSelectedBooking(null); }}
                 onSuccess={() => {
                     window.location.reload();
+                }}
+            />
+
+            <StockSettingsModal
+                isOpen={showStockModal}
+                onClose={() => setShowStockModal(false)}
+                onSuccess={() => {
+                    fetchInventory();
                 }}
             />
         </div>

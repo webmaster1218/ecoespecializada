@@ -88,34 +88,33 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
 
     useEffect(() => {
         const fetchStock = async () => {
-            if (formData.startDate && formData.endDate) {
-                setIsCheckingStock(true);
-                try {
-                    const result = await checkAvailability(formData.startDate, formData.endDate);
-                    // If we are editing, we should add back the units already booked in this specific booking 
-                    // to accurately reflect "available for this booking"
-                    let extraZ6 = 0;
-                    let extraZ60 = 0;
-                    if (bookingToEdit) {
-                        extraZ6 = bookingToEdit.quantity_z6 || 0;
-                        extraZ60 = bookingToEdit.quantity_z60 || 0;
-                    }
-
-                    setAvailableStock({
-                        z6: result.z6 + extraZ6,
-                        z60: result.z60 + extraZ60
-                    });
-                } catch (error) {
-                    console.error("Stock check error:", error);
-                } finally {
-                    setIsCheckingStock(false);
+            setIsCheckingStock(true);
+            try {
+                // Now checkAvailability in availability.ts handles missing dates 
+                // by returning the total stock
+                const result = await checkAvailability(formData.startDate, formData.endDate);
+                
+                let extraZ6 = 0;
+                let extraZ60 = 0;
+                if (bookingToEdit && formData.startDate === bookingToEdit.start_date && formData.endDate === bookingToEdit.end_date) {
+                    extraZ6 = bookingToEdit.quantity_z6 || 0;
+                    extraZ60 = bookingToEdit.quantity_z60 || 0;
                 }
+
+                setAvailableStock({
+                    z6: result.z6 + extraZ6,
+                    z60: result.z60 + extraZ60
+                });
+            } catch (error) {
+                console.error("Stock check error:", error);
+            } finally {
+                setIsCheckingStock(false);
             }
         };
 
         const timeoutId = setTimeout(fetchStock, 500);
         return () => clearTimeout(timeoutId);
-    }, [formData.startDate, formData.endDate, bookingToEdit]);
+    }, [formData.startDate, formData.endDate, bookingToEdit, isOpen]);
 
     const toggleTransducer = (t: string) => {
         setFormData(prev => ({
@@ -254,29 +253,29 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                 </h4>
                                 <div className="space-y-4">
                                     <div className="space-y-1.5">
-                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Nombre Completo</label>
-                                        <input required type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Nombre Completo <span className="text-slate-300 font-normal lowercase">(Opcional)</span></label>
+                                        <input type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
                                             value={formData.clientName} onChange={e => setFormData({ ...formData, clientName: e.target.value })} />
                                     </div>
                                     <div className="grid grid-cols-2 gap-4 items-start">
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Documento (CC)</label>
-                                            <input required type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Documento (CC) <span className="text-slate-300 font-normal lowercase">(Opc)</span></label>
+                                            <input type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
                                                 value={formData.documentNumber} onChange={e => setFormData({ ...formData, documentNumber: e.target.value })} />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block flex justify-between">NIT / RUT <span className="text-[8px] opacity-40 lowercase">Opcional</span></label>
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block flex justify-between">NIT / RUT <span className="text-[8px] opacity-40 lowercase font-normal">Opcional</span></label>
                                             <input type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
                                                 value={formData.taxId} onChange={e => setFormData({ ...formData, taxId: e.target.value })} />
                                         </div>
                                     </div>
                                     <div className="space-y-1.5">
-                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Teléfono WhatsApp</label>
-                                        <input required type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Teléfono WhatsApp <span className="text-slate-300 font-normal lowercase">(Opcional)</span></label>
+                                        <input type="text" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
                                             value={formData.clientPhone} onChange={e => setFormData({ ...formData, clientPhone: e.target.value })} />
                                     </div>
                                     <div className="space-y-1.5">
-                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Email</label>
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Email <span className="text-slate-300 font-normal lowercase">(Opcional)</span></label>
                                         <input type="email" className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 outline-none transition-all font-semibold text-sm"
                                             value={formData.clientEmail} onChange={e => setFormData({ ...formData, clientEmail: e.target.value })} />
                                     </div>
@@ -310,8 +309,8 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                             />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Horario Entrega</label>
-                                            <select required className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white font-semibold outline-none text-xs md:text-sm cursor-pointer h-[50px] md:h-[52px]"
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Horario Entrega <span className="text-slate-300 font-normal lowercase">(Opc)</span></label>
+                                            <select className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white font-semibold outline-none text-xs md:text-sm cursor-pointer h-[50px] md:h-[52px]"
                                                 value={formData.deliveryTime} onChange={e => setFormData({ ...formData, deliveryTime: e.target.value })}>
                                                 <option value="">Selección...</option>
                                                 <option value="7:00 AM - 8:00 AM">7:00 AM - 8:00 AM</option>
@@ -333,8 +332,8 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                             />
                                         </div>
                                         <div className="space-y-1.5">
-                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Horario Recogida</label>
-                                            <select required className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white font-semibold outline-none text-xs md:text-sm cursor-pointer h-[50px] md:h-[52px]"
+                                            <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Horario Recogida <span className="text-slate-300 font-normal lowercase">(Opc)</span></label>
+                                            <select className="w-full border-2 border-slate-100 rounded-2xl px-4 py-3 bg-slate-50 focus:bg-white font-semibold outline-none text-xs md:text-sm cursor-pointer h-[50px] md:h-[52px]"
                                                 value={formData.collectionTime} onChange={e => setFormData({ ...formData, collectionTime: e.target.value })}>
                                                 <option value="">Selección...</option>
                                                 <option value="5:00 PM - 6:00 PM">5:00 PM - 6:00 PM</option>
@@ -345,10 +344,10 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                     </div>
 
                                     <div className="space-y-1.5">
-                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Dirección Completa</label>
+                                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Dirección <span className="text-slate-300 font-normal lowercase">(Opcional)</span></label>
                                         <div className="relative">
                                             <IconMapPin className="absolute left-4 top-4 text-slate-300" size={18} />
-                                            <textarea required rows={2} className="w-full border-2 border-slate-100 rounded-2xl pl-11 pr-5 py-3.5 bg-slate-50 focus:bg-white font-semibold outline-none resize-none text-sm"
+                                            <textarea rows={2} className="w-full border-2 border-slate-100 rounded-2xl pl-11 pr-5 py-3.5 bg-slate-50 focus:bg-white font-semibold outline-none resize-none text-sm"
                                                 placeholder="Calle 123 #45-67, Edificio... Medellín"
                                                 value={formData.clientAddress} onChange={e => setFormData({ ...formData, clientAddress: e.target.value })} />
                                         </div>

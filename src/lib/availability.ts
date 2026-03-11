@@ -6,32 +6,60 @@ export interface AvailabilityResult {
     available: boolean;
 }
 
-const TOTAL_STOCK = {
+// Fallback stock if Supabase fails or table is empty
+const DEFAULT_STOCK = {
     z6: 2,
     z60: 2
 };
 
 /**
+ * Fetches the current total inventory from Supabase settings
+ */
+export async function getTotalStock(): Promise<{ z6: number; z60: number }> {
+    try {
+        if (!supabase) return DEFAULT_STOCK;
+
+        const { data, error } = await supabase
+            .from('equipment_settings')
+            .select('value')
+            .eq('key', 'inventory')
+            .single();
+
+        if (error || !data || !data.value) {
+            console.warn('Inventory setting not found, using default stock');
+            return DEFAULT_STOCK;
+        }
+
+        return {
+            z6: typeof data.value.z6 === 'number' ? data.value.z6 : DEFAULT_STOCK.z6,
+            z60: typeof data.value.z60 === 'number' ? data.value.z60 : DEFAULT_STOCK.z60
+        };
+    } catch (err) {
+        console.error('Error fetching total stock:', err);
+        return DEFAULT_STOCK;
+    }
+}
+
+/**
  * Checks availability for equipment in a given date range.
  * Returns the maximum number of units available for each type.
  */
-export async function checkAvailability(startDate: string, endDate: string): Promise<AvailabilityResult> {
+export async function checkAvailability(startDate?: string, endDate?: string): Promise<AvailabilityResult> {
     try {
-        if (!supabase) {
-            console.warn('Supabase not configured - returning maximum availability');
+        const totalStock = await getTotalStock();
+
+        // If no dates are provided, return the total stock as "available"
+        if (!startDate || !endDate || !supabase) {
             return {
-                z6: TOTAL_STOCK.z6,
-                z60: TOTAL_STOCK.z60,
-                available: true
+                ...totalStock,
+                available: totalStock.z6 > 0 || totalStock.z60 > 0
             };
         }
 
         // Query bookings that overlap with the requested range
-        // Condition: (start_date <= requested_end) AND (end_date >= requested_start)
         const { data: bookings, error } = await supabase
             .from('bookings')
             .select('quantity_z6, quantity_z60')
-            // Match calendar logic: count everything except cancelled and completed
             .not('status', 'in', ['cancelled', 'completed'])
             .lte('start_date', endDate)
             .gte('end_date', startDate);
@@ -54,8 +82,8 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
 
         // Calculate available stock
         // Ensure we don't return negative numbers if overbooked manually
-        const availableZ6 = Math.max(0, TOTAL_STOCK.z6 - blockedZ6);
-        const availableZ60 = Math.max(0, TOTAL_STOCK.z60 - blockedZ60);
+        const availableZ6 = Math.max(0, totalStock.z6 - blockedZ6);
+        const availableZ60 = Math.max(0, totalStock.z60 - blockedZ60);
 
         return {
             z6: availableZ6,
@@ -64,11 +92,10 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
         };
 
     } catch (err) {
-        console.warn('Availability check failed (Supabase might be paused) - falling back to full stock:', err);
-        // Fallback: If Supabase fails, assume everything is available
+        console.warn('Availability check failed (Supabase might be paused) - falling back to default stock:', err);
+        const fallbackStock = await getTotalStock();
         return {
-            z6: TOTAL_STOCK.z6,
-            z60: TOTAL_STOCK.z60,
+            ...fallbackStock,
             available: true
         };
     }
@@ -80,22 +107,21 @@ export async function checkAvailability(startDate: string, endDate: string): Pro
  */
 export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: number): Promise<string | null> {
     try {
+        const totalStock = await getTotalStock();
+        
         if (!supabase) {
-            // Return tomorrow as next available date if Supabase is not configured
             const tomorrow = new Date();
             tomorrow.setDate(tomorrow.getDate() + 1);
             return tomorrow.toISOString().split('T')[0];
         }
 
         const today = new Date();
-        // Start checking from tomorrow
         const checkDate = new Date(today);
         checkDate.setDate(checkDate.getDate() + 1);
 
         const maxDate = new Date(today);
-        maxDate.setDate(maxDate.getDate() + 60); // Check next 60 days
+        maxDate.setDate(maxDate.getDate() + 60);
 
-        // 1. Fetch all active bookings for this model in the next 60 days
         const { data: bookings } = await supabase
             .from('bookings')
             .select(`start_date, end_date, quantity_${model}`)
@@ -104,19 +130,16 @@ export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: nu
             .gte('end_date', checkDate.toISOString());
 
         const activeBookings = bookings || [];
-        const stock = TOTAL_STOCK[model];
+        const stock = totalStock[model];
 
-        // 2. Iterate day by day to find a gap of 'durationDays'
         while (checkDate <= maxDate) {
             let isWindowAvailable = true;
 
-            // Check if the window [checkDate, checkDate + duration] is clear
             for (let i = 0; i < durationDays; i++) {
                 const currentDay = new Date(checkDate);
                 currentDay.setDate(currentDay.getDate() + i);
                 const dateStr = currentDay.toISOString().split('T')[0];
 
-                // Count usage on this specific day
                 let usage = 0;
                 activeBookings.forEach(b => {
                     if (b.start_date <= dateStr && b.end_date >= dateStr) {
@@ -126,7 +149,7 @@ export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: nu
 
                 if (stock - usage <= 0) {
                     isWindowAvailable = false;
-                    break; // Stop checking this window, try next start date
+                    break;
                 }
             }
 
@@ -134,11 +157,10 @@ export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: nu
                 return checkDate.toISOString().split('T')[0];
             }
 
-            // Increment start date
             checkDate.setDate(checkDate.getDate() + 1);
         }
 
-        return null; // No slot found
+        return null;
     } catch (err) {
         console.warn('Next available date check failed - falling back to tomorrow:', err);
         const tomorrow = new Date();
