@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Footer from "@/components/layout/Footer";
 import LogoLoop from "@/components/sections/LogoLoop";
 import CallButton from "@/components/ui/CallButton";
@@ -12,37 +12,162 @@ const whatsappNumber = "573005212664";
 const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Z6");
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
+const navLinks = [
+  { name: "Inicio", href: "#inicio" },
+  { name: "Características", href: "#caracteristicas" },
+  { name: "Tecnología", href: "#tecnologia" }
+];
+
 export default function EcografoZ6Page() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <main className="bg-slate-50 min-h-screen selection:bg-blue-100 selection:text-blue-900">
 
-      {/* Custom Navigation */}
-      <nav className="fixed w-full z-50 transition-all duration-300 bg-white/80 backdrop-blur-md border-b border-slate-200/50 shadow-sm top-0">
-        <div className="container mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
+      {/* Home-style Navigation */}
+      <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "top-0" : "top-0"}`}>
+        {/* Branding Bar - Matches Home */}
+        <div className={`bg-white py-2 border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 ${scrolled ? "-mt-10 opacity-0" : "opacity-100"}`}>
+          <span className="text-[10px] md:text-xs font-medium text-slate-500 tracking-tight">Una marca de</span>
+          <Image
+            src="/images/logo/equibiomedic-new.png"
+            alt="Equibiomedic Logo"
+            width={100}
+            height={20}
+            className="h-4 w-auto object-contain"
+          />
+        </div>
+
+        <div className={`transition-all duration-300 ${scrolled ? "bg-white/95 shadow-md h-16" : "bg-white/80 h-20"} backdrop-blur-md border-b border-white/10 flex items-center`}>
+          <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
+            <div className="flex items-center gap-4 lg:gap-12">
+              <Link href="/" className="block relative h-8 w-24 md:h-10 md:w-36 shrink-0">
+                <Image
+                  src="/images/logo/logo_alquilerdeecografos.webp"
+                  alt="Logo"
+                  fill
+                  className="object-contain object-left"
+                  priority
+                />
+              </Link>
+
+              <Link href="/" className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border border-slate-100">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+                <span className="text-xs font-bold uppercase tracking-wider">Volver</span>
+              </Link>
+
+              {/* Desktop Menu - Home Style */}
+              <div className="hidden lg:flex items-center gap-8">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className="text-[0.9rem] font-semibold text-[#1e293b] hover:text-blue-600 transition-colors relative group/link"
+                  >
+                    {link.name}
+                    <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover/link:w-full"></span>
+                  </a>
+                ))}
+              </div>
             </div>
-            <span className="font-semibold text-slate-700 group-hover:text-blue-600 transition-colors">Volver al Inicio</span>
-          </Link>
-          <div className="flex-shrink-0">
-            <Link href="/" className="block relative h-10 w-32 sm:h-12 sm:w-48">
-              <Image
-                src="/images/logo/logo_alquilerdeecografos.webp"
-                alt="Logo"
-                fill
-                className="object-contain object-right"
-                priority
-              />
-            </Link>
+
+            <div className="flex items-center gap-3">
+              {/* Desktop CTAs - Home Style */}
+              <div className="hidden md:flex items-center gap-3 px-2">
+                <CallButton
+                  text="Llamar"
+                  subtext="300 521 2664"
+                  variant="highlight"
+                  className="!py-2 !px-5 !text-xs"
+                />
+                <Link href="/#reservar" className="btn-primary !py-3 !px-6 !text-[13px] !font-bold flex items-center gap-2 shadow-xl shadow-blue-500/20 rounded-full">
+                  <span className="text-lg">📅</span> Separar equipo
+                </Link>
+              </div>
+
+              {/* Mobile Menu Toggle - Home Style */}
+              <button
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-slate-50 rounded-xl text-slate-600"
+                aria-label="Menu"
+              >
+                <motion.span
+                  animate={isMenuOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
+                  className="w-5 h-0.5 bg-current rounded-full"
+                />
+                <motion.span
+                  animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="w-5 h-0.5 bg-current rounded-full"
+                />
+                <motion.span
+                  animate={isMenuOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
+                  className="w-5 h-0.5 bg-current rounded-full"
+                />
+              </button>
+            </div>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay - Home Style */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="lg:hidden overflow-hidden bg-white border-b border-slate-100 shadow-2xl"
+            >
+              <div className="px-6 py-8 flex flex-col gap-5">
+                <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl text-slate-600 mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                  </svg>
+                  <span className="font-bold text-sm uppercase tracking-wider text-slate-700">Volver al Inicio</span>
+                </Link>
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-[1.1rem] font-semibold text-[#1e293b] hover:text-blue-600 transition-colors py-1 px-3"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                <div className="pt-6 mt-2 border-t border-slate-100 flex flex-col gap-4">
+                  <CallButton
+                    text="Llamar ahora"
+                    subtext="300 521 2664"
+                    variant="highlight"
+                    className="w-full justify-center"
+                  />
+                  <Link
+                    href="/#reservar"
+                    onClick={() => setIsMenuOpen(false)}
+                    className="btn-primary w-full text-center !py-4 text-base font-bold rounded-xl"
+                  >
+                    Separar equipo
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-white pt-32 pb-16 md:pt-40 md:pb-24 min-h-[90vh] flex items-center">
+      <section id="inicio" className="relative overflow-hidden bg-white pt-32 pb-16 md:pt-40 md:pb-24 min-h-[90vh] flex items-center">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-100/40 via-white to-white -z-10"></div>
 
         <div className="absolute left-0 top-0 w-full h-full bg-[url('/images/grid.svg')] opacity-[0.05] pointer-events-none"></div>
@@ -81,7 +206,7 @@ export default function EcografoZ6Page() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <CallButton 
+                <CallButton
                   text="Solicitar Alquiler"
                   subtext="Respuesta inmediata"
                   iconType="whatsapp"
@@ -254,7 +379,7 @@ export default function EcografoZ6Page() {
       </section>
 
       {/* Tech Specifications */}
-      <section className="py-12 md:py-24 bg-white relative overflow-hidden">
+      <section id="tecnologia" className="py-12 md:py-24 bg-white relative overflow-hidden">
         <div className="absolute inset-0 bg-blue-50/50 skew-y-3 origin-bottom-right transform scale-110 -z-10"></div>
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -316,7 +441,7 @@ export default function EcografoZ6Page() {
       </section>
 
       {/* Social Proof & CTA Section */}
-      <section className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
+      <section id="contacto" className="py-16 md:py-24 bg-slate-50 relative overflow-hidden">
         <div className="absolute inset-0 bg-white/40 -z-10"></div>
         <div className="container mx-auto px-4 md:px-8 relative z-10 text-center">
           {/* LogoLoop First - Social Proof */}

@@ -1,9 +1,9 @@
-# ECO-ALQUILER Landing Page - Documentación del Proyecto
+# ALQUILER DE ECOGRAFOS - Documentación del Proyecto
 
 ## 🏥 Descripción General
-Este es un proyecto web profesional desarrollado con **Next.js** para **ECO-ALQUILER (Equibiomedic)**. La plataforma está diseñada para facilitar el alquiler de ecógrafos portátiles de alta gama (**Mindray Z6 y Z60**) en la ciudad de Medellín y el departamento de Antioquia, Colombia.
+Este es un proyecto web profesional desarrollado con **Next.js** para **ALQUILER DE ECOGRAFOS**. La plataforma está diseñada para facilitar el alquiler de ecógrafos portátiles de alta gama (**Mindray Z6 y Z60**) en la ciudad de Medellín y el departamento de Antioquia, Colombia.
 
-La aplicación combina una interfaz de usuario premium con un sistema de reserva inteligente y gestión en tiempo real a través de Supabase.
+La aplicación combina una interfaz de usuario premium con un sistema de reserva inteligente, optimización para dispositivos móviles y una identidad visual coherente que refleja profesionalismo y confianza.
 
 ---
 
@@ -24,24 +24,22 @@ La aplicación combina una interfaz de usuario premium con un sistema de reserva
 
 ## ✨ Características Detalladas
 
-### 1. Sistema de Reserva Inteligente (Booking Wizard)
+### 1. Landing Pages Especializadas (Z6 y Z60)
+- **Diseño Premium**: Páginas dedicadas para los modelos **Mindray Z6** y **Mindray Z60** con una jerarquía visual clara y moderna.
+- **Optimización Móvil**: Interfaz adaptativa con elementos compactos, botones de ancho completo en móviles y navegación fluida.
+- **Hero Interactivo**: Presentación de productos con insignias de confianza (INVIMA, Soporte, Garantía) y llamadas a la acción (CTA) directas.
+
+### 2. Sistema de Reserva Inteligente (Booking Wizard)
 - **Asistente paso a paso**: Un wizard interactivo (`BookingWizard.tsx`) que guía al usuario en la selección del equipo, fechas y datos de contacto.
-- **Verificación de disponibilidad**: Consulta en tiempo real (`availability.ts`) contra la base de datos de Supabase para asegurar que los equipos no se sobre-alquilen.
-- **Cálculo de Cotizaciones**: Genera un desglose de costos basado en el tiempo de alquiler y el modelo seleccionado.
+- **Verificación de disponibilidad**: Consulta en tiempo real (`availability.ts`) contra la base de datos de Supabase para asegurar la disponibilidad técnica.
 
-### 2. Catálogo de Productos y Comparativa
-- Presentación detallada de los modelos **Mindray Z6** y **Mindray Z60**.
-- Sección de comparativa técnica para ayudar a los profesionales de la salud a elegir el equipo adecuado.
-- Enfoque en beneficios: portabilidad, calidad de imagen Dover, y respaldo técnico.
+### 3. Componentes Sincronizados
+- **LogoLoop**: Carrusel de logotipos de empresas que confían en el servicio, reforzando la prueba social.
+- **CallButton**: Componente reutilizable para llamadas y WhatsApp, estandarizado en toda la plataforma.
+- **CTA Sections**: Secciones de cierre con diseño de "Tarjeta Azul" para maximizar la conversión.
 
-### 3. Aplicaciones Clínicas
-- Sección dedicada a los usos del equipo: Ginecología, Abdominal, Vascular, Urgencias, etc.
-
-### 4. Panel de Administración (In-progress)
-- Estructura preparada para gestión de reservas y estado de los equipos (`app/(admin)`).
-
-### 5. Integración de Notificaciones
-- Sistema automático de envío de correos electrónicos para confirmación de cotizaciones y contacto directo a través de API routes.
+### 4. Integración de Notificaciones
+- Sistema automático de envío de correos electrónicos (`api/send-email`) para confirmación de cotizaciones y contacto.
 
 ---
 
@@ -51,14 +49,14 @@ La aplicación combina una interfaz de usuario premium con un sistema de reserva
 src/
 ├── app/                    # Rutas y Layouts (Next.js App Router)
 │   ├── (admin)/            # Rutas protegidas para administración
-│   ├── (public)/           # Rutas públicas (Home, Login, Políticas)
+│   ├── (public)/           # Rutas públicas (Home, Z6, Z60, Login, Políticas)
 │   ├── api/                # API Routes (Envío de correos, Debugging)
 │   └── globals.css         # Estilos globales y tokens de diseño
 ├── components/
 │   ├── layout/             # Componentes de estructura (Nav, Footer)
-│   ├── sections/           # Secciones principales de la Landing Page (Hero, Advantages, etc.)
-│   ├── ui/                 # Componentes de UI reutilizables (Buttons, Modals, AOS)
-│   └── pdf/                # Generación de documentos PDF (si aplica)
+│   ├── sections/           # Secciones principales (Hero, LogoLoop, Advantages, etc.)
+│   ├── ui/                 # Componentes de UI reutilizables (CallButton, Modals, AOS)
+│   └── pdf/                # Generación de documentos PDF
 ├── lib/                    # Lógica de negocio y clientes externos
 │   ├── availability.ts     # Lógica central de stock y fechas
 │   └── supabase.ts         # Cliente de conexión a Supabase
@@ -80,7 +78,7 @@ src/
    ```
 
 3. **Configurar variables de entorno**:
-   Crea un archivo `.env.local` con las siguientes claves (basado en `.env`):
+   Crea un archivo `.env.local` con las siguientes claves:
    - `NEXT_PUBLIC_SUPABASE_URL`
    - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
    - `EMAIL_SERVER_HOST`, `EMAIL_SERVER_PORT`, `EMAIL_SERVER_USER`, `EMAIL_SERVER_PASSWORD`
@@ -93,18 +91,9 @@ src/
 
 ---
 
-## 📈 Configuración de Analítica
-
-El proyecto incluye integraciones nativas para:
-- **Google Tag Manager**: `GTM-WV8Q9KMF`
-- **Google Analytics**: `G-Y0ZQV2PWF1`
-- **Google Ads**: `AW-17907409527` y `AW-17807317804`
-
----
-
 ## 🔐 Seguridad y Políticas
 - El proyecto incluye rutas para **Términos y Condiciones** y **Políticas de Privacidad** ajustadas a la normativa colombiana de protección de datos.
 
 ---
 
-Desarrollado para **Equibiomedic** - Soluciones médicas de alta calidad.
+Desarrollado para **ALQUILER DE ECOGRAFOS** - Soluciones médicas de alta calidad en Medellín, Antioquia.
