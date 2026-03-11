@@ -21,12 +21,13 @@ export default function Gracias() {
                     {/* Mensaje principal */}
                     <div className={styles.message} data-aos="fade-up" data-aos-delay="100">
                         <h1 className={styles.title}>
-                            ¡Gracias por tu <span className="text-gradient">mensaje!</span>
+                            ¡Gracias por tu <span className="text-gradient">reserva!</span>
                         </h1>
                         <p className={styles.description}>
-                            Hemos recibido tu información correctamente. Uno de nuestros asesores especializados
-                            se pondrá en contacto contigo en las próximas horas para ayudarte a encontrar la
-                            solución perfecta para tus necesidades de diagnóstico médico.
+                            Hemos recibido tu solicitud correctamente. <strong>Revisa tu correo electrónico</strong>, ya que te hemos enviado el contrato de alquiler junto con los datos necesarios para realizar el pago y formalizar el servicio.
+                        </p>
+                        <p className={styles.description}>
+                            Uno de nuestros asesores especializados se comunicará contigo pronto para coordinar los detalles finales de la entrega.
                         </p>
                     </div>
 
