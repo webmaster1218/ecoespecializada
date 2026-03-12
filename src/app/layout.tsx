@@ -26,6 +26,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/images/logo/logo-pestaña.webp",
     apple: "/images/logo/logo-pestaña.webp",
+  },
+  verification: {
+    google: "Ls8AN5mLsHq7NDhWW6rhp3Egt1jGoIM49_rRI1Nt_wQ",
   }
 };
 
