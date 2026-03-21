@@ -36,7 +36,7 @@ export default function EcografoM7Page() {
       {/* Home-style Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "top-0" : "top-0"}`}>
         {/* Branding Bar - Matches Home */}
-        <div className={`bg-white py-2 border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 ${scrolled ? "-mt-10 opacity-0" : "opacity-100"}`}>
+        <div className={`bg-white border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 overflow-hidden ${scrolled ? "h-0 py-0 opacity-0 border-transparent" : "h-10 py-2 opacity-100"}`}>
           <span className="text-[10px] md:text-xs font-medium text-slate-500 tracking-tight">Una marca de</span>
           <Image
             src="/images/logo/equibiomedic-new.png"
@@ -47,7 +47,7 @@ export default function EcografoM7Page() {
           />
         </div>
 
-        <div className={`transition-all duration-300 ${scrolled ? "bg-white/95 shadow-md h-16" : "bg-white/80 h-20"} backdrop-blur-md border-b border-white/10 flex items-center`}>
+        <div className={`transition-all duration-300 ${scrolled ? "bg-white/95 shadow-md h-[4.5rem]" : "bg-white/80 h-20"} backdrop-blur-md border-b border-white/10 flex items-center`}>
           <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
             <div className="flex items-center gap-4 lg:gap-12">
               <Link href="/" className="block relative h-8 w-24 md:h-10 md:w-36 shrink-0">
@@ -296,7 +296,7 @@ export default function EcografoM7Page() {
               />
 
               <Image
-                src="/images/m7/M7-abierto-ziquierda.png"
+                src="/images/m7/M7-abierto-derecha.png"
                 alt="Ecógrafo Mindray M7"
                 width={500}
                 height={500}
@@ -352,7 +352,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/m7-de-lado.png" alt="Mindray M7 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-trastuctores.jpg" alt="Mindray M7 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Batería Autoliberadora</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Escaneo ininterrumpido con batería recargable Li-ion, aportando más de 1.5 hs de operación continua con iRoam™.</p>
@@ -371,7 +371,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/m7-abierto-derecha.png" alt="Mindray M7 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-abierto-ziquierda.png" alt="Mindray M7 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de Nivel Médico</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de 15 pulgadas TFT de alta resolución anti-reflejo y de ángulos de visión ampliados para entornos luminosos.</p>
@@ -390,7 +390,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/M7-trastuctores.jpg" alt="Mindray M7 Transductores" width={300} height={300} className="object-cover h-full rounded-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-abierto-derecha.png" alt="Mindray M7 Transductores" width={300} height={300} className="object-cover h-full rounded-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Alta Multiespecialidad</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Soporta exploración transvaginal volumétrica con imagen 3D/4D de alta fidelidad, excelente para obstetricia y ginecología.</p>

@@ -36,7 +36,7 @@ export default function EcografoZ60Page() {
       {/* Home-style Navigation */}
       <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "top-0" : "top-0"}`}>
         {/* Branding Bar - Matches Home */}
-        <div className={`bg-white py-2 border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 ${scrolled ? "-mt-10 opacity-0" : "opacity-100"}`}>
+        <div className={`bg-white border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 overflow-hidden ${scrolled ? "h-0 py-0 opacity-0 border-transparent" : "h-10 py-2 opacity-100"}`}>
           <span className="text-[10px] md:text-xs font-medium text-slate-500 tracking-tight">Una marca de</span>
           <Image
             src="/images/logo/equibiomedic-new.png"
@@ -47,7 +47,7 @@ export default function EcografoZ60Page() {
           />
         </div>
 
-        <div className={`transition-all duration-300 ${scrolled ? "bg-white/95 shadow-md h-16" : "bg-white/80 h-20"} backdrop-blur-md border-b border-white/10 flex items-center`}>
+        <div className={`transition-all duration-300 ${scrolled ? "bg-white/95 shadow-md h-[4.5rem]" : "bg-white/80 h-20"} backdrop-blur-md border-b border-white/10 flex items-center`}>
           <div className="container mx-auto px-4 md:px-8 flex items-center justify-between">
             <div className="flex items-center gap-4 lg:gap-12">
               <Link href="/" className="block relative h-8 w-24 md:h-10 md:w-36 shrink-0">

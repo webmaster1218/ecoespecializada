@@ -882,7 +882,7 @@ export default function BookingWizard() {
                           id: "m7",
                           name: "Mindray M7",
                           price: PRICES.m7,
-                          img: "/images/m7/m7-de-lado.png",
+                          img: "/images/m7/m7-abierto-derecha.png",
                           badge: "Nuevo",
                           desc: "3D/4D Premium",
                         },
@@ -1021,8 +1021,8 @@ export default function BookingWizard() {
                       {[
                         {
                           id: "Transvaginal volumétrico",
-                          label: "TV Volum.', 3D/4D",
-                          desc: "Obstetricia 3D/4D (M7)",
+                          label: "Transvaginal volumétrico",
+                          desc: "Obstetricia 3D/4D (Equipo M7)",
                         },
                         {
                           id: "Transvaginal",
@@ -1039,14 +1039,21 @@ export default function BookingWizard() {
                           label: "Lineal",
                           desc: "Pequeñas partes/vasc.",
                         },
-                      ].filter(t => t.id !== "Transvaginal volumétrico" || formData.quantities.m7 > 0).map((t) => (
+                      ].map((t) => {
+                        const isM7Transducer = t.id === "Transvaginal volumétrico";
+                        const isDisabled = isM7Transducer && formData.quantities.m7 === 0;
+
+                        return (
                         <button
                           key={t.id}
-                          onClick={() => toggleTransducer(t.id)}
+                          onClick={() => !isDisabled && toggleTransducer(t.id)}
+                          disabled={isDisabled}
                           className={`p-4 rounded-2xl border-2 text-left transition-all duration-300 ${
-                            (formData.selectedTransducers || []).includes(t.id)
-                              ? "border-blue-500 bg-blue-50/50 text-blue-700 shadow-md ring-4 ring-blue-500/5"
-                              : "border-slate-100 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50"
+                            isDisabled
+                              ? "border-slate-100 bg-slate-50 opacity-50 cursor-not-allowed grayscale"
+                              : (formData.selectedTransducers || []).includes(t.id)
+                                ? "border-blue-500 bg-blue-50/50 text-blue-700 shadow-md ring-4 ring-blue-500/5"
+                                : "border-slate-100 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50"
                           }`}
                         >
                           <div className="flex flex-col">
@@ -1073,7 +1080,8 @@ export default function BookingWizard() {
                             </span>
                           </div>
                         </button>
-                      ))}
+                        );
+                      })}
                     </div>
                     {errors.transducers && (
                       <span className="text-xs text-red-500 flex items-center mt-2 gap-1">
