@@ -317,7 +317,7 @@ const TestContractPDF: React.FC<TestContractPDFProps> = ({ data }) => {
                                     <Path d="M16 12.5c-.3 0-.6-.1-.8-.3l-.8-.8c-.2-.2-.2-.5 0-.7l.3-.3c.1-.1.1-.3 0-.4l-1.5-1.5c-.1-.1-.3-.1-.4 0l-.3.3c-.2.2-.5.2-.7 0l-.8-.8c-.2-.2-.2-.5 0-.7l.4-.4c.2-.2.2-.5 0-.7L9.5 5.3c-.2-.2-.5-.2-.7 0l-.5.5c-.6.6-.8 1.4-.6 2.2.4 1.8 1.6 3.5 3.2 5.1s3.3 2.8 5.1 3.2c.8.2 1.6 0 2.2-.6l.5-.5c.2-.2.2-.5 0-.7l-1.5-1.5c-.1-.2-.4-.2-.5-.1z" fill="#ffffff" />
                                 </Svg>
                             </View>
-                            <Text style={styles.footerBottomText}>300 5212664</Text>
+                            <Text style={styles.footerBottomText}>300 3608621</Text>
                         </View>
                         <View style={styles.footerItem}>
                             <View style={styles.footerIconWrapper}>

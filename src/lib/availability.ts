@@ -3,19 +3,21 @@ import { supabase } from '@/lib/supabase';
 export interface AvailabilityResult {
     z6: number;
     z60: number;
+    m7: number;
     available: boolean;
 }
 
 // Fallback stock if Supabase fails or table is empty
 const DEFAULT_STOCK = {
     z6: 2,
-    z60: 2
+    z60: 2,
+    m7: 1
 };
 
 /**
  * Fetches the current total inventory from Supabase settings
  */
-export async function getTotalStock(): Promise<{ z6: number; z60: number }> {
+export async function getTotalStock(): Promise<{ z6: number; z60: number; m7: number }> {
     try {
         if (!supabase) return DEFAULT_STOCK;
 
@@ -32,7 +34,8 @@ export async function getTotalStock(): Promise<{ z6: number; z60: number }> {
 
         return {
             z6: typeof data.value.z6 === 'number' ? data.value.z6 : DEFAULT_STOCK.z6,
-            z60: typeof data.value.z60 === 'number' ? data.value.z60 : DEFAULT_STOCK.z60
+            z60: typeof data.value.z60 === 'number' ? data.value.z60 : DEFAULT_STOCK.z60,
+            m7: typeof data.value.m7 === 'number' ? data.value.m7 : DEFAULT_STOCK.m7
         };
     } catch (err) {
         console.error('Error fetching total stock:', err);
@@ -52,14 +55,14 @@ export async function checkAvailability(startDate?: string, endDate?: string): P
         if (!startDate || !endDate || !supabase) {
             return {
                 ...totalStock,
-                available: totalStock.z6 > 0 || totalStock.z60 > 0
+                available: totalStock.z6 > 0 || totalStock.z60 > 0 || totalStock.m7 > 0
             };
         }
 
         // Query bookings that overlap with the requested range
         const { data: bookings, error } = await supabase
             .from('bookings')
-            .select('quantity_z6, quantity_z60')
+            .select('quantity_z6, quantity_z60, quantity_m7')
             .not('status', 'in', ['cancelled', 'completed'])
             .lte('start_date', endDate)
             .gte('end_date', startDate);
@@ -72,11 +75,13 @@ export async function checkAvailability(startDate?: string, endDate?: string): P
         // Sum up blocked quantities
         let blockedZ6 = 0;
         let blockedZ60 = 0;
+        let blockedM7 = 0;
 
         if (bookings && bookings.length > 0) {
             bookings.forEach(booking => {
                 blockedZ6 += (booking.quantity_z6 || 0);
                 blockedZ60 += (booking.quantity_z60 || 0);
+                blockedM7 += (booking.quantity_m7 || 0);
             });
         }
 
@@ -84,11 +89,13 @@ export async function checkAvailability(startDate?: string, endDate?: string): P
         // Ensure we don't return negative numbers if overbooked manually
         const availableZ6 = Math.max(0, totalStock.z6 - blockedZ6);
         const availableZ60 = Math.max(0, totalStock.z60 - blockedZ60);
+        const availableM7 = Math.max(0, totalStock.m7 - blockedM7);
 
         return {
             z6: availableZ6,
             z60: availableZ60,
-            available: availableZ6 > 0 || availableZ60 > 0
+            m7: availableM7,
+            available: availableZ6 > 0 || availableZ60 > 0 || availableM7 > 0
         };
 
     } catch (err) {
@@ -105,7 +112,7 @@ export async function checkAvailability(startDate?: string, endDate?: string): P
  * Finds the next available start date for a specific model given a duration.
  * Scans the next 60 days.
  */
-export async function getNextAvailableDate(model: 'z6' | 'z60', durationDays: number): Promise<string | null> {
+export async function getNextAvailableDate(model: 'z6' | 'z60' | 'm7', durationDays: number): Promise<string | null> {
     try {
         const totalStock = await getTotalStock();
         

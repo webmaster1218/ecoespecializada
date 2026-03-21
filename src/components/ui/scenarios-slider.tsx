@@ -29,6 +29,14 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
 
     const activeScenario = scenarios[currentIndex];
 
+    React.useEffect(() => {
+        const timer = setInterval(() => {
+            setDirection("right");
+            setCurrentIndex((prev) => (prev + 1) % scenarios.length);
+        }, 5000);
+        return () => clearInterval(timer);
+    }, [scenarios.length]);
+
     const handleNext = () => {
         setDirection("right");
         setCurrentIndex((prev) => (prev + 1) % scenarios.length);

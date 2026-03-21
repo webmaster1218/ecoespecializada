@@ -1,0 +1,146 @@
+================================================================================
+MINDRAY M7 - SISTEMA DE ULTRASONIDO DIAGNÓSTICO
+Color Doppler Portátil
+================================================================================
+
+P/N: ENG-M7-420285x8P-20100225
+Año: 2010
+
+FABRICANTE:
+Mindray
+Edificio Mindray, Keji 12th Road South, Parque Industrial de Alta Tecnología,
+Nanshan, Shenzhen 518057, República Popular China
+Tel: +86 755 86140388, 26582888
+Fax: +86 755 26582680
+Correo electrónico: intl-market@mindray.com
+Sitio web: www.mindray.com
+
+Nota: Mindray cotiza en la Bolsa de Nueva York (NYSE) bajo el símbolo "MR"
+
+DISTRIBUIDOR: (espacio reservado para datos del distribuidor)
+
+--------------------------------------------------------------------------------
+DESCRIPCIÓN GENERAL DEL PRODUCTO
+--------------------------------------------------------------------------------
+
+Producto: M7 - Sistema de Ultrasonido Diagnóstico - Color Doppler Portátil
+
+Lema: Claridad · Precisión · Rendimiento
+       "Lleva tu bola de cristal al punto de atención"
+
+--------------------------------------------------------------------------------
+PÁGINA 1 - CONFIANZA PARA EL DIAGNÓSTICO
+--------------------------------------------------------------------------------
+
+Elevando el nivel en calidad de imagen:
+
+- iTOUCH con eje largo paraesternal para visualizar estructuras cardíacas
+- Modo M anatómico con tres líneas de muestra que muestra simultáneamente
+  los movimientos de tres regiones cardíacas
+- Transductor transvaginal de alta definición que muestra con claridad
+  fetos de pequeño tamaño
+- Arco aórtico fetal definido con transductor convexo C5-2s
+- Transductor de volumen de calidad que muestra vívidamente los órganos
+  faciales del feto
+- Color Doppler sensible que muestra abundante flujo sanguíneo renal
+- Software dedicado que mide el IMT carotídeo de forma automática y precisa
+- El flujo sanguíneo de la arteria y vena vertebral refleja suficiente
+  penetración y buena resolución espacial
+- Nervio mediano definido usando transductor lineal de alta frecuencia L14-6s
+
+--------------------------------------------------------------------------------
+PÁGINA 2 - MULTI-ESPECIALIDAD
+--------------------------------------------------------------------------------
+
+"El Ultrasonido de Alto Rendimiento te permite explorar más."
+
+El Sistema de Ultrasonido Diagnóstico M7 está diseñado para satisfacer los
+entornos de atención al punto de cuidado, exigentes y ocupados de los médicos.
+Con la claridad cristalina del M7, su imagen nítida y clara, puede realizar
+cualquier examen, desde abdominal hasta vascular y cardíaco, con eficiencia y
+precisión. Con solo elegir un transductor, el M7 le brinda más beneficios de
+más maneras que nunca, con el bienestar al alcance de la mano.
+
+ESPECIALIDADES CLÍNICAS:
+
+-- CARDIOVASCULAR --
+- Imagen Free Xros™ (Modo M Anatómico)
+- Imagen Doppler de Tejidos
+- Software IMT (Grosor Íntima-Media) integrado que detecta bordes con valores
+  de grosor medio y máximo
+- Paquetes clínicos abundantes y dedicados de medición y análisis
+
+-- OBSTETRICIA / GINECOLOGÍA --
+- Imagen 4D sobre portabilidad
+- Nuevo diseño de transductor: el diseño ergonómico y el peso ligero permiten
+  a los usuarios escanear en 2D como con una sonda convexa estándar
+- Nuevo transductor 4D: con su diseño ergonómico y peso ligero, permite a los
+  médicos aumentar la velocidad de exploración y facilitar las adquisiciones 3D/4D
+- Paquetes clínicos abundantes de medición y análisis
+
+-- ANESTESIOLOGÍA / MEDICINA DE EMERGENCIA / MUSCULOESQUELÉTICO --
+- Paquetes clínicos abundantes y dedicados de medición y análisis
+- Amplia gama de transductores de banda ancha: convexos, lineales,
+  transvaginales, de array en fase y transductor 4D
+
+--------------------------------------------------------------------------------
+PÁGINA 3 - EN CUALQUIER LUGAR, EN CUALQUIER MOMENTO
+--------------------------------------------------------------------------------
+
+"De la Configuración Basada en Carro al Entorno de Punto de Atención"
+
+El Sistema de Ultrasonido Diagnóstico M7 es una poderosa herramienta de imagen
+con calidad de imagen superior para ayudarle a enfrentar sus desafíos clínicos
+hoy y mañana. El M7 está diseñado para su uso en todos los entornos de punto
+de atención. Ofrece un rendimiento de imagen premium en una amplia gama de
+especialidades. Proporcionando datos precisos con rapidez, el M7 permite a los
+médicos alcanzar un nivel mejorado de confianza diagnóstica y eficiencia.
+
+CARACTERÍSTICAS DE PORTABILIDAD Y CONECTIVIDAD:
+
+- Baterías Li-ion de alta capacidad con soporte de escaneo continuo
+  de más de 1.5 horas
+- Carcasa robusta de magnesio con capacidad antiimpacto y antisalpicaduras,
+  permite realizar exámenes diagnósticos tanto dentro del hospital como en
+  entornos exteriores adversos
+- Mochila cómoda y maletín artístico de viaje para transporte fácil
+- iRoam™: solución de transferencia inalámbrica de datos 802.11b/g
+- DICOM 3.0 y M-Scan Pack con soporte para escaneo en campo y punto de atención
+
+--------------------------------------------------------------------------------
+PÁGINA 4 - DISEÑO ELEGANTE CON TECNOLOGÍA INNOVADORA
+--------------------------------------------------------------------------------
+
+Diseñado con el poder de la tecnología líder de MINDRAY, disponible para todos
+los médicos. Como proveedor de soluciones de equipos médicos de clase mundial,
+el M7 es una estación de potencia multiplicadora con innovación para el futuro.
+Con su ergonómico carro móvil con el mismo rendimiento y características
+comparables a los sistemas convencionales basados en carro, le brinda movilidad
+con potencia y mejora su productividad. En resumen, el M7 le entrega la potencia
+y productividad de un sistema de tamaño completo en un tamaño portátil.
+
+CARACTERÍSTICAS TÉCNICAS Y DE HARDWARE:
+
+- Monitor LCD médico de 15 pulgadas con altavoces estéreo integrados
+- Procesador Intel® con Microsoft® que aporta estabilidad, seguridad
+  y conectividad al sistema
+- Trackball personalizable en uno de seis colores disponibles
+
+TECNOLOGÍAS DE IMAGEN (funciones "i"):
+
+- iTouch™:  Optimización Inteligente de Imagen
+- iRoam™:   Solución de transferencia inalámbrica de datos 802.11b/g
+- iZoom™:   Expande automáticamente la imagen a pantalla completa
+- iClear™:  Supresión Adaptativa de Moteado (Speckle)
+- iBeam™:   Imagen de Composición Espacial
+
+OTRAS CARACTERÍSTICAS:
+
+- Phase Inversion THI para todas las sondas
+- Captura de cine de alta calidad de hasta 480 segundos
+- Mayor flexibilidad con el Conector Extendido de Transductor opcional
+- Encendido rápido (Fast Power Up) para escaneo rápido en campo
+
+================================================================================
+FIN DEL DOCUMENTO
+================================================================================

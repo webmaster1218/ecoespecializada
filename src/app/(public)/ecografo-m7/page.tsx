@@ -9,7 +9,7 @@ import LogoLoop from "@/components/sections/LogoLoop";
 import CallButton from "@/components/ui/CallButton";
 
 const whatsappNumber = "573003608621";
-const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Z60");
+const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Mindray M7");
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 const navLinks = [
@@ -18,7 +18,7 @@ const navLinks = [
   { name: "Tecnología", href: "#tecnologia" }
 ];
 
-export default function EcografoZ60Page() {
+export default function EcografoM7Page() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -208,23 +208,23 @@ export default function EcografoZ60Page() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-3 w-3 bg-blue-500"></span>
                 </span>
-                Rendimiento Portátil Superior
+                Claridad · Precisión · Rendimiento
               </div>
 
-              <div className="flex items-center gap-2 text-amber-600 font-bold text-sm bg-amber-50 px-3 py-1 rounded-lg border border-amber-100 w-fit animate-pulse">
+              <div className="flex items-center gap-2 text-emerald-600 font-bold text-sm bg-emerald-50 px-3 py-1 rounded-lg border border-emerald-100 w-fit animate-pulse">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
-                Solo 2 unidades disponibles para entrega inmediata
+                Disponible ahora en stock
               </div>
 
               <h1 className="text-[2.5rem] md:text-[3.5rem] font-extrabold text-slate-900 tracking-tight leading-[1.1]">
                 Ecógrafo <br />
-                <span className="text-gradient">Mindray Z60</span>
+                <span className="text-gradient">Mindray M7</span>
               </h1>
 
               <p className="text-lg md:text-xl text-slate-600 max-w-lg leading-relaxed font-medium">
-                Equipamiento de alta gama a tu alcance. Solución integral para diagnósticos precisos en cualquier entorno clínico.
+                Lleva tu bola de cristal al punto de atención. El M7 es una poderosa herramienta con calidad de imagen superior y experiencia 3D/4D.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -244,7 +244,7 @@ export default function EcografoZ60Page() {
                 </Link>
               </div>
 
-              {/* Trust Badges - Sync with Z6 */}
+              {/* Trust Badges */}
               <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 border-t border-slate-100">
                 <div className="flex items-center gap-2 text-slate-500">
                   <div className="bg-slate-100 p-1 rounded-lg shrink-0">
@@ -296,8 +296,8 @@ export default function EcografoZ60Page() {
               />
 
               <Image
-                src="/images/z60/z-60-abierto-izquierda.webp"
-                alt="Ecógrafo Mindray Z60"
+                src="/images/m7/M7-abierto-ziquierda.png"
+                alt="Ecógrafo Mindray M7"
                 width={500}
                 height={500}
                 className="relative z-30 w-full max-w-[480px] object-contain drop-shadow-2xl"
@@ -333,10 +333,10 @@ export default function EcografoZ60Page() {
         <div className="container mx-auto px-4 md:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20 animate-on-scroll">
             <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
-              Rendimiento Avanzado
+              Ergonomía superior
             </span>
-            <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Un Vistazo al <span className="text-gradient">Futuro del Diagnóstico</span></h2>
-            <p className="text-base md:text-lg text-slate-600">Diseño ergonómico y tecnología punta combinados en un equipo ligero y potente.</p>
+            <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Diseñado para la <span className="text-gradient">Movilidad</span></h2>
+            <p className="text-base md:text-lg text-slate-600">Materiales innovadores como carcasa de plástico de aleación de magnesio y autonomía en una plataforma portátil robusta.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
@@ -348,14 +348,14 @@ export default function EcografoZ60Page() {
             >
               <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:scale-110 transition-transform">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-24 w-24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/z60/z-60.webp" alt="Mindray Z60 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/m7-de-lado.png" alt="Mindray M7 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Diseño Compacto</h3>
-              <p className="text-sm md:text-base text-slate-600 relative z-10">Con solo 7.7 kg de peso, es la herramienta perfecta para moverte entre consultorios sin complicaciones.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Batería Autoliberadora</h3>
+              <p className="text-sm md:text-base text-slate-600 relative z-10">Escaneo ininterrumpido con batería recargable Li-ion, aportando más de 1.5 hs de operación continua con iRoam™.</p>
             </motion.div>
 
             <motion.div
@@ -371,10 +371,10 @@ export default function EcografoZ60Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/z60/z-60-abierto-izquierda.webp" alt="Mindray Z60 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/m7-abierto-derecha.png" alt="Mindray M7 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de 15″</h3>
-              <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de alta resolución con inclinación ajustable hasta 30 grados, visualización nítida en cada toma.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de Nivel Médico</h3>
+              <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de 15 pulgadas TFT de alta resolución anti-reflejo y de ángulos de visión ampliados para entornos luminosos.</p>
             </motion.div>
 
             <motion.div
@@ -390,10 +390,10 @@ export default function EcografoZ60Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/z60/z-60-espalda.webp" alt="Mindray Z60 Conexiones" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-trastuctores.jpg" alt="Mindray M7 Transductores" width={300} height={300} className="object-cover h-full rounded-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
               </div>
-              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">3 Puertos Activos</h3>
-              <p className="text-sm md:text-base text-slate-600 relative z-10">Mayor eficiencia. Cambia de transductor sin desconectar, optimizando el tiempo con tus pacientes.</p>
+              <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Alta Multiespecialidad</h3>
+              <p className="text-sm md:text-base text-slate-600 relative z-10">Soporta exploración transvaginal volumétrica con imagen 3D/4D de alta fidelidad, excelente para obstetricia y ginecología.</p>
             </motion.div>
           </div>
         </div>
@@ -412,17 +412,17 @@ export default function EcografoZ60Page() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-indigo-100 rounded-[3rem] blur-2xl opacity-40"></div>
               <div className="relative bg-white rounded-[2rem] p-8 shadow-2xl border border-white/40">
-                <Image src="/images/z60/z-60-abierto-izquierda.webp" alt="Mindray Z60 con Tripode" width={600} height={600} className="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-700" />
+                <Image src="/images/m7/M7-abierto-ziquierda.png" alt="Mindray M7 Vista LAT" width={600} height={600} className="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-700" />
               </div>
             </motion.div>
 
             <div className="space-y-8 md:space-y-10">
               <div>
                 <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
-                  Potencia Mindray
+                  CÓMO TRABAJA EL M7
                 </span>
-                <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Potencia <span className="text-gradient">Tecnológica Excepcional</span></h2>
-                <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">Equipado con herramientas patentadas que transforman la calidad de imagen diagnóstica.</p>
+                <h2 className="text-3xl md:text-[3rem] font-extrabold text-slate-900 mb-6 tracking-tight">Potencia <span className="text-gradient">3D/4D Excepcional</span></h2>
+                <p className="text-lg md:text-xl text-slate-600 leading-relaxed font-medium">Equipado con herramientas patentadas que transforman la calidad de imagen diagnóstica con tecnologías para volumetría.</p>
               </div>
 
               <div className="space-y-6">
@@ -431,8 +431,8 @@ export default function EcografoZ60Page() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" /></svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">iBeam™ e iClear™</h3>
-                    <p className="text-slate-600 text-base leading-relaxed">Composición espacial superior y supresión de grano para visualizar bordes impecablemente definidos, sin ruido.</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1">Imagen 3D / 4D Avanzada</h3>
+                    <p className="text-slate-600 text-base leading-relaxed">Con giros libres de la imagen en 3D en cualquier ángulo para detectar tejido anormal con mediciones precisas.</p>
                   </div>
                 </div>
 
@@ -441,8 +441,8 @@ export default function EcografoZ60Page() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M15 11.25l-3-3m0 0l-3 3m3-3v7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">iNeedle™ e iScape™</h3>
-                    <p className="text-slate-600 text-base leading-relaxed">Realiza biopsias con mayor seguridad gracias a una visión clara de la aguja y crea vistas panorámicas de grandes estructuras.</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1">iClear™, iZoom™, iBeam™</h3>
+                    <p className="text-slate-600 text-base leading-relaxed">Alta calidad de imagen que suprime el moteado, pantalla completa instantánea con un botón y composición especial para mejorar la fidelidad del diagnóstico.</p>
                   </div>
                 </div>
 
@@ -451,8 +451,8 @@ export default function EcografoZ60Page() {
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor" className="w-7 h-7"><path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" /></svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-slate-900 mb-1">Smart OB & PSHI</h3>
-                    <p className="text-slate-600 text-base leading-relaxed">Cálculos fetales automáticos en un clic, además de Armónica de Inversión de Fase (PSHI) para un contraste profundo.</p>
+                    <h3 className="text-xl font-bold text-slate-900 mb-1">iTouch™ e IMT Integrado</h3>
+                    <p className="text-slate-600 text-base leading-relaxed">Optimización automática de imagen con un solo toque, y evaluación automática del espesor íntima-media con el paquete IMT de vascular periférico.</p>
                   </div>
                 </div>
               </div>
@@ -479,11 +479,11 @@ export default function EcografoZ60Page() {
           >
             <div className="relative z-10">
               <h2 className="text-2xl md:text-4xl font-extrabold text-white mb-4 leading-tight">
-                ¿No encuentras lo que buscas?
+                ¿Listo para alquilar?
               </h2>
 
               <p className="text-base md:text-xl text-blue-50 mb-8 md:mb-10 max-w-2xl mx-auto font-medium opacity-90">
-                Nuestros especialistas están listos para resolver todas tus dudas sobre el <span className="font-bold">Mindray Z60</span>
+                Nuestros especialistas están listos para resolver todas tus dudas sobre el <span className="font-bold">Mindray M7</span>
               </p>
 
               <div className="flex flex-col items-center justify-center gap-6">

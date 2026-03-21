@@ -16,7 +16,7 @@ export default function CallButton({
     className = "",
     text = "Llamar ahora",
     subtext,
-    href = "tel:+573005212664",
+    href = "tel:+573003608621",
     iconType = "phone",
     variant = "primary"
 }: CallButtonProps) {

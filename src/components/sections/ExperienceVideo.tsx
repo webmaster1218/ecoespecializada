@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import styles from "./ExperienceVideo.module.css";
+import CallButton from "../ui/CallButton";
 
 export default function ExperienceVideo() {
     const [showVideo, setShowVideo] = useState(false);
@@ -52,7 +53,7 @@ export default function ExperienceVideo() {
 
 
                     <div className={styles.infoCard}>
-                        <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA">
+                        <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" className="block mb-8">
                             <div className={styles.text}>
                                 <p>
                                     El <strong>Dr. Cristian</strong> destaca que el haber alquilado con <strong>alquilerdeecografos.com</strong> el equipo <strong>Mindray Z60</strong> ha impulsado su consultorio, permitiendo diagnósticos precisos y procedimientos en tejidos blandos con total seguridad y eficacia.
@@ -72,6 +73,20 @@ export default function ExperienceVideo() {
                                 </div>
                             </div>
                         </a>
+
+                        <div className={styles.questionBox}>
+                            <h4 className={styles.questionTitle}>¿Tienes alguna duda sobre nuestros equipos?</h4>
+                            <p className={styles.questionDesc}>Escríbenos y un especialista de producto resolverá todas tus preguntas al instante.</p>
+                            <div className={styles.buttonWrapper}>
+                                <CallButton 
+                                    text="Envíar una pregunta" 
+                                    subtext="Por WhatsApp" 
+                                    variant="highlight" 
+                                    iconType="whatsapp" 
+                                    href="https://wa.me/573003608621?text=Hola,%20tengo%20una%20pregunta%20sobre%20el%20alquiler%20de%20ec%C3%B3grafos"
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

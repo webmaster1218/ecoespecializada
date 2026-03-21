@@ -259,3 +259,32 @@
         font-size: 0.85rem;
     }
 }
+
+/* Question Box */
+.questionBox {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+}
+
+.questionTitle {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.questionDesc {
+    font-size: 0.95rem;
+    color: #64748b;
+    margin-bottom: 20px;
+    max-width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.buttonWrapper {
+    display: flex;
+    justify-content: center;
+}

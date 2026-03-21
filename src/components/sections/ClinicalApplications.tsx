@@ -34,8 +34,8 @@ const scenarios = [
         title: "Cardiología",
         subtitle: "Ecocardiografía",
         description: "Análisis estructural del corazón. Modos Doppler Color y CW para visualización de flujo sanguíneo y función valvular avanzada.",
-        imageSrc: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1000&auto=format&fit=crop",
-        thumbnailSrc: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=150&h=150&auto=format&fit=crop"
+        imageSrc: "/images/clinical/cardiologia.png",
+        thumbnailSrc: "/images/clinical/cardiologia.png"
     },
     {
         id: 5,
@@ -50,16 +50,16 @@ const scenarios = [
         title: "Radiología",
         subtitle: "Diagnóstico avanzado",
         description: "Diagnóstico especializado de alta resolución. Optimice el flujo de trabajo en radiología convencional y doppler avanzado con herramientas de cuantificación precisa.",
-        imageSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=1000&auto=format&fit=crop",
-        thumbnailSrc: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=150&h=150&auto=format&fit=crop"
+        imageSrc: "/images/clinical/radiologia.png",
+        thumbnailSrc: "/images/clinical/radiologia.png"
     },
     {
         id: 7,
         title: "Cirujanos Plásticos",
         subtitle: "Guía quirúrgica",
         description: "Visualización superior para procedimientos estéticos y reconstructivos. Identifique trayectos vasculares y estructuras dérmicas con máxima seguridad.",
-        imageSrc: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=1000&auto=format&fit=crop",
-        thumbnailSrc: "https://images.unsplash.com/photo-1581056771107-24ca5f033842?q=80&w=150&h=150&auto=format&fit=crop"
+        imageSrc: "/images/clinical/cirugia_plastica.png",
+        thumbnailSrc: "/images/clinical/cirugia_plastica.png"
     }
 ];
 
@@ -83,10 +83,10 @@ function ClinicalApplications() {
             <div className="container mx-auto px-2 text-center" data-aos="fade-up">
                 <CallButton
                     text="Cotizar con un asesor"
-                    subtext="300 521 2664"
+                    subtext="300 3608621"
                     iconType="whatsapp"
                     variant="highlight"
-                    href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                    href="https://api.whatsapp.com/send/?phone=573003608621&text&type=phone_number&app_absent=0"
                     className="text-lg px-10 py-4"
                 />
             </div>

@@ -3,7 +3,7 @@ import styles from './WhatsAppButton.module.css';
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/573005212664" // Replace with actual number
+      href="https://wa.me/573003608621" // Replace with actual number
       target="_blank"
       rel="noopener noreferrer"
       className={styles.whatsappFloat}

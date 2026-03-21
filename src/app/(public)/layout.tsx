@@ -15,8 +15,9 @@ export default function PublicLayout({
     const isPoliticasPage = pathname?.startsWith("/politicas");
     const isZ60Page = pathname?.startsWith("/ecografo-z60");
     const isZ6Page = pathname?.startsWith("/ecografo-z6");
+    const isM7Page = pathname?.startsWith("/ecografo-m7");
 
-    const hideNavbar = isLoginPage || isPoliticasPage || isZ60Page || isZ6Page;
+    const hideNavbar = isLoginPage || isPoliticasPage || isZ60Page || isZ6Page || isM7Page;
 
     console.log("Current path:", pathname, "hideNavbar:", hideNavbar);
 

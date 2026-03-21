@@ -86,7 +86,7 @@ function AdditionalServices() {
 
                             <div className={styles.serviceAction}>
                                 <a
-                                    href={`https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0`}
+                                    href={`https://api.whatsapp.com/send/?phone=573003608621&text&type=phone_number&app_absent=0`}
                                     className={styles.serviceCta}
                                 >
                                     {service.cta}
@@ -110,10 +110,10 @@ function AdditionalServices() {
                         <div className={styles.ctaButton}>
                             <CallButton
                                 text="Hablar con un asesor"
-                                subtext="300 521 2664"
+                                subtext="300 3608621"
                                 iconType="whatsapp"
                                 variant="highlight"
-                                href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                                href="https://api.whatsapp.com/send/?phone=573003608621&text&type=phone_number&app_absent=0"
                                 className="w-full md:w-auto"
                             />
                         </div>

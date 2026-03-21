@@ -8,7 +8,7 @@ import Footer from "@/components/layout/Footer";
 import LogoLoop from "@/components/sections/LogoLoop";
 import CallButton from "@/components/ui/CallButton";
 
-const whatsappNumber = "573005212664";
+const whatsappNumber = "573003608621";
 const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Z6");
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -79,6 +79,21 @@ export default function EcografoZ6Page() {
                     <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover/link:w-full"></span>
                   </a>
                 ))}
+
+                {/* Dropdown Equipos */}
+                <div className="relative group/dropdown">
+                  <span className="text-[0.9rem] font-semibold text-[#1e293b] hover:text-blue-600 transition-colors cursor-pointer flex items-center gap-1">
+                    Equipos
+                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                  <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 flex flex-col overflow-hidden">
+                    <Link href="/ecografo-z6" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors">Mindray Z6</Link>
+                    <Link href="/ecografo-z60" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors border-t border-slate-50">Mindray Z60</Link>
+                    <Link href="/ecografo-m7" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors border-t border-slate-50">Mindray M7</Link>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -87,7 +102,7 @@ export default function EcografoZ6Page() {
               <div className="hidden md:flex items-center gap-3 px-2">
                 <CallButton
                   text="Llamar"
-                  subtext="300 521 2664"
+                  subtext="300 3608621"
                   variant="highlight"
                   className="!py-2 !px-5 !text-xs"
                 />
@@ -145,10 +160,18 @@ export default function EcografoZ6Page() {
                     {link.name}
                   </a>
                 ))}
+                
+                <div className="flex flex-col gap-3 mt-2">
+                    <div className="text-[1.1rem] font-bold text-[#1e293b] px-3">Equipos</div>
+                    <Link href="/ecografo-z6" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray Z6</Link>
+                    <Link href="/ecografo-z60" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray Z60</Link>
+                    <Link href="/ecografo-m7" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray M7</Link>
+                </div>
+
                 <div className="pt-6 mt-2 border-t border-slate-100 flex flex-col gap-4">
                   <CallButton
                     text="Llamar ahora"
-                    subtext="300 521 2664"
+                    subtext="300 3608621"
                     variant="highlight"
                     className="w-full justify-center"
                   />
@@ -468,7 +491,7 @@ export default function EcografoZ6Page() {
               <div className="flex flex-col items-center justify-center gap-6">
                 <CallButton
                   text="Hablar con un asesor"
-                  subtext="300 521 2664"
+                  subtext="300 3608621"
                   iconType="whatsapp"
                   variant="highlight"
                   href={whatsappUrl}

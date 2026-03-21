@@ -93,10 +93,10 @@ export default function FAQ() {
                         <p>Nuestros especialistas están listos para resolver todas tus dudas</p>
                         <CallButton
                             text="Hablar con un asesor"
-                            subtext="300 521 2664"
+                            subtext="300 3608621"
                             iconType="whatsapp"
                             variant="highlight"
-                            href="https://api.whatsapp.com/send/?phone=573005212664&text&type=phone_number&app_absent=0"
+                            href="https://api.whatsapp.com/send/?phone=573003608621&text&type=phone_number&app_absent=0"
                         />
                         <p className={styles.responseTime}>Respuesta garantizada en menos de 2 horas</p>
                     </div>

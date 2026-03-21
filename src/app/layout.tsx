@@ -20,6 +20,7 @@ const roboto = Roboto({
 import Script from "next/script";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://www.alquilerdeecografos.com"),
   title: "Alquiler de Ecógrafos en Medellín y Antioquia | Mindray Portátiles",
   description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
   keywords: ["alquiler ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
@@ -29,7 +30,23 @@ export const metadata: Metadata = {
   },
   verification: {
     google: "Ls8AN5mLsHq7NDhWW6rhp3Egt1jGoIM49_rRI1Nt_wQ",
-  }
+  },
+  openGraph: {
+    title: "Alquiler de Ecógrafos en Medellín y Antioquia",
+    description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic.",
+    url: "https://www.alquilerdeecografos.com",
+    siteName: "Alquiler de Ecógrafos",
+    images: [
+      {
+        url: "/images/logo/logo_alquilerdeecografos.png",
+        width: 800,
+        height: 600,
+        alt: "Logo Alquiler de Ecógrafos",
+      },
+    ],
+    locale: "es_CO",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

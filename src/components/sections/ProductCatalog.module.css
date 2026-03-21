@@ -34,13 +34,13 @@
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    max-width: 1020px;
+    gap: 1.5rem;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
 .card {
-    padding: 1.5rem;
+    padding: 1.25rem;
     display: flex;
     flex-direction: column;
     position: relative;

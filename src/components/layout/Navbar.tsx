@@ -62,16 +62,17 @@ export default function Navbar() {
                                 <a href="#equipos" onClick={() => setMobileMenuOpen(false)}>Ver Todos</a>
                                 <Link href="/ecografo-z6" onClick={() => setMobileMenuOpen(false)}>Mindray Z6</Link>
                                 <Link href="/ecografo-z60" onClick={() => setMobileMenuOpen(false)}>Mindray Z60</Link>
+                                <Link href="/ecografo-m7" onClick={() => setMobileMenuOpen(false)}>Mindray M7</Link>
                             </div>
                         </div>
 
                         <a href="#nosotros" onClick={() => setMobileMenuOpen(false)}>Nosotros</a>
-                        <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Otros servicios</a>
+                        <a href="#servicios-complementarios" onClick={() => setMobileMenuOpen(false)}>Servicios</a>
                         <a href="#testimonios" onClick={() => setMobileMenuOpen(false)}>Testimonios</a>
                         <div className={styles.mobileButtons}>
                             <CallButton
                                 text="Llamar"
-                                subtext="300 521 2664"
+                                subtext="300 3608621"
                                 variant="highlight"
                                 className={styles.mobileCallButton}
                             />
@@ -82,7 +83,7 @@ export default function Navbar() {
                     <div className={styles.actions}>
                         <CallButton
                             text="Llamar"
-                            subtext="300 521 2664"
+                            subtext="300 3608621"
                             variant="highlight"
                             className={styles.desktopCta}
                         />

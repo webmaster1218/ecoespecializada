@@ -110,7 +110,7 @@ export default function ContactForm() {
 
                         <div className={styles.callSection}>
                             <p className={styles.callText}>¿Prefieres atención inmediata?</p>
-                            <CallButton text="Llamar directamente" subtext="300 521 2664" variant="highlight" />
+                            <CallButton text="Llamar directamente" subtext="300 3608621" variant="highlight" />
                         </div>
                     </form>
                 </div>

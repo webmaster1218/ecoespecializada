@@ -42,7 +42,7 @@ export default function PoliciesPage() {
                             <p><strong className="text-slate-900">Razón Social:</strong> Alquiler de Ecógrafos Colombia (Respaldado por Equibiomedic)</p>
                             <p><strong className="text-slate-900">Dirección Principal:</strong> Diagonal 47a #17sur-162 CS 105, Santa María de los Ángeles, Medellín, Antioquia</p>
                             <p><strong className="text-slate-900">Email:</strong> info@alquilerdeecografos.com</p>
-                            <p><strong className="text-slate-900">Teléfono (WhatsApp):</strong> +57 300 521 2664</p>
+                            <p><strong className="text-slate-900">Teléfono (WhatsApp):</strong> +57 300 3608621</p>
                             <p><strong className="text-slate-900">Sitio Web:</strong> alquilerdeecografos.com</p>
                         </div>
                     </div>

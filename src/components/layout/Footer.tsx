@@ -41,7 +41,7 @@ export default function Footer() {
                         <div className={styles.contactInfo}>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconBrandWhatsapp size={20} style={{ color: 'var(--color-highlight)' }} /></span>
-                                <a href="https://wa.me/573005212664" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-highlight)', fontWeight: 'bold' }} className="hover:opacity-80 transition-opacity">WhatsApp: +57 3005212664</a>
+                                <a href="https://wa.me/573003608621" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-highlight)', fontWeight: 'bold' }} className="hover:opacity-80 transition-opacity">WhatsApp: +57 3003608621</a>
                             </div>
                             <div className={styles.contactItem}>
                                 <span className={styles.icon}><IconBrandYoutube size={20} className="text-red-600" /></span>

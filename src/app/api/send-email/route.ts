@@ -118,7 +118,7 @@ export async function POST(req: Request) {
                                 <span class="step-title">Envíanos el contrato firmado</span>
                                 <p style="margin-left: 45px; color: #444;">Mándanos la foto o el archivo por aquí:</p>
                                 <div style="text-align: center; margin-top: 15px;">
-                                    <a href="https://wa.me/573005212664?text=Hola! Aquí envío mi contrato firmado: ${client_name}" class="wa-button">
+                                    <a href="https://wa.me/573003608621?text=Hola! Aquí envío mi contrato firmado: ${client_name}" class="wa-button">
                                         📲 Enviar por WhatsApp
                                     </a>
                                     <p style="font-size: 14px; color: #666; margin-top: 10px;">O responde directamente a este correo adjuntando la foto.</p>
@@ -140,7 +140,7 @@ export async function POST(req: Request) {
 
                             <div class="help-banner">
                                 <p style="margin: 0; font-weight: bold; color: #a35d00;">⚠️ ¿Tienes alguna duda o no sabes cómo firmar?</p>
-                                <p style="margin: 5px 0 0 0;">No te preocupes, llámanos o escríbenos al <b>+57 300 5212664</b> y nosotros te guiaremos paso a paso.</p>
+                                <p style="margin: 5px 0 0 0;">No te preocupes, llámanos o escríbenos al <b>+57 300 3608621</b> y nosotros te guiaremos paso a paso.</p>
                             </div>
 
                             <h3 style="margin-top: 40px; color: #0a161e; border-bottom: 2px solid #eee; padding-bottom: 10px;">Resumen de tu pedido:</h3>
