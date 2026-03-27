@@ -30,7 +30,7 @@ interface CalendarEvent {
     style?: any;
 }
 
-export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (booking: any) => void }) {
+export default function BookingsCalendar({ onEditBooking, onCreateBooking }: { onEditBooking?: (booking: any) => void, onCreateBooking?: (start: Date, end: Date) => void }) {
     const [events, setEvents] = useState<CalendarEvent[]>([]);
     const [view, setView] = useState<View>('month');
     const [date, setDate] = useState(new Date()); // Control date state
@@ -57,10 +57,12 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
                 let titleParts = [];
                 if (booking.quantity_z6 > 0) titleParts.push(`${booking.quantity_z6}x Z6`);
                 if (booking.quantity_z60 > 0) titleParts.push(`${booking.quantity_z60}x Z60`);
+                if (booking.quantity_m7 > 0) titleParts.push(`${booking.quantity_m7}x M7`);
 
                 const title = `${titleParts.join(', ')} - ${booking.client_name}`;
                 const isZ6 = booking.quantity_z6 > 0;
                 const isZ60 = booking.quantity_z60 > 0;
+                const isM7 = booking.quantity_m7 > 0;
 
                 // Color Logic based on Logistics Status (Status overrides Model color)
                 let bgColor = '#3b82f6'; // Default Blue
@@ -78,9 +80,13 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
                     case 'completed':
                         bgColor = '#64748b'; // Slate 500 (Gray)
                         break;
+                    case 'maintenance':
+                        bgColor = '#1e293b'; // Slate 800 (Very Dark)
+                        break;
                     default:
                         // Fallback to equipment based if status is unknown/confirmed
-                        if (isZ6 && isZ60) bgColor = '#8b5cf6';
+                        if ((isZ6 && isZ60) || (isZ6 && isM7) || (isZ60 && isM7)) bgColor = '#8b5cf6';
+                        else if (isM7) bgColor = '#4f46e5'; // Indigo for M7
                         else if (isZ60) bgColor = '#3b82f6'; // Make Z60 blue
                         else bgColor = '#0ea5e9'; // Z6 Sky blue
                         break;
@@ -159,7 +165,8 @@ export default function BookingsCalendar({ onEditBooking }: { onEditBooking?: (b
                 style={{ height: '100%' }}
                 showAllEvents={true}
 
-                // Controlled Props
+                selectable={true}
+                onSelectSlot={(slotInfo) => onCreateBooking && onCreateBooking(slotInfo.start, slotInfo.end)}
                 view={view}
                 onView={onView}
                 date={date}

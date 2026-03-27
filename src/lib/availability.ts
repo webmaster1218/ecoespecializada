@@ -47,7 +47,7 @@ export async function getTotalStock(): Promise<{ z6: number; z60: number; m7: nu
  * Checks availability for equipment in a given date range.
  * Returns the maximum number of units available for each type.
  */
-export async function checkAvailability(startDate?: string, endDate?: string): Promise<AvailabilityResult> {
+export async function checkAvailability(startDate?: string, endDate?: string, excludeId?: string | number): Promise<AvailabilityResult> {
     try {
         const totalStock = await getTotalStock();
 
@@ -60,15 +60,43 @@ export async function checkAvailability(startDate?: string, endDate?: string): P
         }
 
         // Query bookings that overlap with the requested range
-        const { data: bookings, error } = await supabase
+        // Include all active statuses including maintenance (admin blocks)
+        let query = supabase
             .from('bookings')
             .select('quantity_z6, quantity_z60, quantity_m7')
-            .not('status', 'in', ['cancelled', 'completed'])
+            .filter('status', 'not.in', '(cancelled,completed)')
             .lte('start_date', endDate)
             .gte('end_date', startDate);
 
+        // Exclude the booking being edited so its own stock is not double-counted
+        if (excludeId) {
+            query = query.neq('id', excludeId);
+        }
+
+        const { data: bookings, error } = await query;
+
         if (error) {
-            console.error('Error checking availability:', error);
+            console.error('Error checking availability:', error?.message, error?.code, error?.details);
+            // If the error is a missing column (quantity_m7 not yet added), retry without it
+            if (error?.message?.includes('quantity_m7') || error?.code === '42703') {
+                const { data: bookingsFallback, error: error2 } = await supabase!
+                    .from('bookings')
+                    .select('quantity_z6, quantity_z60')
+                    .filter('status', 'not.in', '(cancelled,completed)')
+                    .lte('start_date', endDate)
+                    .gte('end_date', startDate);
+
+                if (error2) throw error2;
+
+                let blockedZ6 = 0, blockedZ60 = 0;
+                (bookingsFallback || []).forEach(b => {
+                    blockedZ6 += (b.quantity_z6 || 0);
+                    blockedZ60 += (b.quantity_z60 || 0);
+                });
+                const av6 = Math.max(0, totalStock.z6 - blockedZ6);
+                const av60 = Math.max(0, totalStock.z60 - blockedZ60);
+                return { z6: av6, z60: av60, m7: totalStock.m7, available: av6 > 0 || av60 > 0 };
+            }
             throw error;
         }
 

@@ -15,8 +15,10 @@ export default function CalendarPage() {
     const [isLoading, setIsLoading] = useState(true);
     const [showModal, setShowModal] = useState(false);
     const [showStockModal, setShowStockModal] = useState(false);
+    const [isBlockingMode, setIsBlockingMode] = useState(false);
     const [selectedBooking, setSelectedBooking] = useState<any>(null);
-    const [totalInventory, setTotalInventory] = useState({ z6: 0, z60: 0 });
+    const [initialDateRange, setInitialDateRange] = useState<{ start: string, end: string } | null>(null);
+    const [totalInventory, setTotalInventory] = useState({ z6: 0, z60: 0, m7: 0 });
 
     const fetchInventory = async () => {
         const stock = await getTotalStock();
@@ -76,7 +78,13 @@ export default function CalendarPage() {
                         <IconSettings size={20} />
                     </button>
                     <button
-                        onClick={() => { setSelectedBooking(null); setShowModal(true); }}
+                        onClick={() => { setSelectedBooking(null); setInitialDateRange(null); setIsBlockingMode(true); setShowModal(true); }}
+                        className="bg-slate-800 hover:bg-slate-900 text-white font-bold px-3 py-2 md:px-5 md:py-2.5 rounded-full transition-all shadow-md flex items-center gap-2 text-xs md:text-sm"
+                    >
+                        <span className="hidden md:inline">Bloquear Fechas</span><span className="md:hidden">Bloquear</span>
+                    </button>
+                    <button
+                        onClick={() => { setSelectedBooking(null); setInitialDateRange(null); setIsBlockingMode(false); setShowModal(true); }}
                         className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-3 py-2 md:px-6 md:py-2.5 rounded-full transition-all shadow-lg hover:shadow-blue-600/20 flex items-center gap-2 text-xs md:text-sm"
                     >
                         <span className="text-base md:text-lg">+</span> <span className="hidden md:inline">Nueva Reserva</span><span className="md:hidden">Reserva</span>
@@ -104,6 +112,16 @@ export default function CalendarPage() {
                             key={showModal ? 'refresh' : 'view'}
                             onEditBooking={(booking) => {
                                 setSelectedBooking(booking);
+                                setInitialDateRange(null);
+                                setIsBlockingMode(booking.status === 'maintenance');
+                                setShowModal(true);
+                            }}
+                            onCreateBooking={(start, end) => {
+                                setSelectedBooking(null);
+                                // Format dates to YYYY-MM-DD
+                                const formatDate = (d: Date) => d.toISOString().split('T')[0];
+                                setInitialDateRange({ start: formatDate(start), end: formatDate(end) });
+                                setIsBlockingMode(false);
                                 setShowModal(true);
                             }}
                         />
@@ -164,6 +182,15 @@ export default function CalendarPage() {
                                         {totalInventory.z60} Unds.
                                     </div>
                                 </div>
+                                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
+                                    <div>
+                                        <p className="font-bold text-slate-700">Mindray M7</p>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Premium</p>
+                                    </div>
+                                    <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
+                                        {totalInventory.m7} Unds.
+                                    </div>
+                                </div>
                             </div>
                             <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-[11px] rounded-lg border border-blue-100 leading-relaxed font-medium">
                                 <strong>Nota:</strong> Revisa el calendario para ver la disponibilidad real en fechas específicas.
@@ -176,7 +203,9 @@ export default function CalendarPage() {
             <AdminBookingModal
                 isOpen={showModal}
                 bookingToEdit={selectedBooking}
-                onClose={() => { setShowModal(false); setSelectedBooking(null); }}
+                initialDateRange={initialDateRange}
+                isBlockingMode={isBlockingMode}
+                onClose={() => { setShowModal(false); setSelectedBooking(null); setInitialDateRange(null); setIsBlockingMode(false); }}
                 onSuccess={() => {
                     window.location.reload();
                 }}
