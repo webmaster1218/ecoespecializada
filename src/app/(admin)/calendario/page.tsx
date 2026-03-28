@@ -6,7 +6,7 @@ import BookingsCalendar from "@/components/admin/BookingsCalendar";
 import AdminBookingModal from "@/components/admin/AdminBookingModal";
 import StockSettingsModal from "@/components/admin/StockSettingsModal";
 import Image from "next/image";
-import { getTotalStock } from "@/lib/availability";
+import { getTotalStock, checkAvailability } from "@/lib/availability";
 import { IconSettings } from "@tabler/icons-react";
 
 export default function CalendarPage() {
@@ -19,10 +19,14 @@ export default function CalendarPage() {
     const [selectedBooking, setSelectedBooking] = useState<any>(null);
     const [initialDateRange, setInitialDateRange] = useState<{ start: string, end: string } | null>(null);
     const [totalInventory, setTotalInventory] = useState({ z6: 0, z60: 0, m7: 0 });
+    const [availableToday, setAvailableToday] = useState({ z6: 0, z60: 0, m7: 0 });
 
     const fetchInventory = async () => {
         const stock = await getTotalStock();
         setTotalInventory(stock);
+        const today = new Date().toISOString().split('T')[0];
+        const available = await checkAvailability(today, today);
+        setAvailableToday({ z6: available.z6, z60: available.z60, m7: available.m7 });
     };
 
     useEffect(() => {
@@ -72,10 +76,10 @@ export default function CalendarPage() {
                 <div className="flex gap-3">
                     <button
                         onClick={() => setShowStockModal(true)}
-                        className="p-2.5 rounded-full bg-slate-100 text-slate-500 hover:bg-blue-50 hover:text-blue-600 transition-all border border-slate-200"
-                        title="Configurar Inventario"
+                        className="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 font-bold px-3 py-2 md:px-5 md:py-2.5 rounded-full transition-all border border-slate-200 flex items-center gap-2 text-xs md:text-sm"
                     >
-                        <IconSettings size={20} />
+                        <IconSettings size={16} />
+                        <span className="hidden md:inline">Ajustar Stock</span>
                     </button>
                     <button
                         onClick={() => { setSelectedBooking(null); setInitialDateRange(null); setIsBlockingMode(true); setShowModal(true); }}
@@ -160,40 +164,48 @@ export default function CalendarPage() {
 
                         {/* Inventory Card */}
                         <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-                            <h3 className="font-bold text-slate-800 mb-4 text-sm uppercase tracking-wider border-b border-slate-100 pb-2">
-                                StockTotal
+                            <h3 className="font-bold text-slate-800 mb-1 text-sm uppercase tracking-wider border-b border-slate-100 pb-2">
+                                Stock de Equipos
                             </h3>
-                            <div className="space-y-4">
-                                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
-                                    <div>
-                                        <p className="font-bold text-slate-700">Mindray Z6</p>
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Gama Media</p>
-                                    </div>
-                                    <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
-                                        {totalInventory.z6} Unds.
-                                    </div>
-                                </div>
-                                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
-                                    <div>
-                                        <p className="font-bold text-slate-700">Mindray Z60</p>
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Gama Alta</p>
-                                    </div>
-                                    <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
-                                        {totalInventory.z60} Unds.
-                                    </div>
-                                </div>
-                                <div className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
-                                    <div>
-                                        <p className="font-bold text-slate-700">Mindray M7</p>
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">Premium</p>
-                                    </div>
-                                    <div className="bg-white px-3 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-800">
-                                        {totalInventory.m7} Unds.
-                                    </div>
+                            <div className="flex justify-between text-[10px] font-black uppercase tracking-wider text-slate-400 mb-3 px-1">
+                                <span>Equipo</span>
+                                <div className="flex gap-4">
+                                    <span>Hoy</span>
+                                    <span>Total</span>
                                 </div>
                             </div>
-                            <div className="mt-4 p-3 bg-blue-50 text-blue-800 text-[11px] rounded-lg border border-blue-100 leading-relaxed font-medium">
-                                <strong>Nota:</strong> Revisa el calendario para ver la disponibilidad real en fechas específicas.
+                            <div className="space-y-3">
+                                {[
+                                    { label: 'Mindray Z6', sub: 'Gama Media', avail: availableToday.z6, total: totalInventory.z6 },
+                                    { label: 'Mindray Z60', sub: 'Gama Alta', avail: availableToday.z60, total: totalInventory.z60 },
+                                    { label: 'Mindray M7', sub: 'Premium', avail: availableToday.m7, total: totalInventory.m7 },
+                                ].map(({ label, sub, avail, total }) => (
+                                    <div key={label} className="bg-slate-50 p-3 rounded-lg border border-slate-100 flex justify-between items-center">
+                                        <div>
+                                            <p className="font-bold text-slate-700 text-sm">{label}</p>
+                                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">{sub}</p>
+                                        </div>
+                                        <div className="flex items-center gap-3">
+                                            <div className={`px-2.5 py-1 rounded-md font-black text-sm border ${
+                                                avail === 0
+                                                    ? 'bg-red-50 border-red-200 text-red-600'
+                                                    : avail < total
+                                                    ? 'bg-amber-50 border-amber-200 text-amber-700'
+                                                    : 'bg-emerald-50 border-emerald-200 text-emerald-700'
+                                            }`}>
+                                                {avail}
+                                            </div>
+                                            <div className="bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-200 font-black text-slate-500 text-sm">
+                                                {total}
+                                            </div>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                            <div className="mt-4 flex items-center gap-3 text-[10px] font-bold text-slate-400">
+                                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-emerald-400 inline-block"></span>Libre</span>
+                                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-amber-400 inline-block"></span>Parcial</span>
+                                <span className="flex items-center gap-1"><span className="w-2 h-2 rounded-full bg-red-400 inline-block"></span>Sin disp.</span>
                             </div>
                         </div>
                     </div>
