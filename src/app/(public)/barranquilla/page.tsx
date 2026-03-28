@@ -156,7 +156,7 @@ export default function BarranquillaPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Barranquilla" />
 
             <Comparison city="Barranquilla" />
 

@@ -156,7 +156,7 @@ export default function CaliPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Cali" />
 
             <Comparison city="Cali" />
 

@@ -155,7 +155,7 @@ export default function PereiraPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Pereira" />
 
             <Comparison city="Pereira" />
 

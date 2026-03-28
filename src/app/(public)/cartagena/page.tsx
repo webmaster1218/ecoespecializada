@@ -155,7 +155,7 @@ export default function CartagenaPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Cartagena" />
 
             <Comparison city="Cartagena" />
 

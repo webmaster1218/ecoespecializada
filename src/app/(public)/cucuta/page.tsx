@@ -155,7 +155,7 @@ export default function CucutaPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Cúcuta" />
 
             <Comparison city="Cúcuta" />
 

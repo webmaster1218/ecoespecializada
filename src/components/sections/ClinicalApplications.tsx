@@ -63,7 +63,25 @@ const scenarios = [
     }
 ];
 
-function ClinicalApplications() {
+function ClinicalApplications({ city }: { city?: string }) {
+    // Helper for local neighborhoods to increase trust
+    const getNeighborhoods = (cityName: string) => {
+        switch(cityName.toLowerCase()) {
+            case 'bogotá': return 'Chapinero hasta Usaquén';
+            case 'cali': return 'Granada hasta Ciudad Jardín';
+            case 'barranquilla': return 'Alto Prado hasta Riomar';
+            case 'cartagena': return 'Bocagrande hasta Manga';
+            case 'bucaramanga': return 'Cabecera hasta Cañaveral';
+            case 'pereira': return 'Pinares hasta la Circunvalar';
+            case 'cúcuta': return 'Lleras hasta Caobos';
+            default: return 'El Poblado hasta Laureles';
+        }
+    };
+
+    const locationText = city 
+        ? `Desde clínicas en ${getNeighborhoods(city)} en ${city}.`
+        : "Desde clínicas veterinarias en El Poblado hasta centros de radiología en Medellín.";
+
     return (
         <div className="w-full bg-slate-50 py-24 lg:py-32">
             <div className="container mx-auto px-4 mb-16 text-center" data-aos="fade-up">
@@ -74,7 +92,7 @@ function ClinicalApplications() {
                     La mejor solución <span className="text-blue-600">del mercado</span>
                 </h2>
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
-                    Desde clínicas veterinarias en El Poblado hasta centros de radiología en Medellín. Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. Estas son algunas de la especialidades en las que se suele usar.<br />
+                    {locationText} Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. Estas son algunas de la especialidades en las que se suele usar.<br />
                 </p>
             </div>
 

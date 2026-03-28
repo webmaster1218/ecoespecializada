@@ -157,7 +157,7 @@ export default function BogotaPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Bogotá" />
 
             <Comparison city="Bogotá" />
 

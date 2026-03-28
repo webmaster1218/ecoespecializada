@@ -155,7 +155,7 @@ export default function BucaramangaPage() {
 
             <HowItWorks />
 
-            <ClinicalApplications />
+            <ClinicalApplications city="Bucaramanga" />
 
             <Comparison city="Bucaramanga" />
 
