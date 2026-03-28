@@ -1,6 +1,6 @@
 import { AnimatedTestimonials } from "@/components/ui/animated-testimonials";
 
-export default function Testimonials() {
+export default function Testimonials({ city }: { city?: string }) {
     const testimonials = [
         {
             quote: "La nitidez del Z60 cambió mis diagnósticos a domicilio. El respaldo de Equibiomedic se nota en cada detalle. Muy recomendados.",
@@ -28,7 +28,7 @@ export default function Testimonials() {
                 <div className="text-center mb-12">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Testimonios</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-slate-900 leading-tight">
-                        Lo que dicen <span className="text-blue-600">tus colegas</span>
+                        Lo que dicen <span className="text-blue-600">los médicos {city ? `en ${city}` : "en Colombia"}</span>
                     </h2>
                     <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
                         Profesionales de la salud que confían en nuestros equipos para brindar el mejor diagnóstico.

@@ -2,14 +2,14 @@ import styles from "./AboutUs.module.css";
 import { IconCertificate, IconTrophy, IconClipboardCheck, IconShieldCheck, IconCheck } from "@tabler/icons-react";
 import CallButton from "../ui/CallButton";
 
-export default function AboutUs() {
+export default function AboutUs({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="nosotros">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Nuestra trayectoria</span>
                     <h2 className={styles.title}>Conoce a <span className="text-gradient">alquiler de ecógrafos</span></h2>
-                    <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico desde <strong>Medellín para toda Colombia</strong> con tecnología de punta y servicio confiable.</p>
+                    <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico {city ? `con presencia destacada en ${city}` : "desde Medellín para toda Colombia"} con tecnología de punta y servicio confiable.</p>
                 </div>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12 lg:mb-20">

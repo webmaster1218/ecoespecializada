@@ -44,7 +44,7 @@ const faqData: FAQItem[] = [
     }
 ];
 
-export default function FAQ() {
+export default function FAQ({ city }: { city?: string }) {
     const [activeItem, setActiveItem] = useState<number | null>(null);
 
     const toggleItem = (index: number) => {
@@ -56,7 +56,7 @@ export default function FAQ() {
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Resolvemos tus dudas</span>
-                    <h2 className={styles.title}>Preguntas <span className="text-gradient">frecuentes</span></h2>
+                    <h2 className={styles.title}>Preguntas <span className="text-gradient">frecuentes {city ? `en ${city}` : ""}</span></h2>
                     <p className={styles.subtitle}>Todo lo que necesitas saber sobre nuestros servicios de alquiler de ecógrafos</p>
                 </div>
 

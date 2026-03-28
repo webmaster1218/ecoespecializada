@@ -11,13 +11,13 @@ import {
     IconSettingsFilled
 } from "@tabler/icons-react";
 
-export default function Comparison() {
+export default function Comparison({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="comparativa">
             <div className="container">
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Decisión inteligente</span>
-                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">alquiler de ecografos</span></h2>
+                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">alquiler de ecógrafos {city ? `en ${city}` : ""}</span></h2>
                     <p className={styles.subtitle}>Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional.</p>
                 </div>
 

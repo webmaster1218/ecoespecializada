@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
@@ -13,14 +14,26 @@ const whatsappMessage = encodeURIComponent("Hola, quiero alquilar el ecógrafo Z
 const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 const navLinks = [
-  { name: "Inicio", href: "#inicio" },
+  { name: "Inicio", href: "/#inicio" },
   { name: "Características", href: "#caracteristicas" },
-  { name: "Tecnología", href: "#tecnologia" }
+  { name: "Tecnología", href: "#tecnologia" },
+  { name: "Nosotros", href: "/#nosotros" }
 ];
 
 export default function EcografoZ60Page() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [canGoBack, setCanGoBack] = useState(false);
+
+  useEffect(() => {
+    setCanGoBack(window.history.length > 1);
+  }, []);
+
+  const handleBack = useCallback(() => {
+    if (canGoBack) router.back();
+    else router.push("/");
+  }, [router, canGoBack]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,12 +73,12 @@ export default function EcografoZ60Page() {
                 />
               </Link>
 
-              <Link href="/" className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border border-slate-100">
+              <button onClick={handleBack} className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-50 text-slate-600 hover:bg-blue-50 hover:text-blue-600 transition-colors border border-slate-100">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-4 h-4">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                 </svg>
                 <span className="text-xs font-bold uppercase tracking-wider">Volver</span>
-              </Link>
+              </button>
 
               {/* Desktop Menu - Home Style */}
               <div className="hidden lg:flex items-center gap-8">
@@ -144,12 +157,12 @@ export default function EcografoZ60Page() {
               className="lg:hidden overflow-hidden bg-white border-b border-slate-100 shadow-2xl"
             >
               <div className="px-6 py-8 flex flex-col gap-5">
-                <Link href="/" onClick={() => setIsMenuOpen(false)} className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl text-slate-600 mb-2">
+                <button onClick={() => { setIsMenuOpen(false); handleBack(); }} className="flex items-center gap-2 p-3 bg-slate-50 rounded-xl text-slate-600 mb-2">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="2.5" stroke="currentColor" className="w-5 h-5">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
                   </svg>
-                  <span className="font-bold text-sm uppercase tracking-wider text-slate-700">Volver al Inicio</span>
-                </Link>
+                  <span className="font-bold text-sm uppercase tracking-wider text-slate-700">Volver</span>
+                </button>
                 {navLinks.map((link) => (
                   <a
                     key={link.name}

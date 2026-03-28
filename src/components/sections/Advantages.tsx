@@ -1,7 +1,7 @@
 
 import { memo } from "react";
 
-function Advantages() {
+function Advantages({ city }: { city?: string }) {
     const advantages = [
         {
             icon: (
@@ -30,7 +30,7 @@ function Advantages() {
                 </svg>
             ),
             title: "Disponibilidad inmediata",
-            desc: "Stock permanente en Medellín. Puesta en marcha en su consultorio en menos de 24 horas."
+            desc: city ? `Envíos rápidos a ${city} desde nuestro centro de despacho principal.` : "Stock permanente en Medellín. Puesta en marcha en su consultorio en menos de 24 horas."
         },
         {
             icon: (
@@ -56,7 +56,7 @@ function Advantages() {
                 <div className="text-center mb-16" data-aos="fade-up">
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
-                        Por qué elegir <span className="text-blue-400">alquilerdeecografos.com</span>
+                        Por qué elegir alquiler de ecógrafos {city ? `en ${city}` : "con nosotros"}
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
                 </div>
 

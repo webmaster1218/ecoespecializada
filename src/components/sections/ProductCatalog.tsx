@@ -77,7 +77,7 @@ const M7_DATA = {
 
 export type ProductDetails = typeof Z6_DATA;
 
-export default function ProductCatalog() {
+export default function ProductCatalog({ city }: { city?: string }) {
     const [selectedProduct, setSelectedProduct] = useState<ProductDetails | null>(null);
 
     const handleOpenGallery = (product: ProductDetails) => {
@@ -94,7 +94,7 @@ export default function ProductCatalog() {
                 <div className={styles.header} data-aos="fade-up">
                     <span className={styles.overline}>Modelos disponibles</span>
                     <h2 className={styles.title}>Tecnología <span className="text-gradient">mindray a tu alcance</span></h2>
-                    <p className={styles.subtitle}>Tecnología Mindray de última generación disponible para <strong>entrega inmediata en Medellín</strong> y despachos a nivel nacional.</p>
+                    <p className={styles.subtitle}>Tecnología Mindray de última generación disponible para {city ? `entrega en ${city}` : "entrega inmediata en Medellín"} y despachos a nivel nacional.</p>
                 </div>
 
                 <div className={styles.grid}>
