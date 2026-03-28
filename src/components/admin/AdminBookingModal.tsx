@@ -167,8 +167,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 selected_transducers: formData.selectedTransducers,
                 status: formData.status,
                 notes: formData.notes,
-                total_price: getTotalPrice(),
-                created_by: 'admin'
+                total_price: getTotalPrice()
             };
 
             if (bookingToEdit) {
@@ -179,9 +178,10 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 if (error) throw error;
             }
             onSuccess();
-        } catch (err) {
+        } catch (err: any) {
             console.error('Error saving booking:', err);
-            alert('Error al guardar. Revisa la consola.');
+            const msg = err?.message || err?.code || JSON.stringify(err);
+            alert(`Error al guardar: ${msg}`);
         } finally {
             setIsLoading(false);
         }
