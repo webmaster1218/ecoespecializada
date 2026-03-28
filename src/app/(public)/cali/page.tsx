@@ -75,7 +75,7 @@ export default function CaliPage() {
                             <span>✓</span> Disponibilidad inmediata — Cali
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                        <h1 className="text-5xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
                             Alquila tu ecógrafo{" "}
                             <span className="text-gradient">en Cali</span>
                             <br />
