@@ -13,6 +13,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import FAQ from "@/components/sections/FAQ";
 import ExperienceVideo from "@/components/sections/ExperienceVideo";
 import Footer from "@/components/layout/Footer";
+import CityLinks from "@/components/sections/CityLinks";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       <Comparison />
       <AboutUs />
       <LogoLoop />
+      <CityLinks currentCity="Medellín" />
       <AdditionalServices />
       <Testimonials />
       <FAQ />

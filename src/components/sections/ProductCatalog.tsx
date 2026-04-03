@@ -88,6 +88,25 @@ export default function ProductCatalog({ city }: { city?: string }) {
         setSelectedProduct(null);
     };
 
+    const productsSchema = [Z6_DATA, Z60_DATA, M7_DATA].map(product => ({
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": product.name,
+        "description": product.description,
+        "image": `https://alquilerdeecografos.com${product.images[0]}`,
+        "brand": {
+            "@type": "Brand",
+            "name": "Mindray"
+        },
+        "offers": {
+            "@type": "Offer",
+            "price": product.price.replace(/[^0-9]/g, ''),
+            "priceCurrency": "COP",
+            "availability": "https://schema.org/InStock",
+            "url": `https://alquilerdeecografos.com/#equipos`
+        }
+    }));
+
     return (
         <section className={styles.section} id="equipos">
             <div className="container">
@@ -282,6 +301,13 @@ export default function ProductCatalog({ city }: { city?: string }) {
                         </div>
                     </div>
                 </div>
+                {productsSchema.map((schema, index) => (
+                    <script
+                        key={index}
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+                    />
+                ))}
             </div>
 
             <ProductGalleryModal

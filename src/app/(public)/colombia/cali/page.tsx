@@ -12,17 +12,20 @@ import ClinicalApplications from "@/components/sections/ClinicalApplications";
 import AboutUs from "@/components/sections/AboutUs";
 import FAQ from "@/components/sections/FAQ";
 import Image from "next/image";
+import CityLinks from "@/components/sections/CityLinks";
+
+import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Cali | Mindray Z6 y Z60 | Entrega en el Valle",
+    title: "Alquiler y Venta de Ecógrafos en Cali | Mindray | ¡Entrega 24h!",
     description:
-        "Alquila o compra ecógrafos Mindray en Cali y el Valle del Cauca. Entrega en Granada, Ciudad Jardín, El Centro y toda la Sultana del Valle. Certificados INVIMA. ¡Cotiza ya!",
+        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Cali y el Valle del Cauca. Entrega en Granada, Ciudad Jardín y toda la Sultana del Valle. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Cali", "venta ecógrafo Cali", "ecógrafo Mindray Cali", "equipos médicos Valle del Cauca", "ecógrafo portátil Cali", "arriendo ecógrafo Cali"],
-    alternates: { canonical: "https://alquilerdeecografos.com/cali" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cali" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cali",
+        title: "Alquiler y Venta de Ecógrafos en Cali | Ecoespecializada",
         description: "Equipos Mindray certificados con entrega en Cali y el Valle del Cauca. Servicio ágil para médicos y clínicas caleñas.",
-        url: "https://alquilerdeecografos.com/cali",
+        url: "https://alquilerdeecografos.com/colombia/cali",
     },
 };
 
@@ -62,91 +65,26 @@ const faqCali = [
 export default function CaliPage() {
     return (
         <>
-
-            {/* ── HERO LOCAL ── */}
-            <section className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-36 lg:pt-44 pb-32" id="inicio">
-                <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-blue-100/60 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-50/80 blur-3xl pointer-events-none" />
-
-                <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10 grid lg:grid-cols-2 gap-12 pt-10">
-                    {/* Text content - centered on mobile, left-aligned on desktop */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-                            <span>✓</span> Disponibilidad inmediata — Cali
-                        </div>
-
-                        <h1 className="text-5xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                            Alquila tu ecógrafo{" "}
-                            <span className="text-gradient">en Cali</span>
-                            <br />
-                            y sigue facturando.
-                        </h1>
-
-                        <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl">
-                            Somos la mejor opción para <strong>alquiler y venta de ecógrafos en Cali</strong> y el Valle del Cauca.
-                            Entregamos en Granada, Ciudad Jardín, Centenario y todo Cali.
-                            Equipo Mindray Z6 y Z60 con certificación INVIMA en 24 a 48 horas.
-                        </p>
-
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
-                            <a href="#reservar" className="btn-primary w-full sm:w-auto justify-center">
-                                Cotizar para Cali
-                                <span className="ml-2 bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                    🔥 Disponible
-                                </span>
-                            </a>
-                            <a
-                                href="https://api.whatsapp.com/send/?phone=573003608621&text=Hola,%20quiero%20cotizar%20un%20ec%C3%B3grafo%20para%20Cali&type=phone_number&app_absent=0"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-slate-600 bg-white border border-slate-200 hover:border-green-400 hover:text-green-600 transition-all shadow-sm text-center"
-                            >
-                                💬 WhatsApp Cali
-                            </a>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8 border-t border-slate-100 w-full">
-                            {[
-                                { icon: "🏥", text: "Cali y Valle del Cauca" },
-                                { icon: "⭐", text: "4.9/5 calificación" },
-                                { icon: "🛡️", text: "Garantía INVIMA" },
-                                { icon: "🚚", text: "Entrega en 24-48 h" },
-                            ].map((t) => (
-                                <div key={t.text} className="flex items-center gap-2 text-sm text-slate-600 font-medium whitespace-nowrap">
-                                    <span>{t.icon}</span> {t.text}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* Image */}
-                    <div className="relative flex items-center justify-center">
-                        <div className="absolute w-[400px] h-[400px] rounded-full bg-blue-100 blur-3xl opacity-60" />
-                        <div className="absolute w-[320px] h-[320px] rounded-full border border-blue-100 bg-gradient-to-b from-blue-50/50 to-white shadow-2xl shadow-blue-200/40" />
-                        <Image
-                            src="/images/z60/z-60-abierto-izquierda.webp"
-                            alt="Ecógrafo Mindray Z60 disponible en Cali"
-                            width={480}
-                            height={480}
-                            className="relative z-10 w-[350px] md:w-[420px] object-contain drop-shadow-2xl"
-                            style={{ mixBlendMode: "multiply" }}
-                            priority
-                        />
-                        <div className="absolute bottom-4 right-0 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/60 flex items-center gap-3 z-20 min-w-[230px]">
-                            <div className="bg-green-100 p-2 rounded-full">
-                                <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M5 12l5 5l10-10" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p className="text-xs text-slate-500 font-medium">Cobertura en Cali</p>
-                                <p className="text-base font-bold text-green-600 leading-none">Valle del Cauca</p>
-                                <p className="text-[10px] text-slate-400 mt-0.5">Envío certificado en 24-48 h</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Hero
+                badgeText="Disponibilidad inmediata — Cali"
+                headline={(
+                    <>
+                        Alquila tu ecógrafo <br />
+                        <span className="text-gradient">en Cali</span> y sigue facturando.
+                    </>
+                )}
+                subheadline={(
+                    <>
+                        Somos la mejor opción para <strong>alquiler y venta de ecógrafos en Cali</strong> y el Valle del Cauca. Entregamos en Granada, Ciudad Jardín, Centenario y todo Cali. Equipo Mindray Z6 y Z60 con certificación INVIMA en 24 a 48 horas.
+                    </>
+                )}
+                ctaText="Cotizar para Cali"
+                whatsappText="WhatsApp Cali"
+                whatsappLink="https://api.whatsapp.com/send/?phone=573003608621&text=Hola,%20quiero%20cotizar%20un%20ec%C3%B3grafo%20para%20Cali&type=phone_number&app_absent=0"
+                imageAlt="Ecógrafo Mindray Z60 disponible en Cali"
+                availabilityText="Cobertura en Cali"
+                availabilitySubtext="Valle del Cauca"
+            />
 
             <Advantages city="Cali" />
 
@@ -200,6 +138,7 @@ export default function CaliPage() {
                 </div>
             </section>
 
+            <CityLinks currentCity="Cali" />
             <Testimonials />
             <Footer />
 
@@ -212,8 +151,8 @@ export default function CaliPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Cali - Ecoespecializada",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/cali",
-                        "url": "https://alquilerdeecografos.com/cali",
+                        "@id": "https://alquilerdeecografos.com/colombia/cali",
+                        "url": "https://alquilerdeecografos.com/colombia/cali",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

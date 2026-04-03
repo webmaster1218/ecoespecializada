@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -38,7 +38,6 @@ interface BookingData {
   phone: string;
   documentNumber: string;
   taxId: string;
-  clientType: "medico" | "clinica" | "movil" | "";
 
   // Step 2
   startDate: string;
@@ -69,7 +68,6 @@ const INITIAL_DATA: BookingData = {
   phone: "",
   documentNumber: "",
   taxId: "",
-  clientType: "",
   startDate: "",
   endDate: "",
   quantities: { z6: 0, z60: 0, m7: 0 },
@@ -95,10 +93,12 @@ const PRICES = {
 
 export default function BookingWizard() {
   const router = useRouter();
+  const containerRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState<BookingStep>(1);
   const [formData, setFormData] = useState<BookingData>(INITIAL_DATA);
   const [totalDays, setTotalDays] = useState<number>(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const prevStepRef = useRef<BookingStep>(step);
 
   // Dynamic Availability State
   const [maxAvailability, setMaxAvailability] = useState<{
@@ -164,6 +164,15 @@ export default function BookingWizard() {
     return () => clearTimeout(timeoutId);
   }, [formData.startDate, formData.endDate]);
 
+  useEffect(() => {
+    if (prevStepRef.current !== step) {
+      if (containerRef.current) {
+        containerRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+      prevStepRef.current = step;
+    }
+  }, [step]);
+
   const saveBooking = async () => {
     try {
       setIsSubmitting(true);
@@ -208,12 +217,7 @@ export default function BookingWizard() {
         equipment: equipmentSummary,
         startDate: formData.startDate,
         fullAddress: `${formData.address}, ${formData.city}`,
-        clientType:
-          formData.clientType === "medico"
-            ? "MEDICO"
-            : formData.clientType === "clinica"
-              ? "CLINICA / IPS"
-              : "SERVICIO MOVIL",
+        clientType: "N/A",
         taxId: formData.taxId,
         term: `${totalDays} ${totalDays === 1 ? "DÍA" : "DÍAS"}`,
       };
@@ -235,7 +239,7 @@ export default function BookingWizard() {
         client_name: formData.name,
         client_email: formData.email,
         client_phone: formData.phone,
-        client_type: formData.clientType,
+        client_type: "N/A",
         document_number: formData.documentNumber,
         tax_id: formData.taxId,
         sector: formData.city,
@@ -375,19 +379,6 @@ export default function BookingWizard() {
     let isValid = true;
 
     if (currentStep === 1) {
-      if (!formData.name.trim()) newErrors.name = "El nombre es obligatorio";
-      if (!formData.email.trim()) newErrors.email = "El correo es obligatorio";
-      else if (!/^\S+@\S+\.\S+$/.test(formData.email))
-        newErrors.email = "Correo inválido";
-      if (!formData.phone.trim())
-        newErrors.phone = "El teléfono es obligatorio";
-      if (!formData.documentNumber.trim())
-        newErrors.documentNumber = "El documento es obligatorio";
-      // RUT/NIT no obligatorio según requerimiento
-      // if (!formData.taxId.trim()) newErrors.taxId = formData.clientType === 'clinica' ? "El NIT es obligatorio" : "El RUT es obligatorio";
-      if (!formData.clientType)
-        newErrors.clientType = "Selecciona un tipo de cliente";
-    } else if (currentStep === 2) {
       const today = new Date().toISOString().split("T")[0];
       if (!formData.startDate) {
         newErrors.startDate = "Fecha de inicio requerida";
@@ -406,13 +397,25 @@ export default function BookingWizard() {
       if (!formData.collectionTime)
         newErrors.collectionTime = "Horario de recogida requerido";
 
-      const totalUnits = formData.quantities.z6 + formData.quantities.z60 + formData.quantities.m7;
+      const totalUnits =
+        formData.quantities.z6 +
+        formData.quantities.z60 +
+        formData.quantities.m7;
       if (totalUnits === 0)
         newErrors.quantities = "Selecciona al menos un equipo";
 
       if (totalUnits > 0 && (formData.selectedTransducers || []).length === 0) {
         newErrors.transducers = "Selecciona al menos un transductor";
       }
+    } else if (currentStep === 2) {
+      if (!formData.name.trim()) newErrors.name = "El nombre es obligatorio";
+      if (!formData.email.trim()) newErrors.email = "El correo es obligatorio";
+      else if (!/^\S+@\S+\.\S+$/.test(formData.email))
+        newErrors.email = "Correo inválido";
+      if (!formData.phone.trim())
+        newErrors.phone = "El teléfono es obligatorio";
+      if (!formData.documentNumber.trim())
+        newErrors.documentNumber = "El documento es obligatorio";
     } else if (currentStep === 3) {
       if (!formData.city.trim()) newErrors.city = "El sector es obligatorio";
       if (!formData.address.trim())
@@ -471,6 +474,7 @@ export default function BookingWizard() {
 
   return (
     <section
+      ref={containerRef}
       className="py-10 md:py-16 bg-gradient-to-br from-blue-600 to-blue-900 relative overflow-hidden"
       id="reservar"
     >
@@ -493,7 +497,11 @@ export default function BookingWizard() {
         </div>
 
         {/* Wizard Component */}
-        <div className="max-w-4xl mx-auto bg-white overflow-hidden shadow-2xl rounded-[30px] border border-slate-100">
+        <motion.div
+          layout
+          transition={{ duration: 0.4, ease: "easeInOut" }}
+          className="max-w-4xl mx-auto bg-white overflow-hidden shadow-2xl rounded-[30px] border border-slate-100"
+        >
           {/* Progress Bar */}
           <div className="border-b border-slate-100 p-6 bg-white">
             <div className="flex justify-between items-center max-w-2xl mx-auto relative">
@@ -519,8 +527,8 @@ export default function BookingWizard() {
               ))}
             </div>
             <div className="flex justify-between max-w-2xl mx-auto mt-2 text-xs font-bold text-slate-500 uppercase tracking-widest px-2">
-              <span>Datos</span>
               <span>Equipos</span>
+              <span>Datos</span>
               <span>Entrega</span>
             </div>
           </div>
@@ -544,7 +552,7 @@ export default function BookingWizard() {
               </div>
             )}
             <AnimatePresence mode="wait">
-              {step === 1 && (
+              {step === 2 && (
                 <motion.div
                   key="step1"
                   initial={{ opacity: 0, x: 20 }}
@@ -639,16 +647,12 @@ export default function BookingWizard() {
                     </div>
                     <div className="space-y-1.5 md:col-span-2">
                       <label className="text-sm font-bold text-slate-700 ml-1">
-                        {formData.clientType === "clinica" ? "NIT " : "RUT"}
+                        RUT / NIT
                       </label>
                       <input
                         type="text"
                         className={`w-full px-4 py-3 rounded-2xl bg-white border outline-none transition-all font-medium text-slate-700 shadow-sm ${errors.taxId ? "border-red-500 ring-4 ring-red-500/10" : "border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300"}`}
-                        placeholder={
-                          formData.clientType === "clinica"
-                            ? "Agregar para la facturacion electronica"
-                            : "Agregar para la facturacion electronica"
-                        }
+                        placeholder="Agregar para la facturación electrónica"
                         value={formData.taxId}
                         onChange={(e) => updateData("taxId", e.target.value)}
                       />
@@ -659,71 +663,10 @@ export default function BookingWizard() {
                       )}
                     </div>
                   </div>
-
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-slate-700 ml-1">
-                      Tipo de cliente <span className="text-red-500">*</span>
-                    </label>
-                    <div className="grid grid-cols-3 gap-3">
-                      {[
-                        {
-                          id: "medico",
-                          label: "Médico indep.",
-                          icon: IconUser,
-                        },
-                        {
-                          id: "clinica",
-                          label: "Clínica / IPS",
-                          icon: IconBuildingHospital,
-                        },
-                        {
-                          id: "movil",
-                          label: "Servicio móvil",
-                          icon: IconAmbulance,
-                        },
-                      ].map((type) => (
-                        <button
-                          key={type.id}
-                          onClick={() =>
-                            updateData("clientType", type.id as any)
-                          }
-                          aria-label={`Seleccionar tipo de cliente: ${type.label}`}
-                          className={`p-3 rounded-2xl border-2 flex flex-col items-center gap-2 transition-all duration-200 ${
-                            formData.clientType === type.id
-                              ? "border-blue-500 bg-blue-50/50 text-blue-700 shadow-md scale-[1.02]"
-                              : errors.clientType
-                                ? "border-red-300 bg-red-50"
-                                : "border-slate-200 bg-white text-slate-500 hover:border-blue-200 hover:bg-slate-50"
-                          }`}
-                        >
-                          <div
-                            className={`p-3 rounded-full ${formData.clientType === type.id ? "bg-blue-100 text-blue-600" : "bg-slate-100 text-slate-400"}`}
-                          >
-                            <type.icon size={24} />
-                          </div>
-                          <span className="font-bold text-sm leading-tight">
-                            {type.label}
-                          </span>
-                          <span
-                            className={`text-[10px] md:text-[11px] leading-tight opacity-100 ${formData.clientType === type.id ? "text-blue-600" : "text-slate-500"}`}
-                          >
-                            {type.id === "medico" && "Para consultorios"}
-                            {type.id === "clinica" && "Corporativo / IPS"}
-                            {type.id === "movil" && "Domiciliario"}
-                          </span>
-                        </button>
-                      ))}
-                    </div>
-                    {errors.clientType && (
-                      <span className="text-xs text-red-500 flex items-center gap-1">
-                        <IconAlertCircle size={12} /> {errors.clientType}
-                      </span>
-                    )}
-                  </div>
                 </motion.div>
               )}
 
-              {step === 2 && (
+              {step === 1 && (
                 <motion.div
                   key="step2"
                   initial={{ opacity: 0, x: 20 }}
@@ -1498,7 +1441,7 @@ export default function BookingWizard() {
               </button>
             </div>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -12,17 +12,20 @@ import ClinicalApplications from "@/components/sections/ClinicalApplications";
 import AboutUs from "@/components/sections/AboutUs";
 import FAQ from "@/components/sections/FAQ";
 import Image from "next/image";
+import CityLinks from "@/components/sections/CityLinks";
+
+import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Mindray Z6 y Z60 | Ciudad Bonita",
+    title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Mindray | Santander",
     description:
-        "Alquila o compra ecógrafos Mindray en Bucaramanga y el Área Metropolitana. Entrega en Floridablanca, Girón, Piedecuesta y toda Santander. Certificados INVIMA. ¡Cotiza ya!",
+        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Bucaramanga y Santander. Entrega en Floridablanca, Girón y Piedecuesta. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Bucaramanga", "venta ecógrafo Bucaramanga", "ecógrafo Mindray Bucaramanga", "equipos médicos Santander", "ecógrafo portátil Bucaramanga"],
-    alternates: { canonical: "https://alquilerdeecografos.com/bucaramanga" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/bucaramanga" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Bucaramanga",
+        title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Ecoespecializada",
         description: "Equipos Mindray certificados con entrega en Bucaramanga y todo Santander. Servicio ágil para médicos y clínicas bumanguesas.",
-        url: "https://alquilerdeecografos.com/bucaramanga",
+        url: "https://alquilerdeecografos.com/colombia/bucaramanga",
     },
 };
 
@@ -62,90 +65,26 @@ const faqBucaramanga = [
 export default function BucaramangaPage() {
     return (
         <>
-
-            {/* ── HERO LOCAL ── */}
-            <section className="relative min-h-[90vh] overflow-hidden bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-36 lg:pt-44 pb-32" id="inicio">
-                <div className="absolute -top-40 -right-40 w-[700px] h-[700px] rounded-full bg-blue-100/60 blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-40 -left-40 w-[500px] h-[500px] rounded-full bg-blue-50/80 blur-3xl pointer-events-none" />
-
-                <div className="container mx-auto px-6 md:px-10 lg:px-16 relative z-10 grid lg:grid-cols-2 gap-12 pt-10">
-                    {/* Text content - centered on mobile, left-aligned on desktop */}
-                    <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
-                        <div className="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 text-blue-700 text-sm font-semibold px-4 py-2 rounded-full mb-6">
-                            <span>✓</span> Disponibilidad inmediata — Bucaramanga
-                        </div>
-
-                        <h1 className="text-5xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
-                            Alquila tu ecógrafo{" "}
-                            <span className="text-gradient">en Bucaramanga</span>
-                            <br />
-                            y sigue facturando.
-                        </h1>
-
-                        <p className="text-lg text-slate-600 mb-8 leading-relaxed max-w-xl">
-                            <strong>Alquiler y venta de ecógrafos en Bucaramanga</strong> y todo el Área Metropolitana.
-                            Entregamos en Floridablanca, Girón, Piedecuesta y toda Santander.
-                            Mindray Z6 y Z60 con certificación INVIMA en 24 a 48 horas.
-                        </p>
-
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
-                            <a href="#reservar" className="btn-primary w-full sm:w-auto justify-center">
-                                Cotizar para Bucaramanga
-                                <span className="ml-2 bg-white/20 text-white text-[10px] font-bold px-2 py-0.5 rounded-full">
-                                    🔥 Disponible
-                                </span>
-                            </a>
-                            <a
-                                href="https://api.whatsapp.com/send/?phone=573003608621&text=Hola,%20quiero%20cotizar%20un%20ec%C3%B3grafo%20para%20Bucaramanga&type=phone_number&app_absent=0"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="w-full sm:w-auto px-8 py-3 rounded-full font-semibold text-slate-600 bg-white border border-slate-200 hover:border-green-400 hover:text-green-600 transition-all shadow-sm text-center"
-                            >
-                                💬 WhatsApp Bucaramanga
-                            </a>
-                        </div>
-
-                        <div className="flex flex-wrap justify-center lg:justify-start gap-6 pt-8 border-t border-slate-100 w-full">
-                            {[
-                                { icon: "🏙️", text: "Bucaramanga y Santander" },
-                                { icon: "⭐", text: "4.9/5 calificación" },
-                                { icon: "🛡️", text: "Garantía INVIMA" },
-                                { icon: "🚚", text: "Entrega en 24-48 h" },
-                            ].map((t) => (
-                                <div key={t.text} className="flex items-center gap-2 text-sm text-slate-600 font-medium whitespace-nowrap">
-                                    <span>{t.icon}</span> {t.text}
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-
-                    <div className="relative flex items-center justify-center">
-                        <div className="absolute w-[400px] h-[400px] rounded-full bg-blue-100 blur-3xl opacity-60" />
-                        <div className="absolute w-[320px] h-[320px] rounded-full border border-blue-100 bg-gradient-to-b from-blue-50/50 to-white shadow-2xl shadow-blue-200/40" />
-                        <Image
-                            src="/images/z60/z-60-abierto-izquierda.webp"
-                            alt="Ecógrafo Mindray Z60 disponible en Bucaramanga"
-                            width={480}
-                            height={480}
-                            className="relative z-10 w-[350px] md:w-[420px] object-contain drop-shadow-2xl"
-                            style={{ mixBlendMode: "multiply" }}
-                            priority
-                        />
-                        <div className="absolute bottom-4 right-0 bg-white/90 backdrop-blur-md p-4 rounded-2xl shadow-xl border border-white/60 flex items-center gap-3 z-20 min-w-[230px]">
-                            <div className="bg-green-100 p-2 rounded-full">
-                                <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M5 12l5 5l10-10" />
-                                </svg>
-                            </div>
-                            <div>
-                                <p className="text-xs text-slate-500 font-medium">Cobertura en Bucaramanga</p>
-                                <p className="text-base font-bold text-green-600 leading-none">Área Metropolitana</p>
-                                <p className="text-[10px] text-slate-400 mt-0.5">Envío certificado en 24-48 h</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <Hero
+                badgeText="Disponibilidad inmediata — Bucaramanga"
+                headline={(
+                    <>
+                        Alquila tu ecógrafo <br />
+                        <span className="text-gradient">en Bucaramanga</span> y sigue facturando.
+                    </>
+                )}
+                subheadline={(
+                    <>
+                        <strong>Alquiler y venta de ecógrafos en Bucaramanga</strong> y todo el Área Metropolitana. Entregamos en Floridablanca, Girón, Piedecuesta y toda Santander. Mindray Z6 y Z60 con certificación INVIMA en 24 a 48 horas.
+                    </>
+                )}
+                ctaText="Cotizar para Bucaramanga"
+                whatsappText="WhatsApp Bucaramanga"
+                whatsappLink="https://api.whatsapp.com/send/?phone=573003608621&text=Hola,%20quiero%20cotizar%20un%20ec%C3%B3grafo%20para%20Bucaramanga&type=phone_number&app_absent=0"
+                imageAlt="Ecógrafo Mindray Z60 disponible en Bucaramanga"
+                availabilityText="Cobertura en Bucaramanga"
+                availabilitySubtext="Área Metropolitana"
+            />
 
             <Advantages city="Bucaramanga" />
 
@@ -199,6 +138,7 @@ export default function BucaramangaPage() {
                 </div>
             </section>
 
+            <CityLinks currentCity="Bucaramanga" />
             <Testimonials />
             <Footer />
 

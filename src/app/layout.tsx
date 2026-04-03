@@ -20,10 +20,10 @@ const roboto = Roboto({
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.alquilerdeecografos.com"),
-  title: "Alquiler de Ecógrafos en Medellín y Antioquia | Mindray Portátiles",
-  description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic. Entrega rápida.",
-  keywords: ["alquiler ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
+  metadataBase: new URL("https://alquilerdeecografos.com"),
+  title: "Alquiler y Venta de Ecógrafos en Medellín y Antioquia | Mindray",
+  description: "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Medellín y Antioquia. Equipos Z6, Z60 y M7 con respaldo de Equibiomedic. Entrega rápida y soporte técnico.",
+  keywords: ["alquiler ecografos medellin", "venta ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
   icons: {
     icon: "/images/logo/logo-pestaña.webp",
     apple: "/images/logo/logo-pestaña.webp",
@@ -32,21 +32,43 @@ export const metadata: Metadata = {
     google: "Ls8AN5mLsHq7NDhWW6rhp3Egt1jGoIM49_rRI1Nt_wQ",
   },
   openGraph: {
-    title: "Alquiler de Ecógrafos en Medellín y Antioquia",
-    description: "Alquiler de ecógrafos en Medellín y toda Antioquia. Equipos Mindray Z6 y Z60 de alta gama con respaldo de Equibiomedic.",
-    url: "https://www.alquilerdeecografos.com",
-    siteName: "Alquiler de Ecógrafos",
+    title: "Alquiler y Venta de Ecógrafos en Medellín y Antioquia",
+    description: "Equipos Mindray de alta gama con respaldo de Equibiomedic. Líderes en alquiler y venta para médicos en Medellín y Antioquia.",
+    url: "https://alquilerdeecografos.com",
+    siteName: "Ecoespecializada",
     images: [
       {
-        url: "/images/logo/logo_alquilerdeecografos.png",
-        width: 800,
-        height: 600,
-        alt: "Logo Alquiler de Ecógrafos",
+        url: "/images/logo/logo_alquilerdeecografos.webp",
+        width: 1200,
+        height: 630,
+        alt: "Ecoespecializada Logo",
       },
     ],
     locale: "es_CO",
     type: "website",
   },
+};
+
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ecoespecializada",
+  "alternateName": "Alquiler de Ecógrafos Colombia",
+  "url": "https://alquilerdeecografos.com",
+  "logo": "https://alquilerdeecografos.com/images/logo/logo_alquilerdeecografos.webp",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+573003608621",
+    "contactType": "sales",
+    "areaServed": "CO",
+    "availableLanguage": "Spanish"
+  },
+  "sameAs": [
+    "https://www.facebook.com/profile.php?id=61587750932611",
+    "https://www.instagram.com/alquiler.de.ecografos/",
+    "https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA",
+    "https://www.linkedin.com/company/alquiler-de-ec%C3%B3grafos-com/"
+  ]
 };
 
 export default function RootLayout({
@@ -98,7 +120,11 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-WV8Q9KMF');`}
         </Script>
-        <AOSInit />
+         <AOSInit />
+         <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
         {children}
       </body>
     </html>

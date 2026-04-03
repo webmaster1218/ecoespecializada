@@ -51,6 +51,19 @@ export default function FAQ({ city }: { city?: string }) {
         setActiveItem(activeItem === index ? null : index);
     };
 
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqData.map(item => ({
+            "@type": "Question",
+            "name": item.question,
+            "acceptedAnswer": {
+                "@type": "Answer",
+                "text": item.answer
+            }
+        }))
+    };
+
     return (
         <section className={styles.section} id="faq">
             <div className="container">
@@ -101,6 +114,10 @@ export default function FAQ({ city }: { city?: string }) {
                         <p className={styles.responseTime}>Respuesta garantizada en menos de 2 horas</p>
                     </div>
                 </div>
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+                />
             </div>
         </section>
     );

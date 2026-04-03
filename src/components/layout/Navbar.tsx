@@ -15,7 +15,10 @@ export default function Navbar() {
 
     // Helper to determine if a link should be absolute or hash-only
     const getHref = (target: string) => {
-        const landingPaths = ["/", "/bogota", "/cali", "/barranquilla", "/cartagena", "/bucaramanga", "/pereira", "/cucuta"];
+        const cityPaths = ["/bogota", "/cali", "/barranquilla", "/cartagena", "/bucaramanga", "/pereira", "/cucuta"];
+        const nestedCityPaths = cityPaths.map(p => `/colombia${p}`);
+        const landingPaths = ["/", "/colombia", ...cityPaths, ...nestedCityPaths];
+        
         const isLandingPage = landingPaths.some(p => pathname === p || pathname === `${p}/`);
         
         if (isLandingPage) {
@@ -82,6 +85,31 @@ export default function Navbar() {
                                 <Link href="/ecografo-m7" onClick={() => setMobileMenuOpen(false)}>Mindray M7</Link>
                             </div>
                         </div>
+
+                        {!pathname.startsWith("/colombia") && (
+                            <Link href="/colombia" onClick={() => setMobileMenuOpen(false)}>Colombia</Link>
+                        )}
+
+                        {/* Dropdown Ciudades - Solo visible en rutas de Colombia */}
+                        {pathname.startsWith("/colombia") && (
+                            <div className={styles.dropdown}>
+                                <span className={styles.dropdownTrigger}>
+                                    Ciudades
+                                    <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </span>
+                                <div className={styles.dropdownMenu}>
+                                    <Link href="/colombia/bogota" onClick={() => setMobileMenuOpen(false)}>Bogotá</Link>
+                                    <Link href="/colombia/cali" onClick={() => setMobileMenuOpen(false)}>Cali</Link>
+                                    <Link href="/colombia/barranquilla" onClick={() => setMobileMenuOpen(false)}>Barranquilla</Link>
+                                    <Link href="/colombia/cartagena" onClick={() => setMobileMenuOpen(false)}>Cartagena</Link>
+                                    <Link href="/colombia/bucaramanga" onClick={() => setMobileMenuOpen(false)}>Bucaramanga</Link>
+                                    <Link href="/colombia/pereira" onClick={() => setMobileMenuOpen(false)}>Pereira</Link>
+                                    <Link href="/colombia/cucuta" onClick={() => setMobileMenuOpen(false)}>Cúcuta</Link>
+                                </div>
+                            </div>
+                        )}
 
                         <Link href={getHref("#nosotros")} onClick={() => setMobileMenuOpen(false)}>Nosotros</Link>
                         <Link href={getHref("#servicios-complementarios")} onClick={() => setMobileMenuOpen(false)}>Servicios</Link>
