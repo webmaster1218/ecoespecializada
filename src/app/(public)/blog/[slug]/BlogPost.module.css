@@ -247,6 +247,57 @@
   margin: 3rem 0;
 }
 
+/* Tables */
+.markdownContent .table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 2rem 0;
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+.markdownContent .table th {
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0.05) 100%);
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 1rem 1.25rem;
+  text-align: left;
+  border-bottom: 2px solid rgba(0, 123, 255, 0.2);
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.markdownContent .table td {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: var(--color-text-body);
+  font-size: 0.95rem;
+  vertical-align: middle;
+}
+
+.markdownContent .table tr:last-child td {
+  border-bottom: none;
+}
+
+.markdownContent .table tbody tr:nth-child(even) {
+  background: rgba(0, 123, 255, 0.02);
+}
+
+.markdownContent .table tbody tr:hover {
+  background: rgba(0, 123, 255, 0.05);
+  transition: background 0.3s;
+}
+
+.markdownContent .table tbody tr:last-child td {
+  font-weight: 700;
+  background: linear-gradient(135deg, rgba(0, 123, 255, 0.1) 0%, rgba(0, 123, 255, 0.05) 100%);
+  color: var(--color-primary);
+}
+
 /* Tags */
 .tags {
   display: flex;

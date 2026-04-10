@@ -1,81 +1,29 @@
-import { notFound } from 'next/navigation';
+"use client";
+
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getPostBySlug, getRelatedPosts, getAllPosts } from '@/lib/blog/posts';
-import { formatDate, getReadingTime, generateArticleSchema, generateBreadcrumbSchema } from '@/lib/blog/utils';
+import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
+import { formatDate, getReadingTime } from '@/lib/blog/utils';
+import { notFound } from 'next/navigation';
+import { useParams } from 'next/navigation';
 import CallButton from '@/components/ui/CallButton';
 import styles from './BlogPost.module.css';
 
-interface BlogPostPageProps {
-  params: {
-    slug: string;
-  };
-}
+export default function BlogPostPage() {
+  const params = useParams();
+  const slug = params.slug as string;
 
-// Helper to get all posts (needed for static generation)
-function getAllPosts() {
-  // Import dynamically to avoid circular dependency
-  const { posts } = require('@/lib/blog/posts');
-  return posts;
-}
-
-// Generate static params for all posts
-export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post: { slug: string }) => ({
-    slug: post.slug,
-  }));
-}
-
-// Generate metadata for SEO
-export async function generateMetadata({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
-
-  if (!post) {
-    return {
-      title: 'Artículo no encontrado',
-    };
-  }
-
-  return {
-    title: `${post.title} | Alquiler de Ecógrafos`,
-    description: post.excerpt,
-    openGraph: {
-      title: post.title,
-      description: post.excerpt,
-      images: [post.image],
-      type: 'article',
-      publishedTime: post.date,
-      authors: [post.author],
-    },
-  };
-}
-
-export default function BlogPostPage({ params }: BlogPostPageProps) {
-  const post = getPostBySlug(params.slug);
+  const post = getPostBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
   const relatedPosts = getRelatedPosts(post.slug, post.category, 3);
-  const articleSchema = generateArticleSchema(post);
-  const breadcrumbSchema = generateBreadcrumbSchema();
 
   return (
-    <>
-      {/* Structured Data */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
-
-      <main className={styles.blogPost}>
+    <main className={styles.blogPost}>
         {/* Breadcrumb */}
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <div className="container">
@@ -148,12 +96,22 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
               {/* Markdown-like content rendering */}
               <div className={styles.markdownContent}>
                 {post.content.split('\n\n').map((paragraph, index) => {
+                  // Check if it's a table FIRST (before other elements)
+                  const parsedTable = parseMarkdownTable(paragraph);
+                  if (parsedTable.isTable) {
+                    return <div key={index}>{parsedTable.content}</div>;
+                  }
+
                   // Check if it's a heading
                   if (paragraph.startsWith('#')) {
                     const level = paragraph.match(/^#+/)?.[0].length || 1;
                     const text = paragraph.replace(/^#+\s/, '');
-                    const HeadingTag = `h${Math.min(level, 6)}` as keyof JSX.IntrinsicElements;
-                    return <HeadingTag key={index}>{text}</HeadingTag>;
+                    if (level === 1) return <h1 key={index}>{text}</h1>;
+                    if (level === 2) return <h2 key={index}>{text}</h2>;
+                    if (level === 3) return <h3 key={index}>{text}</h3>;
+                    if (level === 4) return <h4 key={index}>{text}</h4>;
+                    if (level === 5) return <h5 key={index}>{text}</h5>;
+                    return <h6 key={index}>{text}</h6>;
                   }
 
                   // Check if it's a list item
@@ -276,7 +234,6 @@ export default function BlogPostPage({ params }: BlogPostPageProps) {
           </div>
         </section>
       </main>
-    </>
   );
 }
 
@@ -286,4 +243,60 @@ function formatMarkdown(text: string): string {
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
     .replace(/\*(.+?)\*/g, '<em>$1</em>') // Italic
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'); // Links
+}
+
+// Parse markdown tables
+function parseMarkdownTable(text: string): { isTable: boolean; content: any } {
+  // Check if it's a table (contains | separators)
+  if (!text.includes('|') || !text.trim().startsWith('|')) {
+    return { isTable: false, content: text };
+  }
+
+  // Split into rows
+  const rows = text.trim().split('\n').filter(row => row.trim());
+  
+  // Check if it's a valid table (at least 3 rows: header, separator, data)
+  if (rows.length < 3) {
+    return { isTable: false, content: text };
+  }
+
+  // Parse header row
+  const headerRow = rows[0];
+  const headers = headerRow.split('|').map(h => h.trim()).filter(h => h);
+
+  // Parse separator row (should be |---|---|---)
+  const separatorRow = rows[1];
+  if (!separatorRow.includes('---')) {
+    return { isTable: false, content: text };
+  }
+
+  // Parse data rows
+  const dataRows = rows.slice(2).map(row => {
+    return row.split('|').map(cell => cell.trim()).filter(cell => cell !== '');
+  });
+
+  // Return table component
+  return {
+    isTable: true,
+    content: (
+      <table className={styles.table}>
+        <thead>
+          <tr>
+            {headers.map((header, i) => (
+              <th key={i}>{header}</th>
+            ))}
+          </tr>
+        </thead>
+        <tbody>
+          {dataRows.map((row, i) => (
+            <tr key={i}>
+              {row.map((cell, j) => (
+                <td key={j} dangerouslySetInnerHTML={{ __html: formatMarkdown(cell) }} />
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    )
+  };
 }
