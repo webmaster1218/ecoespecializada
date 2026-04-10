@@ -112,6 +112,7 @@ export default function Navbar() {
                         )}
 
                         <Link href={getHref("#nosotros")} onClick={() => setMobileMenuOpen(false)}>Nosotros</Link>
+                        <Link href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
                         <Link href={getHref("#servicios-complementarios")} onClick={() => setMobileMenuOpen(false)}>Servicios</Link>
                         <Link href={getHref("#testimonios")} onClick={() => setMobileMenuOpen(false)}>Testimonios</Link>
                         <div className={styles.mobileButtons}>
