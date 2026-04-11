@@ -219,8 +219,31 @@
   list-style: disc;
 }
 
+.markdownContent ul li::marker {
+  color: var(--color-primary);
+  font-size: 1.1em;
+}
+
 .markdownContent ol {
   list-style: decimal;
+}
+
+/* Check list - No bullets, just colored check marks */
+.markdownContent .checkList {
+  list-style: none;
+  padding-left: 0;
+}
+
+.markdownContent .checkList li {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.markdownContent .checkList li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
 }
 
 .markdownContent li {
@@ -247,6 +270,14 @@
   margin: 3rem 0;
 }
 
+/* Check Marks - High specificity for blue color */
+.markdownContent .checkMark {
+  color: #007BFF !important;
+  font-weight: 700;
+  margin-right: 0.5rem;
+  display: inline-block;
+}
+
 /* Tables */
 .markdownContent .table {
   width: 100%;
@@ -257,6 +288,9 @@
   overflow: hidden;
   box-shadow: var(--shadow-md);
   border: 1px solid rgba(0, 123, 255, 0.1);
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .markdownContent .table th {
@@ -497,6 +531,20 @@
 
   .shareButtons {
     flex-wrap: wrap;
+  }
+
+  /* Tables responsive */
+  .markdownContent .table {
+    font-size: 0.85rem;
+  }
+
+  .markdownContent .table th,
+  .markdownContent .table td {
+    padding: 0.75rem 1rem;
+  }
+
+  .markdownContent .table th {
+    font-size: 0.85rem;
   }
 
   .tags {

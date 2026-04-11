@@ -114,12 +114,26 @@ export default function BlogPostPage() {
                     return <h6 key={index}>{text}</h6>;
                   }
 
-                  // Check if it's a list item
-                  if (paragraph.startsWith('- ')) {
-                    const items = paragraph.split('\n- ').map(item => item.replace('- ', '').trim()).filter(Boolean);
+                  // Check if it's a list item - IMPROVED: Check if line starts with bullet
+                  const listItems = [];
+                  const lines = paragraph.split('\n');
+                  let isList = false;
+                  
+                  for (const line of lines) {
+                    const trimmed = line.trim();
+                    if (trimmed.startsWith('- ')) {
+                      isList = true;
+                      listItems.push(trimmed.substring(2));
+                    }
+                  }
+                  
+                  if (isList && listItems.length > 0) {
+                    // Check if any item has check marks at the start
+                    const hasCheckMarks = listItems.some(item => item.trim().startsWith('✓') || item.trim().startsWith('✔') || item.trim().startsWith('✅'));
+                    
                     return (
-                      <ul key={index} className={styles.list}>
-                        {items.map((item, i) => (
+                      <ul key={index} className={hasCheckMarks ? styles.checkList : styles.list}>
+                        {listItems.map((item, i) => (
                           <li key={i} dangerouslySetInnerHTML={{ __html: formatMarkdown(item) }} />
                         ))}
                       </ul>
@@ -240,9 +254,73 @@ export default function BlogPostPage() {
 // Simple markdown formatter (bold, italic, links)
 function formatMarkdown(text: string): string {
   return text
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>') // Bold
-    .replace(/\*(.+?)\*/g, '<em>$1</em>') // Italic
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>'); // Links
+    // Check marks - Convert to styled elements
+    .replace(/([✓✔✅])\s*/g, '<span class="checkMark">$1</span> ')
+    // Bold
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // Italic
+    .replace(/\*(.+?)\*/g, '<em>$1</em>')
+    // Links
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+}
+
+// Parse markdown headings
+function parseMarkdownHeading(text: string): { isHeading: boolean; level: number; content: string } {
+  const match = text.match(/^(#{1,6})\s+(.+)$/);
+  if (match) {
+    const level = match[1].length;
+    const content = match[2];
+    return { isHeading: true, level, content };
+  }
+  return { isHeading: false, level: 0, content: text };
+}
+
+// Parse markdown lists (ordered and unordered)
+function parseMarkdownList(text: string): { isList: boolean; type: 'ordered' | 'unordered' | null; items: string[] } {
+  const lines = text.trim().split('\n');
+  let hasListItems = false;
+  let listType: 'ordered' | 'unordered' | null = null;
+  
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (trimmed.match(/^-\s/) || trimmed.match(/^\*\s/)) {
+      hasListItems = true;
+      if (!listType) listType = 'unordered';
+      else if (listType !== 'unordered') listType = 'mixed';
+    } else if (trimmed.match(/^\d+\.\s/)) {
+      hasListItems = true;
+      if (!listType) listType = 'ordered';
+      else if (listType !== 'ordered') listType = 'mixed';
+    }
+  }
+  
+  if (!hasListItems) {
+    return { isList: false, type: null, items: [] };
+  }
+  
+  const items: string[] = [];
+  for (const line of lines) {
+    const trimmed = line.trim();
+    const orderedMatch = trimmed.match(/^\d+\.\s+(.+)$/);
+    const unorderedMatch = trimmed.match(/^[-*]\s+(.+)$/);
+    
+    if (orderedMatch) {
+      items.push(orderedMatch[1]);
+    } else if (unorderedMatch) {
+      items.push(unorderedMatch[1]);
+    }
+  }
+  
+  return { isList: true, type: listType, items };
+}
+
+// Parse blockquotes
+function parseBlockquote(text: string): { isBlockquote: boolean; content: string } {
+  if (text.trim().startsWith('>')) {
+    const content = text.replace(/^>\s?/gm, '').trim();
+    return { isBlockquote: true, content };
+  }
+  return { isBlockquote: false, content: text };
 }
 
 // Parse markdown tables

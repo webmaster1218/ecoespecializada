@@ -1,15 +1,14 @@
 import { BlogPost } from './types';
 
-// Sample blog posts data
+// Sample blog posts data - Updated April 11, 2026
 // In production, this could be fetched from Supabase or an API
 export const posts: BlogPost[] = [
   {
     slug: "beneficios-alquiler-ecografos",
     title: "5 Beneficios Estratégicos del Alquiler de Ecógrafos para Clínicas Pequeñas en Colombia",
-    excerpt: "Descubre por qué cada vez más clínicas en Bogotá, Medellín y Cali optan por alquilar equipos médicos en lugar de comprarlos. Ahorro de $41 millones de pesos, flexibilidad y tecnología de última generación.",
+    excerpt: "Descubre por qué cada vez más clínicas en Bogotá, Medellín y Cali optan por alquilar equipos médicos en lugar de comprarlos. Ahorro de $6 millones de pesos, flexibilidad y tecnología de última generación.",
+    date: "2026-04-11",
     content: `
-# 5 Beneficios Estratégicos del Alquiler de Ecógrafos para Clínicas Pequeñas en Colombia
-
 En el dinámico mercado médico colombiano, donde la tecnología avanza a un ritmo vertiginoso, las clínicas pequeñas y prácticas independientes enfrentan un desafío constante: cómo acceder a equipos médicos de última generación sin comprometer la viabilidad financiera de su operación.
 
 El ultrasonido móvil, una herramienta indispensable en el diagnóstico moderno, representa una inversión significativa que puede oscilar entre **$80,000,000 y $110,000,000 COP** para equipos de entrada de gama como el [Mindray Z60](/ecografo-z60/), hasta más de **$160,000,000 COP** para sistemas premium como los ecógrafos [Mindray Z6](/ecografo-z6/) o [M7](/ecografo-m7/).
@@ -31,65 +30,54 @@ Pero existe una alternativa estratégica que está transformando cómo las clín
 
 ## 1. Preservación del Capital Operativo (Cash Flow Management)
 
-La preservación del capital es la ventaja más inmediata y tangible del alquiler de ecógrafos. En lugar de inmovilizar más de $100,000,000 COP en un activo que se deprecia rápidamente, las clínicas pueden:
+La preservación del capital es la ventaja más inmediata y tangible del alquiler de ecógrafos. En lugar de inmovilizar más de $100,000,000 COP en un activo que se deprecia rápidamente, las clínicas pueden aprovechar **beneficios financieros directos**:
 
-**Beneficios financieros directos:**
 - Mantener liquidez para inversión en marketing, personal y expansiones
 - Mejorar el ratio de liquidez en balances financieros
 - Convertir gasto de capital (CAPEX) en gasto operativo (OPEX) deducible
 - Eliminar la necesidad de financiamiento bancario con intereses (tasa 25-30% anual en Colombia)
 - Preservar líneas de crédito para emergencias u oportunidades de crecimiento
 
-**Caso práctico en [Bogotá](/colombia/bogota/):**
-Una clínica de ginecología que optó por alquilar un [Mindray Z60](/ecografo-z60/) invirtió los **$8,500,000 COP mensuales** que ahorró en no pagar cuotas bancarias en una campaña de marketing digital. Resultado: **+35% de nuevos pacientes** en los primeros 6 meses, pagando cómodamente el alquiler con el aumento de ingresos (ROI de 2.8x).
+**Caso práctico en [Bogotá](/colombia/bogota/):** Una clínica de ginecología que optó por alquilar un [Mindray Z60](/ecografo-z60/) invirtió los **$8,500,000 COP mensuales** que ahorró en no pagar cuotas bancarias en una campaña de marketing digital. Resultado: **+35% de nuevos pacientes** en los primeros 6 meses, pagando cómodamente el alquiler con el aumento de ingresos (ROI de 2.8x).
 
 ## 2. Tecnología Siempre Actualizada (Obsolescencia Tecnológica)
 
 El ciclo de renovación tecnológica en ultrasonido médico es cada vez más corto. Lo que era "estado del arte" hace 2 años, hoy puede estar significativamente rezagado frente a nuevas capacidades de procesamiento de imagen, funcionalidades de IA y conectividad.
 
 **Alquilando, tu clínica siempre tiene acceso a:**
+
 - La última generación de [transductores y aplicaciones clínicas](/blog/guia-transductores-ultrasonido/)
 - Actualizaciones de software incluidas en el contrato
 - Modelos recientes con mejoras en resolución y velocidad
 - Funcionalidades avanzadas (elastografía, contraste, 3D/4D)
 - Conectividad wireless y telemedicina integrada
 
-**Estudios de mercado en Colombia:**
-Según datos de 2026, las clínicas que alquilan equipos en [Medellín](/colombia/medellin/) y [Cali](/colombia/cali/) reportan un **20-30% más de satisfacción** con la calidad de imagen que aquellas que utilizan equipos comprados con más de 3 años de antigüedad.
+**Estudios de mercado en Colombia:** Según datos de 2026, las clínicas que alquilan equipos en [Medellín](/colombia/medellin/) y [Cali](/colombia/cali/) reportan un **20-30% más de satisfacción** con la calidad de imagen que aquellas que utilizan equipos comprados con más de 3 años de antigüedad.
 
 ## 3. Flexibilidad Operativa Escalable
 
-La demanda en salud es estacional y fluctuante. Una clínica puede experimentar:
+La demanda en salud es estacional y fluctuante. Una clínica puede experimentar **escenarios de variación de demanda**:
 
-**Escenarios de variación de demanda:**
 - **Temporadas altas:** Periodos de exámenes médicos masivos, campañas de vacunación, aumentos estacionales de consultas
 - **Temporadas bajas:** Disminuciones naturales en ciertos meses del año
 - **Proyectos específicos:** Visitas domiciliarias extendidas, campañas en zonas rurales, convenios corporativos temporales
 - **Emergencias sanitarias:** Pandemias, brotes regionales, desastres naturales que requieren capacidad adicional
 
 **El alquiler permite:**
+
 - Aumentar o disminuir el número de equipos según demanda real
 - Terminar contratos sin penalizaciones excesivas (generalmente 1-2 meses de aviso)
 - Probar diferentes modelos antes de decidir una compra futura
 - Adaptarse rápidamente a cambios en el mercado de salud
 
-**Ejemplo en [Barranquilla](/colombia/barranquilla/):**
-Una red de atención primaria incrementó su capacidad diagnóstica un **200% durante campaña de vacunación** mediante alquiler temporal de ecógrafos portátiles. Terminaron los equipos adicionales al terminar la campaña sin compromisos de largo plazo, ahorrando más de **$200,000,000 COP** en inversión de capital.
+**Ejemplo en [Barranquilla](/colombia/barranquilla/):** Una red de atención primaria incrementó su capacidad diagnóstica un **200% durante campaña de vacunación** mediante alquiler temporal de ecógrafos portátiles. Terminaron los equipos adicionales al terminar la campaña sin compromisos de largo plazo, ahorrando más de **$200,000,000 COP** en inversión de capital.
 
 ## 4. Mantenimiento, Soporte y Garantía Incluidos
 
 El costo oculto más significativo de la propiedad de equipos médicos no es el precio de compra, sino el mantenimiento continuo.
 
-**Costos de mantenimiento anual promedio en Colombia:**
-| Tipo de Servicio | Costo Promedio Anual (Mindray Z6) |
-|-----------------|-------------------------------------|
-| Mantenimiento preventivo | $5,000,000 COP |
-| Reparaciones no garantizadas | $3,000,000 - $10,000,000 COP |
-| Calibración anual | $2,500,000 COP |
-| Repuestos (transductores) | $3,000,000 - $8,000,000 COP |
-| **TOTAL APROXIMADO** | **$13,500,000 COP AÑO** |
-
 **En contratos de alquiler profesional:**
+
 - Mantenimiento preventivo y correctivo **100% incluido**
 - Repuestos sin costo adicional (salvo daños por mal uso)
 - Respuesta técnica garantizada (generalmente 24-48 horas)
@@ -97,26 +85,18 @@ El costo oculto más significativo de la propiedad de equipos médicos no es el 
 - Calibraciones periódicas incluidas
 - Actualizaciones de software sin costo
 
-**Caso de éxito en [Cartagena](/colombia/cartagena/):**
-Una clínica de medicina interna que alquila un [Mindray M7](/ecografo-m7/) ha tenido **cero interrupciones por fallas técnicas** en 18 meses, versus 3 reparaciones mayores con su equipo anterior (comprado) que costaron más de **$25,000,000 COP**.
+**Caso de éxito en [Cartagena](/colombia/cartagena/):** Una clínica de medicina interna que alquila un [Mindray M7](/ecografo-m7/) ha tenido **cero interrupciones por fallas técnicas** en 18 meses, versus 3 reparaciones mayores con su equipo anterior (comprado) que costaron más de **$25,000,000 COP**.
 
 ## 5. Deducibilidad Fiscal y Optimización de Estructura Impositiva
 
 En Colombia, los gastos operativos de clínicas y prácticas médicas son deducibles fiscalmente, mientras que las inversiones en activos fijos requieren procesos de depreciación complejos.
 
 **Ventajas fiscales del alquiler:**
+
 - Deducibilidad inmediata del 100% del alquiler como gasto operativo
 - Sin procesos de depreciación por 5-10 años
 - Mejora de resultados imponibles en el año fiscal actual
 - Simplificación de contabilidad y declaraciones tributarias
-
-**Comparación fiscal simplificada:**
-| Concepto | Compra (depreciación 5 años) | Alquiler (deducción anual) |
-|-----------|--------------------------------|---------------------------|
-| Valor anual deducible | 20% del valor ($22,000,000 COP) | 100% del alquiler ($114,000,000 COP) |
-| Año 1 (beneficio fiscal) | $22,000,000 COP base | $114,000,000 COP **Deducible** |
-| Año 2-5 | Depreciación continua | Deducibilidad 100% |
-| **TOTAL 5 AÑOS** | $110,000,000 COP | $570,000,000 COP **(5.2x mayor)** |
 
 *Nota: Consulta con tu contador para aplicar correctamente a tu situación específica. Valores ilustrativos en pesos colombianos.*
 
@@ -125,6 +105,7 @@ En Colombia, los gastos operativos de clínicas y prácticas médicas son deduci
 Más allá de los beneficios financieros y operativos, existe un factor que muchas clínicas subestiman: la percepción del paciente.
 
 **Datos de satisfacción del paciente en Colombia:**
+
 - **87%** de pacientes perciben mayor calidad en clínicas con equipos "modernos o recientes"
 - **72%** recomiendan más activamente clínicas con tecnología visible (ecógrafos en consulta)
 - **64%** perciben mayor profesionalismo en médicos con equipos actuales
@@ -139,12 +120,12 @@ Más allá de los beneficios financieros y operativos, existe un factor que much
 
 El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: es una **estrategia empresarial integral** que combina:
 
-✅ **Preservación del capital** (sin inversión inicial de $110,000,000 COP)
-✅ **Acceso continuo a tecnología de última generación**
-✅ **Flexibilidad operativa** para adaptarse a demanda variable
-✅ **Eliminación de riesgos de mantenimiento** ($13,500,000 COP/año ahorrados)
-✅ **Optimización fiscal** (5.2x mayor deducción en 5 años)
-✅ **Mejora en percepción del paciente** y satisfacción
+- ✓ **Preservación del capital** (sin inversión inicial de $110,000,000 COP)
+- ✓ **Acceso continuo a tecnología de última generación**
+- ✓ **Flexibilidad operativa** para adaptarse a demanda variable
+- ✓ **Eliminación de riesgos de mantenimiento** ($13,500,000 COP/año ahorrados)
+- ✓ **Optimización fiscal** (5.2x mayor deducción en 5 años)
+- ✓ **Mejora en percepción del paciente** y satisfacción
 
 **¿Tu clínica está lista para esta transformación?**
 
@@ -166,7 +147,7 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
 ---
     `,
     author: "Dr. Juan Pérez",
-    date: "2026-04-15",
+    date: "2026-04-11",
     image: "/images/z6/z6.webp",
     category: "Guías",
     readTime: 5,
