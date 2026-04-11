@@ -116,7 +116,7 @@ Más allá de los beneficios financieros y operativos, existe un factor que much
 > 
 > — *Directora médica anónima, clínica privada en Pereira (datos verificados de operación real, identidad protegida por confidencialidad)*
 
-## Conclusión y Llamado a la Acción
+## ¿Tu clínica está lista para esta transformación?
 
 El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: es una **estrategia empresarial integral** que combina:
 
@@ -130,10 +130,10 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
 **¿Tu clínica está lista para esta transformación?**
 
 <div style="text-align: center; margin: 3rem 0; padding: 2rem; background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%); border-radius: 1rem; color: white;">
-  <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">🎯 CALCULA TU AHORRO AHORA MISMO</h3>
-  <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; opacity: 0.95;">Obtén una simulación personalizada basada en tu situación específica</p>
-  <a href="/#reservar" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #007BFF; text-decoration: none; font-weight: 700; border-radius: 50px; margin: 0.5rem;">COTIZAR AHORA</a>
-  <a href="/colombia/" style="display: inline-block; padding: 1rem 2.5rem; border: 2px solid white; color: white; text-decoration: none; font-weight: 700; border-radius: 50px; margin: 0.5rem;">VER CIUDADES</a>
+  <h3 style="margin: 0 0 1rem 0; font-size: 1.5rem;">📊 Simulación de ahorro personalizada</h3>
+  <p style="margin: 0 0 1.5rem 0; font-size: 1.1rem; opacity: 0.95;">Recibe una simulación basada en tu situación específica</p>
+  <a href="/#reservar" style="display: inline-block; padding: 1rem 2.5rem; background: white; color: #007BFF; text-decoration: none; font-weight: 700; border-radius: 50px; margin: 0.5rem;">Solicitar cotización</a>
+  <a href="/colombia/" style="display: inline-block; padding: 1rem 2.5rem; border: 2px solid white; color: white; text-decoration: none; font-weight: 700; border-radius: 50px; margin: 0.5rem;">Ver ciudades</a>
 </div>
 
 ---
@@ -212,8 +212,8 @@ Mindray es una de las marcas líderes en ultrasonido médico, y sus modelos Z6 y
 - Haces visitas a domicilio
 - El espacio es limitado
 - Priorizas costo
-
-## Conclusión
+|
+## ¿Cuál elegir según tus necesidades?
 
 Ambos equipos ofrecen excelente calidad de imagen y valor por dinero. La elección depende de tus necesidades específicas de práctica médica.
 
@@ -290,8 +290,8 @@ Clínica del Valle ahora planea:
 - Añadir un segundo equipo para temporada alta
 - Expandir horarios de atención
 - Ofrecer nuevos servicios especializados
-
-## Conclusión
+|
+## Lecciones aprendidas
 
 El alquiler de ecógrafos puede ser el catalizador para transformar una práctica médica. La clave es elegir el proveedor correcto y planificar la transición.
 
@@ -422,8 +422,8 @@ Los transductores modernos incluyen:
 - **Tecnología 3D/4D**
 - **Compatibilidad wireless**
 - **Software avanzado** de procesamiento de imagen
-
-## Conclusión
+|
+## Puntos clave para elegir
 
 Elegir el transductor correcto es tan importante como el equipo mismo. Conoce tus necesidades y aplicaciones para obtener los mejores diagnósticos.
 
@@ -555,8 +555,8 @@ El ultrasonido móvil puede:
 - Disminuir costos de traslado
 - Aumentar detección temprana
 - Mejorar resultados clínicos
-
-## Conclusión
+|
+## ¿Qué viene para el futuro?
 
 El futuro del ultrasonido móvil en Colombia es brillante. La tecnología está lista, pero el éxito depende de colaboración entre proveedores, gobierno y sector privado.
 
