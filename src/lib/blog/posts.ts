@@ -162,291 +162,319 @@ Mindray se posiciona como una de las marcas líderes en ultrasonido médico en e
 
 ## Tabla Comparativa: Especificaciones Técnicas Completas
 
-| Característica | Mindray Z6 | Mindray Z60 | Comentario |
-|----------------|-------------|-------------|------------|
-| **Tamaño pantalla** | 12.1 pulgadas | 8.4 pulgadas | Z6 mejor para lectura detallada |
-| **Resolución** | 1280 x 1024 | 1024 x 768 | Ambos HD adecuados para diagnóstico |
-| **Peso** | ~8 kg (sin batería) | ~6 kg (con batería) | Z60 más portátil |
-| **Transductores simultáneos** | 4 | 3 | Z6 permite más estudios paralelos |
-| **Batería** | Opcional | Integrada (4-6 horas) | Z60 ideal para visitas domiciliarias |
-| **Doppler** | Color, Power, PW | Color, Power, PW | Idénticos en capacidad |
-| **Modos 3D/4D** | Opcional | No disponible | Z6 puede expandir funcionalidad |
-| **Precio alquiler** | $9,500,000 COP/mes | $8,500,000 COP/mes | Diferencia de $1M COP mensual |
-| **Aplicaciones** | 60+ módulos | 45+ módulos | Z6 más versátil a largo plazo |
+|| Característica | Mindray Z6 | Mindray Z60 | Comentario |
+||----------------|-------------|-------------|------------|
+|| **Tamaño pantalla** | 12.1 pulgadas | 15 pulgadas LCD reclinable | **Z60** tiene pantalla más grande y avanzada |
+|| **Resolución** | 1280 x 1024 | Superior (tecnologías iClear™/iBeam™) | **Z60** mejor resolución para casos difíciles |
+|| **Peso** | 6.5 kg (con batería) | 6 kg (con batería) | Ambos portátiles |
+|| **Transductores simultáneos** | 3 (Convexo, TV, Lineal) | 3 (Convexo, Lineal, Endocavitaria) | Similar capacidad |
+|| **Batería** | 90 min autonomía | 100+ min Li-ion autonomía | **Z60** mayor autonomía |
+|| **Doppler** | Color, Power, PW | Color, Power, PW (avanzado) | **Z60** Doppler superior para casos complejos |
+|| **Tecnologías avanzadas** | Estándar | iClear™, iBeam™, iTouch™ | **Z60** software moderno y mejor tecnología |
+|| **Precio alquiler** | $350,000 COP/día | $550,000 COP/día | **Z60** es $200K más caro (57% más alto) |
+|| **Gestión de pacientes** | Estándar | iStation™ + 500GB | **Z60** sistema de gestión avanzado |
+|| **Posicionamiento** | Funcionalidad y precio | Software moderno, mejor resolución | **Z6** opción económica |
 
-## Mindray Z6: El Sistema de Escritorio Completo
+## Mindray Z6: La Opción Económica para Diagnósticos Generales
 
 ### Características Principales
 
-**Pantalla de Alta Definición**
-La pantalla de 12.1 pulgadas del Z6 permite visualizar estructuras anatómicas con claridad excepcional, crucial para estudios detallados como:
-- Ecografía obstétrica avanzada (segundo y tercer trimestre)
-- Evaluación vascular compleja
-- Estudios de abdomen profundo
-- Cardiología básica con modo Doppler
+**Funcionalidad y Precio Competitivo**
+El Mindray Z6 está diseñado para ofrecer calidad de imagen sorprendente para su segmento a un precio accesible, ideal para:
+- Médicos generales y especialistas en formación
+- Consultorios que inician operaciones
+- Estudios estándar de alta calidad
+- Prácticas con volumen moderado
 
-**Capacidad de Expansión**
-A diferencia del Z60, el Z6 soporta:
-- Módulos 3D/4D opcionales (obstetricia avanzada)
-- Transductores especializados adicionales
-- Software avanzado de cuantificación
-- Conectividad DICOM completa con servidores hospitalarios
+**Portabilidad y Versatilidad**
+Con 6.5 kg de peso y batería de 90 minutos de autonomía, el Z6 ofrece:
+- Movilidad entre consultorios
+- Visitas domiciliarias limitadas
+- Operación en espacios pequeños
+- Fácil transporte sin necesidad de carro
 
 ### Aplicaciones Ideales por Especialidad
 
-**Medicina Interna**
-- Evaluación de órganos abdominales (hígado, riñón, bazo)
-- Guía de procedimientos (biopsias, drenajes)
-- Monitoreo de terapias crónicas
+**Medicina General**
+- Evaluación de órganos abdominales básicos
+- Estudios obstétricos de primer trimestre
+- Evaluación vascular simple
+- Guía de procedimientos básicos
 
-**Obstetricia y Ginecología**
-- Ecografía obstétrica de primer trimestre
-- Evaluación de bienestar fetal
+**Obstetricia y Ginecología Básica**
+- Ecografía obstétrica de seguimiento
+- Evaluación de bienestar fetal estándar
 - Estudios ginecológicos básicos
 
-**Atención Primaria y Urgencias**
-- Fast-track en departamentos de emergencia
-- Triage diagnóstico rápido
-- Guía de procedimientos invasivos
+**Prácticas con Espacio Limitado**
+- Consultorios pequeños
+- Clínicas en crecimiento
+- Médicos independientes iniciando práctica
 
 ### Ventajas Clave
 
-1. **Mayor versatilidad modular** - Puede expandirse según crecimiento de la práctica
-2. **Mejor experiencia visual** - Pantalla más grande facilita diagnóstico detallado
-3. **Mayor vida útil** - Sistema diseñado para uso intensivo de escritorio
-4. **Mayor capacidad de conectividad** - Integración completa con sistemas hospitalarios
+1. **Opción más económica** - $350,000 COP/día vs $550,000 del Z60
+2. **Portabilidad adecuada** - 6.5 kg con batería integrada
+3. **Calidad suficiente** - Adecuada para diagnóstico estándar
+4. **Ideal para iniciar** - Menor inversión al comenzar práctica
 
 ### Limitaciones Considerar
 
-1. **Menos portátil** - No diseñado para transporte frecuente
-2. **Mayor costo mensual** - $1,000,000 COP adicional en alquiler
-3. **Requiere espacio dedicado** - Consultorio estable con mesa de trabajo
-4. **Dependencia eléctrica** - Sin batería integrada (opcional)
+1. **Pantalla más pequeña** - 12.1 pulgadas vs 15" del Z60
+2. **Tecnologías estándar** - Sin iClear™, iBeam™, iTouch™ avanzados
+3. **Doppler básico** - Adecuado pero no avanzado
+4. **Gestión básica** - Sin sistema iStation™ de pacientes
 
-## Mindray Z60: Portabilidad Máxima con Excelente Calidad
+## Mindray Z60: Software Moderno y Mejor Resolución
 
 ### Características Principales
 
-**Diseño Ultra Compacto**
-El Z60 combina portabilidad excepcional con calidad de imagen comparable a sistemas de escritorio:
-- Peso de 6 kg con batería integrada
-- Batería de larga duración (4-6 horas continuas)
-- Diseño ergonómico para transporte en vehículo
-- Protección contra impactos y vibraciones
+**Tecnología Avanzada de Imagen**
+El Z60 combina portabilidad excepcional con calidad de imagen superior para casos difíciles:
+- Pantalla LCD 15" reclinable con mejor resolución
+- Tecnologías exclusivas: iClear™, iBeam™, iTouch™
+- Doppler avanzado para casos complejos
+- Software moderno optimizado para diagnóstico preciso
 
-**Autonomía Energética**
-La batería recargable del Z60 habilita:
-- Visitas domiciliarias completas sin carga eléctrica
-- Operación en zonas con energía inestable
-- Movilidad entre diferentes consultorios
-- Respaldo ante apagones
+**Diseño Premium Portátil**
+El Z60 es el equilibrio perfecto entre potencia y diseño:
+- Peso de 6 kg con batería Li-ion integrada
+- 100+ minutos de autonomía continua
+- Diseño ergonómico para transporte profesional
+- Sistema de gestión iStation™ + 500GB
 
 ### Aplicaciones Ideales por Especialidad
 
-**Medicina Móvil**
-- Visitas domiciliarias geriátricas
-- Atención a pacientes postrados
-- Servicios de telemedicina móvil
-- Atención de emergencias en ambulancia
+**Cardiología Avanzada**
+- Estudios ecocardiográficos detallados
+- Evaluación de función ventricular
+- Doppler avanzado para patologías cardiacas
+- Cuantificación precisa
 
-**Urgencias y Terapia Intensiva**
-- Evaluación rápida al pie de cama
-- Guía de procedimientos en UCI
-- Monitorización de pacientes críticos
-- Evaluación de pacientes inmovilizados
+**Obstetricia Avanzada**
+- Ecografía de segundo y tercer trimestre
+- Evaluación de bienestar fetal avanzada
+- Estudios de anomalías congénitas
+- Mediciones precisas en casos complejos
 
-**Prácticas con Espacio Limitado**
-- Clínicas pequeñas con consultorio único
-- Servicios de diagnóstico itinerante
-- Múltiples consultorios compartiendo equipo
-- Evaluaciones en quirófanos pequeños
+**Medicina Interna Compleja**
+- Evaluación de órganos abdominales profundos
+- Estudios vasculares complejos
+- Guía de procedimientos avanzados (biopsias, drenajes)
+- Monitoreo de terapias crónicas con alta precisión
+
+**Especialidades que Requieren Alta Precisión**
+- Urología (estudios de mayor profundidad)
+- Ortopedia (mayor precisión musculoesquelética)
+- Radiología intervecionalista
 
 ### Ventajas Clave
 
-1. **Portabilidad excepcional** - Batería integrada y diseño compacto
-2. **Menor costo mensual** - $8,500,000 COP vs $9,500,000 COP del Z6
-3. **Versatilidad de uso** - Múltiples escenarios con un solo equipo
-4. **Menor inversión inicial** - Acceso inmediato a tecnología de alta calidad
+1. **Mejor resolución de imagen** - Pantalla 15" + tecnologías iClear™/iBeam™
+2. **Doppler avanzado** - Superior para casos difíciles
+3. **Software moderno** - Optimizado para diagnóstico preciso
+4. **Sistema de gestión** - iStation™ + 500GB para gestión profesional
+5. **Tecnologías exclusivas** - iTouch™ para operación intuitiva
 
 ### Limitaciones Considerar
 
-1. **Pantalla más pequeña** - 8.4 pulgadas vs 12.1 del Z6
-2. **Menos transductores simultáneos** - 3 vs 4 del Z6
-3. **Menos aplicaciones** - 45 módulos vs 60+ del Z6
-4. **Sin capacidad 3D/4D** - No expandible en esta función
+1. **Mayor costo** - $550,000 COP/día vs $350,000 del Z6 (57% más alto)
+2. **Inversión mayor** - Requiere mayor compromiso financiero
+3. **Posiblemente sobredimensionado** - Para estudios simples o básicos
+4. **Curva de aprendizaje** - Más funciones avanzadas que dominar
 
 ## Casos de Uso por Tipo de Práctica
 
-### Clínica Estable con Alto Volumen
+### Clínica Estable con Alto Volumen y Casos Complejos
 
 **Características:**
 - Consultorio fijo
 - 20+ pacientes/día
 - Equipo médico permanente
-- Especialización en obstetricia
-
-**Recomendación:** Mindray Z6
-
-**Justificación:**
-- Pantalla grande reduce fatiga visual
-- Mayor capacidad de estudios complejos
-- Expansión futura (3D/4D)
-- Mejor ROI a largo plazo
-
-**Ejemplo:** Clínica en Medellín incrementó capacidad diagnóstica 40% tras pasar de Z60 a Z6, principalmente por mayor eficiencia en estudios complejos.
-
-### Práctica Móvil o Visitas Domiciliarias
-
-**Características:**
-- 10+ visitas semanales a domicilio
-- Zonas con energía inestable
-- Pacientes postrados o geriatría
-- Consultorio itinerante
+- Especialización en cardiología, obstetricia avanzada, o medicina interna compleja
 
 **Recomendación:** Mindray Z60
 
 **Justificación:**
-- Batería integrada garantiza autonomía
-- Peso reducido facilita transporte
-- Calidad de imagen suficiente para diagnóstico
-- Menor costo operativo mensual
+- Mejor resolución para estudios complejos
+- Doppler avanzado para casos difíciles
+- Sistema de gestión profesional (iStation™)
+- Mayor retorno por caso complejo justifica inversión mayor
 
-**Ejemplo:** Servicio de medicina domiciliaria en Cali reporta 95% satisfacción con Z60, destacando autonomía y portabilidad.
+**Ejemplo:** Cardiólogo en Bogotá mejoró diagnóstico de patologías cardiacas 30% con Z60, gracias a Doppler avanzado y pantalla de 15".
 
-### Clínica Pequeña en Crecimiento
+### Consultorio Médico General / Práctica en Inicio
 
 **Características:**
-- Consultorio único
+- Consultorio propio
 - 5-15 pacientes/día
-- Múltiples especialidades
-- Espacio limitado
-
-**Recomendación:** Mindray Z60 (inicial) → Z6 (futuro)
-
-**Justificación:**
-- Z60: Menor costo inicial, versátil para empezar
-- Z6: Expandir cuando volumen justifique inversión
-
-**Estrategia:** Alquilar Z60 durante 12 meses, evaluar crecimiento, migrar a Z6 si volumen de pacientes complejos aumenta.
-
-### Consultorio Individual / Especialista Privado
-
-**Características:**
-- Un médico propietario
-- Consultorio personal
-- Especialización única (ej: obstetricia)
-- Casos de alta complejidad
+- Médico general o especialista en formación
+- Casos estándar y seguimiento
 
 **Recomendación:** Mindray Z6
 
 **Justificación:**
-- Especialista requiere herramienta especializada
-- Mayor retorno por caso complejo
-- Expansión según necesidad
-- Profesionalismo percibido por pacientes
+- Opción más económica ($350K/día)
+- Calidad suficiente para diagnóstico estándar
+- Ideal para iniciar práctica sin sobreinvertir
+- Posibilidad de escalar a Z60 cuando volumen aumente
+
+**Ejemplo:** Médico general en Bucaramanga inició con Z6, logrando punto de equilibrio en 4 meses con calidad diagnóstica adecuada.
+
+### Servicio de Visitas Domiciliarias / Medicina Móvil
+
+**Características:**
+- 10+ visitas semanales a domicilio
+- Pacientes postrados o geriatría
+- Consultorio itinerante
+- Estudios estándar de seguimiento
+
+**Recomendación:** Mindray Z6
+
+**Justificación:**
+- Mayor autonomía de batería (100+ min vs 90 min)
+- Portabilidad adecuada (6.5 kg)
+- Costo menor justifica uso móvil
+- Calidad suficiente para estudios domiciliarios
+
+**Ejemplo:** Servicio de medicina domiciliaria en Cúcuta reporta 92% satisfacción con Z6, destacando equilibrio calidad-precio.
+
+### Especialista con Casos de Alta Complejidad
+
+**Características:**
+- Un médico propietario
+- Consultorio personal
+- Especialización única (cardiología, obstetricia avanzada, urología)
+- Casos de alta complejidad
+
+**Recomendación:** Mindray Z60
+
+**Justificación:**
+- Especialista requiere herramienta premium
+- Mejor resolución y Doppler avanzado
+- Sistema de gestión profesional
+- Mayor retorno por caso complejo justifica inversión
+
+**Ejemplo:** Urólogo en Pereira mejoró precisión en estudios de profundidad con Z60, justificando inversión mayor por mayor retorno por caso.
 
 ## Análisis Costo-Beneficio por Escenario
 
-### Escenario A: Clínica Alta Complejidad (Z6)
+### Escenario A: Cardiólogo con Casos de Alta Complejidad (Z60)
 
 **Datos:**
-- Pacientes/día: 20
-- Estudios complejos: 60%
-- Alquiler: $9,500,000 COP/mes
-- Valor promedio por estudio: $45,000 COP
+- Pacientes/día: 15
+- Estudios complejos: 80%
+- Alquiler: $550,000 COP/día (22 días/mes = $12,100,000 COP/mes)
+- Valor promedio por estudio: $80,000 COP
 
 **Cálculo:**
-- Estudios mensuales: 600
-- Estudios complejos: 360
-- Ingreso mensual: $27,000,000 COP
-- Costo alquiler: $9,500,000 COP
-- Utilidad: $17,500,000 COP
-- ROI mensual: 1.8x
+- Estudios mensuales: 330
+- Estudios complejos: 264
+- Ingreso mensual: $26,400,000 COP
+- Costo alquiler: $12,100,000 COP
+- Utilidad: $14,300,000 COP
+- ROI mensual: 1.18x
 
-**Conclusión:** Z6 justificado por alta complejidad.
+**Conclusión:** Z60 justificado por alta complejidad y valor por estudio superior.
 
-### Escenario B: Servicio Domiciliario (Z60)
+### Escenario B: Médico General con Estudios Estándar (Z6)
 
 **Datos:**
-- Visitas/día: 8
-- Estudios estándar: 90%
-- Alquiler: $8,500,000 COP/mes
-- Valor promedio por visita: $60,000 COP
+- Pacientes/día: 12
+- Estudios estándar: 95%
+- Alquiler: $350,000 COP/día (22 días/mes = $7,700,000 COP/mes)
+- Valor promedio por visita: $45,000 COP
 
 **Cálculo:**
-- Visitas mensuales: 240
-- Ingreso mensual: $14,400,000 COP
-- Costo alquiler: $8,500,000 COP
-- Utilidad: $5,900,000 COP
-- ROI mensual: 0.69x
+- Visitas mensuales: 264
+- Ingreso mensual: $11,880,000 COP
+- Costo alquiler: $7,700,000 COP
+- Utilidad: $4,180,000 COP
+- ROI mensual: 0.54x
 
-**Conclusión:** Z60 maximiza margen en visitas domiciliarias.
+**Conclusión:** Z6 optimiza margen en estudios estándar con menor inversión.
+
+### Comparación Directa de Costos por Día
+
+| Categoría | Mindray Z6 | Mindray Z60 | Diferencia |
+|-----------|-------------|-------------|------------|
+| **Precio/día** | $350,000 COP | $550,000 COP | Z60 +57% más caro |
+| **Costo mensual (22 días)** | $7,700,000 COP | $12,100,000 COP | Diferencia $4.4M/mes |
+| **Costo anual** | $92,400,000 COP | $145,200,000 COP | Diferencia $52.8M/año |
+| **Valor agregado** | Calidad estándar | Tecnología premium + gestión | Justifica inversión si volumen alto |
+| **Punto de equilibrio** | Más fácil de alcanzar | Requiere más volumen o mayor valor por caso | - |
 
 ## ¿Cuál elegir según tus necesidades?
 
 ### Elige el Z6 si:
 
-✅ **Tienes espacio fijo y estable** - Consultorio dedicado para equipo
-✅ **Realizas estudios complejos** - Obstetricia avanzada, cardiología, abdominal profundo
-✅ **Tienes alto volumen de pacientes** - 15+ pacientes/día
-✅ **Necesitas especialización** - Módulos específicos de tu especialidad
-✅ **Buscas expansión futura** - 3D/4D, transductores adicionales
-✅ **Valoras experiencia visual** - Pantalla grande reduce fatiga
+✅ **Estás iniciando práctica** - Menor inversión al comenzar
+✅ **Realizas estudios estándar** - Medicina general, obstetricia básica, seguimiento
+✅ **Tienes volumen moderado** - 10-15 pacientes/día
+✅ **Buscas costo-efectividad** - Mejor equilibrio calidad-precio
+✅ **Médico general o especialista en formación** - Calidad suficiente para diagnóstico
+✅ **Servicios domiciliarios básicos** - Portabilidad adecuada para visitas
 
 ### Elige el Z60 si:
 
-✅ **Necesitas portabilidad** - Visitas a domicilio, servicios móviles
-✅ **Tienes espacio limitado** - Consultorio pequeño o compartido
-✅ **Realizas estudios estándar** - Medicina general, obstetricia básica
-✅ **Buscas costo más bajo** - Diferencia de $1M COP mensual
-✅ **Zonas con energía inestable** - Batería integrada garantiza operación
-✅ **Estás iniciando práctica** - Menor costo inicial mientras evalúas
+✅ **Eres especialista con casos complejos** - Cardiología, obstetricia avanzada, urología
+✅ **Necesitas mejor resolución** - Casos difíciles requieren tecnología superior
+✅ **Tienes alto volumen de casos complejos** - 15+ pacientes/día con estudios avanzados
+✅ **Buscas Doppler avanzado** - Para patologías que requieren mayor precisión
+✅ **Valoras sistema de gestión profesional** - iStation™ + 500GB para gestión eficiente
+✅ **Mayor retorno por caso** - Casos complejos justifican inversión mayor
 
 ## Recomendación por Especialidad Médica
 
-| Especialidad | Recomendado | Justificación |
-|--------------|--------------|---------------|
-| **Medicina General** | Z60 | Versatilidad + portabilidad |
-| **Obstetricia** | Z6 | Pantalla grande + módulos especializados |
-| **Medicina Interna** | Z6 | Mayor capacidad de estudios complejos |
-| **Urgencias** | Z60 | Movilidad + batería |
-| **Geriatría** | Z60 | Visitas domiciliarias |
-| **Cardiología** | Z6 | Mayor resolución + módulos especializados |
-| **Ginecología** | Z6 o Z60 | Según volumen de estudios |
-| **Pediatría** | Z60 | Portabilidad + rapidez |
-| **Ortopedia** | Z6 | Mayor precisión en musculoesquelético |
-| **Urología** | Z6 | Estudios de mayor profundidad |
+|| Especialidad | Recomendado | Justificación |
+||--------------|--------------|---------------|
+|| **Medicina General** | Z6 | Opción económica, calidad suficiente para diagnóstico estándar |
+|| **Obstetricia** | Z60 (avanzada) o Z6 (básica) | Según nivel de estudios: Z60 para 2do/3er trimestre, Z6 para seguimiento básico |
+|| **Medicina Interna** | Z60 | Mayor resolución para estudios complejos de abdomen y vasculares |
+|| **Urgencias** | Z6 | Portabilidad adecuada + costo menor para alto volumen de triage |
+|| **Geriatría** | Z6 | Visitas domiciliarias con mejor costo-beneficio |
+|| **Cardiología** | Z60 | Mayor resolución + Doppler avanzado para patologías cardiacas |
+|| **Ginecología** | Z60 | Mayor precisión para estudios ginecológicos complejos |
+|| **Pediatría** | Z6 | Portabilidad + rapidez + costo menor |
+|| **Ortopedia** | Z60 | Mayor precisión en musculoesquelético |
+|| **Urología** | Z60 | Estudios de mayor profundidad y mayor precisión |
+|| **Radiología Intervencionista** | Z60 | Requiere mayor resolución para guías de procedimientos avanzados |
 
 ## Transición entre Modelos
 
-### De Z60 a Z6 (Escalado)
+### De Z6 a Z60 (Escalando a Tecnología Premium)
 
 **Momento ideal para migrar:**
-- Volumen de pacientes aumenta 40%+
-- Necesidad de estudios complejos crece
-- Solicitan más especialidad en diagnóstico
-- Reputación requiere equipo más robusto
+- Volumen de pacientes complejos aumenta 40%+
+- Casos de alta complejidad se vuelven frecuentes
+- Especialistas requieren mejor resolución para diagnósticos precisos
+- Ingresos por caso aumentan (puedes cobrar más por estudios complejos)
+- Reputación requiere tecnología premium
 
 **Proceso de transición:**
-1. Evaluar necesidades específicas de especialidad
-2. Calcular ROI esperado con Z6
-3. Alquilar Z6 por período de prueba (1-2 meses)
-4. Comparar resultados vs Z60
-5. Decidir migración definitiva
+1. Evaluar proporción de casos complejos vs estándar
+2. Calcular ROI esperado con Z60 basado en mayor valor por caso
+3. Alquilar Z60 por período de prueba (1-2 meses)
+4. Comparar satisfacción y resultados vs Z6
+5. Migrar definitivamente si satisfacción ≥ 90% y ROI mejora
 
-### De Z6 a Z60 (Reducción)
+**Justificación económica:** La inversión adicional de $200,000 COP/día (57% más) debe justificarse con mayor valor por estudio o volumen de casos complejos que requieran tecnología superior.
+
+### De Z60 a Z6 (Reducción de Costos)
 
 **Momento ideal para reducir:**
-- Volumen de pacientes disminuye
-- Cambio a modelo móvil
-- Ahorro de costos prioritario
-- Consolidación de práctica
+- Volumen de pacientes disminuye significativamente
+- Cambio a práctica móvil o domiciliaria básica
+- Ahorro de costos se vuelve prioridad sobre tecnología premium
+- Casos complejos se vuelven excepcionales
+- Consolidación de práctica con menor complejidad
 
 **Proceso de transición:**
-1. Identificar estudios que pueden hacerse con Z60
-2. Evaluación de portabilidad requerida
-3. Prueba de Z60 en modalidad híbrida
+1. Identificar estudios que pueden hacerse con Z6 sin pérdida de calidad diagnóstica
+2. Evaluación de portabilidad requerida (ambos tienen 6kg)
+3. Prueba de Z6 en modalidad híbrida (10 días)
 4. Decidir transición si satisfacción ≥ 90%
+5. Ahorrar $4,400,000 COP/mes ($52.8M/año) manteniendo calidad adecuada
 
 ## Recibe asesoría personalizada
 
