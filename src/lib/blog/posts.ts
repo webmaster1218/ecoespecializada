@@ -147,7 +147,6 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
 ---
     `,
     author: "Dr. Juan Pérez",
-    date: "2026-04-11",
     image: "/images/z6/z6.webp",
     category: "Guías",
     readTime: 5,

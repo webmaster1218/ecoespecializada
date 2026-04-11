@@ -276,10 +276,10 @@ function parseMarkdownHeading(text: string): { isHeading: boolean; level: number
 }
 
 // Parse markdown lists (ordered and unordered)
-function parseMarkdownList(text: string): { isList: boolean; type: 'ordered' | 'unordered' | null; items: string[] } {
+function parseMarkdownList(text: string): { isList: boolean; type: 'ordered' | 'unordered' | 'mixed' | null; items: string[] } {
   const lines = text.trim().split('\n');
   let hasListItems = false;
-  let listType: 'ordered' | 'unordered' | null = null;
+  let listType: 'ordered' | 'unordered' | 'mixed' | null = null;
   
   for (const line of lines) {
     const trimmed = line.trim();
