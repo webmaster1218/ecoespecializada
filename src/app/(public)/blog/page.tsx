@@ -8,8 +8,9 @@ import { formatDate, getReadingTime } from '@/lib/blog/utils';
 import CallButton from '@/components/ui/CallButton';
 import styles from './Blog.module.css';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
 
-export default function BlogPage() {
+function BlogContent() {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const tag = searchParams.get('tag');
@@ -182,5 +183,13 @@ export default function BlogPage() {
         </div>
       </section>
     </main>
+  );
+}
+
+export default function BlogPage() {
+  return (
+    <Suspense fallback={<div className={styles.blog}>Cargando...</div>}>
+      <BlogContent />
+    </Suspense>
   );
 }
