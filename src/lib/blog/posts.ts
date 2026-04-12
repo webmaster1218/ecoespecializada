@@ -681,7 +681,19 @@ Para seleccionar el transductor correcto, considera estos 5 factores esenciales:
    - 10-50% → Convexo + Lineal
    - Menos del 10% → Convexo (general)
 
-> **📋 Documento descargable disponible:** Descarga nuestra [Guía Completa de Selección de Transductores PDF](/downloads/gui-003-checklist-transductores.pdf) con tablas detalladas, casos específicos por ciudad y protocolos de configuración. Contiene 10 preguntas adicionales, ejemplos por tipo de clínica y costos estimados.
+> **📋 Checklist descargable disponible:** Descarga nuestra [Guía Completa de Selección de Transductores PDF](/downloads/gui-003-checklist-transductores.pdf) con tablas detalladas, casos específicos por ciudad y protocolos de configuración. Contiene 10 preguntas adicionales, ejemplos por tipo de clínica y costos estimados.
+
+## ¿Quieres el checklist completo?
+
+**[Descarga el PDF haciendo clic aquí](/downloads/gui-003-checklist-transductores.pdf)**
+
+Este checklist te ayudará a identificar el transductor más adecuado para tu clínica:
+- ¿Qué especialidades atiendes?
+- ¿Tu paciente promedio pesa más de 80kg?
+- ¿Cuántos estudios al día realizas?
+- ¿Qué tipo de clínica tienes?
+
+Con este recurso tendrás una base sólida para tomar decisiones informadas.
 
 ## Frecuencia y Profundidad: La Relación Clave
 

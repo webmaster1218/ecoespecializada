@@ -282,7 +282,9 @@ function formatMarkdown(text: string): string {
     // Images with ![]() syntax - MUST BE PROCESSED BEFORE REGULAR LINKS
     .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto; display: block; margin: 2rem 0; border-radius: 8px;" />')
     // Regular links
-    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+    .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
+    // Add PDF link support directly in markdown [text](file.pdf)
+    .replace(/\[([^\]]+)\]\(([^)]+\.pdf)\)/g, '<a href="$2" class="pdf-link" download="$1">$1</a>');
 }
 
 // Parse markdown headings
