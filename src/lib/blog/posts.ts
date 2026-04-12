@@ -585,7 +585,7 @@ Esta guía completa explora los tipos de transductores disponibles en el mercado
 
 Al final de este artículo, tendrás el conocimiento necesario para tomar decisiones informadas sobre qué transductores incluir en tu alquiler de ecógrafo y cómo optimizar su uso en tu práctica médica, sea cual sea tu ubicación en Colombia.
 
-![Transductores de Ultrasonido - Tipos y Usos](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80)
+![Transductores de Ultrasonido - Tipos y Usos](/images/clinical/mindray_ref.webp)
 
 ## ¿Qué es un Transductor de Ultrasonido?
 
@@ -601,7 +601,7 @@ El mercado de ultrasonido médico en Colombia ofrece cuatro tipos principales de
 
 Este transductor de forma curva es el más versátil para medicina general. Opera en frecuencias de 2-8 MHz con penetración profunda hasta 25 cm, ideal para órganos internos grandes como hígado, vesícula biliar, bazo y páncreas. Su campo de visión amplio de 60-90 grados permite evaluar múltiples estructuras simultáneamente.
 
-![Transductor Convexo para Ecografía Abdominal](https://images.unsplash.com/photo-1559757175-0eb30cd8c063?w=800&q=80)
+![Transductor Convexo para Ecografía Abdominal](/images/m7/m7-abierto-derecha.png)
 
 **Aplicaciones principales:** Ecografía abdominal general, obstetricia segundo y tercer trimestre (seguimiento del desarrollo fetal), ginecología general (útero, ovarios y anexos), y urología (riñones y vejiga). Excelente para pacientes con sobrepeso gracias a su profunda penetración.
 
@@ -611,7 +611,7 @@ Este transductor de forma curva es el más versátil para medicina general. Oper
 
 Este transductor rectangular de alta frecuencia (5-18 MHz) está diseñado para estructuras superficiales con resolución extremadamente detallada. Su profundidad de 1-8 cm lo hace perfecto para evaluación de tendones, músculos, articulaciones, vasos sanguíneos superficiales, tiroides y glándulas. Esencial en traumatología, cirugía vascular, endocrinología y pediatría superficial.
 
-![Transductor Lineal para Estudios Superficiales](https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80)
+![Transductor Lineal para Estudios Superficiales](/images/clinical/msk_v2.webp)
 
 **Aplicaciones principales:** Sistema musculoesquelético (tendones, músculos y articulaciones), vasculatura superficial (Doppler de arterias y venas), tiroides y ganglios, pediatría superficial, y nervios periféricos para bloqueos anestésicos.
 
@@ -621,7 +621,7 @@ Este transductor rectangular de alta frecuencia (5-18 MHz) está diseñado para 
 
 Este transductor especializado opera en frecuencias de 5-12 MHz con profundidad de 2-8 cm, posicionado extremadamente cerca del objetivo para obtener resolución excepcional. Se utiliza en cavidades corporales, especialmente en ginecología transvaginal y urología transrectal. Siempre se usa con funda protectora desechable y gel estéril.
 
-![Transductor Endocavitario para Estudios Especializados](https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=800&q=80)
+![Transductor Endocavitario para Estudios Especializados](/images/clinical/ginecologia_v2.webp)
 
 **Aplicaciones principales:** Ginecología transvaginal (útero, ovarios y endometrio), urología transrectal (próstata), obstetricia primer trimestre (detección temprana de embarazo), y estudios de endometrio para receptividad uterina.
 
@@ -631,7 +631,7 @@ Este transductor especializado opera en frecuencias de 5-12 MHz con profundidad 
 
 Este transductor especializado opera en frecuencias de 2-5 MHz con profundidad de 8-20 cm, optimizado específicamente para ecocardiografía. Su campo de visión en forma de sector (90-120 grados como un pedazo de pastel) está diseñado para penetrar hasta el corazón y capturar estructuras en movimiento. Alta sensibilidad para mediciones específicas de la función cardíaca.
 
-![Ecocardiografía con Transductor Sectorial](https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80)
+![Ecocardiografía con Transductor Sectorial](/images/clinical/cardiologia.png)
 
 **Aplicaciones principales:** Ecocardiografía transtorácica (estructura y función cardíaca), valvulopatías (estenosis e insuficiencias), insuficiencia cardíaca (fracción de eyección y volúmenes), y cardiopatías congénitas en recién nacidos y niños.
 
@@ -681,15 +681,13 @@ Para seleccionar el transductor correcto, considera estos 5 factores esenciales:
    - 10-50% → Convexo + Lineal
    - Menos del 10% → Convexo (general)
 
-> **📋 Documento descargable disponible:** Descarga nuestra [Guía Completa de Selección de Transductores PDF](#) con tablas detalladas, casos específicos por ciudad y protocolos de configuración. Contiene 10 preguntas adicionales, ejemplos por tipo de clínica y costos estimados.
+> **📋 Documento descargable disponible:** Descarga nuestra [Guía Completa de Selección de Transductores PDF](/downloads/gui-003-checklist-transductores.pdf) con tablas detalladas, casos específicos por ciudad y protocolos de configuración. Contiene 10 preguntas adicionales, ejemplos por tipo de clínica y costos estimados.
 
 ## Frecuencia y Profundidad: La Relación Clave
 
 La frecuencia del transductor determina directamente la calidad de la imagen y la profundidad de penetración. Esta guía te ayudará a entender cómo ajustar la frecuencia según el tipo de examen:
 
-![Tabla de Frecuencias y Profundidades en Ultrasonido](https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?w=800&q=80)
-
-|| Frecuencia | Profundidad | Resolución | Uso Principal |
+|| Frecuencia | Profundidad | Resolución | Uso Principal ||
 ||------------|-------------|------------|---------------|
 || **2-3 MHz** | 15-25 cm | Baja | Pacientes obesos, abdomen profundo |
 || **3-5 MHz** | 8-15 cm | Media | Abdomen estándar, obstetricia T2-T3 |
@@ -703,8 +701,6 @@ La frecuencia del transductor determina directamente la calidad de la imagen y l
 
 Para obtener la mejor calidad de imagen en tu ecógrafo [Mindray Z6](/ecografo-z6/) o [Mindray Z60](/ecografo-z60/), configura correctamente según el tipo de examen:
 
-![Configuración de Ecógrafo según Tipo de Examen](https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=800&q=80)
-
 || Tipo de Examen | Frecuencia | Profundidad | Ganancia | Ajustes Especiales ||
 ||----------------|-----------|-------------|----------|-------------------||
 || **Abdominal** | 3-5 MHz | 12-18 cm | 50-70% | Foco en centro, preset "Abdomen" ||
@@ -717,8 +713,6 @@ Para obtener la mejor calidad de imagen en tu ecógrafo [Mindray Z6](/ecografo-z
 **Ajustes especiales para pacientes obesos:** Disminuir frecuencia 1-2 MHz, aumentar ganancia al 70-80%, aumentar profundidad al máximo necesario.
 
 ## Casos de Uso por Especialidad y Ciudad
-
-![Médico Usando Ecógrafo con Transductor Adecuado](https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=800&q=80)
 
 La selección del transductor depende de tu especialidad, tipo de pacientes y ubicación en Colombia:
 
@@ -734,8 +728,6 @@ La selección del transductor depende de tu especialidad, tipo de pacientes y ub
 ## Mantenimiento y Limpieza Detallada de Transductores
 
 El mantenimiento adecuado es esencial para garantizar longevidad, calidad de imagen y seguridad del paciente. Estos protocolos aplican en clínicas de todo Colombia.
-
-![Limpieza y Mantenimiento de Transductores de Ultrasonido](https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80)
 
 ### Protocolo de Limpieza Rutinaria
 
@@ -762,8 +754,6 @@ Mantenimiento preventivo anual: $700,000 - $1,200,000 COP. Reemplazo: Convexo $8
 ## Problemas Comunes y Soluciones de Transductores
 
 Conoce los problemas más frecuentes y cómo resolverlos rápidamente:
-
-![Solución de Problemas en Transductores de Ultrasonido](https://images.unsplash.com/photo-1581595219315-a187dd40c322?w=800&q=80)
 
 || Problema | Causas Posibles | Soluciones Rápidas ||
 ||----------|----------------|-------------------||
