@@ -585,7 +585,7 @@ Esta guía completa explora los tipos de transductores disponibles en el mercado
 
 Al final de este artículo, tendrás el conocimiento necesario para tomar decisiones informadas sobre qué transductores incluir en tu alquiler de ecógrafo y cómo optimizar su uso en tu práctica médica, sea cual sea tu ubicación en Colombia.
 
-![Transductores de Ultrasonido - Tipos y Usos](/images/clinical/mindray_ref.webp)
+![Transductores de Ultrasonido para alquiler de ecógrafos en Bogotá Medellín Cali Colombia](/images/clinical/mindray_ref.webp)
 
 ## ¿Qué es un Transductor de Ultrasonido?
 
@@ -601,7 +601,7 @@ El mercado de ultrasonido médico en Colombia ofrece cuatro tipos principales de
 
 Este transductor de forma curva es el más versátil para medicina general. Opera en frecuencias de 2-8 MHz con penetración profunda hasta 25 cm, ideal para órganos internos grandes como hígado, vesícula biliar, bazo y páncreas. Su campo de visión amplio de 60-90 grados permite evaluar múltiples estructuras simultáneamente.
 
-![Transductor Convexo para Ecografía Abdominal](/images/m7/m7-abierto-derecha.png)
+![Transductor convexo Mindray M7 para ecografía abdominal alquiler Colombia](/images/m7/m7-abierto-derecha.png)
 
 **Aplicaciones principales:** Ecografía abdominal general, obstetricia segundo y tercer trimestre (seguimiento del desarrollo fetal), ginecología general (útero, ovarios y anexos), y urología (riñones y vejiga). Excelente para pacientes con sobrepeso gracias a su profunda penetración.
 
@@ -611,7 +611,7 @@ Este transductor de forma curva es el más versátil para medicina general. Oper
 
 Este transductor rectangular de alta frecuencia (5-18 MHz) está diseñado para estructuras superficiales con resolución extremadamente detallada. Su profundidad de 1-8 cm lo hace perfecto para evaluación de tendones, músculos, articulaciones, vasos sanguíneos superficiales, tiroides y glándulas. Esencial en traumatología, cirugía vascular, endocrinología y pediatría superficial.
 
-![Transductor Lineal para Estudios Superficiales](/images/clinical/msk_v2.webp)
+![Transductor lineal alta frecuencia para estudios superficiales alquiler Bogotá Medellín](/images/clinical/msk_v2.webp)
 
 **Aplicaciones principales:** Sistema musculoesquelético (tendones, músculos y articulaciones), vasculatura superficial (Doppler de arterias y venas), tiroides y ganglios, pediatría superficial, y nervios periféricos para bloqueos anestésicos.
 
@@ -621,7 +621,7 @@ Este transductor rectangular de alta frecuencia (5-18 MHz) está diseñado para 
 
 Este transductor especializado opera en frecuencias de 5-12 MHz con profundidad de 2-8 cm, posicionado extremadamente cerca del objetivo para obtener resolución excepcional. Se utiliza en cavidades corporales, especialmente en ginecología transvaginal y urología transrectal. Siempre se usa con funda protectora desechable y gel estéril.
 
-![Transductor Endocavitario para Estudios Especializados](/images/clinical/ginecologia_v2.webp)
+![Transductor endocavitario para ginecología urología alquiler Cali Barranquilla](/images/clinical/ginecologia_v2.webp)
 
 **Aplicaciones principales:** Ginecología transvaginal (útero, ovarios y endometrio), urología transrectal (próstata), obstetricia primer trimestre (detección temprana de embarazo), y estudios de endometrio para receptividad uterina.
 
@@ -631,7 +631,7 @@ Este transductor especializado opera en frecuencias de 5-12 MHz con profundidad 
 
 Este transductor especializado opera en frecuencias de 2-5 MHz con profundidad de 8-20 cm, optimizado específicamente para ecocardiografía. Su campo de visión en forma de sector (90-120 grados como un pedazo de pastel) está diseñado para penetrar hasta el corazón y capturar estructuras en movimiento. Alta sensibilidad para mediciones específicas de la función cardíaca.
 
-![Ecocardiografía con Transductor Sectorial](/images/clinical/cardiologia.png)
+![Ecocardiografía con transductor sectorial cardíaco alquiler Colombia hospitales](/images/clinical/cardiologia.png)
 
 **Aplicaciones principales:** Ecocardiografía transtorácica (estructura y función cardíaca), valvulopatías (estenosis e insuficiencias), insuficiencia cardíaca (fracción de eyección y volúmenes), y cardiopatías congénitas en recién nacidos y niños.
 
