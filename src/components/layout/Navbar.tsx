@@ -86,16 +86,14 @@ export default function Navbar() {
                             </div>
                         </div>
 
-                        <Link href="/colombia" onClick={() => setMobileMenuOpen(false)}>Colombia</Link>
-
-                        {/* Dropdown Ciudades - Siempre visible */}
+                        {/* Dropdown Colombia — click va a página pilar, hover muestra ciudades */}
                         <div className={styles.dropdown}>
-                            <span className={styles.dropdownTrigger}>
-                                Ciudades
+                            <Link href="/colombia" className={styles.dropdownTrigger} onClick={() => setMobileMenuOpen(false)}>
+                                Colombia
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
-                            </span>
+                            </Link>
                             <div className={styles.dropdownMenu}>
                                 <Link href="/colombia/bogota" onClick={() => setMobileMenuOpen(false)}>Bogotá</Link>
                                 <Link href="/colombia/cali" onClick={() => setMobileMenuOpen(false)}>Cali</Link>
