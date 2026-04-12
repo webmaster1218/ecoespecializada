@@ -1,5 +1,6 @@
 // Types for blog posts
 export interface BlogPost {
+  articleId?: string; // Article ID (format: XX-NNN, e.g., GUI-001)
   slug: string;
   title: string;
   excerpt: string;

@@ -4,6 +4,7 @@ import { BlogPost } from './types';
 // In production, this could be fetched from Supabase or an API
 export const posts: BlogPost[] = [
   {
+    articleId: "GUI-001",
     slug: "beneficios-alquiler-ecografos",
     title: "5 Beneficios Estratégicos del Alquiler de Ecógrafos para Clínicas Pequeñas en Colombia",
     excerpt: "Descubre por qué cada vez más clínicas en Bogotá, Medellín y Cali optan por alquilar equipos médicos en lugar de comprarlos. Ahorro de $6 millones de pesos, flexibilidad y tecnología de última generación.",
@@ -153,6 +154,7 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
     tags: ["alquiler", "costos", "clínicas"]
   },
   {
+    articleId: "GUI-002",
     slug: "mindray-z6-vs-z60-comparacion",
     title: "Mindray Z6 vs Z60: Guía Definitiva para Elegir tu Ecógrafo",
     excerpt: "Comparativa técnica detallada entre Mindray Z6 y Z60. Especificaciones, ventajas, aplicaciones por especialidad y análisis costo-beneficio para clínicas colombianas.",
@@ -492,6 +494,7 @@ Nuestros especialistas en ultrasonido médico pueden ayudarte a analizar tu situ
     tags: ["comparación", "mindray", "equipos", "especificaciones técnicas", "costo-beneficio"]
   },
   {
+    articleId: "CEX-001",
     slug: "caso-exito-clinica-valle",
     title: "Caso de Éxito: Clínica del Valle Aumenta Eficiencia 40%",
     excerpt: "Cómo una clínica pequeña transformó su operación pasando de compra a alquiler de ecógrafos, mejorando eficiencia, reduciendo costos y aumentando pacientes.",
@@ -570,6 +573,7 @@ El alquiler de ecógrafos puede ser el catalizador para transformar una práctic
     tags: ["caso de éxito", "clínica", "resultados"]
   },
   {
+    articleId: "GUI-003",
     slug: "guia-transductores-ultrasonido",
     title: "Guía Completa: Transductores y Aplicaciones Clínicas",
     excerpt: "Todo lo que necesitas saber sobre los diferentes tipos de transductores de ultrasonido: convexos, lineales, endocavitarios y sus aplicaciones médicas.",
@@ -702,6 +706,7 @@ Elegir el transductor correcto es tan importante como el equipo mismo. Conoce tu
     tags: ["transductores", "guía técnica", "equipos"]
   },
   {
+    articleId: "INV-001",
     slug: "futuro-ultrasonido-movil-colombia",
     title: "El Futuro del Ultrasonido Móvil en Colombia",
     excerpt: "Análisis de tendencias, innovaciones y oportunidades del ultrasonido móvil en el mercado médico colombiano para los próximos 5 años.",

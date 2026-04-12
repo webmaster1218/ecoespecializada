@@ -134,7 +134,12 @@ function BlogContent() {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className={styles.image}
                     />
-                    <div className={styles.postCategory}>{post.category}</div>
+                    <div className={styles.postCategory}>
+                      {post.category}
+                      {post.articleId && (
+                        <span className={styles.articleId}> {post.articleId}</span>
+                      )}
+                    </div>
                   </div>
 
                   <div className={styles.postContent}>

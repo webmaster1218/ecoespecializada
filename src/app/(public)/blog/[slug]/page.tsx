@@ -121,7 +121,7 @@ export default function BlogPostPage() {
                     return <h6 key={index}>{text}</h6>;
                   }
 
-                  // Check if it's a list item - FIXED: Also detect lines starting with checkmarks
+                  // Check if it's a list item - FIXED: Also detect lines starting with checkmarks and hyphens
                   const listItems = [];
                   const lines = paragraph.split('\n');
                   let isList = false;
@@ -135,6 +135,14 @@ export default function BlogPostPage() {
                     } else if (trimmed.match(/^[✓✔✅]\s+/)) {
                       isList = true;
                       listItems.push(trimmed.replace(/^[✓✔✅]\s+/, ''));
+                    }
+                    // Also handle mixed formats (checkmark followed by text)
+                    else if (trimmed.match(/^[✓✔✅]/)) {
+                      // This is a mixed checkmark line, check if it has leading spaces or text
+                      if (trimmed.length > 1 && !trimmed.startsWith('✅') && !trimmed.startsWith('✓') && !trimmed.startsWith('✔')) {
+                        isList = true;
+                        listItems.push(trimmed);
+                      }
                     }
                   }
                   
