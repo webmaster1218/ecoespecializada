@@ -10,6 +10,13 @@ import { useParams } from 'next/navigation';
 import CallButton from '@/components/ui/CallButton';
 import styles from './BlogPost.module.css';
 
+// Function to get posts filtered by tag
+function getPostsByTag(tag: string) {
+  return (window as any).posts?.filter((post: any) => 
+    post.tags?.includes(tag)
+  ) || [];
+}
+
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params.slug as string;
@@ -114,16 +121,20 @@ export default function BlogPostPage() {
                     return <h6 key={index}>{text}</h6>;
                   }
 
-                  // Check if it's a list item - IMPROVED: Check if line starts with bullet
+                  // Check if it's a list item - FIXED: Also detect lines starting with checkmarks
                   const listItems = [];
                   const lines = paragraph.split('\n');
                   let isList = false;
                   
                   for (const line of lines) {
                     const trimmed = line.trim();
+                    // Detect standard bullet (-) OR checkmarks (✓, ✔, ✅)
                     if (trimmed.startsWith('- ')) {
                       isList = true;
                       listItems.push(trimmed.substring(2));
+                    } else if (trimmed.match(/^[✓✔✅]\s+/)) {
+                      isList = true;
+                      listItems.push(trimmed.replace(/^[✓✔✅]\s+/, ''));
                     }
                   }
                   
@@ -166,9 +177,9 @@ export default function BlogPostPage() {
               {post.tags && post.tags.length > 0 && (
                 <div className={styles.tags}>
                   {post.tags.map((tag) => (
-                    <span key={tag} className={styles.tag}>
+                    <Link key={tag} href={`/blog?tag=${encodeURIComponent(tag)}`} className={styles.tag}>
                       #{tag}
-                    </span>
+                    </Link>
                   ))}
                 </div>
               )}

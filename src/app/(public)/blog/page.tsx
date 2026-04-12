@@ -7,9 +7,25 @@ import { getRecentPosts, getAllCategories } from '@/lib/blog/posts';
 import { formatDate, getReadingTime } from '@/lib/blog/utils';
 import CallButton from '@/components/ui/CallButton';
 import styles from './Blog.module.css';
+import { useSearchParams } from 'next/navigation';
 
 export default function BlogPage() {
-  const posts = getRecentPosts(50); // Get all posts sorted by date
+  const searchParams = useSearchParams();
+  const category = searchParams.get('category');
+  const tag = searchParams.get('tag');
+  
+  let posts = getRecentPosts(50); // Get all posts sorted by date
+  
+  // Filter by category if specified
+  if (category) {
+    posts = posts.filter(post => post.category === category);
+  }
+  
+  // Filter by tag if specified
+  if (tag) {
+    posts = posts.filter(post => post.tags?.includes(tag));
+  }
+  
   const categories = getAllCategories();
 
   return (
@@ -87,6 +103,17 @@ export default function BlogPage() {
       {/* Blog Posts Grid */}
       <section className={styles.postsSection}>
         <div className="container">
+          {/* Filter indicator */}
+          {(category || tag) && (
+            <div className={styles.filterIndicator}>
+              <span>Filtrando por: </span>
+              <strong>{category || `#${tag}`}</strong>
+              <Link href="/blog" className={styles.clearFilter}>
+                ✕ Limpiar filtro
+              </Link>
+            </div>
+          )}
+          
           <div className={styles.postsGrid}>
             {posts.map((post, index) => (
               <motion.article
