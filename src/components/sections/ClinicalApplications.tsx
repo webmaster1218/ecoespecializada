@@ -34,8 +34,8 @@ const scenarios = [
         title: "Cardiología",
         subtitle: "Ecocardiografía",
         description: "Análisis estructural del corazón. Modos Doppler Color y CW para visualización de flujo sanguíneo y función valvular avanzada.",
-        imageSrc: "/images/clinical/cardiologia.png",
-        thumbnailSrc: "/images/clinical/cardiologia.png"
+        imageSrc: "/images/clinical/cardiologia.webp",
+        thumbnailSrc: "/images/clinical/cardiologia.webp"
     },
     {
         id: 5,
@@ -50,16 +50,16 @@ const scenarios = [
         title: "Radiología",
         subtitle: "Diagnóstico avanzado",
         description: "Diagnóstico especializado de alta resolución. Optimice el flujo de trabajo en radiología convencional y doppler avanzado con herramientas de cuantificación precisa.",
-        imageSrc: "/images/clinical/radiologia.png",
-        thumbnailSrc: "/images/clinical/radiologia.png"
+        imageSrc: "/images/clinical/radiologia.webp",
+        thumbnailSrc: "/images/clinical/radiologia.webp"
     },
     {
         id: 7,
         title: "Cirujanos Plásticos",
         subtitle: "Guía quirúrgica",
         description: "Visualización superior para procedimientos estéticos y reconstructivos. Identifique trayectos vasculares y estructuras dérmicas con máxima seguridad.",
-        imageSrc: "/images/clinical/cirugia_plastica.png",
-        thumbnailSrc: "/images/clinical/cirugia_plastica.png"
+        imageSrc: "/images/clinical/cirugia_plastica.webp",
+        thumbnailSrc: "/images/clinical/cirugia_plastica.webp"
     }
 ];
 

@@ -60,9 +60,9 @@ const M7_DATA = {
     description: "Lleva tu bola de cristal al punto de atención. El M7 es una poderosa herramienta con calidad de imagen superior para todas las especialidades clínicas, incluyendo 3D/4D.",
     price: "$ 650.000",
     images: [
-        "/images/m7/M7-abierto-ziquierda.png",
-        "/images/m7/m7-abierto-derecha.png",
-        "/images/m7/m7-de-lado.png",
+        "/images/m7/M7-abierto-ziquierda.webp",
+        "/images/m7/m7-abierto-derecha.webp",
+        "/images/m7/m7-de-lado.webp",
         "/images/m7/M7-trastuctores.jpg"
     ],
     features: [
@@ -260,7 +260,7 @@ export default function ProductCatalog({ city }: { city?: string }) {
 
                         <div className={styles.imagePlaceholder}>
                             <Image
-                                src="/images/m7/m7-abierto-derecha.png"
+                                src="/images/m7/m7-abierto-derecha.webp"
                                 alt="Mindray M7"
                                 fill
                                 style={{ objectFit: 'contain' }}

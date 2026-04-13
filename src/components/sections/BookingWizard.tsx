@@ -825,7 +825,7 @@ export default function BookingWizard() {
                           id: "m7",
                           name: "Mindray M7",
                           price: PRICES.m7,
-                          img: "/images/m7/m7-abierto-derecha.png",
+                          img: "/images/m7/m7-abierto-derecha.webp",
                           badge: "Nuevo",
                           desc: "3D/4D Premium",
                         },

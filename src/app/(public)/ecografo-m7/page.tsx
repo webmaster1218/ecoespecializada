@@ -309,7 +309,7 @@ export default function EcografoM7Page() {
               />
 
               <Image
-                src="/images/m7/M7-abierto-derecha.png"
+                src="/images/m7/m7-abierto-derecha.webp"
                 alt="Ecógrafo Mindray M7"
                 width={500}
                 height={500}
@@ -365,7 +365,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/M7-trastuctores.jpg" alt="Mindray M7 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-trastuctores.jpg" alt="Mindray M7 Frontal" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" sizes="300px" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Batería Autoliberadora</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Escaneo ininterrumpido con batería recargable Li-ion, aportando más de 1.5 hs de operación continua con iRoam™.</p>
@@ -384,7 +384,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/M7-abierto-ziquierda.png" alt="Mindray M7 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/M7-abierto-ziquierda.webp" alt="Mindray M7 Monitor" width={300} height={300} className="object-contain h-full drop-shadow-lg group-hover:scale-105 transition-transform duration-500" sizes="300px" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de Nivel Médico</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de 15 pulgadas TFT de alta resolución anti-reflejo y de ángulos de visión ampliados para entornos luminosos.</p>
@@ -403,7 +403,7 @@ export default function EcografoM7Page() {
                 </svg>
               </div>
               <div className="relative h-48 mb-6 flex items-center justify-center">
-                <Image src="/images/m7/M7-abierto-derecha.png" alt="Mindray M7 Transductores" width={300} height={300} className="object-cover h-full rounded-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-500" />
+                <Image src="/images/m7/m7-abierto-derecha.webp" alt="Mindray M7 Transductores" width={300} height={300} className="object-cover h-full rounded-xl drop-shadow-lg group-hover:scale-105 transition-transform duration-500" sizes="300px" />
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Alta Multiespecialidad</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Soporta exploración transvaginal volumétrica con imagen 3D/4D de alta fidelidad, excelente para obstetricia y ginecología.</p>
@@ -425,7 +425,7 @@ export default function EcografoM7Page() {
             >
               <div className="absolute inset-0 bg-gradient-to-br from-blue-200 to-indigo-100 rounded-[3rem] blur-2xl opacity-40"></div>
               <div className="relative bg-white rounded-[2rem] p-8 shadow-2xl border border-white/40">
-                <Image src="/images/m7/M7-abierto-ziquierda.png" alt="Mindray M7 Vista LAT" width={600} height={600} className="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-700" />
+                <Image src="/images/m7/M7-abierto-ziquierda.webp" alt="Mindray M7 Vista LAT" width={600} height={600} className="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
             </motion.div>
 

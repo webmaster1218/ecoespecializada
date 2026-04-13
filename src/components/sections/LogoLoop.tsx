@@ -1,37 +1,53 @@
 "use client";
 
 import React from 'react';
+import Image from 'next/image';
 import styles from './LogoLoop.module.css';
 
 const logoData = [
-    { name: "Equibiomedic", url: "/images/logo/equibiomedic-new.png" },
-    { name: "Sura", url: "https://images.seeklogo.com/logo-png/32/1/sura-logo-png_seeklogo-328191.png" },
-    { name: "Hospital Pablo Tobón Uribe", url: "https://images.seeklogo.com/logo-png/25/1/hospital-pablo-tobon-uribe-logo-png_seeklogo-251956.png" },
-    { name: "Clínica del Country", url: "https://images.seeklogo.com/logo-png/35/1/clinica-internacional-logo-png_seeklogo-359473.png" },
-    { name: "Colsanitas", url: "https://seeklogo.com/images/C/colsanitas-logo-483AF91885-seeklogo.com.png" },
-    { name: "Clínica Medellín", url: "https://images.seeklogo.com/logo-png/19/1/clinica-san-pablo-logo-png_seeklogo-197404.png" },
-    { name: "Fundación Valle del Lili", url: "https://banner2.cleanpng.com/20180803/xrr/b9b1ba6d0bf6e246dcd30f0d935cbe7a.webp" },
-    { name: "Compensar", url: "https://logosenvector.com/logo/img/compensar-4399.jpg" },
-    { name: "Cruz Verde", url: "https://images.seeklogo.com/logo-png/39/1/farmacia-cruz-verde-logo-png_seeklogo-390328.png" },
+    { name: "Equibiomedic", src: "/images/logo/equibiomedic-new.png", width: 200, height: 40 },
+    { name: "Sura", src: "/images/logo/partners/sura.webp", width: 120, height: 60 },
+    { name: "Hospital Pablo Tobón Uribe", src: "/images/logo/partners/pablo_tobon.webp", width: 120, height: 60 },
+    { name: "Clínica del Country", src: "/images/logo/partners/clinica_country.webp", width: 120, height: 60 },
+    { name: "Colsanitas", src: "/images/logo/partners/colsanitas.webp", width: 120, height: 60 },
+    { name: "Clínica Medellín", src: "/images/logo/partners/clinica_medellin.webp", width: 120, height: 60 },
+    { name: "Fundación Valle del Lili", src: "/images/logo/partners/valle_lili.webp", width: 120, height: 60 },
+    { name: "Compensar", src: "https://logosenvector.com/logo/img/compensar-4399.jpg", width: 120, height: 60 },
+    { name: "Cruz Verde", src: "/images/logo/partners/cruz_verde.webp", width: 120, height: 60 },
 ];
 
-// Fallback to text if image fails to load keeps it clean
 const logoDataWithIds = logoData.map((logo, idx) => ({ ...logo, id: idx }));
 
-function LogoImage({ name, url }: { name: string; url: string }) {
+function LogoImage({ name, src, width, height }: { name: string; src: string; width: number; height: number }) {
     const [hasError, setHasError] = React.useState(false);
 
     if (hasError) {
         return <span className={styles.logoFallback}>{name}</span>;
     }
 
+    const isExternal = src.startsWith('http');
+
+    if (isExternal) {
+        return (
+            <img
+                src={src}
+                alt={name}
+                className={styles.logoImage}
+                title={name}
+                loading="lazy"
+                onError={() => setHasError(true)}
+            />
+        );
+    }
+
     return (
-        <img
-            src={url}
+        <Image
+            src={src}
             alt={name}
+            width={width}
+            height={height}
             className={styles.logoImage}
             title={name}
-            loading="lazy"
             onError={() => setHasError(true)}
         />
     );
@@ -62,7 +78,7 @@ export default function LogoLoop() {
                     <div className={styles.logoGrid}>
                         {allLogos.map((item, index) => (
                             <div key={index} className={styles.logoItem}>
-                                <LogoImage name={item.name} url={item.url} />
+                                <LogoImage name={item.name} src={item.src} width={item.width} height={item.height} />
                             </div>
                         ))}
                     </div>

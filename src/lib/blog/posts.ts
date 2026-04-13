@@ -609,7 +609,7 @@ El mercado de ultrasonido médico en Colombia ofrece cuatro tipos principales de
 
 Este transductor de forma curva es el más versátil para medicina general. Opera en frecuencias de 2-8 MHz con penetración profunda hasta 25 cm, ideal para órganos internos grandes como hígado, vesícula biliar, bazo y páncreas. Su campo de visión amplio de 60-90 grados permite evaluar múltiples estructuras simultáneamente.
 
-![Transductor convexo Mindray M7 para ecografía abdominal alquiler Colombia](/images/m7/m7-abierto-derecha.png)
+![Transductor convexo Mindray M7 para ecografía abdominal alquiler Colombia](/images/m7/m7-abierto-derecha.webp)
 
 **Aplicaciones principales:** Ecografía abdominal general, obstetricia segundo y tercer trimestre (seguimiento del desarrollo fetal), ginecología general (útero, ovarios y anexos), y urología (riñones y vejiga). Excelente para pacientes con sobrepeso gracias a su profunda penetración.
 
