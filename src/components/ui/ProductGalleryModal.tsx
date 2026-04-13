@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconX, IconChevronLeft, IconChevronRight, IconCheck, IconTrophy, IconStethoscope } from "@tabler/icons-react";
+import { X, ChevronLeft, ChevronRight, Check, Trophy, Stethoscope } from "lucide-react";
 import styles from "./ProductGalleryModal.module.css";
 import { ProductDetails } from "../sections/ProductCatalog";
 
@@ -77,7 +77,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
             >
                 <div className={styles.modalContent} onClick={(e) => e.stopPropagation()}>
                     <button className={styles.closeButton} onClick={onClose}>
-                        <IconX size={24} />
+                        <X size={24} />
                     </button>
 
                     <div className={styles.container}>
@@ -85,7 +85,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                         <div className={styles.colImage}>
                             <div className={styles.mainImageContainer}>
                                 <button className={`${styles.navButton} ${styles.prev}`} onClick={showPrev}>
-                                    <IconChevronLeft size={24} />
+                                    <ChevronLeft size={24} />
                                 </button>
 
                                 <AnimatePresence mode="wait">
@@ -118,7 +118,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                                 </AnimatePresence>
 
                                 <button className={`${styles.navButton} ${styles.next}`} onClick={showNext}>
-                                    <IconChevronRight size={24} />
+                                    <ChevronRight size={24} />
                                 </button>
                             </div>
 
@@ -151,12 +151,12 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                             <p className={styles.description}>{product.description}</p>
 
                             <div className={styles.psychologyBadge}>
-                                <IconTrophy size={18} className="text-yellow-500" />
+                                <Trophy size={18} className="text-yellow-500" />
                                 <span>{product.psychology}</span>
                             </div>
 
                             <div className={styles.sectionTitle}>
-                                <IconStethoscope size={18} /> Especialidades Ideales
+                                <Stethoscope size={18} /> Especialidades Ideales
                             </div>
                             <div className={styles.tagsContainer}>
                                 {product.specialties.map((spec, i) => (
@@ -165,7 +165,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                             </div>
 
                             <div className={styles.sectionTitle}>
-                                <IconCheck size={18} /> Características Clave
+                                <Check size={18} /> Características Clave
                             </div>
                             <ul className={styles.featuresList}>
                                 {product.features.map((feat, i) => (

@@ -1,19 +1,21 @@
 
+import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
-import Comparison from "@/components/sections/Comparison";
-import LogoLoop from "@/components/sections/LogoLoop";
-import ProductCatalog from "@/components/sections/ProductCatalog";
-import BookingWizard from "@/components/sections/BookingWizard";
-import ClinicalApplications from "@/components/sections/ClinicalApplications";
-import HowItWorks from "@/components/sections/HowItWorks";
-import AboutUs from "@/components/sections/AboutUs";
-import AdditionalServices from "@/components/sections/AdditionalServices";
-import Advantages from "@/components/sections/Advantages";
-import Testimonials from "@/components/sections/Testimonials";
-import FAQ from "@/components/sections/FAQ";
 import ExperienceVideo from "@/components/sections/ExperienceVideo";
 import Footer from "@/components/layout/Footer";
-import CityLinks from "@/components/sections/CityLinks";
+
+const Advantages = dynamic(() => import("@/components/sections/Advantages"), { ssr: true });
+const ProductCatalog = dynamic(() => import("@/components/sections/ProductCatalog"), { ssr: true });
+const ClinicalApplications = dynamic(() => import("@/components/sections/ClinicalApplications"), { ssr: true });
+const BookingWizard = dynamic(() => import("@/components/sections/BookingWizard"), { ssr: true });
+const HowItWorks = dynamic(() => import("@/components/sections/HowItWorks"), { ssr: true });
+const Comparison = dynamic(() => import("@/components/sections/Comparison"), { ssr: true });
+const AboutUs = dynamic(() => import("@/components/sections/AboutUs"), { ssr: true });
+const LogoLoop = dynamic(() => import("@/components/sections/LogoLoop"), { ssr: true });
+const CityLinks = dynamic(() => import("@/components/sections/CityLinks"), { ssr: true });
+const AdditionalServices = dynamic(() => import("@/components/sections/AdditionalServices"), { ssr: true });
+const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), { ssr: true });
+const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
 
 export default function Home() {
   return (

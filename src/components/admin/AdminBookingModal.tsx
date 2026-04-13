@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { IconX, IconDeviceHeartMonitor, IconUser, IconCalendar, IconMapPin, IconClock, IconTag, IconPlus, IconMinus } from "@tabler/icons-react";
+import { X, HeartPulse, User, Calendar, MapPin, Clock, Tag, Plus, Minus } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { checkAvailability } from "@/lib/availability";
 import CustomDatePicker from "@/components/ui/DatePicker";
@@ -223,7 +223,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 <div className={`p-6 md:p-8 flex justify-between items-center text-white ${getHeaderColor()} shadow-lg`}>
                     <div className="flex items-center gap-4">
                         <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                            <IconDeviceHeartMonitor size={32} />
+                            <HeartPulse size={32} />
                         </div>
                         <div>
                             <h3 className="font-black text-2xl tracking-tight leading-none mb-1">
@@ -233,7 +233,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                         </div>
                     </div>
                     <button onClick={onClose} className="bg-white/10 hover:bg-white/20 p-2.5 rounded-full transition-all hover:rotate-90">
-                        <IconX size={24} />
+                        <X size={24} />
                     </button>
                 </div>
 
@@ -249,7 +249,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                 {/* Dates */}
                                 <div className="space-y-6">
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">
-                                        <IconCalendar size={16} /> Fechas a Bloquear
+                                        <Calendar size={16} /> Fechas a Bloquear
                                     </h4>
                                     <div className="space-y-5 bg-slate-50 p-6 rounded-3xl border border-slate-100 shadow-sm">
                                         <CustomDatePicker
@@ -273,7 +273,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                 {/* Equipment */}
                                 <div className="space-y-6">
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">
-                                        <IconDeviceHeartMonitor size={16} /> Equipos a Bloquear
+                                        <HeartPulse size={16} /> Equipos a Bloquear
                                     </h4>
                                     <div className="space-y-3">
                                         {[
@@ -286,13 +286,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                 <div className="flex items-center gap-3">
                                                     <button type="button" onClick={() => setFormData(p => ({ ...p, [key]: Math.max(0, p[key] - 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm">
-                                                        <IconMinus size={14} />
+                                                        <Minus size={14} />
                                                     </button>
                                                     <span className="w-8 text-center font-black text-xl text-slate-800">{formData[key]}</span>
                                                     <button type="button" disabled={formData[key] >= max}
                                                         onClick={() => setFormData(p => ({ ...p, [key]: Math.min(max, p[key] + 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm disabled:opacity-30">
-                                                        <IconPlus size={14} />
+                                                        <Plus size={14} />
                                                     </button>
                                                 </div>
                                             </div>
@@ -309,7 +309,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                             <div className="space-y-8">
                                 <div>
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">
-                                        <IconUser size={16} /> Datos del Cliente
+                                        <User size={16} /> Datos del Cliente
                                     </h4>
                                     <div className="space-y-4">
                                         <div className="space-y-1.5">
@@ -356,7 +356,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                             <div className="space-y-8">
                                 <div>
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">
-                                        <IconClock size={16} /> Logística y Horarios
+                                        <Clock size={16} /> Logística y Horarios
                                     </h4>
                                     <div className="space-y-4">
                                         <div className="grid grid-cols-2 gap-4 items-start">
@@ -404,7 +404,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                         <div className="space-y-1.5">
                                             <label className="text-[10px] font-black text-slate-400 uppercase tracking-wider ml-1 block">Dirección <span className="text-slate-300 font-normal lowercase">(Opcional)</span></label>
                                             <div className="relative">
-                                                <IconMapPin className="absolute left-4 top-4 text-slate-300" size={18} />
+                                                <MapPin className="absolute left-4 top-4 text-slate-300" size={18} />
                                                 <textarea rows={2} className="w-full border-2 border-slate-100 rounded-2xl pl-11 pr-5 py-3.5 bg-slate-50 focus:bg-white font-semibold outline-none resize-none text-sm"
                                                     placeholder="Calle 123 #45-67, Edificio... Medellín"
                                                     value={formData.clientAddress} onChange={e => setFormData({ ...formData, clientAddress: e.target.value })} />
@@ -430,7 +430,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                             <div className="space-y-8">
                                 <div>
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest mb-6 border-b border-slate-100 pb-3">
-                                        <IconTag size={16} /> Equipaje y Transductores
+                                        <Tag size={16} /> Equipaje y Transductores
                                     </h4>
                                     <div className="space-y-4">
                                         <div className="grid grid-cols-2 gap-4">
@@ -439,13 +439,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                 <div className="flex items-center gap-3">
                                                     <button type="button" onClick={() => setFormData(p => ({ ...p, quantityZ6: Math.max(0, p.quantityZ6 - 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm">
-                                                        <IconMinus size={14} />
+                                                        <Minus size={14} />
                                                     </button>
                                                     <span className="w-8 text-center font-black text-xl text-slate-800">{formData.quantityZ6}</span>
                                                     <button type="button" disabled={formData.quantityZ6 >= availableStock.z6}
                                                         onClick={() => setFormData(p => ({ ...p, quantityZ6: Math.min(availableStock.z6, p.quantityZ6 + 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed">
-                                                        <IconPlus size={14} />
+                                                        <Plus size={14} />
                                                     </button>
                                                 </div>
                                                 <div className="absolute -top-2 right-2 px-2 py-0.5 bg-blue-600 text-[8px] font-black text-white rounded-full shadow-sm">
@@ -457,13 +457,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                 <div className="flex items-center gap-3">
                                                     <button type="button" onClick={() => setFormData(p => ({ ...p, quantityZ60: Math.max(0, p.quantityZ60 - 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm">
-                                                        <IconMinus size={14} />
+                                                        <Minus size={14} />
                                                     </button>
                                                     <span className="w-8 text-center font-black text-xl text-slate-800">{formData.quantityZ60}</span>
                                                     <button type="button" disabled={formData.quantityZ60 >= availableStock.z60}
                                                         onClick={() => setFormData(p => ({ ...p, quantityZ60: Math.min(availableStock.z60, p.quantityZ60 + 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed">
-                                                        <IconPlus size={14} />
+                                                        <Plus size={14} />
                                                     </button>
                                                 </div>
                                                 <div className="absolute -top-2 right-2 px-2 py-0.5 bg-blue-600 text-[8px] font-black text-white rounded-full shadow-sm">
@@ -475,13 +475,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                 <div className="flex items-center gap-3">
                                                     <button type="button" onClick={() => setFormData(p => ({ ...p, quantityM7: Math.max(0, p.quantityM7 - 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm">
-                                                        <IconMinus size={14} />
+                                                        <Minus size={14} />
                                                     </button>
                                                     <span className="w-8 text-center font-black text-xl text-slate-800">{formData.quantityM7}</span>
                                                     <button type="button" disabled={formData.quantityM7 >= availableStock.m7}
                                                         onClick={() => setFormData(p => ({ ...p, quantityM7: Math.min(availableStock.m7, p.quantityM7 + 1) }))}
                                                         className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed">
-                                                        <IconPlus size={14} />
+                                                        <Plus size={14} />
                                                     </button>
                                                 </div>
                                                 <div className="absolute -top-2 right-2 px-2 py-0.5 bg-blue-600 text-[8px] font-black text-white rounded-full shadow-sm">
@@ -510,7 +510,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                     <span className="text-xs font-black text-slate-700">Base Rodable (Carrito)</span>
                                                 </div>
                                                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${formData.includeCart ? 'bg-blue-600 border-blue-600' : 'border-slate-200'}`}>
-                                                    {formData.includeCart && <IconX size={12} className="text-white rotate-45" stroke={4} />}
+                                                    {formData.includeCart && <X size={12} className="text-white rotate-45" strokeWidth={4} />}
                                                 </div>
                                             </div>
                                             <div className={`p-4 rounded-2xl border-2 transition-all cursor-pointer flex items-center justify-between ${formData.includePrinter ? 'bg-blue-50 border-blue-200' : 'bg-white border-slate-100'}`}
@@ -520,7 +520,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                     <span className="text-xs font-black text-slate-700">Impresora Sony</span>
                                                 </div>
                                                 <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${formData.includePrinter ? 'bg-blue-600 border-blue-600' : 'border-slate-200'}`}>
-                                                    {formData.includePrinter && <IconX size={12} className="text-white rotate-45" stroke={4} />}
+                                                    {formData.includePrinter && <X size={12} className="text-white rotate-45" strokeWidth={4} />}
                                                 </div>
                                             </div>
                                         </div>
@@ -563,7 +563,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 {showDeleteConfirm && (
                     <div className="absolute inset-0 bg-white/95 backdrop-blur-sm flex flex-col items-center justify-center p-10 z-10 rounded-3xl md:rounded-[40px]">
                         <div className="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mb-6">
-                            <IconX size={40} className="text-red-600" />
+                            <X size={40} className="text-red-600" />
                         </div>
                         <h3 className="font-black text-2xl text-slate-900 mb-2">{isBlockingMode ? '¿Eliminar Bloqueo?' : '¿Eliminar Reserva?'}</h3>
                         <p className="text-slate-500 text-center mb-10">Esta acción es irreversible y no se puede deshacer.</p>

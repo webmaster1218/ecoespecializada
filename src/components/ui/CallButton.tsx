@@ -1,6 +1,6 @@
 "use client";
 
-import { IconPhone, IconBrandWhatsapp } from "@tabler/icons-react";
+import { Phone, MessageCircle } from "lucide-react";
 import styles from "./CallButton.module.css";
 
 interface CallButtonProps {
@@ -26,14 +26,14 @@ export default function CallButton({
                 variant === "outline" ? styles.outline :
                     styles.secondary;
 
-    const Icon = iconType === "whatsapp" ? IconBrandWhatsapp : IconPhone;
+    const Icon = iconType === "whatsapp" ? MessageCircle : Phone;
 
     return (
         <a
             href={href}
             className={`${buttonClass} ${className} ${styles.callButton} ${subtext ? styles.withSubtext : ""}`}
         >
-            <Icon size={subtext ? 22 : 18} stroke={2.5} className={styles.icon} />
+            <Icon size={subtext ? 22 : 18} strokeWidth={2.5} className={styles.icon} />
             <div className={styles.textContainer}>
                 <span className={styles.text}>{text}</span>
                 {subtext && <span className={styles.subtext}>{subtext}</span>}

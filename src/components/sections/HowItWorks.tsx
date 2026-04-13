@@ -1,6 +1,9 @@
+"use client";
+
 import { memo } from "react";
+import { motion } from "framer-motion";
 import styles from "./HowItWorks.module.css";
-import { IconFileDescription, IconMailForward, IconSignature, IconTruckDelivery } from "@tabler/icons-react";
+import { FileText, Send, PenLine, Truck } from "lucide-react";
 
 function HowItWorks() {
     const steps = [
@@ -8,44 +11,46 @@ function HowItWorks() {
             id: "01",
             title: "Registro digital",
             desc: "Completa nuestro formulario con tus datos, elección del equipo y la dirección exacta de envío.",
-            icon: <IconFileDescription size={32} stroke={1.5} />
+            icon: <FileText size={32} strokeWidth={1.5} />
         },
         {
             id: "02",
             title: "Recepción de contrato",
             desc: "Recibirás automáticamente en tu correo el contrato junto con las instrucciones para realizar el pago.",
-            icon: <IconMailForward size={32} stroke={1.5} />
+            icon: <Send size={32} strokeWidth={1.5} />
         },
         {
             id: "03",
             title: "Firma y pago",
             desc: "Debes devolvernos el correo con el contrato firmado y adjuntar tu respectivo soporte de pago.",
-            icon: <IconSignature size={32} stroke={1.5} />
+            icon: <PenLine size={32} strokeWidth={1.5} />
         },
         {
             id: "04",
             title: "Envío del equipo",
             desc: "Una vez verificado, despachamos de inmediato el ecógrafo a la dirección que colocaste en el registro.",
-            icon: <IconTruckDelivery size={32} stroke={1.5} />
+            icon: <Truck size={32} strokeWidth={1.5} />
         }
     ];
 
     return (
         <section className={styles.section} id="como-funciona">
             <div className="container">
-                <div className={styles.header} data-aos="fade-up">
+                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Proceso simplificado</span>
                     <h2 className={styles.title}>Flujo de <span className="text-gradient">alquiler profesional</span></h2>
                     <p className={styles.subtitle}>Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica.</p>
-                </div>
+                </motion.div>
 
                 <div className={styles.processGrid}>
                     {steps.map((step, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             className={styles.processCard}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className={styles.cardHeader}>
                                 <div className={styles.iconBox}>
@@ -55,11 +60,11 @@ function HowItWorks() {
                             </div>
                             <h3 className={styles.stepTitle}>{step.title}</h3>
                             <p className={styles.stepDesc}>{step.desc}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className={styles.ctaWrapper} data-aos="fade-up" data-aos-delay="400">
+                <motion.div className={styles.ctaWrapper} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.4 }}>
                     <a href="#reservar" className="btn-primary">
                         Comenzar reserva
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -67,7 +72,7 @@ function HowItWorks() {
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

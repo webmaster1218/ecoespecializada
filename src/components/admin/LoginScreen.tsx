@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { IconLock, IconUser, IconEye, IconEyeOff, IconArrowLeft } from "@tabler/icons-react";
+import { Lock, User, Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 import Link from "next/link";
@@ -91,7 +91,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                 href="/"
                 className="absolute top-6 left-6 text-slate-400 hover:text-white flex items-center gap-2 font-bold transition-colors bg-slate-800/50 px-4 py-2 rounded-xl backdrop-blur-sm"
             >
-                <IconArrowLeft size={20} />
+                <ArrowLeft size={20} />
                 <span>Volver al Inicio</span>
             </Link>
 
@@ -118,7 +118,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                     <div>
                         <label className="block text-xs font-black text-slate-400 tracking-widest uppercase mb-2 ml-1">Usuario</label>
                         <div className="relative">
-                            <IconUser className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                            <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input
                                 type="text"
                                 value={username}
@@ -134,7 +134,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                     <div>
                         <label className="block text-xs font-black text-slate-400 tracking-widest uppercase mb-2 ml-1">Contraseña</label>
                         <div className="relative">
-                            <IconLock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
+                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
                             <input
                                 type={showPassword ? "text" : "password"}
                                 value={password}
@@ -149,7 +149,7 @@ export default function LoginScreen({ onLogin }: LoginScreenProps) {
                                 className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors"
                                 tabIndex={-1}
                             >
-                                {showPassword ? <IconEyeOff size={20} /> : <IconEye size={20} />}
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                             </button>
                         </div>
                     </div>

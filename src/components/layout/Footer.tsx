@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { IconBrandWhatsapp, IconMail, IconMapPin, IconBrandYoutube, IconBrandLinkedin, IconBrandInstagram, IconBrandFacebook } from "@tabler/icons-react";
+import { MessageCircle, Mail, MapPin, Youtube, Linkedin, Instagram, Facebook } from "lucide-react";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
@@ -40,31 +40,31 @@ export default function Footer() {
                         <h4 className={styles.columnHeader}>Contacto</h4>
                         <div className={styles.contactInfo}>
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconBrandWhatsapp size={20} style={{ color: 'var(--color-highlight)' }} /></span>
+                                <span className={styles.icon}><MessageCircle size={20} style={{ color: 'var(--color-highlight)' }} /></span>
                                 <a href="https://wa.me/573003608621" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-highlight)', fontWeight: 'bold' }} className="hover:opacity-80 transition-opacity">WhatsApp: +57 3003608621</a>
                             </div>
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconBrandYoutube size={20} className="text-red-600" /></span>
+                                <span className={styles.icon}><Youtube size={20} className="text-red-600" /></span>
                                 <a href="https://www.youtube.com/channel/UCz-uvK09Po3RaXP3mqYPbnA" target="_blank" rel="noopener noreferrer" className="hover:text-red-400 transition-colors">YouTube</a>
                             </div>
 
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconBrandLinkedin size={20} className="text-blue-700" /></span>
+                                <span className={styles.icon}><Linkedin size={20} className="text-blue-700" /></span>
                                 <a href="https://www.linkedin.com/company/alquiler-de-ec%C3%B3grafos-com/" target="_blank" rel="noopener noreferrer" className="hover:text-blue-500 transition-colors">LinkedIn</a>
                             </div>
 
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconBrandInstagram size={20} className="text-pink-600" /></span>
+                                <span className={styles.icon}><Instagram size={20} className="text-pink-600" /></span>
                                 <a href="https://www.instagram.com/alquiler.de.ecografos/" target="_blank" rel="noopener noreferrer" className="hover:text-pink-400 transition-colors">Instagram</a>
                             </div>
 
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconBrandFacebook size={20} className="text-blue-600" /></span>
+                                <span className={styles.icon}><Facebook size={20} className="text-blue-600" /></span>
                                 <a href="https://www.facebook.com/profile.php?id=61587750932611" target="_blank" rel="noopener noreferrer" className="hover:text-blue-400 transition-colors">Facebook</a>
                             </div>
 
                             <div className={styles.contactItem}>
-                                <span className={styles.icon}><IconMapPin size={20} className="text-rose-500" /></span>
+                                <span className={styles.icon}><MapPin size={20} className="text-rose-500" /></span>
                                 <span>Diagonal 47a #17sur-162 CS 105, Santa María de los Ángeles, Medellín</span>
                             </div>
                         </div>

@@ -4,24 +4,24 @@ import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  IconUser,
-  IconBuildingHospital,
-  IconAmbulance,
-  IconCheck,
-  IconChevronRight,
-  IconChevronLeft,
-  IconCalendar,
-  IconMapPin,
-  IconDeviceHeartMonitor,
-  IconTruckDelivery,
-  IconShoppingCart,
-  IconAlertCircle,
-  IconPlus,
-  IconMinus,
-  IconTag,
-  IconPrinter,
-  IconClock,
-} from "@tabler/icons-react";
+  User,
+  Building2,
+  Ambulance,
+  Check,
+  ChevronRight,
+  ChevronLeft,
+  CalendarIcon,
+  MapPin,
+  HeartPulse,
+  Truck,
+  ShoppingCart,
+  AlertCircle,
+  Plus,
+  Minus,
+  Tag,
+  Printer,
+  Clock,
+} from "lucide-react";
 import Image from "next/image";
 import CustomDatePicker from "@/components/ui/DatePicker";
 import { pdf } from "@react-pdf/renderer";
@@ -483,7 +483,7 @@ export default function BookingWizard() {
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <div className="text-center mb-8" data-aos="fade-up">
+        <motion.div className="text-center mb-8" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-2">
             RESERVA FÁCIL
           </span>
@@ -494,7 +494,7 @@ export default function BookingWizard() {
             Proceso 100% digital. Reserva tu{" "}
             <strong>ecógrafo en Medellín</strong> en minutos.
           </p>
-        </div>
+        </motion.div>
 
         {/* Wizard Component */}
         <motion.div
@@ -522,7 +522,7 @@ export default function BookingWizard() {
                       : "bg-slate-100 text-slate-400"
                   }`}
                 >
-                  {step > num ? <IconCheck size={20} stroke={3} /> : num}
+                  {step > num ? <Check size={20} strokeWidth={3} /> : num}
                 </div>
               ))}
             </div>
@@ -539,7 +539,7 @@ export default function BookingWizard() {
               <div className="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-2xl p-4 flex items-center gap-4 shadow-sm relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-24 h-24 bg-emerald-100/30 rounded-full -translate-y-1/2 translate-x-1/2"></div>
                 <div className="bg-white p-2.5 rounded-xl text-emerald-600 shadow-sm z-10 flex-shrink-0">
-                  <IconTag size={24} stroke={1.5} />
+                  <Tag size={24} strokeWidth={1.5} />
                 </div>
                 <div className="z-10">
                   <h4 className="font-bold text-emerald-900 leading-tight text-sm">
@@ -585,7 +585,7 @@ export default function BookingWizard() {
                         />
                         {errors.name && (
                           <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                            <IconAlertCircle size={12} /> {errors.name}
+                            <AlertCircle size={12} /> {errors.name}
                           </span>
                         )}
                       </div>
@@ -604,7 +604,7 @@ export default function BookingWizard() {
                       />
                       {errors.email && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.email}
+                          <AlertCircle size={12} /> {errors.email}
                         </span>
                       )}
                     </div>
@@ -622,7 +622,7 @@ export default function BookingWizard() {
                       />
                       {errors.phone && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.phone}
+                          <AlertCircle size={12} /> {errors.phone}
                         </span>
                       )}
                     </div>
@@ -641,7 +641,7 @@ export default function BookingWizard() {
                       />
                       {errors.documentNumber && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.documentNumber}
+                          <AlertCircle size={12} /> {errors.documentNumber}
                         </span>
                       )}
                     </div>
@@ -658,7 +658,7 @@ export default function BookingWizard() {
                       />
                       {errors.taxId && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.taxId}
+                          <AlertCircle size={12} /> {errors.taxId}
                         </span>
                       )}
                     </div>
@@ -702,7 +702,7 @@ export default function BookingWizard() {
                           <span className="text-red-500">*</span>
                         </label>
                         <div className="relative group">
-                          <IconClock
+                          <Clock
                             className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors"
                             size={18}
                           />
@@ -725,7 +725,7 @@ export default function BookingWizard() {
                             </option>
                           </select>
                           <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                            <IconChevronRight size={16} className="rotate-90" />
+                            <ChevronRight size={16} className="rotate-90" />
                           </div>
                         </div>
                         {errors.deliveryTime && (
@@ -757,7 +757,7 @@ export default function BookingWizard() {
                           <span className="text-red-500">*</span>
                         </label>
                         <div className="relative group">
-                          <IconClock
+                          <Clock
                             className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-500 transition-colors"
                             size={18}
                           />
@@ -777,7 +777,7 @@ export default function BookingWizard() {
                             </option>
                           </select>
                           <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                            <IconChevronRight size={16} className="rotate-90" />
+                            <ChevronRight size={16} className="rotate-90" />
                           </div>
                         </div>
                         {errors.collectionTime && (
@@ -897,7 +897,7 @@ export default function BookingWizard() {
                                 0
                               }
                             >
-                              <IconMinus size={16} stroke={3} />
+                              <Minus size={16} strokeWidth={3} />
                             </button>
 
                             <div className="flex flex-col items-center">
@@ -920,13 +920,13 @@ export default function BookingWizard() {
                                 maxAvailability[item.id as "z6" | "z60" | "m7"]
                               }
                             >
-                              <IconPlus size={16} stroke={3} />
+                              <Plus size={16} strokeWidth={3} />
                             </button>
                           </div>
 
                           {availabilitySuggestions[item.id as "z6" | "z60" | "m7"] && (
                             <div className="mt-3 text-[10px] text-amber-600 font-bold bg-amber-50 p-2 rounded-xl border border-amber-100 flex items-start gap-2 animate-in fade-in slide-in-from-top-1">
-                              <IconCalendar
+                              <CalendarIcon
                                 size={14}
                                 className="flex-shrink-0"
                               />
@@ -947,7 +947,7 @@ export default function BookingWizard() {
                     </div>
                     {errors.quantities && (
                       <span className="text-xs text-red-500 flex items-center mt-2 gap-1">
-                        <IconAlertCircle size={12} /> {errors.quantities}
+                        <AlertCircle size={12} /> {errors.quantities}
                       </span>
                     )}
                   </div>
@@ -1010,10 +1010,10 @@ export default function BookingWizard() {
                                 {(formData.selectedTransducers || []).includes(
                                   t.id,
                                 ) && (
-                                  <IconCheck
+                                  <Check
                                     size={12}
                                     className="text-white"
-                                    stroke={4}
+                                    strokeWidth={4}
                                   />
                                 )}
                               </div>
@@ -1028,7 +1028,7 @@ export default function BookingWizard() {
                     </div>
                     {errors.transducers && (
                       <span className="text-xs text-red-500 flex items-center mt-2 gap-1">
-                        <IconAlertCircle size={12} /> {errors.transducers}
+                        <AlertCircle size={12} /> {errors.transducers}
                       </span>
                     )}
                   </div>
@@ -1180,7 +1180,7 @@ export default function BookingWizard() {
                         Sector <span className="text-red-500">*</span>
                       </label>
                       <div className="relative">
-                        <IconMapPin
+                        <MapPin
                           className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500"
                           size={18}
                         />
@@ -1195,7 +1195,7 @@ export default function BookingWizard() {
                       </div>
                       {errors.city && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.city}
+                          <AlertCircle size={12} /> {errors.city}
                         </span>
                       )}
                     </div>
@@ -1213,14 +1213,14 @@ export default function BookingWizard() {
                       />
                       {errors.address && (
                         <span className="text-xs text-red-500 mt-1 flex items-center gap-1">
-                          <IconAlertCircle size={12} /> {errors.address}
+                          <AlertCircle size={12} /> {errors.address}
                         </span>
                       )}
                     </div>
 
                     <div className="bg-blue-50 border border-blue-100 rounded-2xl p-4 flex items-start gap-4 shadow-sm">
                       <div className="bg-white p-2 rounded-xl text-blue-600 shadow-sm flex-shrink-0">
-                        <IconClock size={20} stroke={2} />
+                        <Clock size={20} strokeWidth={2} />
                       </div>
                       <div>
                         <h4 className="text-sm font-bold text-blue-900">
@@ -1240,7 +1240,7 @@ export default function BookingWizard() {
 
                     <h3 className="font-bold text-slate-800 mb-4 flex items-center gap-2 relative z-10 text-base">
                       <div className="w-7 h-7 bg-blue-100 rounded-lg flex items-center justify-center text-blue-600">
-                        <IconDeviceHeartMonitor size={16} />
+                        <HeartPulse size={16} />
                       </div>
                       Resumen de reserva
                     </h3>
@@ -1377,10 +1377,10 @@ export default function BookingWizard() {
                         delay: 0.2,
                       }}
                     >
-                      <IconCheck
+                      <Check
                         size={60}
                         className="text-green-600"
-                        stroke={3}
+                        strokeWidth={3}
                       />
                     </motion.div>
                     <div className="absolute inset-0 border-4 border-green-200 rounded-full animate-ping opacity-20"></div>
@@ -1403,7 +1403,7 @@ export default function BookingWizard() {
                     aria-label="Hacer otra reserva"
                   >
                     <span className="group-hover:-translate-x-1 transition-transform">
-                      <IconChevronLeft size={20} />
+                      <ChevronLeft size={20} />
                     </span>{" "}
                     Hacer otra reserva
                   </button>
@@ -1420,7 +1420,7 @@ export default function BookingWizard() {
                   onClick={prevStep}
                   className="px-4 py-3 md:px-5 md:py-3 rounded-full font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100/80 transition-all flex items-center gap-1 md:gap-2 text-sm md:text-base"
                 >
-                  <IconChevronLeft size={18} className="md:w-5 md:h-5" />{" "}
+                  <ChevronLeft size={18} className="md:w-5 md:h-5" />{" "}
                   <span className="hidden xs:inline">Anterior</span>
                 </button>
               ) : (
@@ -1437,7 +1437,7 @@ export default function BookingWizard() {
                   : step === 3
                     ? "Confirmar reserva"
                     : "Continuar"}{" "}
-                <IconChevronRight size={20} className="md:w-[22px]" />
+                <ChevronRight size={20} className="md:w-[22px]" />
               </button>
             </div>
           )}

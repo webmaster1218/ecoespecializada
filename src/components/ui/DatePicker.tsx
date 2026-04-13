@@ -6,7 +6,7 @@ import {
 } from "date-fns";
 import { es } from "date-fns/locale";
 import { motion, AnimatePresence } from "framer-motion";
-import { IconCalendar, IconChevronDown } from "@tabler/icons-react";
+import { CalendarIcon, ChevronDown } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 
 interface DatePickerProps {
@@ -46,11 +46,11 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                     className={`w-full pl-9 pr-7 py-3 rounded-2xl bg-white border text-left outline-none font-semibold transition-all flex items-center shadow-sm text-xs sm:text-sm ${error ? 'border-red-500 ring-4 ring-red-500/10' : 'border-slate-200 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/10 hover:border-blue-300'
                         }`}
                 >
-                    <IconCalendar className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isOpen ? 'text-blue-500' : 'text-slate-400'}`} size={16} />
+                    <CalendarIcon className={`absolute left-3 top-1/2 -translate-y-1/2 transition-colors ${isOpen ? 'text-blue-500' : 'text-slate-400'}`} size={16} />
                     <span className={value ? "text-slate-700" : "text-slate-500 font-medium"}>
                         {value ? format(new Date(value + 'T12:00:00'), "dd/MM/yyyy") : "dd/mm/aaaa"}
                     </span>
-                    <IconChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} size={14} />
+                    <ChevronDown className={`absolute right-3 top-1/2 -translate-y-1/2 text-slate-300 transition-transform duration-200 ${isOpen ? 'rotate-180 text-blue-400' : ''}`} size={14} />
                 </button>
             </div>
 
@@ -85,7 +85,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                                     onClick={() => setIsOpen(false)}
                                     className="p-1.5 rounded-full hover:bg-slate-200 text-slate-400 transition-colors"
                                 >
-                                    <IconChevronDown size={18} />
+                                    <ChevronDown size={18} />
                                 </button>
                             </div>
 

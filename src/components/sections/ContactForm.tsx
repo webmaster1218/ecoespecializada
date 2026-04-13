@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { motion } from "framer-motion";
 import styles from "./ContactForm.module.css";
 import CallButton from "../ui/CallButton";
 
@@ -52,7 +53,7 @@ export default function ContactForm() {
         return (
             <section className={styles.section} id="contacto">
                 <div className={styles.container}>
-                    <div className={styles.card} data-aos="zoom-in" style={{ textAlign: 'center', padding: '40px' }}>
+                    <motion.div className={styles.card} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }} style={{ textAlign: 'center', padding: '40px' }}>
                         <h2 className={styles.title}>¡Solicitud Enviada!</h2>
                         <p className={styles.subtitle}>Nos pondremos en contacto contigo en breve para validar disponibilidad.</p>
                         <button
@@ -62,7 +63,7 @@ export default function ContactForm() {
                         >
                             Volver
                         </button>
-                    </div>
+                    </motion.div>
                 </div>
             </section>
         );
@@ -71,7 +72,7 @@ export default function ContactForm() {
     return (
         <section className={styles.section} id="contacto">
             <div className={styles.container}>
-                <div className={styles.card} data-aos="zoom-in">
+                <motion.div className={styles.card} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <div className={styles.header}>
                         <h2 className={styles.title}>¿Listo para potenciar tu consulta?</h2>
                         <p className={styles.subtitle}>Reserva hoy y obtén <strong>15% OFF</strong> en tu primera semana de alquiler.</p>
@@ -113,7 +114,7 @@ export default function ContactForm() {
                             <CallButton text="Llamar directamente" subtext="300 3608621" variant="highlight" />
                         </div>
                     </form>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

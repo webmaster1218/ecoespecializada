@@ -1,14 +1,15 @@
 "use client";
 
 import { memo } from "react";
+import { motion } from "framer-motion";
 import styles from "./AdditionalServices.module.css";
-import { IconTool, IconSettings, IconShoppingBag, IconCheck, IconArrowRight } from "@tabler/icons-react";
+import { Wrench, Settings, ShoppingBag, Check, ArrowRight } from "lucide-react";
 import CallButton from "../ui/CallButton";
 
 function AdditionalServices() {
     const services = [
         {
-            icon: <IconTool className={styles.serviceIcon} />,
+            icon: <Wrench className={styles.serviceIcon} />,
             title: "Calibración de ecógrafos",
             description: "Mantenga la precisión y confiabilidad de sus equipos. Certificación oficial y trazabilidad metrológica.",
             features: [
@@ -20,7 +21,7 @@ function AdditionalServices() {
             cta: "Solicitar cotización"
         },
         {
-            icon: <IconSettings className={styles.serviceIcon} />,
+            icon: <Settings className={styles.serviceIcon} />,
             title: "Mantenimiento especializado",
             description: "Servicio técnico preventivo y correctivo para prolongar la vida útil de sus equipos de diagnóstico.",
             features: [
@@ -32,7 +33,7 @@ function AdditionalServices() {
             cta: "Consultar planes"
         },
         {
-            icon: <IconShoppingBag className={styles.serviceIcon} />,
+            icon: <ShoppingBag className={styles.serviceIcon} />,
             title: "Venta de equipos",
             description: "Adquiera su propio ecógrafo Mindray con financing flexible y garantía completa del fabricante.",
             features: [
@@ -48,7 +49,7 @@ function AdditionalServices() {
     return (
         <section className={styles.section} id="servicios-complementarios">
             <div className="container">
-                <div className="text-center mb-16" data-aos="fade-up">
+                <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Servicios adicionales</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
                         Servicios <span className="text-blue-600">complementarios</span>
@@ -56,15 +57,17 @@ function AdditionalServices() {
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                         Soluciones integrales para la gestión completa de sus equipos de diagnóstico médico
                     </p>
-                </div>
+                </motion.div>
 
                 <div className={styles.servicesGrid}>
                     {services.map((service, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             className={`${styles.serviceCard} glass-card`}
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className={styles.serviceHeader}>
                                 <div className={styles.serviceIconWrapper}>
@@ -78,7 +81,7 @@ function AdditionalServices() {
                             <ul className={styles.featuresList}>
                                 {service.features.map((feature, featureIndex) => (
                                     <li key={featureIndex} className={styles.featureItem}>
-                                        <IconCheck className={styles.featureIcon} />
+                                        <Check className={styles.featureIcon} />
                                         <span>{feature}</span>
                                     </li>
                                 ))}
@@ -90,14 +93,14 @@ function AdditionalServices() {
                                     className={styles.serviceCta}
                                 >
                                     {service.cta}
-                                    <IconArrowRight className={styles.ctaIcon} />
+                                    <ArrowRight className={styles.ctaIcon} />
                                 </a>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 
-                <div className={styles.bottomCTA} data-aos="fade-up">
+                <motion.div className={styles.bottomCTA} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <div className={`${styles.ctaCard} glass-card`}>
                         <div className={styles.ctaContent}>
                             <h3 className={styles.ctaTitle}>
@@ -118,7 +121,7 @@ function AdditionalServices() {
                             />
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

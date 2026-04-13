@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IconMapPin } from "@tabler/icons-react";
+import { MapPin } from "lucide-react";
 
 const CITIES = [
     { name: "Bogotá", href: "/colombia/bogota" },
@@ -30,7 +30,7 @@ export default function CityLinks({ currentCity }: { currentCity?: string }) {
                                 href={city.href}
                                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-slate-50 border border-slate-100 text-slate-600 hover:bg-blue-600 hover:text-white hover:border-blue-600 hover:shadow-lg hover:shadow-blue-600/20 transition-all duration-300 font-semibold text-sm group"
                             >
-                                <IconMapPin size={16} className="text-blue-500 group-hover:text-white transition-colors" />
+                                <MapPin size={16} className="text-blue-500 group-hover:text-white transition-colors" />
                                 {city.name}
                             </Link>
                         )

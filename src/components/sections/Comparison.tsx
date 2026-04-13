@@ -1,34 +1,37 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./Comparison.module.css";
 import {
-    IconWalletOff,
-    IconTrendingDown,
-    IconTools,
-    IconAlertTriangle,
-    IconDiamond,
-    IconRocket,
-    IconShieldCheck,
-    IconGift,
-    IconSettingsFilled
-} from "@tabler/icons-react";
+    Wallet,
+    TrendingDown,
+    Wrench,
+    AlertTriangle,
+    Diamond,
+    Rocket,
+    ShieldCheck,
+    Gift,
+    Settings
+} from "lucide-react";
 
 export default function Comparison({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="comparativa">
             <div className="container">
-                <div className={styles.header} data-aos="fade-up">
+                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Decisión inteligente</span>
                     <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">alquiler de ecógrafos {city ? `en ${city}` : ""}</span></h2>
                     <p className={styles.subtitle}>Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional.</p>
-                </div>
+                </motion.div>
 
                 <div className={styles.grid}>
                     {/* Columna Dolor */}
-                    <div className={`${styles.card} ${styles.pain}`} data-aos="fade-right">
+                    <motion.div className={`${styles.card} ${styles.pain}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <h3 className={styles.cardTitle}>❌ Comprar</h3>
                         <ul className={styles.list}>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
-                                    <IconWalletOff size={24} />
+                                    <Wallet size={24} />
                                 </div>
                                 <div>
                                     <strong>Inversión masiva</strong>
@@ -37,7 +40,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
-                                    <IconTrendingDown size={24} />
+                                    <TrendingDown size={24} />
                                 </div>
                                 <div>
                                     <strong>Depreciación inmediata</strong>
@@ -46,7 +49,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
-                                    <IconTools size={24} />
+                                    <Wrench size={24} />
                                 </div>
                                 <div>
                                     <strong>Mantenimiento costoso</strong>
@@ -55,7 +58,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
-                                    <IconAlertTriangle size={24} />
+                                    <AlertTriangle size={24} />
                                 </div>
                                 <div>
                                     <strong>Riesgo de "reacondicionados"</strong>
@@ -64,7 +67,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPain}`}>
-                                    <IconSettingsFilled size={24} />
+                                    <Settings size={24} />
                                 </div>
                                 <div>
                                     <strong>Calibracion costosa</strong>
@@ -72,16 +75,16 @@ export default function Comparison({ city }: { city?: string }) {
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
 
                     {/* Columna Placer (Alquiler de Ecógrafos) */}
-                    <div className={`${styles.card} ${styles.pleasure} glass-card`} data-aos="fade-left">
+                    <motion.div className={`${styles.card} ${styles.pleasure} glass-card`} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <div className={styles.badge}>Mejor opción</div>
                         <h3 className={styles.cardTitle}>✅ Alquiler de ecógrafos (Cero riesgo)</h3>
                         <ul className={styles.list}>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
-                                    <IconDiamond size={24} />
+                                    <Diamond size={24} />
                                 </div>
                                 <div>
                                     <strong>Alquiler desde $350.000 pesos/día</strong>
@@ -90,7 +93,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
-                                    <IconRocket size={24} />
+                                    <Rocket size={24} />
                                 </div>
                                 <div>
                                     <strong>Tecnología siempre actual</strong>
@@ -99,7 +102,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
-                                    <IconShieldCheck size={24} />
+                                    <ShieldCheck size={24} />
                                 </div>
                                 <div>
                                     <strong>Mantenimiento & soporte $0</strong>
@@ -108,7 +111,7 @@ export default function Comparison({ city }: { city?: string }) {
                             </li>
                             <li>
                                 <div className={`${styles.iconWrapper} ${styles.iconPleasure}`}>
-                                    <IconGift size={24} />
+                                    <Gift size={24} />
                                 </div>
                                 <div>
                                     <strong>Elige tus sondas</strong>
@@ -116,7 +119,7 @@ export default function Comparison({ city }: { city?: string }) {
                                 </div>
                             </li>
                         </ul>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </section>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { IconX, IconPackage, IconDeviceHeartMonitor, IconDeviceFloppy } from "@tabler/icons-react";
+import { X, Package, HeartPulse, Save } from "lucide-react";
 import { supabase } from "@/lib/supabase";
 import { getTotalStock } from "@/lib/availability";
 
@@ -56,11 +56,11 @@ export default function StockSettingsModal({ isOpen, onClose, onSuccess }: Stock
             <div className="bg-white rounded-3xl w-full max-w-md shadow-2xl overflow-hidden border border-slate-200">
                 <div className="bg-slate-900 p-6 text-white flex justify-between items-center">
                     <div className="flex items-center gap-3">
-                        <IconPackage size={24} className="text-blue-400" />
+                        <Package size={24} className="text-blue-400" />
                         <h3 className="font-bold text-lg">Configuración de Stock</h3>
                     </div>
                     <button onClick={onClose} className="hover:bg-white/10 p-1.5 rounded-full transition-colors">
-                        <IconX size={20} />
+                        <X size={20} />
                     </button>
                 </div>
 
@@ -73,7 +73,7 @@ export default function StockSettingsModal({ isOpen, onClose, onSuccess }: Stock
                         <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm border border-slate-100">
-                                    <IconDeviceHeartMonitor size={20} className="text-blue-600" />
+                                    <HeartPulse size={20} className="text-blue-600" />
                                 </div>
                                 <div>
                                     <p className="font-bold text-slate-800">Mindray Z6</p>
@@ -92,7 +92,7 @@ export default function StockSettingsModal({ isOpen, onClose, onSuccess }: Stock
                         <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm border border-slate-100">
-                                    <IconDeviceHeartMonitor size={20} className="text-blue-700" />
+                                    <HeartPulse size={20} className="text-blue-700" />
                                 </div>
                                 <div>
                                     <p className="font-bold text-slate-800">Mindray Z60</p>
@@ -111,7 +111,7 @@ export default function StockSettingsModal({ isOpen, onClose, onSuccess }: Stock
                         <div className="flex items-center justify-between p-4 bg-slate-50 rounded-2xl border border-slate-100">
                             <div className="flex items-center gap-3">
                                 <div className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm border border-slate-100">
-                                    <IconDeviceHeartMonitor size={20} className="text-blue-800" />
+                                    <HeartPulse size={20} className="text-blue-800" />
                                 </div>
                                 <div>
                                     <p className="font-bold text-slate-800">Mindray M7</p>
@@ -133,7 +133,7 @@ export default function StockSettingsModal({ isOpen, onClose, onSuccess }: Stock
                         onClick={handleSave}
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl transition-all shadow-lg hover:shadow-blue-600/20 flex items-center justify-center gap-2"
                     >
-                        <IconDeviceFloppy size={20} />
+                        <Save size={20} />
                         {isLoading ? 'Guardando...' : 'Guardar Cambios'}
                     </button>
                 </div>

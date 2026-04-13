@@ -1,6 +1,7 @@
 "use client";
 
 import { memo } from "react";
+import { motion } from "framer-motion";
 import { ScenariosSlider } from "@/components/ui/scenarios-slider";
 import CallButton from "../ui/CallButton";
 
@@ -84,7 +85,7 @@ function ClinicalApplications({ city }: { city?: string }) {
 
     return (
         <div className="w-full bg-slate-50 py-24 lg:py-32">
-            <div className="container mx-auto px-4 mb-16 text-center" data-aos="fade-up">
+            <motion.div className="container mx-auto px-4 mb-16 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                     Versatilidad clínica
                 </span>
@@ -94,11 +95,11 @@ function ClinicalApplications({ city }: { city?: string }) {
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed mb-8">
                     {locationText} Nuestros ecógrafos Mindray se adaptan a su entorno ofreciendo diagnósticos confiables. Estas son algunas de la especialidades en las que se suele usar.<br />
                 </p>
-            </div>
+            </motion.div>
 
             <ScenariosSlider scenarios={scenarios} className="py-0 bg-transparent mb-16" />
 
-            <div className="container mx-auto px-2 text-center" data-aos="fade-up">
+            <motion.div className="container mx-auto px-2 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <CallButton
                     text="Cotizar con un asesor"
                     subtext="300 3608621"
@@ -107,7 +108,7 @@ function ClinicalApplications({ city }: { city?: string }) {
                     href="https://api.whatsapp.com/send/?phone=573003608621&text&type=phone_number&app_absent=0"
                     className="text-lg px-10 py-4"
                 />
-            </div>
+            </motion.div>
         </div>
     );
 }

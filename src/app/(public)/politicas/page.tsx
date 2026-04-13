@@ -1,4 +1,4 @@
-import { IconShieldCheck, IconLock, IconFileDescription, IconUserCheck, IconClock, IconBuildingSkyscraper, IconArrowLeft } from "@tabler/icons-react";
+import { ShieldCheck, Lock, FileText, UserCheck, Clock, Building2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -12,7 +12,7 @@ export default function PoliciesPage() {
             <div className="container mx-auto px-4">
                 <div className="mb-8">
                     <Link href="/" className="inline-flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors font-medium">
-                        <IconArrowLeft size={20} />
+                        <ArrowLeft size={20} />
                         Volver al inicio
                     </Link>
                 </div>
@@ -34,7 +34,7 @@ export default function PoliciesPage() {
                     <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
-                                <IconBuildingSkyscraper size={24} stroke={1.5} />
+                                <Building2 size={24} strokeWidth={1.5} />
                             </div>
                             <h2 className="text-2xl font-bold text-slate-900">1. Identificación del Responsable</h2>
                         </div>
@@ -51,7 +51,7 @@ export default function PoliciesPage() {
                     <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
-                                <IconFileDescription size={24} stroke={1.5} />
+                                <FileText size={24} strokeWidth={1.5} />
                             </div>
                             <h2 className="text-2xl font-bold text-slate-900">2. Finalidades del Tratamiento</h2>
                         </div>
@@ -86,7 +86,7 @@ export default function PoliciesPage() {
                     <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
-                                <IconUserCheck size={24} stroke={1.5} />
+                                <UserCheck size={24} strokeWidth={1.5} />
                             </div>
                             <h2 className="text-2xl font-bold text-slate-900">3. Derechos de los Titulares (Ley 1581 de 2012)</h2>
                         </div>
@@ -122,14 +122,14 @@ export default function PoliciesPage() {
                     <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
-                                <IconClock size={24} stroke={1.5} />
+                                <Clock size={24} strokeWidth={1.5} />
                             </div>
                             <h2 className="text-2xl font-bold text-slate-900">4. Retención y Medidas de Seguridad</h2>
                         </div>
                         <div className="space-y-4 text-slate-600">
                             <div className="flex gap-4">
                                 <div className="flex-shrink-0 mt-1">
-                                    <IconShieldCheck className="text-blue-500" size={20} />
+                                    <ShieldCheck className="text-blue-500" size={20} />
                                 </div>
                                 <div>
                                     <strong className="block text-slate-900">Seguridad de la Información</strong>
@@ -138,7 +138,7 @@ export default function PoliciesPage() {
                             </div>
                             <div className="flex gap-4">
                                 <div className="flex-shrink-0 mt-1">
-                                    <IconLock className="text-blue-500" size={20} />
+                                    <Lock className="text-blue-500" size={20} />
                                 </div>
                                 <div>
                                     <strong className="block text-slate-900">Periodo de Retención</strong>
@@ -152,7 +152,7 @@ export default function PoliciesPage() {
                     <div className="bg-white rounded-[30px] p-8 md:p-10 shadow-lg border border-slate-100">
                         <div className="flex items-center gap-4 mb-6">
                             <div className="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600">
-                                <IconFileDescription size={24} stroke={1.5} />
+                                <FileText size={24} strokeWidth={1.5} />
                             </div>
                             <h2 className="text-2xl font-bold text-slate-900">5. Política de Devoluciones, Soporte y Cancelaciones</h2>
                         </div>

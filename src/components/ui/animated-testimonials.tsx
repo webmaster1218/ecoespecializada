@@ -1,6 +1,6 @@
 "use client";
 
-import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
@@ -155,13 +155,13 @@ export const AnimatedTestimonials = ({
                             onClick={handlePrev}
                             className="rounded-full w-12 h-12 border border-slate-200 flex items-center justify-center hover:border-blue-500 hover:text-blue-500 transition-colors bg-white shadow-sm"
                         >
-                            <IconArrowLeft className="w-5 h-5" />
+                            <ArrowLeft className="w-5 h-5" />
                         </button>
                         <button
                             onClick={handleNext}
                             className="rounded-full w-12 h-12 bg-blue-600 flex items-center justify-center hover:bg-blue-700 shadow-lg shadow-blue-600/30 text-white transition-colors"
                         >
-                            <IconArrowRight className="w-5 h-5" />
+                            <ArrowRight className="w-5 h-5" />
                         </button>
                     </div>
                 </div>

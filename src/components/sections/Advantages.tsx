@@ -1,5 +1,7 @@
+"use client";
 
 import { memo } from "react";
+import { motion } from "framer-motion";
 
 function Advantages({ city }: { city?: string }) {
     const advantages = [
@@ -53,27 +55,29 @@ function Advantages({ city }: { city?: string }) {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-400/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center mb-16" data-aos="fade-up">
+                <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
                         Por qué elegir alquiler de ecógrafos {city ? `en ${city}` : "con nosotros"}
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
-                </div>
+                </motion.div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {advantages.map((adv, index) => (
-                        <div
+                        <motion.div
                             key={index}
                             className="bg-white p-8 rounded-[30px] border border-slate-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
-                            data-aos="fade-up"
-                            data-aos-delay={index * 100}
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
                         >
                             <div className="w-14 h-14 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                                 {adv.icon}
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">{adv.title}</h3>
                             <p className="text-slate-500 leading-relaxed text-sm">{adv.desc}</p>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
             </div>

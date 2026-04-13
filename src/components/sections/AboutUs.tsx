@@ -1,20 +1,23 @@
+"use client";
+
+import { motion } from "framer-motion";
 import styles from "./AboutUs.module.css";
-import { IconCertificate, IconTrophy, IconClipboardCheck, IconShieldCheck, IconCheck } from "@tabler/icons-react";
+import { Award, Trophy, ClipboardCheck, ShieldCheck, Check } from "lucide-react";
 import CallButton from "../ui/CallButton";
 
 export default function AboutUs({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="nosotros">
             <div className="container">
-                <div className={styles.header} data-aos="fade-up">
+                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Nuestra trayectoria</span>
                     <h2 className={styles.title}>Conoce a <span className="text-gradient">alquiler de ecógrafos</span></h2>
                     <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico {city ? `con presencia destacada en ${city}` : "desde Medellín para toda Colombia"} con tecnología de punta y servicio confiable.</p>
-                </div>
+                </motion.div>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12 lg:mb-20">
                     {/* Left Column: Story */}
-                    <div className="w-full lg:w-5/12" data-aos="fade-right">
+                    <motion.div className="w-full lg:w-5/12" initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <div className={`${styles.storyCard} glass-card p-6 md:p-10 lg:p-12 h-full flex flex-col justify-center`}>
                             <h3 className={styles.storyTitle}>Nuestra historia</h3>
                             <p className={styles.storyText}>
@@ -24,11 +27,11 @@ export default function AboutUs({ city }: { city?: string }) {
                                 Entendemos el día a día de los consultorios, clínicas y servicios de diagnóstico móvil. Por eso ofrecemos una solución flexible que se adapta a tus necesidades, con equipos de última generación y soporte técnico real.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Right Column: Stats & Certs */}
                     <div className="w-full lg:w-7/12 flex flex-col gap-6 lg:gap-8">
-                        <div className={`${styles.statsCard} glass-card p-6 md:p-8 w-full`} data-aos="fade-up" data-aos-delay="100">
+                        <motion.div className={`${styles.statsCard} glass-card p-6 md:p-8 w-full`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                             <h4 className={styles.statsTitle}>Números que hablan</h4>
                             <div className="grid grid-cols-2 gap-4 md:gap-6">
                                 <div className={styles.statItem}>
@@ -48,14 +51,14 @@ export default function AboutUs({ city }: { city?: string }) {
                                     <div className={styles.statLabel}>Soporte técnico</div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
 
-                        <div className={`${styles.certificationsCard} glass-card p-6 md:p-8 w-full`} data-aos="fade-up" data-aos-delay="200">
+                        <motion.div className={`${styles.certificationsCard} glass-card p-6 md:p-8 w-full`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                             <h4 className={styles.certTitle}>Certificaciones y respaldo</h4>
                             <div className="flex flex-col gap-4">
                                 <div className={styles.certItem}>
                                     <div className={styles.certIconWrapper}>
-                                        <IconClipboardCheck className={styles.certIconSvg} />
+                                        <ClipboardCheck className={styles.certIconSvg} />
                                     </div>
                                     <div>
                                         <strong>INVIMA certificado</strong>
@@ -64,7 +67,7 @@ export default function AboutUs({ city }: { city?: string }) {
                                 </div>
                                 <div className={styles.certItem}>
                                     <div className={styles.certIconWrapper}>
-                                        <IconTrophy className={styles.certIconSvg} />
+                                        <Trophy className={styles.certIconSvg} />
                                     </div>
                                     <div>
                                         <strong>Distribuidor oficial Mindray</strong>
@@ -73,7 +76,7 @@ export default function AboutUs({ city }: { city?: string }) {
                                 </div>
                                 <div className={styles.certItem}>
                                     <div className={styles.certIconWrapper}>
-                                        <IconCertificate className={styles.certIconSvg} />
+                                        <Award className={styles.certIconSvg} />
                                     </div>
                                     <div>
                                         <strong>ISO 9001:2015</strong>
@@ -81,15 +84,15 @@ export default function AboutUs({ city }: { city?: string }) {
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </motion.div>
                     </div>
                 </div>
 
-                <div className={styles.assurance} data-aos="fade-up">
+                <motion.div className={styles.assurance} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <div className={`${styles.assuranceCard} glass-card`}>
                         <div className={styles.assuranceContent}>
                             <div className={styles.assuranceIcon}>
-                                <IconShieldCheck className={styles.assuranceIconSvg} stroke={1.5} />
+                                <ShieldCheck className={styles.assuranceIconSvg} strokeWidth={1.5} />
                             </div>
                             <div className={styles.assuranceText}>
                                 <h3>Garantía total de confianza</h3>
@@ -106,7 +109,7 @@ export default function AboutUs({ city }: { city?: string }) {
                             <CallButton text="Llamar a un asesor" subtext="300 3608621" variant="highlight" />
                         </div>
                     </div>
-                </div>
+                </motion.div>
             </div>
         </section>
     );

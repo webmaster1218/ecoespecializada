@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import styles from './LogoLoop.module.css';
 
 const logoData = [
@@ -61,7 +62,7 @@ export default function LogoLoop() {
         <section className={styles.section}>
             <div className={styles.mask}></div>
 
-            <div className="container mx-auto px-4 mb-12 text-center" data-aos="fade-up">
+            <motion.div className="container mx-auto px-4 mb-12 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                     Confianza comprobada
                 </span>
@@ -71,7 +72,7 @@ export default function LogoLoop() {
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
                     Acompañamos a las instituciones de salud líderes en Colombia con tecnología y respaldo.
                 </p>
-            </div>
+            </motion.div>
 
             <div className={styles.sliderContainer}>
                 <div className={styles.slider}>

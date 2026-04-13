@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto } from "next/font/google";
 import "./globals.css";
-import "aos/dist/aos.css";
-import { AOSInit } from "@/components/ui/AOSInit";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -120,8 +118,7 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-WV8Q9KMF');`}
         </Script>
-         <AOSInit />
-         <script
+<script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />

@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import BookingsCalendar from "@/components/admin/BookingsCalendar";
-import AdminBookingModal from "@/components/admin/AdminBookingModal";
-import StockSettingsModal from "@/components/admin/StockSettingsModal";
+import dynamic from "next/dynamic";
+
+const BookingsCalendar = dynamic(() => import("@/components/admin/BookingsCalendar"), { ssr: false });
+const AdminBookingModal = dynamic(() => import("@/components/admin/AdminBookingModal"), { ssr: false });
+const StockSettingsModal = dynamic(() => import("@/components/admin/StockSettingsModal"), { ssr: false });
 import Image from "next/image";
 import { getTotalStock, checkAvailability } from "@/lib/availability";
-import { IconSettings } from "@tabler/icons-react";
+import { Settings } from "lucide-react";
 
 export default function CalendarPage() {
     const router = useRouter();
@@ -78,7 +80,7 @@ export default function CalendarPage() {
                         onClick={() => setShowStockModal(true)}
                         className="bg-slate-100 hover:bg-blue-50 hover:text-blue-600 text-slate-600 font-bold px-3 py-2 md:px-5 md:py-2.5 rounded-full transition-all border border-slate-200 flex items-center gap-2 text-xs md:text-sm"
                     >
-                        <IconSettings size={16} />
+                        <Settings size={16} />
                         <span className="hidden md:inline">Ajustar Stock</span>
                     </button>
                     <button
