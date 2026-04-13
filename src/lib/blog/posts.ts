@@ -16,6 +16,8 @@ El ultrasonido móvil, una herramienta indispensable en el diagnóstico moderno,
 
 Pero existe una alternativa estratégica que está transformando cómo las clínicas de [Medellín](/colombia/medellin/), [Bogotá](/colombia/bogota/), [Cali](/colombia/cali/), [Barranquilla](/colombia/barranquilla/), [Cartagena](/colombia/cartagena/), [Bucaramanga](/colombia/bucaramanga/), [Cúcuta](/colombia/cucuta/) y [Pereira](/colombia/pereira/) gestionan sus activos tecnológicos: el alquiler de ecógrafos.
 
+![Ecógrafo Mindray Z6 portátil](/images/z6/z6.webp)
+
 ## Tabla Comparativa: Compra vs Alquiler (Pesos Colombianos Reales)
 
 | Concepto | Compra Directa | Alquiler (12 meses) | Diferencia a Favor del Alquiler |
@@ -46,6 +48,8 @@ La preservación del capital es la ventaja más inmediata y tangible del alquile
 El ciclo de renovación tecnológica en ultrasonido médico es cada vez más corto. Lo que era "estado del arte" hace 2 años, hoy puede estar significativamente rezagado frente a nuevas capacidades de procesamiento de imagen, funcionalidades de IA y conectividad.
 
 **Alquilando, tu clínica siempre tiene acceso a:**
+
+![Mindray Z6 con trípode](/images/z6/z6-Tripode.webp)
 
 - La última generación de [transductores y aplicaciones clínicas](/blog/guia-transductores-ultrasonido/)
 - Actualizaciones de software incluidas en el contrato
@@ -103,6 +107,8 @@ En Colombia, los gastos operativos de clínicas y prácticas médicas son deduci
 
 ## El Factor Humano: Tecnología Atrae Pacientes
 
+![Mindray Z6 abierto mostrando pantalla](/images/z6/z6-abierto-derecha.webp)
+
 Más allá de los beneficios financieros y operativos, existe un factor que muchas clínicas subestiman: la percepción del paciente.
 
 **Datos de satisfacción del paciente en Colombia:**
@@ -118,6 +124,8 @@ Más allá de los beneficios financieros y operativos, existe un factor que much
 > — *Directora médica anónima, clínica privada en Pereira (datos verificados de operación real, identidad protegida por confidencialidad)*
 
 ## ¿Tu clínica está lista para esta transformación?
+
+![Vista lateral del Mindray Z6](/images/z6/z6-espalda.webp)
 
 El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: es una **estrategia empresarial integral** que combina:
 
