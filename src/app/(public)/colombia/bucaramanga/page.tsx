@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Bucaramanga", "venta ecógrafo Bucaramanga", "ecógrafo Mindray Bucaramanga", "equipos médicos Santander", "ecógrafo portátil Bucaramanga"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/bucaramanga" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Bucaramanga y todo Santander. Servicio ágil para médicos y clínicas bumanguesas.",
         url: "https://alquilerdeecografos.com/colombia/bucaramanga",
     },
@@ -149,7 +149,7 @@ export default function BucaramangaPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Bucaramanga - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Bucaramanga - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/bucaramanga",
                         "url": "https://alquilerdeecografos.com/bucaramanga",

@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Cali", "venta ecógrafo Cali", "ecógrafo Mindray Cali", "equipos médicos Valle del Cauca", "ecógrafo portátil Cali", "arriendo ecógrafo Cali"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cali" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cali | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Cali | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Cali y el Valle del Cauca. Servicio ágil para médicos y clínicas caleñas.",
         url: "https://alquilerdeecografos.com/colombia/cali",
     },
@@ -149,7 +149,7 @@ export default function CaliPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Cali - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Cali - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/colombia/cali",
                         "url": "https://alquilerdeecografos.com/colombia/cali",

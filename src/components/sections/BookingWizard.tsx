@@ -24,6 +24,9 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import CustomDatePicker from "@/components/ui/DatePicker";
+import { calculateDays, calculateTotalPrice, PRICING_CONFIG } from "@/lib/pricing";
+import { checkAvailability, getNextAvailableDate } from "@/lib/availability";
+import { supabase } from "@/lib/supabase";
 import { pdf } from "@react-pdf/renderer";
 import TestContractPDF, {
   ContractData,
@@ -80,16 +83,7 @@ const INITIAL_DATA: BookingData = {
   collectionTime: "",
 };
 
-const SHIPPING_COST = 50000;
-const CART_COST = 50000;
-const PRINTER_COST = 120000;
-import { checkAvailability, getNextAvailableDate } from "@/lib/availability";
-
-const PRICES = {
-  z6: 350000,
-  z60: 550000,
-  m7: 650000,
-};
+// Pricing logic moved to @/lib/pricing
 
 export default function BookingWizard() {
   const router = useRouter();
@@ -178,7 +172,34 @@ export default function BookingWizard() {
       setIsSubmitting(true);
       const totalPrice = getTotalPrice();
 
-      // Send to Webhook
+      // 2. Guardar en Supabase para que aparezca en el Admin
+      if (supabase) {
+        const { error: dbError } = await supabase
+          .from('bookings')
+          .insert([{
+            client_name: formData.name,
+            client_email: formData.email,
+            client_phone: formData.phone,
+            start_date: formData.startDate,
+            end_date: formData.endDate,
+            quantity_z6: formData.quantities.z6,
+            quantity_z60: formData.quantities.z60,
+            quantity_m7: formData.quantities.m7,
+            include_cart: formData.includeCart,
+            include_printer: formData.includePrinter,
+            total_price: totalPrice,
+            status: 'pending_delivery', // Estado inicial por defecto
+            address: `${formData.address}, ${formData.city}`,
+          }]);
+
+        if (dbError) {
+          console.error("Error saving to database:", dbError);
+          // Opcional: Podríamos lanzar un error aquí si queremos que falle la reserva completa,
+          // pero mejor dejar que siga si el webhook/email funciona.
+        }
+      }
+
+      // 3. Enviar PDF vía Webhook (n8n)
       const webhookUrl =
         "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
 
@@ -449,27 +470,15 @@ export default function BookingWizard() {
 
   // Pricing Logic
   const getTotalPrice = () => {
-    const z6Price = formData.quantities.z6 * PRICES.z6;
-    const z60Price = formData.quantities.z60 * PRICES.z60;
-    const m7Price = formData.quantities.m7 * PRICES.m7;
-    const dailyRate = z6Price + z60Price + m7Price;
-
-    const days = totalDays > 0 ? totalDays : 1;
-    const subtotal = dailyRate * days;
-
-    // Cart cost applies once per full order or per unit? Assuming per order for now or maybe per unit if cart is generic?
-    // Let's assume the cart option adds one cart per order or maybe we should scale it?
-    // For simplicity: Cart Fee is flat for now based on previous code, but logically should perhaps be per unit.
-    // User didn't specify, keeping it flat but assuming 'Include Carts' means carts for all units or just a general service fee.
-    // Let's keep it flat: "Base Rodable" = 50k total (maybe it's a rental fee per reservation).
-    // Actually, usually it's per unit. Let's make it smarter: If carts selected, add 50k * total units?
-    // Let's keep it flat: "Base Rodable" = 50k total (maybe it's a rental fee per reservation).
-    // Actually, usually it's per unit. Let's make it smarter: If carts selected, add 50k * total units?
-    // Returning to original logic: it was a toggle. Let's keep it simple: Fixed cost for "Service Cart/Stand".
-    const cartTotal = formData.includeCart ? CART_COST : 0;
-    const printerTotal = formData.includePrinter ? PRINTER_COST : 0;
-
-    return subtotal + SHIPPING_COST + cartTotal + printerTotal;
+    return calculateTotalPrice({
+      quantityZ6: formData.quantities.z6,
+      quantityZ60: formData.quantities.z60,
+      quantityM7: formData.quantities.m7,
+      includeCart: formData.includeCart,
+      includePrinter: formData.includePrinter,
+      days: totalDays,
+      includeShipping: true // Formulario público siempre incluye domicilio
+    });
   };
 
   return (
@@ -824,7 +833,7 @@ export default function BookingWizard() {
                         {
                           id: "m7",
                           name: "Mindray M7",
-                          price: PRICES.m7,
+                          price: PRICING_CONFIG.EQUIPMENT.m7,
                           img: "/images/m7/m7-abierto-derecha.webp",
                           badge: "Nuevo",
                           desc: "3D/4D Premium",
@@ -832,14 +841,14 @@ export default function BookingWizard() {
                         {
                           id: "z6",
                           name: "Mindray Z6",
-                          price: PRICES.z6,
+                          price: PRICING_CONFIG.EQUIPMENT.z6,
                           img: "/images/z6/z6-abierto-izquierda.webp",
                           desc: "Ideal obstetricia",
                         },
                         {
                           id: "z60",
                           name: "Mindray Z60",
-                          price: PRICES.z60,
+                          price: PRICING_CONFIG.EQUIPMENT.z60,
                           img: "/images/z60/z-60-abierto-izquierda.webp",
                           badge: "Más popular",
                           desc: "Calidad superior",
@@ -1060,7 +1069,7 @@ export default function BookingWizard() {
                             </div>
                             <div className="text-right">
                               <div className="font-bold text-slate-900 text-sm">
-                                +${CART_COST.toLocaleString()}
+                                +${PRICING_CONFIG.EXTRAS.cart.toLocaleString()}
                               </div>
                               <label className="relative inline-flex items-center cursor-pointer mt-0.5">
                                 <input
@@ -1103,7 +1112,7 @@ export default function BookingWizard() {
                             </div>
                             <div className="text-right">
                               <div className="font-bold text-slate-900 text-sm">
-                                +${PRINTER_COST.toLocaleString()}
+                                +${PRICING_CONFIG.EXTRAS.printer.toLocaleString()}
                               </div>
                               <label className="relative inline-flex items-center cursor-pointer mt-0.5">
                                 <input
@@ -1138,7 +1147,7 @@ export default function BookingWizard() {
                         ${getTotalPrice().toLocaleString()}
                       </div>
                       <p className="text-[11px] text-blue-300/70 font-medium mt-1">
-                        *Costo de envío y recogida $50.000*
+                        *Costo de envío y recogida ${PRICING_CONFIG.LOGISTICS.shipping.toLocaleString()}*
                       </p>
                     </div>
                     <div className="text-right flex flex-col items-end relative z-10">
@@ -1256,7 +1265,7 @@ export default function BookingWizard() {
                             $
                             {(
                               formData.quantities.m7 *
-                              PRICES.m7 *
+                              PRICING_CONFIG.EQUIPMENT.m7 *
                               totalDays
                             ).toLocaleString()}
                           </span>
@@ -1271,7 +1280,7 @@ export default function BookingWizard() {
                             $
                             {(
                               formData.quantities.z6 *
-                              PRICES.z6 *
+                              PRICING_CONFIG.EQUIPMENT.z6 *
                               totalDays
                             ).toLocaleString()}
                           </span>
@@ -1286,7 +1295,7 @@ export default function BookingWizard() {
                             $
                             {(
                               formData.quantities.z60 *
-                              PRICES.z60 *
+                              PRICING_CONFIG.EQUIPMENT.z60 *
                               totalDays
                             ).toLocaleString()}
                           </span>
@@ -1324,7 +1333,7 @@ export default function BookingWizard() {
                       <li className="flex justify-between items-center">
                         <span className="text-slate-500 text-sm">Envío</span>
                         <span className="font-bold text-slate-800">
-                          ${SHIPPING_COST.toLocaleString()}
+                          ${PRICING_CONFIG.LOGISTICS.shipping.toLocaleString()}
                         </span>
                       </li>
                       {formData.includeCart && (
@@ -1333,7 +1342,7 @@ export default function BookingWizard() {
                             Base rodable (carrito)
                           </span>
                           <span className="font-bold text-slate-800">
-                            ${CART_COST.toLocaleString()}
+                            ${PRICING_CONFIG.EXTRAS.cart.toLocaleString()}
                           </span>
                         </li>
                       )}
@@ -1343,7 +1352,7 @@ export default function BookingWizard() {
                             Impresora Sony BP
                           </span>
                           <span className="font-bold text-slate-800">
-                            ${PRINTER_COST.toLocaleString()}
+                            ${PRICING_CONFIG.EXTRAS.printer.toLocaleString()}
                           </span>
                         </li>
                       )}

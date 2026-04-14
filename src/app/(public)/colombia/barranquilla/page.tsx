@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Barranquilla", "venta ecógrafo Barranquilla", "ecógrafo Mindray Barranquilla", "equipos médicos Costa Atlántica", "ecógrafo portátil Barranquilla"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/barranquilla" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Barranquilla | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Barranquilla | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Barranquilla y toda la Costa Caribe. Servicio ágil para médicos y clínicas barranquilleras.",
         url: "https://alquilerdeecografos.com/colombia/barranquilla",
     },
@@ -149,7 +149,7 @@ export default function BarranquillaPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Barranquilla - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Barranquilla - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/barranquilla",
                         "url": "https://alquilerdeecografos.com/barranquilla",

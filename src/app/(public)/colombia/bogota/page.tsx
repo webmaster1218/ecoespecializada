@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Bogotá", "venta ecógrafo Bogotá", "ecógrafo Mindray Bogotá", "equipos médicos Bogotá", "ecógrafo portátil Bogotá", "arriendo ecógrafo Bogotá"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/bogota" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Bogotá | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Bogotá | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en toda Bogotá. Desde Chapinero hasta Suba, llevamos el ecógrafo hasta tu consultorio.",
         url: "https://alquilerdeecografos.com/colombia/bogota",
     },
@@ -152,7 +152,7 @@ export default function BogotaPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Bogotá - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Bogotá - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/bogota",
                         "url": "https://alquilerdeecografos.com/bogota",

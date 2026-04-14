@@ -4,7 +4,7 @@ import { memo } from "react";
 import { motion } from "framer-motion";
 import styles from "./AdditionalServices.module.css";
 import { Wrench, Settings, ShoppingBag, Check, ArrowRight } from "lucide-react";
-import CallButton from "../ui/CallButton";
+import CallButton from "@/components/ui/CallButton";
 
 function AdditionalServices() {
     const services = [

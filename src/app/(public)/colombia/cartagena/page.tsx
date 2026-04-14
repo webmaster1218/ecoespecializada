@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Cartagena", "venta ecógrafo Cartagena", "ecógrafo Mindray Cartagena", "equipos médicos Bolívar", "ecógrafo portátil Cartagena de Indias"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cartagena" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cartagena | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Cartagena | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Cartagena y Bolívar. Servicio ágil para médicos y clínicas cartageneras.",
         url: "https://alquilerdeecografos.com/colombia/cartagena",
     },
@@ -149,7 +149,7 @@ export default function CartagenaPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Cartagena - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Cartagena - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/cartagena",
                         "url": "https://alquilerdeecografos.com/cartagena",

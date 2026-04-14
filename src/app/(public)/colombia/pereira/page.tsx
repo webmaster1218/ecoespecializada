@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Pereira", "venta ecógrafo Pereira", "ecógrafo Mindray Pereira", "equipos médicos Eje Cafetero", "ecógrafo portátil Risaralda", "arriendo ecógrafo Pereira"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/pereira" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Pereira | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Pereira | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Pereira y el Eje Cafetero. Servicio ágil para médicos y clínicas risaraldenses.",
         url: "https://alquilerdeecografos.com/colombia/pereira",
     },
@@ -149,7 +149,7 @@ export default function PereiraPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Pereira - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Pereira - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/pereira",
                         "url": "https://alquilerdeecografos.com/pereira",

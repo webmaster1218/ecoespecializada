@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { X, HeartPulse, User, Calendar, MapPin, Clock, Tag, Plus, Minus } from "lucide-react";
 import { supabase, isSupabaseConfigured } from "@/lib/supabase";
 import { checkAvailability } from "@/lib/availability";
+import { calculateDays, calculateTotalPrice } from "@/lib/pricing";
 import CustomDatePicker from "@/components/ui/DatePicker";
 
 interface AdminBookingModalProps {
@@ -38,7 +39,14 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
         includePrinter: false,
         selectedTransducers: [] as string[],
         status: "pending_delivery",
-        notes: ""
+        notes: "",
+        // Independent dates for massive blocking
+        z6StartDate: "",
+        z6EndDate: "",
+        z60StartDate: "",
+        z60EndDate: "",
+        m7StartDate: "",
+        m7EndDate: ""
     });
 
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -64,7 +72,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 includePrinter: bookingToEdit.include_printer || false,
                 selectedTransducers: bookingToEdit.selected_transducers || [],
                 status: bookingToEdit.status || "pending_delivery",
-                notes: bookingToEdit.notes || ""
+                notes: bookingToEdit.notes || "",
+                z6StartDate: bookingToEdit.start_date || "",
+                z6EndDate: bookingToEdit.end_date || "",
+                z60StartDate: bookingToEdit.start_date || "",
+                z60EndDate: bookingToEdit.end_date || "",
+                m7StartDate: bookingToEdit.start_date || "",
+                m7EndDate: bookingToEdit.end_date || ""
             });
         } else if (!bookingToEdit && isOpen) {
             setFormData({
@@ -86,7 +100,13 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 includePrinter: false,
                 selectedTransducers: [],
                 status: isBlockingMode ? "maintenance" : "pending_delivery",
-                notes: ""
+                notes: "",
+                z6StartDate: initialDateRange?.start || "",
+                z6EndDate: initialDateRange?.end || "",
+                z60StartDate: initialDateRange?.start || "",
+                z60EndDate: initialDateRange?.end || "",
+                m7StartDate: initialDateRange?.start || "",
+                m7EndDate: initialDateRange?.end || ""
             });
         }
     }, [bookingToEdit, isOpen, initialDateRange, isBlockingMode]);
@@ -116,29 +136,21 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
         }));
     };
 
-    const PRICE_Z6_PER_DAY = 120000;
-    const PRICE_Z60_PER_DAY = 180000;
-    const PRICE_M7_PER_DAY = 850000;
-    const PRICE_CART = 50000;
-    const PRICE_PRINTER = 30000;
-
-    const getDays = () => {
-        if (!formData.startDate || !formData.endDate) return 1;
-        const start = new Date(formData.startDate);
-        const end = new Date(formData.endDate);
-        const diff = Math.ceil((end.getTime() - start.getTime()) / (1000 * 60 * 60 * 24));
-        return Math.max(1, diff + 1);
-    };
+    const getDays = () => calculateDays(formData.startDate, formData.endDate);
 
     const getTotalPrice = () => {
-        const days = getDays();
-        let total = 0;
-        total += formData.quantityZ6 * PRICE_Z6_PER_DAY * days;
-        total += formData.quantityZ60 * PRICE_Z60_PER_DAY * days;
-        total += formData.quantityM7 * PRICE_M7_PER_DAY * days;
-        if (formData.includeCart) total += PRICE_CART;
-        if (formData.includePrinter) total += PRICE_PRINTER;
-        return total;
+        return calculateTotalPrice({
+            quantityZ6: formData.quantityZ6,
+            quantityZ60: formData.quantityZ60,
+            quantityM7: formData.quantityM7,
+            includeCart: formData.includeCart,
+            includePrinter: formData.includePrinter,
+            days: getDays(),
+            includeShipping: false // In admin, we might not want to force shipping by default yet, or maybe yes?
+            // Actually, let's make it consistent with the user's needs. 
+            // Most admin bookings are direct, might not need shipping. 
+            // I'll leave it as false for now but I can add a toggle if they want.
+        });
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -147,33 +159,102 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
 
         setIsLoading(true);
         try {
-            const payload = {
-                client_name: formData.clientName,
-                client_phone: formData.clientPhone,
-                client_email: formData.clientEmail,
-                client_address: formData.clientAddress,
-                client_type: formData.clientType,
-                document_number: formData.documentNumber,
-                tax_id: formData.taxId,
-                start_date: formData.startDate,
-                end_date: formData.endDate,
-                delivery_time: formData.deliveryTime,
-                collection_time: formData.collectionTime,
-                quantity_z6: formData.quantityZ6,
-                quantity_z60: formData.quantityZ60,
-                quantity_m7: formData.quantityM7,
-                include_cart: formData.includeCart,
-                include_printer: formData.includePrinter,
-                selected_transducers: formData.selectedTransducers,
-                status: formData.status,
-                notes: formData.notes,
-                total_price: getTotalPrice()
-            };
-
             if (bookingToEdit) {
+                const payload = {
+                    client_name: formData.clientName,
+                    client_phone: formData.clientPhone,
+                    client_email: formData.clientEmail,
+                    client_address: formData.clientAddress,
+                    client_type: formData.clientType,
+                    document_number: formData.documentNumber,
+                    tax_id: formData.taxId,
+                    start_date: formData.startDate,
+                    end_date: formData.endDate,
+                    delivery_time: formData.deliveryTime,
+                    collection_time: formData.collectionTime,
+                    quantity_z6: formData.quantityZ6,
+                    quantity_z60: formData.quantityZ60,
+                    quantity_m7: formData.quantityM7,
+                    include_cart: formData.includeCart,
+                    include_printer: formData.includePrinter,
+                    selected_transducers: formData.selectedTransducers,
+                    status: formData.status,
+                    notes: formData.notes,
+                    total_price: getTotalPrice()
+                };
                 const { error } = await supabase.from('bookings').update(payload).eq('id', bookingToEdit.id);
                 if (error) throw error;
+            } else if (isBlockingMode) {
+                // MASSIVE BLOCKING: Create one record per model if quantity > 0
+                const blocks = [];
+                if (formData.quantityZ6 > 0) {
+                    blocks.push({
+                        client_name: "BLOQUEO Z6",
+                        status: 'maintenance',
+                        quantity_z6: formData.quantityZ6,
+                        quantity_z60: 0,
+                        quantity_m7: 0,
+                        start_date: formData.z6StartDate || formData.startDate,
+                        end_date: formData.z6EndDate || formData.endDate,
+                        notes: `Bloqueo masivo: ${formData.notes}`.trim()
+                    });
+                }
+                if (formData.quantityZ60 > 0) {
+                    blocks.push({
+                        client_name: "BLOQUEO Z60",
+                        status: 'maintenance',
+                        quantity_z6: 0,
+                        quantity_z60: formData.quantityZ60,
+                        quantity_m7: 0,
+                        start_date: formData.z60StartDate || formData.startDate,
+                        end_date: formData.z60EndDate || formData.endDate,
+                        notes: `Bloqueo masivo: ${formData.notes}`.trim()
+                    });
+                }
+                if (formData.quantityM7 > 0) {
+                    blocks.push({
+                        client_name: "BLOQUEO M7",
+                        status: 'maintenance',
+                        quantity_z6: 0,
+                        quantity_z60: 0,
+                        quantity_m7: formData.quantityM7,
+                        start_date: formData.m7StartDate || formData.startDate,
+                        end_date: formData.m7EndDate || formData.endDate,
+                        notes: `Bloqueo masivo: ${formData.notes}`.trim()
+                    });
+                }
+
+                if (blocks.length === 0) {
+                    alert("Por favor selecciona al menos un equipo para bloquear");
+                    setIsLoading(false);
+                    return;
+                }
+
+                const { error } = await supabase.from('bookings').insert(blocks);
+                if (error) throw error;
             } else {
+                const payload = {
+                    client_name: formData.clientName,
+                    client_phone: formData.clientPhone,
+                    client_email: formData.clientEmail,
+                    client_address: formData.clientAddress,
+                    client_type: formData.clientType,
+                    document_number: formData.documentNumber,
+                    tax_id: formData.taxId,
+                    start_date: formData.startDate,
+                    end_date: formData.endDate,
+                    delivery_time: formData.deliveryTime,
+                    collection_time: formData.collectionTime,
+                    quantity_z6: formData.quantityZ6,
+                    quantity_z60: formData.quantityZ60,
+                    quantity_m7: formData.quantityM7,
+                    include_cart: formData.includeCart,
+                    include_printer: formData.includePrinter,
+                    selected_transducers: formData.selectedTransducers,
+                    status: formData.status,
+                    notes: formData.notes,
+                    total_price: getTotalPrice()
+                };
                 const { error } = await supabase.from('bookings').insert([payload]);
                 if (error) throw error;
             }
@@ -245,56 +326,52 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                 <span className="text-2xl">🔒</span> Esta herramienta bloquea los equipos en el calendario para mantenimiento o reservas internas sin registrar datos de cliente.
                             </p>
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                {/* Dates */}
+                            <div className="grid grid-cols-1 gap-8">
+                                {/* Equipment - Full Width Massive Blocking */}
                                 <div className="space-y-6">
                                     <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">
-                                        <Calendar size={16} /> Fechas a Bloquear
+                                        <HeartPulse size={16} /> Configuración de Bloqueo por Equipo
                                     </h4>
-                                    <div className="space-y-5 bg-slate-50 p-6 rounded-3xl border border-slate-100 shadow-sm">
-                                        <CustomDatePicker
-                                            label="Fecha Inicial"
-                                            value={formData.startDate}
-                                            onChange={date => setFormData({ ...formData, startDate: date })}
-                                            labelClassName="text-[10px] font-black text-slate-800 uppercase tracking-wider block mb-2"
-                                        />
-                                        <div className="pt-2">
-                                            <CustomDatePicker
-                                                label="Fecha Final"
-                                                value={formData.endDate}
-                                                onChange={date => setFormData({ ...formData, endDate: date })}
-                                                minDate={formData.startDate}
-                                                labelClassName="text-[10px] font-black text-slate-800 uppercase tracking-wider block mb-2"
-                                            />
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Equipment */}
-                                <div className="space-y-6">
-                                    <h4 className="flex items-center gap-2 text-xs font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 pb-3">
-                                        <HeartPulse size={16} /> Equipos a Bloquear
-                                    </h4>
-                                    <div className="space-y-3">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         {[
-                                            { key: 'quantityZ6' as const, label: 'Mindray Z6', color: 'blue', max: availableStock.z6 },
-                                            { key: 'quantityZ60' as const, label: 'Mindray Z60', color: 'blue', max: availableStock.z60 },
-                                            { key: 'quantityM7' as const, label: 'Mindray M7', color: 'indigo', max: availableStock.m7 },
-                                        ].map(({ key, label, color, max }) => (
-                                            <div key={key} className="flex items-center justify-between bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                                <span className={`text-xs font-black text-${color}-600 uppercase tracking-wider`}>{label}</span>
-                                                <div className="flex items-center gap-3">
-                                                    <button type="button" onClick={() => setFormData(p => ({ ...p, [key]: Math.max(0, p[key] - 1) }))}
-                                                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm">
-                                                        <Minus size={14} />
-                                                    </button>
-                                                    <span className="w-8 text-center font-black text-xl text-slate-800">{formData[key]}</span>
-                                                    <button type="button" disabled={formData[key] >= max}
-                                                        onClick={() => setFormData(p => ({ ...p, [key]: Math.min(max, p[key] + 1) }))}
-                                                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm disabled:opacity-30">
-                                                        <Plus size={14} />
-                                                    </button>
+                                            { key: 'quantityZ6' as const, startKey: 'z6StartDate' as const, endKey: 'z6EndDate' as const, label: 'Mindray Z6', color: 'blue', max: availableStock.z6 },
+                                            { key: 'quantityZ60' as const, startKey: 'z60StartDate' as const, endKey: 'z60EndDate' as const, label: 'Mindray Z60', color: 'blue', max: availableStock.z60 },
+                                            { key: 'quantityM7' as const, startKey: 'm7StartDate' as const, endKey: 'm7EndDate' as const, label: 'Mindray M7', color: 'indigo', max: availableStock.m7 },
+                                        ].map(({ key, startKey, endKey, label, color, max }) => (
+                                            <div key={key} className={`bg-slate-50 p-6 rounded-3xl border ${formData[key] > 0 ? 'border-blue-200 bg-blue-50/30' : 'border-slate-100'} space-y-4 transition-all`}>
+                                                <div className="flex items-center justify-between">
+                                                    <span className={`text-xs font-black text-${color}-600 uppercase tracking-wider`}>{label}</span>
+                                                    <div className="flex items-center gap-3">
+                                                        <button type="button" onClick={() => setFormData(p => ({ ...p, [key]: Math.max(0, p[key] - 1) }))}
+                                                            className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm">
+                                                            <Minus size={14} />
+                                                        </button>
+                                                        <span className="w-8 text-center font-black text-xl text-slate-800">{formData[key]}</span>
+                                                        <button type="button" disabled={formData[key] >= max}
+                                                            onClick={() => setFormData(p => ({ ...p, [key]: Math.min(max, p[key] + 1) }))}
+                                                            className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 shadow-sm disabled:opacity-30">
+                                                            <Plus size={14} />
+                                                        </button>
+                                                    </div>
                                                 </div>
+                                                
+                                                {formData[key] > 0 && (
+                                                    <div className="grid grid-cols-2 gap-3 pt-2 animate-in fade-in slide-in-from-top-2">
+                                                        <CustomDatePicker
+                                                            label="Desde"
+                                                            value={formData[startKey]}
+                                                            onChange={date => setFormData({ ...formData, [startKey]: date })}
+                                                            labelClassName="text-[9px] font-black text-slate-400 uppercase tracking-wider block mb-1"
+                                                        />
+                                                        <CustomDatePicker
+                                                            label="Hasta"
+                                                            value={formData[endKey]}
+                                                            onChange={date => setFormData({ ...formData, [endKey]: date })}
+                                                            minDate={formData[startKey]}
+                                                            labelClassName="text-[9px] font-black text-slate-400 uppercase tracking-wider block mb-1"
+                                                        />
+                                                    </div>
+                                                )}
                                             </div>
                                         ))}
                                     </div>

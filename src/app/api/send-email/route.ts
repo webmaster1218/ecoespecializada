@@ -49,7 +49,7 @@ export async function POST(req: Request) {
         const mailOptions = {
             from: `"Alquiler de Ecógrafos" <${SMTP_USER}>`,
             to: client_email,
-            bcc: SMTP_USER,
+            bcc: [SMTP_USER, 'ecoespecializada@gmail.com'],
             subject: `📄 Contrato de Alquiler y Confirmación - ${client_name}`,
             html: `
             <!DOCTYPE html>
@@ -107,7 +107,7 @@ export async function POST(req: Request) {
                                 <span class="step-title">Firma el documento</span>
                                 <p style="margin-left: 45px; color: #444;">Elige la opción más fácil para ti:</p>
                                 <ul style="margin-left: 45px; color: #444;">
-                                    <li><b>Opción A (Más fácil):</b> Imprime el papel, fírmalo con un esfero y tómale una <b>foto clara</b> con tu celular.</li>
+                                    <li><b>Opción A:</b> Imprime el documento, fírmalo y tómale una foto clara (te recomendamos usar la descargar la app <b>CamScanner</b> para firmar el contrato).</li>
                                     <li><b>Opción B:</b> Fírmalo digitalmente si sabes cómo hacerlo desde tu PC o celular.</li>
                                 </ul>
                             </div>

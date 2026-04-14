@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     keywords: ["alquiler ecógrafo Cúcuta", "venta ecógrafo Cúcuta", "ecógrafo Mindray Cúcuta", "equipos médicos Norte de Santander", "ecógrafo portátil Cúcuta", "arriendo ecógrafo Cúcuta"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cucuta" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cúcuta | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Cúcuta | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en Cúcuta y Norte de Santander. Servicio ágil para médicos y clínicas cucuteñas.",
         url: "https://alquilerdeecografos.com/colombia/cucuta",
     },
@@ -149,7 +149,7 @@ export default function CucutaPage() {
                     __html: JSON.stringify({
                         "@context": "https://schema.org",
                         "@type": "LocalBusiness",
-                        "name": "Alquiler de Ecógrafos en Cúcuta - Ecoespecializada",
+                        "name": "Alquiler de Ecógrafos en Cúcuta - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
                         "@id": "https://alquilerdeecografos.com/cucuta",
                         "url": "https://alquilerdeecografos.com/cucuta",

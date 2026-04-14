@@ -1,7 +1,7 @@
 
 import dynamic from "next/dynamic";
 import Hero from "@/components/sections/Hero";
-import ExperienceVideo from "@/components/sections/ExperienceVideo";
+const ExperienceVideo = dynamic(() => import("@/components/sections/ExperienceVideo"), { ssr: true });
 import Footer from "@/components/layout/Footer";
 
 const Advantages = dynamic(() => import("@/components/sections/Advantages"), { ssr: true });
