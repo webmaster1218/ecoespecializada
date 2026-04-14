@@ -57,7 +57,7 @@ export function generateArticleSchema(post: BlogPost) {
       name: 'Alquiler de Ecógrafos',
       logo: {
         '@type': 'ImageObject',
-        url: '/images/logo/logo_alquilerdeecografos.png',
+        url: '/images/logo/logo_alquilerdeecografos.webp',
       },
     },
   };

@@ -52,7 +52,7 @@ export default function EcografoM7Page() {
         <div className={`bg-white border-b border-slate-100 flex justify-center items-center gap-2 transition-all duration-300 overflow-hidden ${scrolled ? "h-0 py-0 opacity-0 border-transparent" : "h-10 py-2 opacity-100"}`}>
           <span className="text-[10px] md:text-xs font-medium text-slate-500 tracking-tight">Una marca de</span>
           <Image
-            src="/images/logo/equibiomedic-new.png"
+            src="/images/logo/equibiomedic-new.webp"
             alt="Equibiomedic Logo"
             width={100}
             height={20}

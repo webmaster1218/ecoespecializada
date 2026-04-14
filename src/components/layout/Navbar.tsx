@@ -44,7 +44,7 @@ export default function Navbar() {
             <div className={styles.brandingBar}>
                 <span className={styles.brandLabel}>Una marca de</span>
                 <Image
-                    src="/images/logo/equibiomedic-new.png"
+                    src="/images/logo/equibiomedic-new.webp"
                     alt="Equibiomedic Logo"
                     width={120}
                     height={24}
