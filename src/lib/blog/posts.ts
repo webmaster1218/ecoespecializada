@@ -1,4 +1,5 @@
 import { BlogPost } from './types';
+import { categories } from './categories';
 
 // Sample blog posts data - Updated April 11, 2026
 // In production, this could be fetched from Supabase or an API
@@ -157,7 +158,7 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
     `,
     author: "Dr. Juan Pérez",
     image: "/images/z6/z6.webp",
-    category: "Guías",
+    category: "guias",
     readTime: 5,
     tags: ["alquiler", "costos", "clínicas"]
   },
@@ -497,7 +498,7 @@ Nuestros especialistas en ultrasonido médico pueden ayudarte a analizar tu situ
     author: "Ing. María González",
     date: "2026-04-11",
     image: "/images/z60/z-60.webp",
-    category: "Guías",
+    category: "guias",
     readTime: 15,
     tags: ["comparación", "mindray", "equipos", "especificaciones técnicas", "costo-beneficio"]
   },
@@ -576,7 +577,7 @@ El alquiler de ecógrafos puede ser el catalizador para transformar una práctic
     author: "Dr. Carlos Martínez",
     date: "2026-04-08",
     image: "/images/m7/m7.webp",
-    category: "Casos de Éxito",
+    category: "casos-exito",
     readTime: 6,
     tags: ["caso de éxito", "clínica", "resultados"]
   },
@@ -1009,7 +1010,7 @@ Las tendencias futuras, incluyendo transductores 3D/4D, multifrecuencia, integra
     author: "Dr. Roberto Torres",
     date: "2026-04-05",
     image: "/images/clinical/mindray_ref.webp",
-    category: "Guías",
+    category: "guias",
     readTime: 8,
     tags: ["transductores", "guía técnica", "equipos"]
   },
@@ -1143,7 +1144,7 @@ El futuro del ultrasonido móvil en Colombia es brillante. La tecnología está 
     author: "Lic. Ana María Rodríguez",
     date: "2026-04-01",
     image: "/images/z6/z6.webp",
-    category: "Innovación",
+    category: "tecnica",
     readTime: 9,
     tags: ["futuro", "tendencias", "mercado"]
   }
@@ -1170,11 +1171,15 @@ export function getRelatedPosts(currentSlug: string, category: string, count: nu
     .slice(0, count);
 }
 
-export function getAllCategories(): Array<{ name: string; count: number }> {
-  const categories = posts.reduce((acc, post) => {
+export function getAllCategories(): Array<{ name: string; slug: string; count: number }> {
+  const catCounts = posts.reduce((acc, post) => {
     acc[post.category] = (acc[post.category] || 0) + 1;
     return acc;
   }, {} as Record<string, number>);
 
-  return Object.entries(categories).map(([name, count]) => ({ name, count }));
+  return Object.entries(catCounts).map(([slug, count]) => ({
+    name: categories[slug]?.name || slug,
+    slug,
+    count,
+  }));
 }

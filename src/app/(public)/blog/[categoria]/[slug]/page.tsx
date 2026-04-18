@@ -5,21 +5,16 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { formatDate, getReadingTime } from '@/lib/blog/utils';
+import { categories as categoryMap } from '@/lib/blog/categories';
 import { notFound } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import CallButton from '@/components/ui/CallButton';
 import styles from './BlogPost.module.css';
 
-// Function to get posts filtered by tag
-function getPostsByTag(tag: string) {
-  return (window as any).posts?.filter((post: any) => 
-    post.tags?.includes(tag)
-  ) || [];
-}
-
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params.slug as string;
+  const categoria = params.categoria as string;
 
   const post = getPostBySlug(slug);
 
@@ -27,6 +22,7 @@ export default function BlogPostPage() {
     notFound();
   }
 
+  const catMeta = categoryMap[post.category];
   const relatedPosts = getRelatedPosts(post.slug, post.category, 3);
 
   return (
@@ -40,6 +36,10 @@ export default function BlogPostPage() {
             <span className={styles.breadcrumbSeparator}>/</span>
             <Link href="/blog" className={styles.breadcrumbLink}>
               Blog
+            </Link>
+            <span className={styles.breadcrumbSeparator}>/</span>
+            <Link href={`/blog/${post.category}`} className={styles.breadcrumbLink}>
+              {catMeta?.name || post.category}
             </Link>
             <span className={styles.breadcrumbSeparator}>/</span>
             <span className={styles.breadcrumbCurrent}>{post.title}</span>
@@ -56,7 +56,7 @@ export default function BlogPostPage() {
               transition={{ duration: 0.6 }}
             >
               <div className={styles.articleMeta}>
-                <span className={styles.articleCategory}>{post.category}</span>
+                <span className={styles.articleCategory}>{catMeta?.name || post.category}</span>
                 <span className={styles.articleDate}>{formatDate(post.date)}</span>
                 <span className={styles.articleReadTime}>{getReadingTime(post.content)}</span>
               </div>
@@ -121,14 +121,13 @@ export default function BlogPostPage() {
                     return <h6 key={index}>{text}</h6>;
                   }
 
-                  // Check if it's a list item - FIXED: Also detect lines starting with checkmarks and hyphens
+                  // Check if it's a list item
                   const listItems = [];
                   const lines = paragraph.split('\n');
                   let isList = false;
-                  
+
                   for (const line of lines) {
                     const trimmed = line.trim();
-                    // Detect standard bullet (-) OR checkmarks (✓, ✔, ✅)
                     if (trimmed.startsWith('- ')) {
                       isList = true;
                       listItems.push(trimmed.substring(2));
@@ -136,20 +135,17 @@ export default function BlogPostPage() {
                       isList = true;
                       listItems.push(trimmed.replace(/^[✓✔✅]\s+/, ''));
                     }
-                    // Also handle mixed formats (checkmark followed by text)
                     else if (trimmed.match(/^[✓✔✅]/)) {
-                      // This is a mixed checkmark line, check if it has leading spaces or text
                       if (trimmed.length > 1 && !trimmed.startsWith('✅') && !trimmed.startsWith('✓') && !trimmed.startsWith('✔')) {
                         isList = true;
                         listItems.push(trimmed);
                       }
                     }
                   }
-                  
+
                   if (isList && listItems.length > 0) {
-                    // Check if any item has check marks at the start
                     const hasCheckMarks = listItems.some(item => item.trim().startsWith('✓') || item.trim().startsWith('✔') || item.trim().startsWith('✅'));
-                    
+
                     return (
                       <ul key={index} className={hasCheckMarks ? styles.checkList : styles.list}>
                         {listItems.map((item, i) => (
@@ -226,7 +222,7 @@ export default function BlogPostPage() {
                     className={styles.relatedCard}
                     whileHover={{ y: -4 }}
                   >
-                    <Link href={`/blog/${post.slug}`} className={styles.relatedLink}>
+                    <Link href={`/blog/${post.category}/${post.slug}`} className={styles.relatedLink}>
                       <div className={styles.relatedImage}>
                         <Image
                           src={post.image}
@@ -273,110 +269,44 @@ export default function BlogPostPage() {
 // Simple markdown formatter (bold, italic, links, images)
 function formatMarkdown(text: string): string {
   return text
-    // Check marks - Convert to styled elements
+    // Check marks
     .replace(/([✓✔✅])\s*/g, '<span class="checkMark">$1</span> ')
     // Bold
     .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
     // Italic
     .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Images with ![]() syntax - MUST BE PROCESSED BEFORE REGULAR LINKS
+    // Images
     .replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; height: auto; display: block; margin: 2rem 0; border-radius: 8px;" />')
     // Regular links
     .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>')
-    // Add PDF link support directly in markdown [text](file.pdf)
+    // PDF link support
     .replace(/\[([^\]]+)\]\(([^)]+\.pdf)\)/g, '<a href="$2" class="pdf-link" download="$1">$1</a>');
-}
-
-// Parse markdown headings
-function parseMarkdownHeading(text: string): { isHeading: boolean; level: number; content: string } {
-  const match = text.match(/^(#{1,6})\s+(.+)$/);
-  if (match) {
-    const level = match[1].length;
-    const content = match[2];
-    return { isHeading: true, level, content };
-  }
-  return { isHeading: false, level: 0, content: text };
-}
-
-// Parse markdown lists (ordered and unordered)
-function parseMarkdownList(text: string): { isList: boolean; type: 'ordered' | 'unordered' | 'mixed' | null; items: string[] } {
-  const lines = text.trim().split('\n');
-  let hasListItems = false;
-  let listType: 'ordered' | 'unordered' | 'mixed' | null = null;
-  
-  for (const line of lines) {
-    const trimmed = line.trim();
-    if (trimmed.match(/^-\s/) || trimmed.match(/^\*\s/)) {
-      hasListItems = true;
-      if (!listType) listType = 'unordered';
-      else if (listType !== 'unordered') listType = 'mixed';
-    } else if (trimmed.match(/^\d+\.\s/)) {
-      hasListItems = true;
-      if (!listType) listType = 'ordered';
-      else if (listType !== 'ordered') listType = 'mixed';
-    }
-  }
-  
-  if (!hasListItems) {
-    return { isList: false, type: null, items: [] };
-  }
-  
-  const items: string[] = [];
-  for (const line of lines) {
-    const trimmed = line.trim();
-    const orderedMatch = trimmed.match(/^\d+\.\s+(.+)$/);
-    const unorderedMatch = trimmed.match(/^[-*]\s+(.+)$/);
-    
-    if (orderedMatch) {
-      items.push(orderedMatch[1]);
-    } else if (unorderedMatch) {
-      items.push(unorderedMatch[1]);
-    }
-  }
-  
-  return { isList: true, type: listType, items };
-}
-
-// Parse blockquotes
-function parseBlockquote(text: string): { isBlockquote: boolean; content: string } {
-  if (text.trim().startsWith('>')) {
-    const content = text.replace(/^>\s?/gm, '').trim();
-    return { isBlockquote: true, content };
-  }
-  return { isBlockquote: false, content: text };
 }
 
 // Parse markdown tables
 function parseMarkdownTable(text: string): { isTable: boolean; content: any } {
-  // Check if it's a table (contains | separators)
   if (!text.includes('|') || !text.trim().startsWith('|')) {
     return { isTable: false, content: text };
   }
 
-  // Split into rows
   const rows = text.trim().split('\n').filter(row => row.trim());
-  
-  // Check if it's a valid table (at least 3 rows: header, separator, data)
+
   if (rows.length < 3) {
     return { isTable: false, content: text };
   }
 
-  // Parse header row
   const headerRow = rows[0];
   const headers = headerRow.split('|').map(h => h.trim()).filter(h => h);
 
-  // Parse separator row (should be |---|---|---)
   const separatorRow = rows[1];
   if (!separatorRow.includes('---')) {
     return { isTable: false, content: text };
   }
 
-  // Parse data rows
   const dataRows = rows.slice(2).map(row => {
     return row.split('|').map(cell => cell.trim()).filter(cell => cell !== '');
   });
 
-  // Return table component
   return {
     isTable: true,
     content: (

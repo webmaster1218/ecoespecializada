@@ -11,6 +11,35 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/blog/beneficios-alquiler-ecografos',
+        destination: '/blog/guias/beneficios-alquiler-ecografos',
+        permanent: true,
+      },
+      {
+        source: '/blog/mindray-z6-vs-z60-comparacion',
+        destination: '/blog/guias/mindray-z6-vs-z60-comparacion',
+        permanent: true,
+      },
+      {
+        source: '/blog/caso-exito-clinica-valle',
+        destination: '/blog/casos-exito/caso-exito-clinica-valle',
+        permanent: true,
+      },
+      {
+        source: '/blog/guia-transductores-ultrasonido',
+        destination: '/blog/guias/guia-transductores-ultrasonido',
+        permanent: true,
+      },
+      {
+        source: '/blog/futuro-ultrasonido-movil-colombia',
+        destination: '/blog/tecnica/futuro-ultrasonido-movil-colombia',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
