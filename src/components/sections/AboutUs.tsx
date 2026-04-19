@@ -1,18 +1,19 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 import styles from "./AboutUs.module.css";
 import { Award, Trophy, ClipboardCheck, ShieldCheck, Check } from "lucide-react";
 import CallButton from "../ui/CallButton";
 
-export default function AboutUs({ city }: { city?: string }) {
+export default function AboutUs({ city, description, titleText, titleHighlight }: { city?: string, description?: string, titleText?: string, titleHighlight?: string }) {
     return (
         <section className={styles.section} id="nosotros">
             <div className="container">
                 <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Nuestra trayectoria</span>
-                    <h2 className={styles.title}>Conoce a <span className="text-gradient">alquiler de ecógrafos</span></h2>
-                    <p className={styles.subtitle}>Más de 10 años transformando el diagnóstico médico {city ? `con presencia destacada en ${city}` : "desde Medellín para toda Colombia"} con tecnología de punta y servicio confiable.</p>
+                    <h2 className={styles.title}>{titleText || "Conoce a"} <span className="text-gradient">{titleHighlight || "alquiler de ecógrafos"}</span></h2>
+                    <p className={styles.subtitle}>{description || `Más de 10 años transformando el diagnóstico médico ${city ? `con presencia destacada en ${city}` : "desde Medellín para toda Colombia"} con tecnología de punta y servicio confiable.`}</p>
                 </motion.div>
 
                 <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 mb-12 lg:mb-20">

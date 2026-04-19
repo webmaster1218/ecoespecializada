@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Pereira | Mindray | Eje Cafetero",
+    title: "Alquiler de Ecógrafos en Pereira | Megacentro Pinares y Cerritos",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Pereira y el Eje Cafetero. Entrega en Dosquebradas, Santa Rosa y toda la región. Certificados INVIMA.",
+        "El aliado tecnológico ideal para tu consultorio en el Eje Cafetero. Alquiler de ecógrafos Mindray en Pinares, Álamos y Cerritos. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Pereira", "venta ecógrafo Pereira", "ecógrafo Mindray Pereira", "equipos médicos Eje Cafetero", "ecógrafo portátil Risaralda", "arriendo ecógrafo Pereira"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/pereira" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Pereira | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Pereira y el Eje Cafetero. Servicio ágil para médicos y clínicas risaraldenses.",
+        title: "Alquiler de Ecógrafos en Pereira | Alquiler de ecografos",
+        description: "Ecografía de alta gama para médicos en Pereira. Servicio ágil cerca a Megacentro Pinares y Clínica Los Rosales.",
         url: "https://alquilerdeecografos.com/colombia/pereira",
     },
 };
@@ -86,19 +86,40 @@ export default function PereiraPage() {
                 availabilitySubtext="Eje Cafetero"
             />
 
-            <Advantages city="Pereira" />
+            <Advantages 
+                city="Pereira" 
+                title="Eleva el nivel de tu práctica en Pereira"
+                subtitle="Servicio premium en Megacentro Pinares, Álamos y Cerritos. Equipos listos para elevar el nivel de tu práctica en el Eje Cafetero."
+            />
 
             <ProductCatalog city="Pereira" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Pereira" 
+                titleText="Personaliza tu reserva"
+                titleHighlight="en Pereira"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Pereira" 
+                title="Pasos para tu alquiler en la Perla del Otún"
+            />
 
             <ClinicalApplications city="Pereira" />
 
-            <Comparison city="Pereira" />
+            <Comparison 
+                city="Pereira" 
+                titleText="La mejor opción para"
+                titleHighlight="médicos en el Eje Cafetero"
+                subtitle="Evalúa la rentabilidad de tu consultorio en Pereira. Nuestro modelo de alquiler te permite facturar más sin descapitalizarte."
+            />
 
-            <AboutUs city="Pereira" />
+            <AboutUs 
+                city="Pereira" 
+                titleText="Soporte y tecnología para"
+                titleHighlight="médicos de Risaralda"
+                description="Desde la Perla del Otún, brindamos soluciones de ecografía de alta gama con respaldo técnico local en Risaralda, cerca a la Clínica Comfamiliar y Los Rosales."
+            />
 
             <AdditionalServices />
 

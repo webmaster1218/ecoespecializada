@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -85,7 +85,7 @@ const INITIAL_DATA: BookingData = {
 
 // Pricing logic moved to @/lib/pricing
 
-export default function BookingWizard() {
+export default function BookingWizard({ city, titleText, titleHighlight }: { city?: string, titleText?: string, titleHighlight?: string }) {
   const router = useRouter();
   const containerRef = useRef<HTMLDivElement>(null);
   const [step, setStep] = useState<BookingStep>(1);
@@ -497,11 +497,11 @@ export default function BookingWizard() {
             RESERVA FÁCIL
           </span>
           <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
-            Personaliza tu <span className="text-blue-400">solución</span>
+            {titleText || "Personaliza tu"} <span className="text-blue-400">{titleHighlight || "solución"}</span>
           </h2>
           <p className="text-lg text-blue-100/90 max-w-2xl mx-auto">
             Proceso 100% digital. Reserva tu{" "}
-            <strong>ecógrafo en Medellín</strong> en minutos.
+            <strong>ecógrafo {city ? `en ${city}` : "en Medellín"}</strong> en minutos.
           </p>
         </motion.div>
 

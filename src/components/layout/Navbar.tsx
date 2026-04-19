@@ -15,7 +15,7 @@ export default function Navbar() {
 
     // Helper to determine if a link should be absolute or hash-only
     const getHref = (target: string) => {
-        const cityPaths = ["/bogota", "/cali", "/barranquilla", "/cartagena", "/bucaramanga", "/pereira", "/cucuta"];
+        const cityPaths = ["/bogota", "/medellin", "/cali", "/barranquilla", "/cartagena", "/bucaramanga", "/pereira", "/cucuta"];
         const nestedCityPaths = cityPaths.map(p => `/colombia${p}`);
         const landingPaths = ["/", "/colombia", ...cityPaths, ...nestedCityPaths];
         
@@ -96,6 +96,7 @@ export default function Navbar() {
                             </Link>
                             <div className={styles.dropdownMenu}>
                                 <Link href="/colombia/bogota" onClick={() => setMobileMenuOpen(false)}>Bogotá</Link>
+                                <Link href="/colombia/medellin" onClick={() => setMobileMenuOpen(false)}>Medellín</Link>
                                 <Link href="/colombia/cali" onClick={() => setMobileMenuOpen(false)}>Cali</Link>
                                 <Link href="/colombia/barranquilla" onClick={() => setMobileMenuOpen(false)}>Barranquilla</Link>
                                 <Link href="/colombia/cartagena" onClick={() => setMobileMenuOpen(false)}>Cartagena</Link>

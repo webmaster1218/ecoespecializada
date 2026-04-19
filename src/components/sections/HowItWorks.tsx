@@ -2,10 +2,11 @@
 
 import { memo } from "react";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 import styles from "./HowItWorks.module.css";
 import { FileText, Send, PenLine, Truck } from "lucide-react";
 
-function HowItWorks() {
+function HowItWorks({ city, title }: { city?: string, title?: string }) {
     const steps = [
         {
             id: "01",
@@ -38,8 +39,8 @@ function HowItWorks() {
             <div className="container">
                 <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Proceso simplificado</span>
-                    <h2 className={styles.title}>Flujo de <span className="text-gradient">alquiler profesional</span></h2>
-                    <p className={styles.subtitle}>Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica.</p>
+                    <h2 className={styles.title}>{title || (<>Flujo de <span className="text-gradient">alquiler profesional</span></>)}</h2>
+                    <p className={styles.subtitle}>{city ? `Optimizamos cada etapa en ${city} para garantizar rapidez y seguridad en su práctica médica.` : "Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica."}</p>
                 </motion.div>
 
                 <div className={styles.processGrid}>

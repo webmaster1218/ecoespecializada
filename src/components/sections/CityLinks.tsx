@@ -5,7 +5,7 @@ import { MapPin } from "lucide-react";
 
 const CITIES = [
     { name: "Bogotá", href: "/colombia/bogota" },
-    { name: "Medellín", href: "/" },
+    { name: "Medellín", href: "/colombia/medellin" },
     { name: "Cali", href: "/colombia/cali" },
     { name: "Barranquilla", href: "/colombia/barranquilla" },
     { name: "Cartagena", href: "/colombia/cartagena" },

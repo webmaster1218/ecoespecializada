@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Cartagena | Mindray | Ciudad Heroica",
+    title: "Alquiler de Ecógrafos en Cartagena | Equipos Mindray en Bocagrande y Manga",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Cartagena de Indias y Bolívar. Entrega en Bocagrande, Manga y toda la Ciudad Heroica. Certificados INVIMA.",
+        "Equipa tu consulta en la Ciudad Heroica con ecografía de alta resolución. Entrega inmediata en Bocagrande, Castillogrande y Manga. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Cartagena", "venta ecógrafo Cartagena", "ecógrafo Mindray Cartagena", "equipos médicos Bolívar", "ecógrafo portátil Cartagena de Indias"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cartagena" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cartagena | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Cartagena y Bolívar. Servicio ágil para médicos y clínicas cartageneras.",
+        title: "Alquiler de Ecógrafos en Cartagena | Alquiler de ecografos",
+        description: "El respaldo técnico que los médicos de Bolívar necesitan. Servicio premium en Bocagrande y el Centro Histórico.",
         url: "https://alquilerdeecografos.com/colombia/cartagena",
     },
 };
@@ -86,19 +86,40 @@ export default function CartagenaPage() {
                 availabilitySubtext="Bolívar completo"
             />
 
-            <Advantages city="Cartagena" />
+            <Advantages 
+                city="Cartagena" 
+                title="Ecografía de alta gama en la Ciudad Heroica"
+                subtitle="Servicio ágil con entregas en Bocagrande, Manga y Castillogrande. Equipos listos para el sector salud y clínicas de Bolívar."
+            />
 
             <ProductCatalog city="Cartagena" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Cartagena" 
+                titleText="Planes a tu medida"
+                titleHighlight="en Cartagena"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Cartagena" 
+                title="Servicio directo en la Heroica"
+            />
 
             <ClinicalApplications city="Cartagena" />
 
-            <Comparison city="Cartagena" />
+            <Comparison 
+                city="Cartagena" 
+                titleText="Eficiencia y ahorro en"
+                titleHighlight="ecografía para Cartagena"
+                subtitle="Optimiza los costos de tu consultorio en la Heroica. Compara nuestro servicio vs. la compra de equipos de alto costo."
+            />
 
-            <AboutUs city="Cartagena" />
+            <AboutUs 
+                city="Cartagena" 
+                titleText="Tu aliado médico en"
+                titleHighlight="Cartagena de Indias"
+                description="Aportamos tecnología de punta al turismo de salud en Cartagena, brindando seguridad y respaldo técnico cerca a la Clínica Medihel y el Centro Histórico."
+            />
 
             <AdditionalServices />
 

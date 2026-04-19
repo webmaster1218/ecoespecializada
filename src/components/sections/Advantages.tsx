@@ -2,8 +2,9 @@
 
 import { memo } from "react";
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 
-function Advantages({ city }: { city?: string }) {
+function Advantages({ city, subtitle, title }: { city?: string, subtitle?: string, title?: string }) {
     const advantages = [
         {
             icon: (
@@ -58,8 +59,8 @@ function Advantages({ city }: { city?: string }) {
                 <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
-                        Por qué elegir alquiler de ecógrafos {city ? `en ${city}` : "con nosotros"}
-                    </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales.</p>
+                        {title || `Por qué elegir alquiler de ecógrafos ${city ? `en ${city}` : "con nosotros"}`}
+                    </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">{subtitle || "Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales."}</p>
                 </motion.div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">

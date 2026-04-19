@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ReactNode } from "react";
 import styles from "./Comparison.module.css";
 import {
     Wallet,
@@ -14,14 +15,14 @@ import {
     Settings
 } from "lucide-react";
 
-export default function Comparison({ city }: { city?: string }) {
+export default function Comparison({ city, subtitle, titleText, titleHighlight }: { city?: string, subtitle?: string, titleText?: string, titleHighlight?: string }) {
     return (
         <section className={styles.section} id="comparativa">
             <div className="container">
                 <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Decisión inteligente</span>
-                    <h2 className={styles.title}>El mejor servicio de <span className="text-gradient">alquiler de ecógrafos {city ? `en ${city}` : ""}</span></h2>
-                    <p className={styles.subtitle}>Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional.</p>
+                    <h2 className={styles.title}>{titleText || "El mejor servicio de"} <span className="text-gradient">{titleHighlight || `alquiler de ecógrafos ${city || ""}`}</span></h2>
+                    <p className={styles.subtitle}>{subtitle || "Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional."}</p>
                 </motion.div>
 
                 <div className={styles.grid}>

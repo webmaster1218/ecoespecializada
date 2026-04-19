@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Mindray | Santander",
+    title: "Alquiler de Ecógrafos en Bucaramanga | Cañaveral y Cabecera del Llano",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Bucaramanga y Santander. Entrega en Floridablanca, Girón y Piedecuesta. Certificados INVIMA.",
+        "Tu consultorio en Bucaramanga con la mejor tecnología en ecografía. Alquiler de equipos Mindray en Cabecera, Sotomayor y Cañaveral. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Bucaramanga", "venta ecógrafo Bucaramanga", "ecógrafo Mindray Bucaramanga", "equipos médicos Santander", "ecógrafo portátil Bucaramanga"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/bucaramanga" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Bucaramanga | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Bucaramanga y todo Santander. Servicio ágil para médicos y clínicas bumanguesas.",
+        title: "Alquiler de Ecógrafos en Bucaramanga | Alquiler de ecografos",
+        description: "Ecógrafos certificados INVIMA para la Ciudad de los Parques. Servicio cerca a FOSCAL y centros médicos de Santander.",
         url: "https://alquilerdeecografos.com/colombia/bucaramanga",
     },
 };
@@ -86,19 +86,40 @@ export default function BucaramangaPage() {
                 availabilitySubtext="Área Metropolitana"
             />
 
-            <Advantages city="Bucaramanga" />
+            <Advantages 
+                city="Bucaramanga" 
+                title="Potencia tu consultorio en la Ciudad Bonita"
+                subtitle="Presencia constante en Cabecera del Llano, Cañaveral y Sotomayor. Entregas ágiles para médicos en el Área Metropolitana."
+            />
 
             <ProductCatalog city="Bucaramanga" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Bucaramanga" 
+                titleText="Personaliza tu solicitud"
+                titleHighlight="en Bucaramanga"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Bucaramanga" 
+                title="Flujo de atención en la Ciudad Bonita"
+            />
 
             <ClinicalApplications city="Bucaramanga" />
 
-            <Comparison city="Bucaramanga" />
+            <Comparison 
+                city="Bucaramanga" 
+                titleText="Inversión inteligente en"
+                titleHighlight="equipos para Bucaramanga"
+                subtitle="Compara los beneficios de nuestro modelo en Bucaramanga y descubre por qué somos la opción #1 en rentabilidad clínica."
+            />
 
-            <AboutUs city="Bucaramanga" />
+            <AboutUs 
+                city="Bucaramanga" 
+                titleText="Excelencia en"
+                titleHighlight="diagnóstico para Santander"
+                description="Desde la Ciudad Bonita, apoyamos la excelencia médica en Santander brindando respaldo técnico prioritario cerca a FOSCAL y otros grandes centros de salud."
+            />
 
             <AdditionalServices />
 

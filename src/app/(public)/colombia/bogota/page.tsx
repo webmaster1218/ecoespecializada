@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Bogotá | Mindray | ¡Entrega 24h!",
+    title: "Alquiler de Ecógrafos en Bogotá | Mindray en Chapinero y Usaquén",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Bogotá. Entrega en Chapinero, Usaquén, Suba y toda la capital. Certificados INVIMA, soporte técnico incluido.",
+        "Equipos Mindray de alta gama para médicos en Bogotá. Entrega rápida en Chapinero, Usaquén, Teusaquillo y Cedritos. Ecógrafos certificados INVIMA con respaldo técnico.",
     keywords: ["alquiler ecógrafo Bogotá", "venta ecógrafo Bogotá", "ecógrafo Mindray Bogotá", "equipos médicos Bogotá", "ecógrafo portátil Bogotá", "arriendo ecógrafo Bogotá"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/bogota" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Bogotá | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en toda Bogotá. Desde Chapinero hasta Suba, llevamos el ecógrafo hasta tu consultorio.",
+        title: "Alquiler de Ecógrafos en Bogotá | Alquiler de ecografos",
+        description: "Potencia tu consultorio en Bogotá con ecografía avanzada. Cubrimos Chapinero, Usaquén y todas las zonas médicas de la capital.",
         url: "https://alquilerdeecografos.com/colombia/bogota",
     },
 };
@@ -86,19 +86,40 @@ export default function BogotaPage() {
                 availabilitySubtext="Todas las localidades"
             />
 
-            <Advantages city="Bogotá" />
+            <Advantages 
+                city="Bogotá" 
+                title="Equipos de ecografía con respaldo total en Bogotá"
+                subtitle="Entregas rápidas y soporte técnico en Chapinero, Usaquén, Teusaquillo y Cedritos. Cubrimos todo el norte y centro de la capital."
+            />
 
             <ProductCatalog city="Bogotá" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Bogotá" 
+                titleText="Personaliza tu"
+                titleHighlight="reserva en Bogotá"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Bogotá" 
+                title="Tu ecógrafo en Bogotá en 4 pasos"
+            />
 
             <ClinicalApplications city="Bogotá" />
 
-            <Comparison city="Bogotá" />
+            <Comparison 
+                city="Bogotá" 
+                titleText="¿Por qué los médicos de Bogotá"
+                titleHighlight="eligen el alquiler premium?"
+                subtitle="Descubre por qué los médicos de la capital prefieren nuestro modelo flexible vs la descapitalización por compra."
+            />
 
-            <AboutUs city="Bogotá" />
+            <AboutUs 
+                city="Bogotá" 
+                titleText="Especialistas en"
+                titleHighlight="ecografía para Bogotá"
+                description="Con más de 10 años de experiencia, somos el aliado preferido de consultorios en Santa Ana y Chicó, ofreciendo respaldo cerca a la Clínica del Country y Marly."
+            />
 
             <AdditionalServices />
 

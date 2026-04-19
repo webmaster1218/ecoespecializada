@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Cali | Mindray | ¡Entrega 24h!",
+    title: "Alquiler de Ecógrafos en Cali | Servicio en Tequendama y Ciudad Jardín",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Cali y el Valle del Cauca. Entrega en Granada, Ciudad Jardín y toda la Sultana del Valle. Certificados INVIMA.",
+        "La solución premium para médicos de Cali y el Valle. Alquiler de ecógrafos Mindray con cobertura en Tequendama, San Fernando y Ciudad Jardín. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Cali", "venta ecógrafo Cali", "ecógrafo Mindray Cali", "equipos médicos Valle del Cauca", "ecógrafo portátil Cali", "arriendo ecógrafo Cali"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cali" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cali | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Cali y el Valle del Cauca. Servicio ágil para médicos y clínicas caleñas.",
+        title: "Alquiler de Ecógrafos en Cali | Alquiler de ecografos",
+        description: "Equipos Mindray certificados en la Sultana del Valle. Servicio ágil cerca a la Clínica Valle del Lili e Imbanaco.",
         url: "https://alquilerdeecografos.com/colombia/cali",
     },
 };
@@ -86,19 +86,40 @@ export default function CaliPage() {
                 availabilitySubtext="Valle del Cauca"
             />
 
-            <Advantages city="Cali" />
+            <Advantages 
+                city="Cali" 
+                title="Beneficios de la ecografía avanzada en Cali"
+                subtitle="Cobertura total en el clúster médico de Tequendama y San Fernando. Entregas en menos de 24h en Ciudad Jardín y Juanambú."
+            />
 
             <ProductCatalog city="Cali" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Cali" 
+                titleText="Configura tu"
+                titleHighlight="equipo para Cali"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Cali" 
+                title="Proceso de entrega rápida en Cali"
+            />
 
             <ClinicalApplications city="Cali" />
 
-            <Comparison city="Cali" />
+            <Comparison 
+                city="Cali" 
+                titleText="Alquiler vs Compra: La elección"
+                titleHighlight="inteligente en el Valle"
+                subtitle="Compara nuestro modelo de cero riesgo y descubre por qué los especialistas de la Sultana del Valle eligen nuestro alquiler premium."
+            />
 
-            <AboutUs city="Cali" />
+            <AboutUs 
+                city="Cali" 
+                titleText="Líderes en"
+                titleHighlight="equipos médicos para Cali"
+                description="Líderes en tecnología médica en el Valle del Cauca, brindando soporte prioritario cerca de la Clínica Valle del Lili e Imbanaco para asegurar la continuidad de tu consulta."
+            />
 
             <AdditionalServices />
 

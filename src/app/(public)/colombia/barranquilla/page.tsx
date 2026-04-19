@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Barranquilla | Mindray | Costa Caribe",
+    title: "Alquiler de Ecógrafos en Barranquilla | Mindray en Alto Prado y Buenavista",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Barranquilla y la Costa Caribe. Entrega en El Prado, Altamira y toda La Arenosa. Certificados INVIMA.",
+        "Eleva el nivel de tu diagnóstico en Barranquilla. Alquiler de ecógrafos con entrega rápida en Alto Prado, Buenavista y El Golf. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Barranquilla", "venta ecógrafo Barranquilla", "ecógrafo Mindray Barranquilla", "equipos médicos Costa Atlántica", "ecógrafo portátil Barranquilla"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/barranquilla" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Barranquilla | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Barranquilla y toda la Costa Caribe. Servicio ágil para médicos y clínicas barranquilleras.",
+        title: "Alquiler de Ecógrafos en Barranquilla | Alquiler de ecografos",
+        description: "Equipos médicos de alta gama para el sector salud de Barranquilla. Cubrimiento en Villa Santos y cercanías a la Clínica Portoazul.",
         url: "https://alquilerdeecografos.com/colombia/barranquilla",
     },
 };
@@ -86,19 +86,40 @@ export default function BarranquillaPage() {
                 availabilitySubtext="Costa Caribe"
             />
 
-            <Advantages city="Barranquilla" />
+            <Advantages 
+                city="Barranquilla" 
+                title="Ventajas competitivas para su consultorio en Barranquilla"
+                subtitle="Entregas garantizadas en Alto Prado, Riomar y Buenavista. Soporte técnico especializado siempre disponible para La Arenosa."
+            />
 
             <ProductCatalog city="Barranquilla" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Barranquilla" 
+                titleText="Reserva tu equipo"
+                titleHighlight="para Barranquilla"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Barranquilla" 
+                title="Logística eficiente en La Arenosa"
+            />
 
             <ClinicalApplications city="Barranquilla" />
 
-            <Comparison city="Barranquilla" />
+            <Comparison 
+                city="Barranquilla" 
+                titleText="Rentabilidad y respaldo"
+                titleHighlight="para médicos barranquilleros"
+                subtitle="Descubre por qué los médicos barranquilleros prefieren la flexibilidad del alquiler vs. la inversión pesada en equipos propios."
+            />
 
-            <AboutUs city="Barranquilla" />
+            <AboutUs 
+                city="Barranquilla" 
+                titleText="Pasión por la"
+                titleHighlight="tecnología médica en el Caribe"
+                description="Consolidados como el aliado estratégico en Curramba, ofrecemos ecografía de alta gama con respaldo técnico real cerca a la Clínica Portoazul e Iberoamérica."
+            />
 
             <AdditionalServices />
 

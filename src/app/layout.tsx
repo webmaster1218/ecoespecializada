@@ -33,13 +33,13 @@ export const metadata: Metadata = {
     title: "Alquiler y Venta de Ecógrafos en Medellín y Antioquia",
     description: "Equipos Mindray de alta gama con respaldo de Equibiomedic. Líderes en alquiler y venta para médicos en Medellín y Antioquia.",
     url: "https://alquilerdeecografos.com",
-    siteName: "Ecoespecializada",
+    siteName: "Alquiler de ecografos",
     images: [
       {
         url: "/images/logo/logo_alquilerdeecografos.webp",
         width: 1200,
         height: 630,
-        alt: "Ecoespecializada Logo",
+        alt: "Alquiler de ecografos Logo",
       },
     ],
     locale: "es_CO",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Ecoespecializada",
+  "name": "Alquiler de ecografos",
   "alternateName": "Alquiler de Ecógrafos Colombia",
   "url": "https://alquilerdeecografos.com",
   "logo": "https://alquilerdeecografos.com/images/logo/logo_alquilerdeecografos.webp",

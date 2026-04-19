@@ -17,14 +17,14 @@ import CityLinks from "@/components/sections/CityLinks";
 import Hero from "@/components/sections/Hero";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Cúcuta | Mindray | Norte de Santander",
+    title: "Alquiler de Ecógrafos en Cúcuta | Equipos en Caobos y Riviera",
     description:
-        "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Cúcuta y Norte de Santander. Entrega inmediata en Los Patios, Villa del Rosario y toda la frontera. Certificados INVIMA.",
+        "Respaldo y tecnología para los médicos de Norte de Santander. Alquiler de ecógrafos Mindray con entrega en Caobos, La Riviera y el sector Blanco.",
     keywords: ["alquiler ecógrafo Cúcuta", "venta ecógrafo Cúcuta", "ecógrafo Mindray Cúcuta", "equipos médicos Norte de Santander", "ecógrafo portátil Cúcuta", "arriendo ecógrafo Cúcuta"],
     alternates: { canonical: "https://alquilerdeecografos.com/colombia/cucuta" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Cúcuta | Alquiler de ecografos",
-        description: "Equipos Mindray certificados con entrega en Cúcuta y Norte de Santander. Servicio ágil para médicos y clínicas cucuteñas.",
+        title: "Alquiler de Ecógrafos en Cúcuta | Alquiler de ecografos",
+        description: "Tecnología de punta para la salud en la frontera. Servicio ágil cerca a la Clínica Norte y Clínica San José.",
         url: "https://alquilerdeecografos.com/colombia/cucuta",
     },
 };
@@ -86,19 +86,40 @@ export default function CucutaPage() {
                 availabilitySubtext="Norte de Santander"
             />
 
-            <Advantages city="Cúcuta" />
+            <Advantages 
+                city="Cúcuta" 
+                title="Tecnología de frontera para los médicos de Cúcuta"
+                subtitle="Llegamos a barrios como Caobos, La Riviera y Blanco. El respaldo que los médicos de la frontera necesitan para su consulta diaria."
+            />
 
             <ProductCatalog city="Cúcuta" />
 
-            <BookingWizard />
+            <BookingWizard 
+                city="Cúcuta" 
+                titleText="Planes a tu medida"
+                titleHighlight="en Cúcuta"
+            />
 
-            <HowItWorks />
+            <HowItWorks 
+                city="Cúcuta" 
+                title="Logística ágil en la Frontera"
+            />
 
             <ClinicalApplications city="Cúcuta" />
 
-            <Comparison city="Cúcuta" />
+            <Comparison 
+                city="Cúcuta" 
+                titleText="Soluciones ágiles de"
+                titleHighlight="ecografía en Norte de Santander"
+                subtitle="Descubre por qué nuestro alquiler de bajo riesgo es la mejor inversión para especialistas en Cúcuta y municipios aledaños."
+            />
 
-            <AboutUs city="Cúcuta" />
+            <AboutUs 
+                city="Cúcuta" 
+                titleText="Compromiso con la"
+                titleHighlight="salud de los cucuteños"
+                description="Comprometidos con la salud en Norte de Santander, ofrecemos equipos Mindray certificados y soporte biomédico cerca a la Clínica Norte y Clínica San José."
+            />
 
             <AdditionalServices />
 
