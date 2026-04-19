@@ -1,6 +1,7 @@
 // Utility functions for blog
 import { formatDate, calculateReadTime, slugify } from './types';
 import type { BlogPost } from './types';
+import { categories } from './categories';
 
 export { formatDate, calculateReadTime, slugify };
 
@@ -40,12 +41,14 @@ export function generateMetaTags(post: BlogPost) {
 
 // Schema.org Article markup
 export function generateArticleSchema(post: BlogPost) {
+  const catMeta = categories[post.category];
   return {
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: post.title,
     description: post.excerpt,
     image: post.image,
+    articleSection: catMeta?.name || post.category,
     author: {
       '@type': 'Person',
       name: post.author,
@@ -57,31 +60,51 @@ export function generateArticleSchema(post: BlogPost) {
       name: 'Alquiler de Ecógrafos',
       logo: {
         '@type': 'ImageObject',
-        url: '/images/logo/logo_alquilerdeecografos.png',
+        url: '/images/logo/logo_alquilerdeecografos.webp',
       },
     },
   };
 }
 
-// BreadcrumbList schema for blog
-export function generateBreadcrumbSchema() {
+// BreadcrumbList schema for blog (supports optional category level)
+export function generateBreadcrumbSchema(categorySlug?: string, postTitle?: string) {
+  const items: Array<{ '@type': string; position: number; name: string; item?: string }> = [
+    {
+      '@type': 'ListItem',
+      position: 1,
+      name: 'Inicio',
+      item: '/',
+    },
+    {
+      '@type': 'ListItem',
+      position: 2,
+      name: 'Blog',
+      item: '/blog',
+    },
+  ];
+
+  if (categorySlug) {
+    const catMeta = categories[categorySlug];
+    items.push({
+      '@type': 'ListItem',
+      position: 3,
+      name: catMeta?.name || categorySlug,
+      item: `/blog/${categorySlug}`,
+    });
+
+    if (postTitle) {
+      items.push({
+        '@type': 'ListItem',
+        position: 4,
+        name: postTitle,
+      });
+    }
+  }
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    itemListElement: [
-      {
-        '@type': 'ListItem',
-        position: 1,
-        name: 'Inicio',
-        item: '/',
-      },
-      {
-        '@type': 'ListItem',
-        position: 2,
-        name: 'Blog',
-        item: '/blog',
-      },
-    ],
+    itemListElement: items,
   };
 }
 

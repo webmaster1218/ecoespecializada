@@ -4,22 +4,23 @@ import { getPostBySlug } from '@/lib/blog/posts';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/blog/utils';
 import React from 'react';
 
-// Helper to get all posts (needed for static generation)
+// Helper to get all posts
 function getAllPosts() {
   const { posts } = require('@/lib/blog/posts');
   return posts;
 }
 
-// Generate static params for all posts
+// Generate static params for all posts with their categories
 export async function generateStaticParams() {
   const posts = getAllPosts();
-  return posts.map((post: { slug: string }) => ({
+  return posts.map((post: { slug: string; category: string }) => ({
+    categoria: post.category,
     slug: post.slug,
   }));
 }
 
 // Generate metadata for SEO
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({ params }: { params: Promise<{ categoria: string; slug: string }> }): Promise<Metadata> {
   const resolvedParams = await params;
   const post = getPostBySlug(resolvedParams.slug);
 
@@ -43,7 +44,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   };
 }
 
-export default async function BlogPostLayout({ children, params }: { children: React.ReactNode; params: Promise<{ slug: string }> }) {
+export default async function BlogPostLayout({ children, params }: { children: React.ReactNode; params: Promise<{ categoria: string; slug: string }> }) {
   const resolvedParams = await params;
   const post = getPostBySlug(resolvedParams.slug);
 
@@ -52,7 +53,7 @@ export default async function BlogPostLayout({ children, params }: { children: R
   }
 
   const articleSchema = generateArticleSchema(post);
-  const breadcrumbSchema = generateBreadcrumbSchema();
+  const breadcrumbSchema = generateBreadcrumbSchema(post.category, post.title);
 
   return (
     <>

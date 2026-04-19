@@ -228,7 +228,7 @@
   list-style: decimal;
 }
 
-/* Check list - No bullets, just colored check marks */
+/* Check list */
 .markdownContent .checkList {
   list-style: none;
   padding-left: 0;
@@ -270,7 +270,7 @@
   margin: 3rem 0;
 }
 
-/* Check Marks - High specificity for blue color */
+/* Check Marks */
 .markdownContent .checkMark {
   color: #007BFF !important;
   font-weight: 700;
@@ -543,7 +543,6 @@
     flex-wrap: wrap;
   }
 
-  /* Tables responsive */
   .markdownContent .table {
     font-size: 0.85rem;
   }

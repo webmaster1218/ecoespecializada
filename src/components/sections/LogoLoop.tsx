@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import styles from './LogoLoop.module.css';
 
 const logoData = [
-    { name: "Equibiomedic", src: "/images/logo/equibiomedic-new.png", width: 200, height: 40 },
+    { name: "Equibiomedic", src: "/images/logo/equibiomedic-new.webp", width: 200, height: 40 },
     { name: "Sura", src: "/images/logo/partners/sura.webp", width: 120, height: 60 },
     { name: "Hospital Pablo Tobón Uribe", src: "/images/logo/partners/pablo_tobon.webp", width: 120, height: 60 },
     { name: "Clínica del Country", src: "/images/logo/partners/clinica_country.webp", width: 120, height: 60 },

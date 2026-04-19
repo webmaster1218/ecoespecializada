@@ -5,6 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { getRecentPosts, getAllCategories } from '@/lib/blog/posts';
 import { formatDate, getReadingTime } from '@/lib/blog/utils';
+import { categories as categoryMap } from '@/lib/blog/categories';
 import CallButton from '@/components/ui/CallButton';
 import styles from './Blog.module.css';
 import { useSearchParams } from 'next/navigation';
@@ -14,20 +15,20 @@ function BlogContent() {
   const searchParams = useSearchParams();
   const category = searchParams.get('category');
   const tag = searchParams.get('tag');
-  
+
   let posts = getRecentPosts(50); // Get all posts sorted by date
-  
+
   // Filter by category if specified
   if (category) {
     posts = posts.filter(post => post.category === category);
   }
-  
+
   // Filter by tag if specified
   if (tag) {
     posts = posts.filter(post => post.tags?.includes(tag));
   }
-  
-  const categories = getAllCategories();
+
+  const cats = getAllCategories();
 
   return (
     <main className={styles.blog}>
@@ -85,14 +86,14 @@ function BlogContent() {
       <section className={styles.categories}>
         <div className="container">
           <div className={styles.categoriesList}>
-            <Link href="/blog" className={`${styles.category} ${styles.categoryActive}`}>
+            <Link href="/blog" className={`${styles.category} ${!category && !tag ? styles.categoryActive : ''}`}>
               Todos
             </Link>
-            {categories.map((cat, index) => (
+            {cats.map((cat) => (
               <Link
-                key={cat.name}
-                href={`/blog?category=${encodeURIComponent(cat.name)}`}
-                className={styles.category}
+                key={cat.slug}
+                href={`/blog/${cat.slug}`}
+                className={`${styles.category} ${category === cat.slug ? styles.categoryActive : ''}`}
               >
                 {cat.name} ({cat.count})
               </Link>
@@ -105,61 +106,64 @@ function BlogContent() {
       <section className={styles.postsSection}>
         <div className="container">
           {/* Filter indicator */}
-          {(category || tag) && (
+          {tag && (
             <div className={styles.filterIndicator}>
               <span>Filtrando por: </span>
-              <strong>{category || `#${tag}`}</strong>
+              <strong>#{tag}</strong>
               <Link href="/blog" className={styles.clearFilter}>
                 ✕ Limpiar filtro
               </Link>
             </div>
           )}
-          
+
           <div className={styles.postsGrid}>
-            {posts.map((post, index) => (
-              <motion.article
-                key={post.slug}
-                className={styles.postCard}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -8 }}
-              >
-                <Link href={`/blog/${post.slug}`} className={styles.postLink}>
-                  <div className={styles.postImage}>
-                    <Image
-                      src={post.image}
-                      alt={post.title}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      className={styles.image}
-                    />
-                    <div className={styles.postCategory}>
-                      {post.category}
-                      {post.articleId && (
-                        <span className={styles.articleId}> {post.articleId}</span>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className={styles.postContent}>
-                    <div className={styles.postMeta}>
-                      <span className={styles.postDate}>{formatDate(post.date)}</span>
-                      <span className={styles.postReadTime}>{getReadingTime(post.content)}</span>
+            {posts.map((post, index) => {
+              const catMeta = categoryMap[post.category];
+              return (
+                <motion.article
+                  key={post.slug}
+                  className={styles.postCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                >
+                  <Link href={`/blog/${post.category}/${post.slug}`} className={styles.postLink}>
+                    <div className={styles.postImage}>
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className={styles.image}
+                      />
+                      <div className={styles.postCategory}>
+                        {catMeta?.name || post.category}
+                        {post.articleId && (
+                          <span className={styles.articleId}> {post.articleId}</span>
+                        )}
+                      </div>
                     </div>
 
-                    <h2 className={styles.postTitle}>{post.title}</h2>
+                    <div className={styles.postContent}>
+                      <div className={styles.postMeta}>
+                        <span className={styles.postDate}>{formatDate(post.date)}</span>
+                        <span className={styles.postReadTime}>{getReadingTime(post.content)}</span>
+                      </div>
 
-                    <p className={styles.postExcerpt}>{post.excerpt}</p>
+                      <h2 className={styles.postTitle}>{post.title}</h2>
 
-                    <div className={styles.postFooter}>
-                      <span className={styles.postAuthor}>{post.author}</span>
-                      <span className={styles.postReadMore}>Leer más →</span>
+                      <p className={styles.postExcerpt}>{post.excerpt}</p>
+
+                      <div className={styles.postFooter}>
+                        <span className={styles.postAuthor}>{post.author}</span>
+                        <span className={styles.postReadMore}>Leer más →</span>
+                      </div>
                     </div>
-                  </div>
-                </Link>
-              </motion.article>
-            ))}
+                  </Link>
+                </motion.article>
+              );
+            })}
           </div>
         </div>
       </section>
