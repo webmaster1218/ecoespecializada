@@ -18,13 +18,13 @@ const Testimonials = dynamic(() => import("@/components/sections/Testimonials"),
 const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
 
 export const metadata: Metadata = {
-    title: "Ecoespecializada | Alquiler y Venta de Ecógrafos en Colombia | Mindray Z6 y Z60",
+    title: "Alquiler de ecógrafos | Alquiler y Venta de Ecógrafos en Colombia | Mindray Z6 y Z60",
     description:
         "Líderes en alquiler y venta de ecógrafos Mindray en Colombia. Entrega inmediata en Medellín, Bogotá, Cali, Barranquilla y más. Equipos certificados INVIMA con respaldo total.",
     keywords: ["alquiler de ecógrafos", "venta de ecógrafos", "ecógrafos Mindray Colombia", "equipos médicos", "alquiler ecógrafo medellin", "alquiler ecografo bogota"],
     alternates: { canonical: "https://alquilerdeecografos.com" },
     openGraph: {
-        title: "Alquiler y Venta de Ecógrafos en Colombia | Ecoespecializada",
+        title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecógrafos",
         description: "Equipos de ecografía de alta gama con cobertura nacional. Soluciones flexibles para médicos y especialistas en toda Colombia.",
         url: "https://alquilerdeecografos.com",
     },
