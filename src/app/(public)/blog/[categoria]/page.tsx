@@ -106,9 +106,6 @@ export default function CategoriaPage() {
                       />
                       <div className={blogStyles.postCategory}>
                         {postCatMeta?.name || post.category}
-                        {post.articleId && (
-                          <span className={blogStyles.articleId}> {post.articleId}</span>
-                        )}
                       </div>
                     </div>
 

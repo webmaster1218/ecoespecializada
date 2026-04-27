@@ -139,9 +139,6 @@ function BlogContent() {
                       />
                       <div className={styles.postCategory}>
                         {catMeta?.name || post.category}
-                        {post.articleId && (
-                          <span className={styles.articleId}> {post.articleId}</span>
-                        )}
                       </div>
                     </div>
 
