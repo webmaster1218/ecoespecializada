@@ -2,122 +2,134 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://alquilerdeecografos.com/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/bogota/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://alquilerdeecografos.com/colombia/medellin/</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/cali/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/barranquilla/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/cartagena/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/bucaramanga/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/pereira/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/colombia/cucuta/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/ecografo-z6/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/ecografo-z60/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/ecografo-m7/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://alquilerdeecografos.com/blog/</loc>
-    <lastmod>2026-04-11</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alquilerdeecografos.com/blog/beneficios-alquiler-ecografos/</loc>
+    <loc>https://alquilerdeecografos.com/blog/guias/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alquilerdeecografos.com/blog/casos-exito/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alquilerdeecografos.com/blog/tecnica/</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://alquilerdeecografos.com/blog/guias/beneficios-alquiler-ecografos/</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alquilerdeecografos.com/blog/mindray-z6-vs-z60-comparacion/</loc>
+    <loc>https://alquilerdeecografos.com/blog/guias/mindray-z6-vs-z60-comparacion/</loc>
     <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alquilerdeecografos.com/blog/caso-exito-clinica-valle/</loc>
+    <loc>https://alquilerdeecografos.com/blog/casos-exito/caso-exito-clinica-valle/</loc>
     <lastmod>2026-04-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alquilerdeecografos.com/blog/guia-transductores-ultrasonido/</loc>
-    <lastmod>2026-04-05</lastmod>
+    <loc>https://alquilerdeecografos.com/blog/guias/guia-transductores-ultrasonido/</loc>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://alquilerdeecografos.com/blog/futuro-ultrasonido-movil-colombia/</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://alquilerdeecografos.com/gracias</loc>
-    <lastmod>2026-01-30</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.3</priority>
-  </url>
-  <url>
-    <loc>https://alquilerdeecografos.com/politicas</loc>
-    <lastmod>2026-01-30</lastmod>
+    <loc>https://alquilerdeecografos.com/politicas/</loc>
+    <lastmod>2026-04-02</lastmod>
     <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
+    <priority>0.3</priority>
   </url>
 </urlset>
