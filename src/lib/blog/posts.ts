@@ -157,7 +157,7 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
 ---
     `,
     author: "Dr. Juan Pérez",
-    image: "/images/z6/z6.webp",
+    image: "/images/blog/beneficios-alquiler-ecografos.webp",
     category: "guias",
     readTime: 5,
     tags: ["alquiler", "costos", "clínicas"]
@@ -497,7 +497,7 @@ Nuestros especialistas en ultrasonido médico pueden ayudarte a analizar tu situ
     `,
     author: "Ing. María González",
     date: "2026-04-11",
-    image: "/images/z60/z-60.webp",
+    image: "/images/blog/mindray-z6-vs-z60-comparacion.webp",
     category: "guias",
     readTime: 15,
     tags: ["comparación", "mindray", "equipos", "especificaciones técnicas", "costo-beneficio"]
@@ -576,7 +576,7 @@ El alquiler de ecógrafos puede ser el catalizador para transformar una práctic
     `,
     author: "Dr. Carlos Martínez",
     date: "2026-04-08",
-    image: "/images/m7/m7.webp",
+    image: "/images/blog/caso-exito-clinica-valle.webp",
     category: "casos-exito",
     readTime: 6,
     tags: ["caso de éxito", "clínica", "resultados"]
@@ -1009,144 +1009,297 @@ Las tendencias futuras, incluyendo transductores 3D/4D, multifrecuencia, integra
     `,
     author: "Dr. Roberto Torres",
     date: "2026-04-05",
-    image: "/images/clinical/mindray_ref.webp",
+    image: "/images/blog/guia-transductores-ultrasonido.webp",
     category: "guias",
     readTime: 8,
     tags: ["transductores", "guía técnica", "equipos"]
   },
   {
+    articleId: "GUI-004",
+    slug: "cuanto-cuesta-un-ecografo-en-colombia-precios-2026",
+    title: "⚠️ BORRADOR - Cuánto Cuesta un Ecógrafo en Colombia: Precios 2026",
+    excerpt: "Descubre cuánto cuesta un ecógrafo en Colombia en 2026. Comparativa de precios de compra vs alquiler para médicos y centros de salud. Tablas, marcas y opciones para tu consultorio.",
+    content: `
+# Cuánto Cuesta un Ecógrafo en Colombia: Precios 2026
+
+## Introducción: El dilema del médico colombiano
+
+Has terminado tu especialidad. Tienes el consultorio. Tienes los pacientes. Pero te falta la herramienta más importante para diagnosticar con precisión: un ecógrafo.
+
+Y entonces llega la pregunta que frena a tantos profesionales en Colombia: **¿cuánto cuesta un ecógrafo en Colombia?**
+
+No es una pregunta sencilla. Los precios varían enormemente según la marca, la tecnología, si es nuevo o usado, y si optas por comprar o por alquilar.
+
+En este artículo te daremos un panorama completo y actualizado a 2026 con cifras estimadas del mercado colombiano, para que puedas tomar la mejor decisión para tu consultorio sin sentir que estés dando un salto al vacío.
+
+---
+
+## ¿Cuánto Cuesta Comprar un Ecógrafo en Colombia?
+
+Empecemos por la opción más tradicional: la compra. Adquirir un ecógrafo en Colombia puede representar una inversión significativa, y los precios dependen en gran medida del tipo de equipo y la marca.
+
+### Precios por tipo de equipo
+
+El mercado colombiano ofrece equipos para todas las necesidades y presupuestos. Estos son los rangos estimados para 2026:
+
+| Tipo de Ecógrafo | Rango de Precio (COP) | Ideal para |
+|---|---|---|
+| Portátil básico (2D) | $25 – $50 millones | Médicos generales, consultorios pequeños, atención domiciliaria |
+| Portátil avanzado (Doppler color) | $50 – $90 millones | Ginecología, medicina interna, atención primaria |
+| Carro de media gama (Doppler, 3D) | $90 – $180 millones | Clínicas, especialistas con alta demanda |
+| Alta gama (3D/4D, volumétrico) | $180 – $350+ millones | Hospitales, centros de imágenes, ginecólogos obstetras |
+
+### Precios por marca
+
+Las marcas más comunes en el mercado colombiano tienen distintos posicionamientos y costos:
+
+- **Mindray** — La marca más equilibrada en relación calidad-precio. Un Mindray portátil puede costar entre $35 y $120 millones según el modelo. Es la opción preferida por médicos independientes por su fiabilidad y soporte técnico en Colombia.
+- **Philips** — Equipos de alta gama. Los precios arrancan en $80 millones para modelos básicos y pueden superar los $400 millones para equipos hospitalarios completos.
+- **GE (General Electric)** — Competidor directo de Philips en gama alta. Precios desde $70 millones hasta $350+ millones.
+- **Samsung / Toshiba (Canon)** — Opciones intermedias con buena tecnología. Sus equipos portátiles rondan los $40 – $100 millones.
+
+Es importante aclarar que estos son rangos estimados basados en el mercado colombiano. Los precios finales varían según el importador, la configuración del equipo y las sondas incluidas.
+
+---
+
+## ¿Cuánto Cuesta Comprar un Ecógrafo Usado en Colombia?
+
+Una alternativa para reducir la inversión inicial es el mercado de ecógrafos usados. En Colombia puedes encontrar equipos con 2 a 5 años de uso a precios entre un 30 % y un 50 % menores que los de un equipo nuevo.
+
+Sin embargo, comprar un ecógrafo usado tiene sus riesgos:
+
+- El desgaste de las sondas (el componente más costoso de reparar)
+- La obsolescencia del software
+- La pérdida de garantía del fabricante
+- La dificultad para encontrar repuestos
+
+Si consideras esta ruta, verifica siempre que el equipo cuente con registro INVIMA vigente y que el vendedor ofrezca soporte técnico post-venta.
+
+---
+
+## ¿Es Mejor Comprar o Alquilar un Ecógrafo?
+
+Aquí está el núcleo de la decisión. La respuesta depende de tu situación particular, pero veamos una comparación objetiva:
+
+### Comparativa alquiler vs compra
+
+| Aspecto | Comprar | Alquilar |
+|---|---|---|
+| Inversión inicial | $25 – $350 millones | $0 |
+| Costo mensual estimado | $0 si es compra directa; desde $2 – $8 millones si es financiado | $350.000 – $650.000/día según equipo |
+| Mantenimiento | Por cuenta del propietario ($2 – $5 millones/año) | Incluido en el alquiler |
+| Soporte técnico | Se paga aparte o por plan | Incluido 100 % |
+| Actualización tecnológica | Requiere vender y comprar de nuevo | Cambias de equipo cuando necesites |
+| Disponibilidad inmediata | Depende de importación (semanas o meses) | Entrega en 24 horas o menos |
+| Garantía | Limitada a lo que ofrezca el vendedor | Garantía permanente mientras alquiles |
+| Registro INVIMA | Debe gestionarlo el comprador | Gestionado por el proveedor |
+| Beneficio tributario | Depreciación del activo | Deducible como gasto operativo |
+
+### ¿Cuándo conviene comprar?
+
+Comprar tiene sentido cuando:
+- Vas a usar el ecógrafo a diario, durante años.
+- Tienes el capital disponible o acceso a crédito favorable.
+- Tu volumen de pacientes justifica la propiedad del equipo.
+- Quieres construir un patrimonio para tu consultorio.
+
+### ¿Cuándo conviene alquilar?
+
+El alquiler es una opción más inteligente cuando:
+- Estás iniciando tu práctica privada y no quieres descapitalizarte.
+- Necesitas un equipo para un evento, congreso o reemplazo temporal.
+- Quieres probar un modelo antes de comprometerte con su compra.
+- Tu demanda de pacientes es variable o estacional.
+- Prefieres invertir tu capital en crecimiento del consultorio en lugar de equipos.
+
+> 💬 *\"El proceso fue eficiente y de gran apoyo, con entrega puntual y la orientación necesaria. La inclusión del carrito práctico facilitó mucho la configuración en mi consultorio.\"*
+> — **Dr. Cristian Sanchez**, Médico general, usuario de Mindray Z60
+
+---
+
+## ¿Cuánto Cuesta Alquilar un Ecógrafo en Colombia?
+
+Si estás considerando el alquiler, los precios en Colombia suelen estructurarse por día, semana o mes. A continuación, un estimado basado en el mercado actual:
+
+| Modalidad | Rango de precio (COP) | Ideal para |
+|---|---|---|
+| Por día | $350.000 – $650.000 | Cobertura de vacaciones, reemplazos temporales, eventos |
+| Por semana | Desde $1.200.000 | Congresos médicos, jornadas de salud |
+| Por mes | Desde $4.500.000 | Consultorios en crecimiento, especialistas con demanda media |
+
+### ¿Qué incluye el alquiler?
+
+Cuando alquilas con un proveedor formal, estos servicios suelen estar incluidos:
+
+- **Equipo completo** con sondas según especialidad (convexo, lineal, endocavitaria, transvaginal)
+- **Carrito práctico** para movilidad en el consultorio
+- **Batería de autonomía** (90 – 100 minutos de uso continuo)
+- **Soporte biomédico prioritario** durante todo el periodo de alquiler
+- **Mantenimiento preventivo y correctivo** sin costos adicionales
+- **Instalación y orientación de uso** en tu consultorio
+- **Cumplimiento INVIMA** del equipo
+
+La gran ventaja del alquiler es la transparencia: sabes exactamente lo que pagas cada mes, sin sorpresas por reparaciones o mantenimientos imprevistos.
+
+---
+
+## Factores que Afectan el Precio de un Ecógrafo
+
+El precio —ya sea de compra o de alquiler— depende de varios factores técnicos y comerciales:
+
+### Tecnología del equipo
+
+- **Ecografía 2D**: La más básica y económica. Suficiente para medicina general y atención primaria.
+- **Doppler color**: Permite evaluar flujo sanguíneo. Imprescindible en ginecología, cardiología y vascular.
+- **3D/4D**: Imágenes volumétricas en tiempo real. Muy valorado en obstetricia y ginecología.
+- **Elastografía**: Para evaluar rigidez de tejidos. Un plus en equipos de alta gama.
+
+### Marca y origen
+
+Las marcas premium (Philips, GE) tienen precios más altos, pero también mayor respaldo técnico en Colombia. Mindray ha ganado terreno como la opción con mejor relación costo-beneficio para el médico independiente.
+
+### Nuevo vs usado
+
+Como vimos antes, un equipo usado puede costar entre un 30 % y un 50 % menos, pero implica asumir riesgos de mantenimiento y obsolescencia.
+
+### Garantía y soporte post-venta
+
+Una garantía sólida y soporte técnico local son factores que elevan el precio inicial, pero que a largo plazo evitan dolores de cabeza. En el alquiler, esto viene incluido sin costo adicional.
+
+---
+
+## Opciones de Financiación para Comprar un Ecógrafo
+
+Si tu decisión es comprar, existen alternativas para hacer más manejable la inversión:
+
+- **Créditos para equipos médicos**: Bancos colombianos como Bancolombia, Davivienda o BBVA ofrecen líneas de crédito específicas para activos fijos en salud. Las tasas rondan entre el 12 % y el 18 % EA, con plazos de 12 a 60 meses, según las condiciones de mercado vigentes a 2026.
+- **Leasing operativo**: Una figura híbrida. Pagas un canon mensual como en el alquiler, pero al final del contrato tienes opción de compra. Ideal si quieres probar el equipo antes de comprometerte.
+- **Alquiler con opción a compra**: Similar al leasing. El proveedor descuenta parte de lo pagado en rentas del valor final del equipo. Una ruta interesante si ya tienes clara la marca y el modelo.
+
+---
+
+## ¿Dónde Comprar o Alquilar Ecógrafos en Colombia?
+
+El mercado de equipos médicos en Colombia se concentra principalmente en Bogotá, Medellín, Cali y Barranquilla. Sin embargo, muchos proveedores ofrecen despacho a nivel nacional.
+
+### Recomendaciones para elegir proveedor
+
+1. **Verifica el registro INVIMA** — Todo equipo médico debe contar con permiso de comercialización vigente. No lo pases por alto.
+2. **Revisa las condiciones de garantía** — Tanto para compra como para alquiler, asegúrate de entender qué cubre y por cuánto tiempo.
+3. **Pregunta por el soporte técnico** — ¿Tienen técnicos en tu ciudad? ¿Cuál es el tiempo de respuesta promedio?
+4. **Consulta la disponibilidad de repuestos y sondas** — Las sondas tienen vida útil limitada y su reemplazo puede ser costoso.
+5. **Lee testimonios de otros médicos** — La experiencia de colegas que ya hayan trabajado con el proveedor es invaluable.
+
+### Alquiler de Ecógrafos — Una marca de Equibiomedic
+
+En Medellín y con despacho a toda Colombia, en **Alquiler de Ecógrafos** ofrecemos equipos Mindray de última generación. Nuestro stock incluye modelos como el Z6, Z60 y M7, todos con Doppler, sondas completas y carrito práctico.
+
+Trabajamos con contratos transparentes, sin cláusulas ocultas, y entregamos tu equipo en menos de 24 horas. Más de 10 clínicas confían en nosotros, con una calificación de 4.9/5.
+
+---
+
+## Conclusión
+
+Responder a la pregunta **cuánto cuesta un ecógrafo en Colombia** no es tan simple como dar un número. El costo real depende de tus necesidades clínicas, tu presupuesto y el modelo de adquisición que elijas.
+
+**En resumen:**
+- **Comprar** un ecógrafo cuesta entre $25 millones y más de $350 millones, dependiendo del tipo y la marca.
+- **Comprar usado** puede reducir el costo entre un 30 % y un 50 %, pero implica riesgos.
+- **Alquilar** elimina la inversión inicial y te da flexibilidad total, con costos desde $350.000/día.
+
+Para el médico que está empezando, para el especialista que quiere expandir su consultorio sin descapitalizarse, o para la clínica que necesita un equipo extra por temporada, el alquiler es una alternativa cada vez más popular en Colombia.
+
+La tecnología no debería ser una barrera para brindar una mejor atención a tus pacientes. **Cuánto cuesta un ecógrafo en Colombia** deja de ser un problema cuando encuentras la opción que se adapta a tu realidad.
+
+Si quieres conocer los precios actualizados de alquiler y disponibilidad de equipos, en Alquiler de Ecógrafos podemos ayudarte. Contáctanos sin compromiso para recibir una cotización personalizada según tu especialidad y las necesidades de tu consultorio.
+
+**Solicita tu cotización sin compromiso y lleva la tecnología a tu práctica sin grandes inversiones.**
+
+[WhatsApp: +57 300 3608621](https://wa.me/573003608621) | [alquilerdeecografos.com](https://alquilerdeecografos.com)
+    `,
+    author: "Dr. Juan Pérez",
+    date: "2026-04-27",
+    image: "/images/blog/cuanto-cuesta-ecografo-colombia.webp",
+    category: "guias",
+    readTime: 9,
+    tags: ["costos", "precios", "compra", "alquiler"]
+  },
+  {
     articleId: "INV-001",
     slug: "futuro-ultrasonido-movil-colombia",
-    title: "El Futuro del Ultrasonido Móvil en Colombia",
-    excerpt: "Análisis de tendencias, innovaciones y oportunidades del ultrasonido móvil en el mercado médico colombiano para los próximos 5 años.",
+    title: "⚠️ BORRADOR - El Futuro del Ultrasonido Móvil en Colombia",
+    excerpt: "Equipos que pesan menos de 6 kg, IA que asiste en diagnóstico y alquiler que elimina la barrera de inversión. Así se perfila el ultrasonido móvil en Colombia hacia 2030.",
     content: `
 # El Futuro del Ultrasonido Móvil en Colombia
 
-El ultrasonido móvil está transformando la atención médica en Colombia. Analizamos las tendencias y oportunidades.
+Hace diez años, hacer una ecografía en zona rural significaba trasladar al paciente durante horas hasta el hospital más cercano. Hoy, un médico puede cargar un ecógrafo en una mochila, subirlo a una lancha por el río Atrato y diagnosticar en el lugar.
 
-## Estado Actual del Mercado
+Eso no es ciencia ficción. Ya está pasando.
 
-**Crecimiento sostenido:**
-- El mercado de ecógrafos en Colombia crece 12% anual
-- Aumento de clínicas pequeñas y prácticas independientes
-- Mayor acceso a tecnología móvil
-- Telemedicina en expansión
-
-## Tendencias Emergentes
-
-### 1. Portabilidad Extrema
-
-Los equipos cada vez son más compactos sin sacrificar calidad:
-- Mindray Z6 y Z60: referencia de portabilidad
-- Peso reducido a <6 kg
-- Baterías de larga duración (>2 horas)
-- Conectividad wireless
-
-### 2. IA Integrada
-
-La inteligencia artificial está revolucionando:
-- Detección automática de patologías
-- Asistencia en diagnóstico
-- Optimización de imágenes
-- Protocolos guiados
-
-### 3. Conectividad y Telemedicina
-
-Integración con plataformas digitales:
-- Transmisión en tiempo real
-- Consultas remotas
-- Almacenamiento en nube
-- Acceso multiusuario
-
-### 4. Costos Accesibles
-
-Democratización de la tecnología:
-- Modelos más económicos
-- Opciones de alquiler flexibles
-- Financiamiento especializado
-- ROI más rápido
-
-## Oportunidades en Colombia
-
-### Regiones Desatendidas
-
-El ultrasonido móvil puede llevar diagnósticos a:
-- Zonas rurales remotas
-- Poblaciones indígenas
-- Municipios sin especialistas
-- Programas de salud pública
-
-### Medicina Preventiva
-
-Enfoque creciente en:
-- Chequeos preventivos
-- Detección temprana
-- Monitoreo de crónicos
-- Vacunatorios
-
-### Urgencias y Emergencias
-
-Aplicaciones vitales en:
-- Atención pre-hospitalaria
-- Desastres naturales
-- Conflicto armado
-- Crisis de salud
-
-## Desafíos a Superar
-
-1. **Infraestructura** en zonas rurales
-2. **Capacitación** de personal médico
-3. **Regulación** de telemedicina
-4. **Financiamiento** para pequeños proveedores
-5. **Conectividad** estable en todo el país
-
-## Predicciones 2026-2030
-
-### 2026
-- Mayor adopción de ultrasonido móvil
-- Expansión en clínicas pequeñas
-- Telemedicina regulada
-
-### 2027-2028
-- IA en diagnóstico rutinario
-- Expansión a zonas rurales
-- Protocolos estandarizados
-
-### 2029-2030
-- Ultrasonido de bolsillo masivo
-- Integración con salud digital
-- Cobertura nacional mejorada
-
-## Recomendaciones para Proveedores
-
-1. **Invertir en capacitación** continua
-2. **Desarrollar programas** para zonas rurales
-3. **Ofrecer flexibilidad** en contratos
-4. **Integrar tecnología** digital
-5. **Colaborar con gobierno** en salud pública
-
-## Impacto en Salud Pública
-
-El ultrasonido móvil puede:
-- Reducir tiempo de diagnóstico
-- Mejorar acceso en zonas remotas
-- Disminuir costos de traslado
-- Aumentar detección temprana
-- Mejorar resultados clínicos
-|
-## ¿Qué viene para el futuro?
-
-El futuro del ultrasonido móvil en Colombia es brillante. La tecnología está lista, pero el éxito depende de colaboración entre proveedores, gobierno y sector privado.
+El ultrasonido móvil —equipos portátiles con calidad de imagen diagnóstica— está cambiando la forma como Colombia piensa la atención médica. Y las próximas cinco años acelerarán esa transformación.
 
 ---
-*¿Quieres ser parte de esta transformación? Contáctanos para planes corporativos.*
+
+## El mercado se mueve rápido
+
+El segmento de ecógrafos portátiles en Colombia crece cerca del 12 % anual. No es casualidad: el país tiene más de 1.100 municipios y la mayoría no cuenta con un especialista en imágenes diagnosticas. La brecha entre la oferta y la necesidad es enorme, y la tecnología portátil es la herramienta más realista para cerrarla.
+
+Consultorios pequeños, fundaciones de salud y EPS están adoptando equipos móviles no como reemplazo del ecógrafo de sala, sino como **primera línea de diagnóstico**.
+
+---
+
+## Tres tendencias que definen el cambio
+
+**1. Equipos más livianos, sin sacrificar imagen**
+
+El Mindray Z6 pesa menos de 6 kg y ofrece imagen doppler a color. El Z60 sube la apuesta con pantalla táctil y batería para más de dos horas. Estos equipos ya no son "versiones reducidas" de los de sala —son herramientas diagnósticas completas que caben en un maletín.
+
+**2. Inteligencia artificial como copiloto**
+
+La IA no va a reemplazar al médico, pero sí va a hacerlo más rápido y seguro. Los nuevos sistemas integran detección automática de patologías, optimización de imagen en tiempo real y protocolos guiados paso a paso. Para un médico general que atiende en zona rural, eso marca la diferencia entre "creo que vi algo" y "tengo un hallazgo documentado".
+
+**3. Conectividad que elimina distancias**
+
+Transmisión de estudios en tiempo real, almacenamiento en nube y consulta remota con especialistas. Un médico en Quibdó puede realizar un estudio de ecografía y que un radiólogo en Bogotá lo lea en minutos. La Resolución 2654 de 2019 del Ministerio de Salud ya regula la telemedicina en Colombia —el marco legal existe, la tecnología ya está lista.
+
+---
+
+## El modelo de alquiler como habilitador
+
+La barrera más grande para adoptar ultrasonido móvil no es la tecnología —es el precio. Un ecógrafo portátil nuevo puede costar entre $25 y $80 millones. Para un consultorio independiente o una fundación, esa cifra es inalcanzable.
+
+El alquiler elimina esa barrera. Por una fracción del costo de compra, un médico tiene acceso a equipos actualizados, con mantenimiento incluido y sin riesgo de obsolescencia. En un mercado donde la tecnología se renueva cada 18 meses, alquilar es la decisión financiera más inteligente.
+
+---
+
+## Lo que viene: 2026-2030
+
+- **2026-2027**: Adopción masiva en clínicas pequeñas y consultorios independientes. La telemedicina se consolida como práctica estándar.
+- **2028-2029**: IA integrada en el flujo clínico diario —no como novedad, sino como herramienta rutinaria. Expansión real a municipios de categorías 4, 5 y 6.
+- **2030**: Ecógrafos de bolsillo conectados al teléfono. El ultrasonido se convierte en lo que hoy es el estetoscopio: parte del examen físico básico.
+
+---
+
+## El reto real
+
+La tecnología no es el problema. Los retos son otros: **capacitación** del personal que va a usar estos equipos, **conectividad** estable en las zonas donde más se necesitan, y **modelos de financiamiento** que tengan sentido para pequeños proveedores de salud.
+
+El país que resuelva esas tres cosas no solo mejora su sistema de salud —transforma la vida de millones de colombianos que hoy no tienen acceso a un diagnóstico oportuno.
+
+---
+
+Si estás pensando en llevar ultrasonido a tu práctica médica, tu consultorio o tu programa de salud, podemos ayudarte a elegir el equipo y el plan que mejor se adapte a tu realidad.
+
+**Habla con nosotros y recibe una asesoría personalizada sin compromiso.**
+
+[WhatsApp: +57 300 3608621](https://wa.me/573003608621) | [alquilerdeecografos.com](https://alquilerdeecografos.com)
     `,
-    author: "Lic. Ana María Rodríguez",
-    date: "2026-04-01",
-    image: "/images/z6/z6.webp",
+    author: "Dr. Juan Pérez",
+    date: "2026-04-27",
+    image: "/images/blog/futuro-ultrasonido-movil-colombia.webp",
     category: "tecnica",
-    readTime: 9,
-    tags: ["futuro", "tendencias", "mercado"]
+    readTime: 6,
+    tags: ["futuro", "tendencias", "portátil", "telemedicina"]
   }
 ];
 
