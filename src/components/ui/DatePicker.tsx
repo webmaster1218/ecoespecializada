@@ -5,7 +5,7 @@ import {
     format, isSameDay, isBefore, startOfToday
 } from "date-fns";
 import { es } from "date-fns/locale";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { CalendarIcon, ChevronDown } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 
@@ -58,7 +58,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                 {isOpen && (
                     <>
                         {/* Backdrop for mobile */}
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -66,7 +66,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                             className="fixed inset-0 bg-slate-900/40 backdrop-blur-[2px] z-[90] md:hidden"
                         />
 
-                        <motion.div
+                        <m.div
                             initial={{ opacity: 0, y: 10, scale: 0.95 }}
                             animate={{
                                 opacity: 1,
@@ -116,7 +116,7 @@ export default function CustomDatePicker({ value, onChange, label, minDate, erro
                                     Limpiar
                                 </button>
                             </div>
-                        </motion.div>
+                        </m.div>
                     </>
                 )}
             </AnimatePresence>

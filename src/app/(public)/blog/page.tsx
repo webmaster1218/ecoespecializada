@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getRecentPosts, getAllCategories } from '@/lib/blog/posts';
@@ -35,22 +35,22 @@ function BlogContent() {
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className="container">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className={styles.heroContent}
           >
-            <motion.div
+            <m.div
               className={styles.badge}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 }}
             >
               📚 Blog Médico
-            </motion.div>
+            </m.div>
 
-            <motion.h1
+            <m.h1
               className={styles.headline}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
@@ -58,9 +58,9 @@ function BlogContent() {
             >
               Conocimiento para{" "}
               <span className="text-gradient">Profesionales Médicos</span>
-            </motion.h1>
+            </m.h1>
 
-            <motion.p
+            <m.p
               className={styles.subheadline}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -68,17 +68,17 @@ function BlogContent() {
             >
               Guías, casos de éxito y tendencias en ultrasonido médico.
               Información práctica para mejorar tu práctica.
-            </motion.p>
+            </m.p>
 
-            <motion.div
+            <m.div
               className={styles.actions}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
             >
               <CallButton text="Consultar con Especialista" />
-            </motion.div>
-          </motion.div>
+            </m.div>
+          </m.div>
         </div>
       </section>
 
@@ -120,7 +120,7 @@ function BlogContent() {
             {posts.map((post, index) => {
               const catMeta = categoryMap[post.category];
               return (
-                <motion.article
+                <m.article
                   key={post.slug}
                   className={styles.postCard}
                   initial={{ opacity: 0, y: 20 }}
@@ -158,7 +158,7 @@ function BlogContent() {
                       </div>
                     </div>
                   </Link>
-                </motion.article>
+                </m.article>
               );
             })}
           </div>
@@ -169,7 +169,7 @@ function BlogContent() {
       <section className={styles.ctaSection}>
         <div className="container">
           <div className={styles.ctaCard}>
-            <motion.div
+            <m.div
               className={styles.ctaContent}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -184,7 +184,7 @@ function BlogContent() {
                 mantenimiento incluido y entrega rápida.
               </p>
               <CallButton text="Cotizar Ahora" />
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

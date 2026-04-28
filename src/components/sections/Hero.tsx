@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styles from "./Hero.module.css";
 
 interface HeroProps {
@@ -48,40 +48,40 @@ export default function Hero({
     <section className={styles.hero} id="inicio">
       <div className={`container ${styles.container}`}>
         {/* Left Column: Text Content */}
-        <motion.div
+        <m.div
           className={styles.content}
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <motion.div
+          <m.div
             className={styles.badge}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
           >
             <span className={styles.badgeIcon}>✓</span> {badgeText}
-          </motion.div>
+          </m.div>
 
-          <motion.h1
+          <m.h1
             className={styles.headline}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             {headline}
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             className={styles.subheadline}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
           >
             {subheadline}
-          </motion.p>
+          </m.p>
 
-          <motion.div
+          <m.div
             className={styles.actions}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -110,9 +110,9 @@ export default function Hero({
                 ¿Por qué alquilar?
               </a>
             )}
-          </motion.div>
+          </m.div>
 
-          <motion.div
+          <m.div
             className={styles.trust}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -127,13 +127,13 @@ export default function Hero({
             <div className={styles.trustItem}>
               <span>🛡️</span> Garantía 100%
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* Right Column: Visual Composition */}
         <div className="relative w-full h-[500px] md:h-[600px] flex items-center justify-center lg:h-[700px]">
           {/* Layer 1: Atmosphere Glow */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -141,7 +141,7 @@ export default function Hero({
           />
 
           {/* Layer 2: The Pedestal */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -149,7 +149,7 @@ export default function Hero({
           />
 
           {/* Layer 3: The Product Image */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -167,10 +167,10 @@ export default function Hero({
               decoding="sync"
               sizes="(max-width: 640px) 90vw, (max-width: 1024px) 480px, 500px"
             />
-          </motion.div>
+          </m.div>
 
           {/* Layer 4: Floating Availability Card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.5 }}
@@ -203,7 +203,7 @@ export default function Hero({
                 </p>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>

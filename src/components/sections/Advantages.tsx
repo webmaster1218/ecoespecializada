@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 
 function Advantages({ city, subtitle, title }: { city?: string, subtitle?: string, title?: string }) {
@@ -56,16 +56,16 @@ function Advantages({ city, subtitle, title }: { city?: string, subtitle?: strin
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-400/20 rounded-full blur-[100px] -z-10 pointer-events-none"></div>
 
             <div className="container mx-auto px-4 relative z-10">
-                <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
                         {title || `Por qué elegir alquiler de ecógrafos ${city ? `en ${city}` : "con nosotros"}`}
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">{subtitle || "Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales."}</p>
-                </motion.div>
+                </m.div>
 
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                     {advantages.map((adv, index) => (
-                        <motion.div
+                        <m.div
                             key={index}
                             className="bg-white p-8 rounded-[30px] border border-slate-100 shadow-xl hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 group"
                             initial={{ opacity: 0, y: 30 }}
@@ -78,7 +78,7 @@ function Advantages({ city, subtitle, title }: { city?: string, subtitle?: strin
                             </div>
                             <h3 className="text-xl font-bold text-slate-900 mb-3">{adv.title}</h3>
                             <p className="text-slate-500 leading-relaxed text-sm">{adv.desc}</p>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
             </div>

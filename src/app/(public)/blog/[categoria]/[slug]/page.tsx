@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
@@ -49,7 +49,7 @@ export default function BlogPostPage() {
         {/* Article Hero */}
         <article className={styles.article}>
           <div className="container">
-            <motion.div
+            <m.div
               className={styles.articleHeader}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -74,10 +74,10 @@ export default function BlogPostPage() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
             {/* Featured Image */}
-            <motion.div
+            <m.div
               className={styles.featuredImage}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -91,10 +91,10 @@ export default function BlogPostPage() {
                 className={styles.image}
                 priority
               />
-            </motion.div>
+            </m.div>
 
             {/* Article Content */}
-            <motion.div
+            <m.div
               className={styles.articleContent}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -187,10 +187,10 @@ export default function BlogPostPage() {
                   ))}
                 </div>
               )}
-            </motion.div>
+            </m.div>
 
             {/* Share Buttons */}
-            <motion.div
+            <m.div
               className={styles.shareButtons}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -206,7 +206,7 @@ export default function BlogPostPage() {
               <button className={styles.shareButton} aria-label="Compartir en Twitter">
                 Twitter
               </button>
-            </motion.div>
+            </m.div>
           </div>
         </article>
 
@@ -217,7 +217,7 @@ export default function BlogPostPage() {
               <h2 className={styles.relatedTitle}>Artículos Relacionados</h2>
               <div className={styles.relatedGrid}>
                 {relatedPosts.map((post) => (
-                  <motion.article
+                  <m.article
                     key={post.slug}
                     className={styles.relatedCard}
                     whileHover={{ y: -4 }}
@@ -236,7 +236,7 @@ export default function BlogPostPage() {
                         <p className={styles.relatedExcerpt}>{post.excerpt}</p>
                       </div>
                     </Link>
-                  </motion.article>
+                  </m.article>
                 ))}
               </div>
             </div>
@@ -246,7 +246,7 @@ export default function BlogPostPage() {
         {/* CTA Section */}
         <section className={styles.ctaSection}>
           <div className="container">
-            <motion.div
+            <m.div
               className={styles.ctaCard}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -259,7 +259,7 @@ export default function BlogPostPage() {
                 para tu práctica médica.
               </p>
               <CallButton text="Cotizar Ahora" />
-            </motion.div>
+            </m.div>
           </div>
         </section>
       </main>

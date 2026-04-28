@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Footer from "@/components/layout/Footer";
 import LogoLoop from "@/components/sections/LogoLoop";
 import CallButton from "@/components/ui/CallButton";
@@ -130,15 +130,15 @@ export default function EcografoM7Page() {
                 className="lg:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 bg-slate-50 rounded-xl text-slate-600"
                 aria-label="Menu"
               >
-                <motion.span
+                <m.span
                   animate={isMenuOpen ? { rotate: 45, y: 6.5 } : { rotate: 0, y: 0 }}
                   className="w-5 h-0.5 bg-current rounded-full"
                 />
-                <motion.span
+                <m.span
                   animate={isMenuOpen ? { opacity: 0 } : { opacity: 1 }}
                   className="w-5 h-0.5 bg-current rounded-full"
                 />
-                <motion.span
+                <m.span
                   animate={isMenuOpen ? { rotate: -45, y: -6.5 } : { rotate: 0, y: 0 }}
                   className="w-5 h-0.5 bg-current rounded-full"
                 />
@@ -150,7 +150,7 @@ export default function EcografoM7Page() {
         {/* Mobile Menu Overlay - Home Style */}
         <AnimatePresence>
           {isMenuOpen && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -197,7 +197,7 @@ export default function EcografoM7Page() {
                   </Link>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </nav>
@@ -210,7 +210,7 @@ export default function EcografoM7Page() {
         <div className="container mx-auto px-4 md:px-8 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
@@ -284,16 +284,16 @@ export default function EcografoM7Page() {
                   <span className="text-[10px] md:text-xs font-bold leading-tight uppercase tracking-wide">Soporte 24/7</span>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1, delay: 0.2 }}
               className="relative h-[380px] md:h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:mx-0"
             >
               {/* Layer 1: Atmosphere Glow */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, ease: "easeOut" }}
@@ -301,7 +301,7 @@ export default function EcografoM7Page() {
               />
 
               {/* Layer 2: The Pedestal */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
@@ -318,7 +318,7 @@ export default function EcografoM7Page() {
               />
 
               {/* Floating feature card */}
-              <motion.div
+              <m.div
                 initial={{ y: 20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.8, duration: 0.6 }}
@@ -335,8 +335,8 @@ export default function EcografoM7Page() {
                     <p className="text-xs text-slate-500">Inmediata para envío</p>
                   </div>
                 </div>
-              </motion.div>
-            </motion.div>
+              </m.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -353,7 +353,7 @@ export default function EcografoM7Page() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-16">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -369,9 +369,9 @@ export default function EcografoM7Page() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Batería Autoliberadora</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Escaneo ininterrumpido con batería recargable Li-ion, aportando más de 1.5 hs de operación continua con iRoam™.</p>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -388,9 +388,9 @@ export default function EcografoM7Page() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Monitor LCD de Nivel Médico</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Pantalla de 15 pulgadas TFT de alta resolución anti-reflejo y de ángulos de visión ampliados para entornos luminosos.</p>
-            </motion.div>
+            </m.div>
 
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
@@ -407,7 +407,7 @@ export default function EcografoM7Page() {
               </div>
               <h3 className="text-xl md:text-2xl font-bold text-slate-900 mb-3 relative z-10">Alta Multiespecialidad</h3>
               <p className="text-sm md:text-base text-slate-600 relative z-10">Soporta exploración transvaginal volumétrica con imagen 3D/4D de alta fidelidad, excelente para obstetricia y ginecología.</p>
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>
@@ -417,7 +417,7 @@ export default function EcografoM7Page() {
         <div className="absolute inset-0 bg-blue-50/50 skew-y-3 origin-bottom-right transform scale-110 -z-10"></div>
         <div className="container mx-auto px-4 md:px-8">
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -427,7 +427,7 @@ export default function EcografoM7Page() {
               <div className="relative bg-white rounded-[2rem] p-8 shadow-2xl border border-white/40">
                 <Image src="/images/m7/M7-abierto-ziquierda.webp" alt="Mindray M7 Vista LAT" width={600} height={600} className="w-full h-auto object-contain drop-shadow-xl hover:scale-105 transition-transform duration-700" sizes="(max-width: 768px) 100vw, 50vw" />
               </div>
-            </motion.div>
+            </m.div>
 
             <div className="space-y-8 md:space-y-10">
               <div>
@@ -484,7 +484,7 @@ export default function EcografoM7Page() {
             <LogoLoop />
           </div>
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -510,7 +510,7 @@ export default function EcografoM7Page() {
                 <p className="text-blue-100/90 font-semibold text-sm mt-2">Respuesta garantizada en menos de 2 horas</p>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 

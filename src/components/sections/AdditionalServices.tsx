@@ -1,7 +1,7 @@
 "use client";
 
 import { memo } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styles from "./AdditionalServices.module.css";
 import { Wrench, Settings, ShoppingBag, Check, ArrowRight } from "lucide-react";
 import CallButton from "@/components/ui/CallButton";
@@ -49,7 +49,7 @@ function AdditionalServices() {
     return (
         <section className={styles.section} id="servicios-complementarios">
             <div className="container">
-                <motion.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-600 font-bold mb-3">Servicios adicionales</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
                         Servicios <span className="text-blue-600">complementarios</span>
@@ -57,11 +57,11 @@ function AdditionalServices() {
                     <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
                         Soluciones integrales para la gestión completa de sus equipos de diagnóstico médico
                     </p>
-                </motion.div>
+                </m.div>
 
                 <div className={styles.servicesGrid}>
                     {services.map((service, index) => (
-                        <motion.div
+                        <m.div
                             key={index}
                             className={`${styles.serviceCard} glass-card`}
                             initial={{ opacity: 0, y: 30 }}
@@ -96,11 +96,11 @@ function AdditionalServices() {
                                     <ArrowRight className={styles.ctaIcon} />
                                 </a>
                             </div>
-                        </motion.div>
+                        </m.div>
                     ))}
                 </div>
 
-                <motion.div className={styles.bottomCTA} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className={styles.bottomCTA} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <div className={`${styles.ctaCard} glass-card`}>
                         <div className={styles.ctaContent}>
                             <h3 className={styles.ctaTitle}>
@@ -121,7 +121,7 @@ function AdditionalServices() {
                             />
                         </div>
                     </div>
-                </motion.div>
+                </m.div>
             </div>
         </section>
     );

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { Check, ArrowLeft, Clock } from "lucide-react";
 import styles from "./Gracias.module.css";
 import Image from "next/image";
@@ -17,12 +17,12 @@ export default function Gracias() {
                     </div>
 
                     {/* Icono de éxito */}
-                    <motion.div className={styles.successIcon} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                    <m.div className={styles.successIcon} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <Check />
-                    </motion.div>
+                    </m.div>
 
                     {/* Mensaje principal */}
-                    <motion.div className={styles.message} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+                    <m.div className={styles.message} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                         <h1 className={styles.title}>
                             ¡Gracias por tu <span className="text-gradient">reserva!</span>
                         </h1>
@@ -32,10 +32,10 @@ export default function Gracias() {
                         <p className={styles.description}>
                             Uno de nuestros asesores especializados se comunicará contigo pronto para coordinar los detalles finales de la entrega.
                         </p>
-                    </motion.div>
+                    </m.div>
 
                     {/* Información de contacto */}
-                    <motion.div className={styles.contactInfo} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                    <m.div className={styles.contactInfo} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                         <div className={styles.contactCard}>
                             <div className={styles.contactIcon}>
                                 <Clock />
@@ -45,15 +45,15 @@ export default function Gracias() {
                                 <p>Menos de 2 horas hábiles</p>
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* CTA para volver al inicio */}
-                    <motion.div className={styles.actions} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
+                    <m.div className={styles.actions} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 }}>
                         <Link href="/" className="btn-primary flex items-center gap-2 px-8 py-4 text-lg">
                             <ArrowLeft size={24} />
                             Volver al inicio
                         </Link>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </div>

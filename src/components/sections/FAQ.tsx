@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styles from "./FAQ.module.css";
 import CallButton from "../ui/CallButton";
 
@@ -68,13 +68,13 @@ export default function FAQ({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="faq">
             <div className="container">
-                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Resolvemos tus dudas</span>
                     <h2 className={styles.title}>Preguntas <span className="text-gradient">frecuentes {city ? `en ${city}` : ""}</span></h2>
                     <p className={styles.subtitle}>Todo lo que necesitas saber sobre nuestros servicios de alquiler de ecógrafos</p>
-                </motion.div>
+                </m.div>
 
-                <motion.div className={styles.faqContainer} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+                <m.div className={styles.faqContainer} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                     <div className={styles.faqGrid}>
                         {faqData.map((item, index) => (
                             <div
@@ -99,9 +99,9 @@ export default function FAQ({ city }: { city?: string }) {
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </m.div>
 
-                <motion.div className={styles.contactCta} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                <m.div className={styles.contactCta} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                     <div className={styles.ctaCard}>
                         <h3>¿No encuentras lo que buscas?</h3>
                         <p>Nuestros especialistas están listos para resolver todas tus dudas</p>
@@ -114,7 +114,7 @@ export default function FAQ({ city }: { city?: string }) {
                         />
                         <p className={styles.responseTime}>Respuesta garantizada en menos de 2 horas</p>
                     </div>
-                </motion.div>
+                </m.div>
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}

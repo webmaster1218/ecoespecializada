@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef, ReactNode } from "react";
 import { useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import {
   User,
   Building2,
@@ -492,7 +492,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Header */}
-        <motion.div className="text-center mb-8" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+        <m.div className="text-center mb-8" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
           <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-2">
             RESERVA FÁCIL
           </span>
@@ -503,10 +503,10 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
             Proceso 100% digital. Reserva tu{" "}
             <strong>ecógrafo {city ? `en ${city}` : "en Medellín"}</strong> en minutos.
           </p>
-        </motion.div>
+        </m.div>
 
         {/* Wizard Component */}
-        <motion.div
+        <m.div
           layout
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="max-w-4xl mx-auto bg-white overflow-hidden shadow-2xl rounded-[30px] border border-slate-100"
@@ -562,7 +562,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
             )}
             <AnimatePresence mode="wait">
               {step === 2 && (
-                <motion.div
+                <m.div
                   key="step1"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -672,11 +672,11 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
 
               {step === 1 && (
-                <motion.div
+                <m.div
                   key="step2"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -1162,11 +1162,11 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                       )}
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
 
               {step === 3 && (
-                <motion.div
+                <m.div
                   key="step3"
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
@@ -1366,18 +1366,18 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                       </li>
                     </ul>
                   </div>
-                </motion.div>
+                </m.div>
               )}
 
               {step === 4 && (
-                <motion.div
+                <m.div
                   key="step4"
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   className="text-center py-12 flex flex-col items-center justify-center h-full"
                 >
                   <div className="w-28 h-28 bg-green-100 rounded-full flex items-center justify-center mb-8 relative">
-                    <motion.div
+                    <m.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
                       transition={{
@@ -1391,7 +1391,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                         className="text-green-600"
                         strokeWidth={3}
                       />
-                    </motion.div>
+                    </m.div>
                     <div className="absolute inset-0 border-4 border-green-200 rounded-full animate-ping opacity-20"></div>
                   </div>
                   <h3 className="text-2xl md:text-4xl font-bold text-slate-900 mb-4">
@@ -1416,7 +1416,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                     </span>{" "}
                     Hacer otra reserva
                   </button>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
@@ -1450,7 +1450,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
               </button>
             </div>
           )}
-        </motion.div>
+        </m.div>
       </div>
     </section>
   );

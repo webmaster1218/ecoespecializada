@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import styles from './LogoLoop.module.css';
 
 const logoData = [
@@ -33,6 +33,8 @@ function LogoImage({ name, src, width, height }: { name: string; src: string; wi
             <img
                 src={src}
                 alt={name}
+                width={width}
+                height={height}
                 className={styles.logoImage}
                 title={name}
                 loading="lazy"
@@ -62,7 +64,7 @@ export default function LogoLoop() {
         <section className={styles.section}>
             <div className={styles.mask}></div>
 
-            <motion.div className="container mx-auto px-4 mb-12 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+            <m.div className="container mx-auto px-4 mb-12 text-center" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                 <span className="text-blue-600 font-bold uppercase tracking-widest text-xs md:text-sm mb-4 block">
                     Confianza comprobada
                 </span>
@@ -72,7 +74,7 @@ export default function LogoLoop() {
                 <p className="text-lg text-slate-600 max-w-3xl mx-auto leading-relaxed">
                     Acompañamos a las instituciones de salud líderes en Colombia con tecnología y respaldo.
                 </p>
-            </motion.div>
+            </m.div>
 
             <div className={styles.sliderContainer}>
                 <div className={styles.slider}>

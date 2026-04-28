@@ -1,7 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
@@ -55,7 +55,7 @@ export const AnimatedTestimonials = ({
                     <div className="relative h-80 w-full">
                         <AnimatePresence>
                             {testimonials.map((testimonial, index) => (
-                                <motion.div
+                                <m.div
                                     key={testimonial.src}
                                     initial={{
                                         opacity: 0,
@@ -93,13 +93,13 @@ export const AnimatedTestimonials = ({
                                         draggable={false}
                                         className="h-full w-full rounded-3xl object-cover object-center"
                                     />
-                                </motion.div>
+                                </m.div>
                             ))}
                         </AnimatePresence>
                     </div>
                 </div>
                 <div className="flex justify-between flex-col py-4">
-                    <motion.div
+                    <m.div
                         key={active}
                         initial={{
                             y: 20,
@@ -124,9 +124,9 @@ export const AnimatedTestimonials = ({
                         <p className="text-sm text-gray-600">
                             {testimonials[active].designation}
                         </p>
-                        <motion.p className="text-lg text-gray-700 mt-8">
+                        <m.p className="text-lg text-gray-700 mt-8">
                             {testimonials[active].quote.split(" ").map((word, index) => (
-                                <motion.span
+                                <m.span
                                     key={index}
                                     initial={{
                                         filter: "blur(10px)",
@@ -146,10 +146,10 @@ export const AnimatedTestimonials = ({
                                     className="inline-block"
                                 >
                                     {word}&nbsp;
-                                </motion.span>
+                                </m.span>
                             ))}
-                        </motion.p>
-                    </motion.div>
+                        </m.p>
+                    </m.div>
                     <div className="flex gap-4 pt-12 md:pt-0">
                         <button
                             onClick={handlePrev}

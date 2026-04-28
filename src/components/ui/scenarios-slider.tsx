@@ -3,7 +3,7 @@
 import * as React from "react";
 import { useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -119,7 +119,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                     {/* === Center Column: Main Image === */}
                     <div className="md:col-span-5 relative h-[350px] md:h-[500px] order-1 md:order-2 rounded-2xl overflow-hidden shadow-2xl">
                         <AnimatePresence initial={false} custom={direction}>
-                            <motion.div
+                            <m.div
                                 key={currentIndex}
                                 className="absolute inset-0"
                                 custom={direction}
@@ -137,7 +137,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                                     sizes="(max-width: 768px) 90vw, 500px"
                                     priority={currentIndex === 0}
                                 />
-                            </motion.div>
+                            </m.div>
                         </AnimatePresence>
                     </div>
 
@@ -145,7 +145,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                     <div className="md:col-span-4 flex flex-col justify-center pl-0 md:pl-10 order-3 md:order-3">
                         <div className="relative overflow-hidden min-h-[220px]">
                             <AnimatePresence initial={false} custom={direction} mode="wait">
-                                <motion.div
+                                <m.div
                                     key={currentIndex}
                                     custom={direction}
                                     variants={textVariants}
@@ -163,7 +163,7 @@ export const ScenariosSlider = ({ scenarios, className }: ScenarioSliderProps) =
                                     <p className="text-lg text-slate-600 leading-relaxed">
                                         {activeScenario.description}
                                     </p>
-                                </motion.div>
+                                </m.div>
                             </AnimatePresence>
                         </div>
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import { ReactNode } from "react";
 import styles from "./Comparison.module.css";
 import {
@@ -19,15 +19,15 @@ export default function Comparison({ city, subtitle, titleText, titleHighlight }
     return (
         <section className={styles.section} id="comparativa">
             <div className="container">
-                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Decisión inteligente</span>
                     <h2 className={styles.title}>{titleText || "El mejor servicio de"} <span className="text-gradient">{titleHighlight || `alquiler de ecógrafos ${city || ""}`}</span></h2>
                     <p className={styles.subtitle}>{subtitle || "Compara y descubre por qué más de 200 clínicas prefieren nuestro modelo vs la compra tradicional."}</p>
-                </motion.div>
+                </m.div>
 
                 <div className={styles.grid}>
                     {/* Columna Dolor */}
-                    <motion.div className={`${styles.card} ${styles.pain}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                    <m.div className={`${styles.card} ${styles.pain}`} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <h3 className={styles.cardTitle}>❌ Comprar</h3>
                         <ul className={styles.list}>
                             <li>
@@ -76,10 +76,10 @@ export default function Comparison({ city, subtitle, titleText, titleHighlight }
                                 </div>
                             </li>
                         </ul>
-                    </motion.div>
+                    </m.div>
 
                     {/* Columna Placer (Alquiler de Ecógrafos) */}
-                    <motion.div className={`${styles.card} ${styles.pleasure} glass-card`} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                    <m.div className={`${styles.card} ${styles.pleasure} glass-card`} initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <div className={styles.badge}>Mejor opción</div>
                         <h3 className={styles.cardTitle}>✅ Alquiler de ecógrafos (Cero riesgo)</h3>
                         <ul className={styles.list}>
@@ -120,7 +120,7 @@ export default function Comparison({ city, subtitle, titleText, titleHighlight }
                                 </div>
                             </li>
                         </ul>
-                    </motion.div>
+                    </m.div>
                 </div>
             </div>
         </section>

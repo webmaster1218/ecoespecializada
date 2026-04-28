@@ -69,6 +69,8 @@ const organizationSchema = {
   ]
 };
 
+import { MotionProvider } from "@/components/providers/MotionProvider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -118,11 +120,13 @@ export default function RootLayout({
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-WV8Q9KMF');`}
         </Script>
-<script
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
-        {children}
+        <MotionProvider>
+          {children}
+        </MotionProvider>
       </body>
     </html>
   );

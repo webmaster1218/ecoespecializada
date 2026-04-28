@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getPostsByCategory, getAllCategories } from '@/lib/blog/posts';
@@ -46,7 +46,7 @@ export default function CategoriaPage() {
       {/* Category Hero */}
       <section className={styles.hero}>
         <div className="container">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -56,7 +56,7 @@ export default function CategoriaPage() {
             <h1 className={styles.heroTitle}>{catMeta.name}</h1>
             <p className={styles.heroDescription}>{catMeta.description}</p>
             <span className={styles.heroCount}>{posts.length} artículos</span>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -87,7 +87,7 @@ export default function CategoriaPage() {
             {posts.map((post, index) => {
               const postCatMeta = categoryMap[post.category];
               return (
-                <motion.article
+                <m.article
                   key={post.slug}
                   className={blogStyles.postCard}
                   initial={{ opacity: 0, y: 20 }}
@@ -124,7 +124,7 @@ export default function CategoriaPage() {
                       </div>
                     </div>
                   </Link>
-                </motion.article>
+                </m.article>
               );
             })}
           </div>
@@ -144,7 +144,7 @@ export default function CategoriaPage() {
       <section className={blogStyles.ctaSection}>
         <div className="container">
           <div className={blogStyles.ctaCard}>
-            <motion.div
+            <m.div
               className={blogStyles.ctaContent}
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
@@ -159,7 +159,7 @@ export default function CategoriaPage() {
                 mantenimiento incluido y entrega rápida.
               </p>
               <CallButton text="Cotizar Ahora" />
-            </motion.div>
+            </m.div>
           </div>
         </div>
       </section>

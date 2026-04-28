@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Eye } from "lucide-react";
-import { motion } from "framer-motion";
+import { m } from "framer-motion";
 import styles from "./ProductCatalog.module.css";
 import ProductGalleryModal from "../ui/ProductGalleryModal";
 import CallButton from "../ui/CallButton";
@@ -111,15 +111,15 @@ export default function ProductCatalog({ city }: { city?: string }) {
     return (
         <section className={styles.section} id="equipos">
             <div className="container">
-                <motion.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                <m.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Modelos disponibles</span>
                     <h2 className={styles.title}>Tecnología <span className="text-gradient">mindray a tu alcance</span></h2>
                     <p className={styles.subtitle}>Tecnología Mindray de última generación disponible para {city ? `entrega en ${city}` : "entrega inmediata en Medellín"} y despachos a nivel nacional.</p>
-                </motion.div>
+                </m.div>
 
                 <div className={styles.grid}>
                     {/* Card Z6 */}
-                    <motion.div className={`${styles.card} glass-card hover:shadow-lg transition-all`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
+                    <m.div className={`${styles.card} glass-card hover:shadow-lg transition-all`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                         <div className={styles.cardHeader}>
                             <h3 className={styles.productName}>Mindray Z6</h3>
                             <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">Funcionalidad y precio</span>
@@ -176,10 +176,10 @@ export default function ProductCatalog({ city }: { city?: string }) {
                                 />
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Card Z60 */}
-                    <motion.div className={`${styles.card} glass-card ${styles.featured} ring-2 ring-blue-500/20 shadow-blue-900/5`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
+                    <m.div className={`${styles.card} glass-card ${styles.featured} ring-2 ring-blue-500/20 shadow-blue-900/5`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}>
                         <div className={`${styles.featuredBadge} bg-blue-600 text-white shadow-lg`}>Recomendado</div>
                         <div className={styles.cardHeader}>
                             <h3 className={styles.productName}>Mindray Z60</h3>
@@ -239,10 +239,10 @@ export default function ProductCatalog({ city }: { city?: string }) {
                                 />
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
 
                     {/* Card M7 */}
-                    <motion.div className={`${styles.card} glass-card hover:shadow-lg transition-all`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
+                    <m.div className={`${styles.card} glass-card hover:shadow-lg transition-all`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.2 }}>
                         <div className={styles.cardHeader}>
                             <h3 className={styles.productName}>Mindray M7</h3>
                             <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">Experiencia 3D/4D</span>
@@ -300,7 +300,7 @@ export default function ProductCatalog({ city }: { city?: string }) {
                                 />
                             </div>
                         </div>
-                    </motion.div>
+                    </m.div>
                 </div>
                 {productsSchema.map((schema, index) => (
                     <script

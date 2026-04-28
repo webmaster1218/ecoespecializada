@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { m, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft, ChevronRight, Check, Trophy, Stethoscope } from "lucide-react";
 import styles from "./ProductGalleryModal.module.css";
 import { ProductDetails } from "../sections/ProductCatalog";
@@ -68,7 +68,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
 
     return (
         <AnimatePresence>
-            <motion.div
+            <m.div
                 className={styles.overlay}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -89,7 +89,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                                 </button>
 
                                 <AnimatePresence mode="wait">
-                                    <motion.div
+                                    <m.div
                                         key={currentIndex}
                                         initial={{ opacity: 0, scale: 0.95 }}
                                         animate={{
@@ -114,7 +114,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                                             className={styles.mainImage}
                                             priority={true}
                                         />
-                                    </motion.div>
+                                    </m.div>
                                 </AnimatePresence>
 
                                 <button className={`${styles.navButton} ${styles.next}`} onClick={showNext}>
@@ -181,7 +181,7 @@ export default function ProductGalleryModal({ isOpen, onClose, product }: Produc
                         </div>
                     </div>
                 </div>
-            </motion.div>
+            </m.div>
         </AnimatePresence>
     );
 }
