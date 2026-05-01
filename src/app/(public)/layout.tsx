@@ -2,7 +2,6 @@
 
 import { usePathname } from "next/navigation";
 import Navbar from "@/components/layout/Navbar";
-import WhatsAppButton from "@/components/ui/WhatsAppButton";
 import ChatWidget from "@/components/ui/ChatWidget";
 
 export default function PublicLayout({
@@ -24,7 +23,6 @@ export default function PublicLayout({
         <>
             {!hideNavbar && <Navbar />}
             <main>{children}</main>
-            {!isLoginPage && <WhatsAppButton />}
             {!isLoginPage && <ChatWidget />}
         </>
     );
