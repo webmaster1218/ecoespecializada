@@ -23,6 +23,7 @@ export default function PublicLayout({
         <>
             {!hideNavbar && <Navbar />}
             <main>{children}</main>
+            {/* Chat widget for visitor support */}
             {!isLoginPage && <ChatWidget />}
         </>
     );
