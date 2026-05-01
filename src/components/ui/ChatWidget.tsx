@@ -203,24 +203,28 @@ export default function ChatWidget() {
         </div>
       )}
 
-      {/* Floating Button */}
-      <button
-        onClick={toggleChat}
-        className={`${styles.chatButton} ${isOpen ? styles.chatButtonActive : ""}`}
-        aria-label={isOpen ? "Cerrar chat" : "Abrir chat de asistencia"}
-        title={isOpen ? "" : "Chatea con nosotros"}
-      >
-        {isOpen ? (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-            <line x1="18" y1="6" x2="6" y2="18" />
-            <line x1="6" y1="6" x2="18" y2="18" />
-          </svg>
-        ) : (
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-          </svg>
+      {/* Floating Button with Label */}
+      <div className={styles.chatButtonWrapper}>
+        {!isOpen && (
+          <span className={styles.chatLabel}>Chatea con nosotros</span>
         )}
-      </button>
+        <button
+          onClick={toggleChat}
+          className={`${styles.chatButton} ${isOpen ? styles.chatButtonActive : ""}`}
+          aria-label={isOpen ? "Cerrar chat" : "Abrir chat de asistencia"}
+        >
+          {isOpen ? (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          )}
+        </button>
+      </div>
     </>
   );
 }
