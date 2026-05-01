@@ -209,6 +209,27 @@
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
+.botMessage strong {
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+.botMessage em {
+  color: #4a5568;
+  font-style: italic;
+}
+
+.botMessage a {
+  color: #0a7e4a;
+  text-decoration: underline;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.botMessage a:hover {
+  color: #065f3b;
+}
+
 /* ===== Typing Indicator ===== */
 .typing {
   display: flex;

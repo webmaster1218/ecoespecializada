@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import styles from "./ChatWidget.module.css";
+import { formatChatMessage } from "@/lib/formatChat";
 
 interface Message {
   role: "user" | "assistant";
@@ -162,8 +163,13 @@ export default function ChatWidget() {
                 className={`${styles.message} ${
                   msg.role === "user" ? styles.userMessage : styles.botMessage
                 }`}
+                dangerouslySetInnerHTML={
+                  msg.role === "assistant"
+                    ? { __html: formatChatMessage(msg.content) }
+                    : undefined
+                }
               >
-                {msg.content}
+                {msg.role === "user" ? msg.content : null}
               </div>
             ))}
             {isLoading && (
