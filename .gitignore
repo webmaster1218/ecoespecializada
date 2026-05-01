@@ -48,3 +48,6 @@ _agents/
 _agent/
 brain/
 nul
+.next-old/
+content/
+scripts/
