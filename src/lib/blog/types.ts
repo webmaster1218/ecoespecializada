@@ -11,6 +11,7 @@ export interface BlogPost {
   category: string;
   readTime: number;
   tags?: string[];
+  status?: 'draft' | 'published'; // draft = preview only, published = production
 }
 
 export interface BlogCategory {

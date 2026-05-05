@@ -345,3 +345,66 @@
   background: var(--color-primary-dark);
   transform: translateY(-2px);
 }
+
+/* Drafts Section */
+.draftsDivider {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 3rem 0 2rem;
+}
+
+.draftsDividerLine {
+  flex: 1;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    #f59e0b 0px,
+    #f59e0b 8px,
+    transparent 8px,
+    transparent 16px
+  );
+}
+
+.draftsDividerBadge {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.draftCard {
+  border: 2px dashed #f59e0b !important;
+  background: rgba(255, 251, 235, 0.5) !important;
+}
+
+.draftCard:hover {
+  border-color: #d97706 !important;
+  box-shadow: 0 8px 30px rgba(245, 158, 11, 0.15) !important;
+}
+
+.draftBadge {
+  background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+}
+
+.draftImageOverlay {
+  position: relative;
+}
+
+.draftImageOverlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(245, 158, 11, 0.08) 10px,
+    rgba(245, 158, 11, 0.08) 12px
+  );
+  pointer-events: none;
+  z-index: 1;
+}

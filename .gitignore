@@ -51,3 +51,9 @@ nul
 .next-old/
 content/
 scripts/
+
+# Secrets vault
+.secrets/
+*.key
+*.secret
+auth.json

@@ -3,7 +3,7 @@
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getRecentPosts, getAllCategories } from '@/lib/blog/posts';
+import { getDraftPosts, getPublishedPosts, getAllCategories } from '@/lib/blog/posts';
 import { formatDate, getReadingTime } from '@/lib/blog/utils';
 import { categories as categoryMap } from '@/lib/blog/categories';
 import CallButton from '@/components/ui/CallButton';
@@ -16,19 +16,22 @@ function BlogContent() {
   const category = searchParams.get('category');
   const tag = searchParams.get('tag');
 
-  let posts = getRecentPosts(50); // Get all posts sorted by date
+  // Separate published and draft posts
+  let publishedPosts = getPublishedPosts();
+  let draftPosts = getDraftPosts();
 
-  // Filter by category if specified
+  // Filter published by category if specified
   if (category) {
-    posts = posts.filter(post => post.category === category);
+    publishedPosts = publishedPosts.filter(post => post.category === category);
   }
 
-  // Filter by tag if specified
+  // Filter published by tag if specified
   if (tag) {
-    posts = posts.filter(post => post.tags?.includes(tag));
+    publishedPosts = publishedPosts.filter(post => post.tags?.includes(tag));
   }
 
   const cats = getAllCategories();
+  const hasDrafts = draftPosts.length > 0;
 
   return (
     <main className={styles.blog}>
@@ -117,7 +120,7 @@ function BlogContent() {
           )}
 
           <div className={styles.postsGrid}>
-            {posts.map((post, index) => {
+            {publishedPosts.map((post, index) => {
               const catMeta = categoryMap[post.category];
               return (
                 <m.article
@@ -162,6 +165,66 @@ function BlogContent() {
               );
             })}
           </div>
+
+          {/* Drafts Section - only visible in preview */}
+          {hasDrafts && (
+            <>
+              <div className={styles.draftsDivider}>
+                <span className={styles.draftsDividerLine} />
+                <span className={styles.draftsDividerBadge}>
+                  📝 BORRADORES ({draftPosts.length}) — Solo visibles en preview local
+                </span>
+                <span className={styles.draftsDividerLine} />
+              </div>
+
+              <div className={styles.postsGrid}>
+                {draftPosts.map((post, index) => {
+                  const catMeta = categoryMap[post.category];
+                  return (
+                    <m.article
+                      key={post.slug}
+                      className={`${styles.postCard} ${styles.draftCard}`}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: index * 0.1 }}
+                      whileHover={{ y: -8 }}
+                    >
+                      <Link href={`/blog/${post.category}/${post.slug}`} className={styles.postLink}>
+                        <div className={`${styles.postImage} ${styles.draftImageOverlay}`}>
+                          <Image
+                            src={post.image}
+                            alt={post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            className={styles.image}
+                          />
+                          <div className={`${styles.postCategory} ${styles.draftBadge}`}>
+                            🔧 BORRADOR
+                          </div>
+                        </div>
+
+                        <div className={styles.postContent}>
+                          <div className={styles.postMeta}>
+                            <span className={styles.postDate}>{formatDate(post.date)}</span>
+                            <span className={styles.postReadTime}>{getReadingTime(post.content)}</span>
+                          </div>
+
+                          <h2 className={styles.postTitle}>{post.title}</h2>
+
+                          <p className={styles.postExcerpt}>{post.excerpt}</p>
+
+                          <div className={styles.postFooter}>
+                            <span className={styles.postAuthor}>{post.author}</span>
+                            <span className={styles.postReadMore}>Preview →</span>
+                          </div>
+                        </div>
+                      </Link>
+                    </m.article>
+                  );
+                })}
+              </div>
+            </>
+          )}
         </div>
       </section>
 
