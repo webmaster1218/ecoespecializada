@@ -718,7 +718,7 @@ Si estás pensando en llevar ultrasonido a tu práctica médica, tu consultorio 
     articleId: "GUI-005",
     slug: "cuanto-cuesta-un-ecografo-en-colombia",
     title: "Cuánto Cuesta un Ecógrafo en Colombia: Precios Reales 2026",
-    excerpt: "Descubre cuánto cuesta un ecógrafo en Colombia en 2026: precios Mindray Z6, Z60 y M7 desde $8 millones hasta $80 millones, costos ocultos y por qué alquilar puede ahorrarte millones.",
+    excerpt: "Precios reales de ecógrafos en Colombia 2026: Mindray Z6 desde $64.5M, Z60 desde $107.5M COP. Costos ocultos, mantenimiento y comparativa comprar vs alquilar.",
     date: "2026-05-05",
     image: "/images/blog/cuanto-cuesta-ecografo-colombia.webp",
     category: "guias",
