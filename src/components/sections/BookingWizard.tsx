@@ -180,22 +180,26 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
             client_name: formData.name,
             client_email: formData.email,
             client_phone: formData.phone,
+            client_address: `${formData.address}, ${formData.city}`,
+            document_number: formData.documentNumber,
+            tax_id: formData.taxId,
             start_date: formData.startDate,
             end_date: formData.endDate,
+            delivery_time: formData.deliveryTime,
+            collection_time: formData.collectionTime,
             quantity_z6: formData.quantities.z6,
             quantity_z60: formData.quantities.z60,
             quantity_m7: formData.quantities.m7,
             include_cart: formData.includeCart,
             include_printer: formData.includePrinter,
+            selected_transducers: formData.selectedTransducers,
             total_price: totalPrice,
-            status: 'pending_delivery', // Estado inicial por defecto
-            address: `${formData.address}, ${formData.city}`,
+            status: 'pending_delivery',
           }]);
 
         if (dbError) {
-          console.error("Error saving to database:", dbError);
-          // Opcional: Podríamos lanzar un error aquí si queremos que falle la reserva completa,
-          // pero mejor dejar que siga si el webhook/email funciona.
+          console.error("Error saving to database:", dbError.message, dbError.code, dbError.details);
+          // La reserva continúa aunque falle Supabase (el webhook/email sigue funcionando)
         }
       }
 
