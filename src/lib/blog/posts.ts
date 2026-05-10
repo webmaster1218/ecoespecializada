@@ -722,7 +722,7 @@ Esta es una prueba inicial para evaluar la calidad y relevancia de las imágenes
     articleId: "GUI-006",
     slug: "alquiler-equipos-medicos-bogota",
     title: "Alquiler de Equipos Médicos en Bogotá: Guía Completa 2026 — Precios y Contratos",
-    excerpt: "Guía completa de alquiler de equipos médicos en Bogotá 2026. Ecógrafos, monitores, ECG y rayos X portátiles. Precios reales, checklist contractual y comparativa comprar vs alquilar.",
+    excerpt: "Alquiler de equipos médicos en Bogotá 2026: ecógrafos, monitores y ECG portátiles. Precios reales, checklist contractual y comparativa comprar vs alquilar.",
     date: "2026-05-05",
     image: "/images/blog/alquiler-equipos-medicos-bogota.webp",
     category: "guias",
