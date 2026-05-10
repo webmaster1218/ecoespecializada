@@ -38,11 +38,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/blog/tecnica/futuro-ultrasonido-movil-colombia',
-        destination: '/blog/tecnica/futuro-ultrasonido-movil-colombia',
-        permanent: true,
-      },
-      {
         source: '/blog/guias/cuanto-cuesta-un-ecografo-en-colombia-precios-2026',
         destination: '/blog/guias/cuanto-cuesta-un-ecografo-en-colombia',
         permanent: true,

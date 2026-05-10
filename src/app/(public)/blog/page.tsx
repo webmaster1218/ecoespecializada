@@ -149,6 +149,9 @@ function BlogContent() {
                       <div className={styles.postMeta}>
                         <span className={styles.postDate}>{formatDate(post.date)}</span>
                         <span className={styles.postReadTime}>{getReadingTime(post.content)}</span>
+                        {post.articleId && (
+                          <span className={styles.articleIdTag}>{post.articleId}</span>
+                        )}
                       </div>
 
                       <h2 className={styles.postTitle}>{post.title}</h2>
@@ -166,8 +169,8 @@ function BlogContent() {
             })}
           </div>
 
-          {/* Drafts Section - only visible in preview */}
-          {hasDrafts && (
+          {/* Drafts Section - only visible in local development */}
+          {hasDrafts && process.env.NODE_ENV === 'development' && (
             <>
               <div className={styles.draftsDivider}>
                 <span className={styles.draftsDividerLine} />
@@ -207,6 +210,9 @@ function BlogContent() {
                           <div className={styles.postMeta}>
                             <span className={styles.postDate}>{formatDate(post.date)}</span>
                             <span className={styles.postReadTime}>{getReadingTime(post.content)}</span>
+                            {post.articleId && (
+                              <span className={styles.articleIdTag}>{post.articleId}</span>
+                            )}
                           </div>
 
                           <h2 className={styles.postTitle}>{post.title}</h2>

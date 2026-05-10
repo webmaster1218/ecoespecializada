@@ -3,12 +3,14 @@
 import { m } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
+import Script from 'next/script';
 import { getPostBySlug, getRelatedPosts } from '@/lib/blog/posts';
 import { formatDate, getReadingTime } from '@/lib/blog/utils';
 import { categories as categoryMap } from '@/lib/blog/categories';
 import { notFound } from 'next/navigation';
 import { useParams } from 'next/navigation';
 import CallButton from '@/components/ui/CallButton';
+import FaqAccordion from '@/components/FaqAccordion';
 import styles from './BlogPost.module.css';
 
 export default function BlogPostPage() {
@@ -22,11 +24,42 @@ export default function BlogPostPage() {
     notFound();
   }
 
+  // Drafts only accessible in local development
+  if (post.status === 'draft' && process.env.NODE_ENV === 'production') {
+    notFound();
+  }
+
   const catMeta = categoryMap[post.category];
   const relatedPosts = getRelatedPosts(post.slug, post.category, 3);
 
+  // Extract FAQs for JSON-LD
+  const { faqs } = extractFaqs(post.content);
+
   return (
     <main className={styles.blogPost}>
+        {/* FAQ JSON-LD for Google Rich Snippets */}
+        {faqs.length > 0 && (
+          <Script
+            id="faq-jsonld"
+            type="application/ld+json"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "FAQPage",
+                "mainEntity": faqs.map(faq => ({
+                  "@type": "Question",
+                  "name": faq.question,
+                  "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": faq.answer
+                  }
+                }))
+              })
+            }}
+          />
+        )}
+
         {/* Breadcrumb */}
         <nav className={styles.breadcrumb} aria-label="Breadcrumb">
           <div className="container">
@@ -102,79 +135,7 @@ export default function BlogPostPage() {
             >
               {/* Markdown-like content rendering */}
               <div className={styles.markdownContent}>
-                {post.content.split('\n\n').map((paragraph, index) => {
-                  // Check if it's a table FIRST (before other elements)
-                  const parsedTable = parseMarkdownTable(paragraph);
-                  if (parsedTable.isTable) {
-                    return <div key={index}>{parsedTable.content}</div>;
-                  }
-
-                  // Check if it's a heading
-                  if (paragraph.startsWith('#')) {
-                    const level = paragraph.match(/^#+/)?.[0].length || 1;
-                    const text = paragraph.replace(/^#+\s/, '');
-                    if (level === 1) return <h1 key={index}>{text}</h1>;
-                    if (level === 2) return <h2 key={index}>{text}</h2>;
-                    if (level === 3) return <h3 key={index}>{text}</h3>;
-                    if (level === 4) return <h4 key={index}>{text}</h4>;
-                    if (level === 5) return <h5 key={index}>{text}</h5>;
-                    return <h6 key={index}>{text}</h6>;
-                  }
-
-                  // Check if it's a list item
-                  const listItems = [];
-                  const lines = paragraph.split('\n');
-                  let isList = false;
-
-                  for (const line of lines) {
-                    const trimmed = line.trim();
-                    if (trimmed.startsWith('- ')) {
-                      isList = true;
-                      listItems.push(trimmed.substring(2));
-                    } else if (trimmed.match(/^[✓✔✅]\s+/)) {
-                      isList = true;
-                      listItems.push(trimmed.replace(/^[✓✔✅]\s+/, ''));
-                    }
-                    else if (trimmed.match(/^[✓✔✅]/)) {
-                      if (trimmed.length > 1 && !trimmed.startsWith('✅') && !trimmed.startsWith('✓') && !trimmed.startsWith('✔')) {
-                        isList = true;
-                        listItems.push(trimmed);
-                      }
-                    }
-                  }
-
-                  if (isList && listItems.length > 0) {
-                    const hasCheckMarks = listItems.some(item => item.trim().startsWith('✓') || item.trim().startsWith('✔') || item.trim().startsWith('✅'));
-
-                    return (
-                      <ul key={index} className={hasCheckMarks ? styles.checkList : styles.list}>
-                        {listItems.map((item, i) => (
-                          <li key={i} dangerouslySetInnerHTML={{ __html: formatMarkdown(item) }} />
-                        ))}
-                      </ul>
-                    );
-                  }
-
-                  // Check if it's a blockquote
-                  if (paragraph.startsWith('> ')) {
-                    const text = paragraph.replace('> ', '');
-                    return (
-                      <blockquote key={index} className={styles.blockquote}>
-                        {text}
-                      </blockquote>
-                    );
-                  }
-
-                  // Check if it's a horizontal rule
-                  if (paragraph.startsWith('---')) {
-                    return <hr key={index} className={styles.hr} />;
-                  }
-
-                  // Regular paragraph
-                  return (
-                    <p key={index} dangerouslySetInnerHTML={{ __html: formatMarkdown(paragraph) }} />
-                  );
-                })}
+                {renderContent(post.content)}
               </div>
 
               {/* Tags */}
@@ -264,6 +225,155 @@ export default function BlogPostPage() {
         </section>
       </main>
   );
+}
+
+// Extract FAQ items from content for accordion and JSON-LD
+function extractFaqs(content: string): { faqs: Array<{ question: string; answer: string }> } {
+  const paragraphs = content.split('\n\n');
+  const faqs: Array<{ question: string; answer: string }> = [];
+  let inFaqSection = false;
+
+  for (const paragraph of paragraphs) {
+    const trimmed = paragraph.trim();
+
+    // Detect FAQ section start
+    if (trimmed.startsWith('## ') && (trimmed.toLowerCase().includes('preguntas frecuentes') || trimmed.toLowerCase().includes('faq'))) {
+      inFaqSection = true;
+      continue;
+    }
+
+    // Detect end of FAQ section (next H2)
+    if (inFaqSection && trimmed.startsWith('## ')) {
+      break;
+    }
+
+    // Collect FAQ items — question and answer may be in the SAME paragraph
+    if (inFaqSection && trimmed.startsWith('### ')) {
+      const lines = trimmed.split('\n');
+      const question = lines[0].replace(/^###\s+/, '');
+      const answer = lines.slice(1).join('\n').trim();
+      faqs.push({ question, answer });
+    } else if (inFaqSection && faqs.length > 0 && faqs[faqs.length - 1].answer === '') {
+      faqs[faqs.length - 1].answer = trimmed;
+    }
+  }
+
+  return { faqs };
+}
+
+// Render content with FAQ accordion support
+function renderContent(content: string) {
+  const paragraphs = content.split('\n\n');
+  const elements: React.JSX.Element[] = [];
+  const { faqs } = extractFaqs(content);
+
+  let inFaqSection = false;
+  let faqIndex = 0;
+  let keyCounter = 0;
+
+  for (const paragraph of paragraphs) {
+    const trimmed = paragraph.trim();
+
+    // Detect FAQ section
+    if (trimmed.startsWith('## ') && (trimmed.toLowerCase().includes('preguntas frecuentes') || trimmed.toLowerCase().includes('faq'))) {
+      inFaqSection = true;
+      elements.push(<h2 key={keyCounter++}>{trimmed.replace(/^##\s+/, '')}</h2>);
+      // Render the accordion right after the heading
+      if (faqs.length > 0) {
+        elements.push(<FaqAccordion key={keyCounter++} faqs={faqs} />);
+      }
+      continue;
+    }
+
+    // End FAQ section at next H2
+    if (inFaqSection && trimmed.startsWith('## ')) {
+      inFaqSection = false;
+      faqIndex = faqs.length;
+      // Don't skip this H2, render it below
+    }
+
+    // Skip FAQ items (already rendered via accordion)
+    if (inFaqSection) {
+      continue;
+    }
+
+    // Check if it's a table FIRST (before other elements)
+    const parsedTable = parseMarkdownTable(paragraph);
+    if (parsedTable.isTable) {
+      elements.push(<div key={keyCounter++}>{parsedTable.content}</div>);
+      continue;
+    }
+
+    // Check if it's a heading
+    if (paragraph.startsWith('#')) {
+      const level = paragraph.match(/^#+/)?.[0].length || 1;
+      const text = paragraph.replace(/^#+\s/, '');
+      if (level === 1) elements.push(<h1 key={keyCounter++}>{text}</h1>);
+      else if (level === 2) elements.push(<h2 key={keyCounter++}>{text}</h2>);
+      else if (level === 3) elements.push(<h3 key={keyCounter++}>{text}</h3>);
+      else if (level === 4) elements.push(<h4 key={keyCounter++}>{text}</h4>);
+      else if (level === 5) elements.push(<h5 key={keyCounter++}>{text}</h5>);
+      else elements.push(<h6 key={keyCounter++}>{text}</h6>);
+      continue;
+    }
+
+    // Check if it's a list item
+    const listItems: string[] = [];
+    const lines = paragraph.split('\n');
+    let isList = false;
+
+    for (const line of lines) {
+      const lineTrimmed = line.trim();
+      if (lineTrimmed.startsWith('- ')) {
+        isList = true;
+        listItems.push(lineTrimmed.substring(2));
+      } else if (lineTrimmed.match(/^[✓✔✅]\s+/)) {
+        isList = true;
+        listItems.push(lineTrimmed.replace(/^[✓✔✅]\s+/, ''));
+      } else if (lineTrimmed.match(/^[✓✔✅]/)) {
+        if (lineTrimmed.length > 1 && !lineTrimmed.startsWith('✅') && !lineTrimmed.startsWith('✓') && !lineTrimmed.startsWith('✔')) {
+          isList = true;
+          listItems.push(lineTrimmed);
+        }
+      }
+    }
+
+    if (isList && listItems.length > 0) {
+      const hasCheckMarks = listItems.some(item => item.trim().startsWith('✓') || item.trim().startsWith('✔') || item.trim().startsWith('✅'));
+      elements.push(
+        <ul key={keyCounter++} className={hasCheckMarks ? styles.checkList : styles.list}>
+          {listItems.map((item, i) => (
+            <li key={i} dangerouslySetInnerHTML={{ __html: formatMarkdown(item) }} />
+          ))}
+        </ul>
+      );
+      continue;
+    }
+
+    // Check if it's a blockquote
+    if (paragraph.startsWith('> ')) {
+      const text = paragraph.replace('> ', '');
+      elements.push(
+        <blockquote key={keyCounter++} className={styles.blockquote}>
+          {text}
+        </blockquote>
+      );
+      continue;
+    }
+
+    // Check if it's a horizontal rule
+    if (paragraph.startsWith('---')) {
+      elements.push(<hr key={keyCounter++} className={styles.hr} />);
+      continue;
+    }
+
+    // Regular paragraph
+    elements.push(
+      <p key={keyCounter++} dangerouslySetInnerHTML={{ __html: formatMarkdown(paragraph) }} />
+    );
+  }
+
+  return elements;
 }
 
 // Simple markdown formatter (bold, italic, links, images)
