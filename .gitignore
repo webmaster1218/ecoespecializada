@@ -49,11 +49,10 @@ _agent/
 brain/
 nul
 .next-old/
-content/
-scripts/
 
 # Secrets vault
 .secrets/
 *.key
 *.secret
 auth.json
+src/lib/blog/posts-data.ts

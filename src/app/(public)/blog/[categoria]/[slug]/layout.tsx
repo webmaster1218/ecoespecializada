@@ -1,19 +1,13 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { getPostBySlug } from '@/lib/blog/posts';
+import { getPostBySlug, getAllPostsIncludingDrafts } from '@/lib/blog/posts';
 import { generateArticleSchema, generateBreadcrumbSchema } from '@/lib/blog/utils';
 import React from 'react';
 
-// Helper to get all posts
-function getAllPosts() {
-  const { posts } = require('@/lib/blog/posts');
-  return posts;
-}
-
 // Generate static params for all posts with their categories
 export async function generateStaticParams() {
-  const posts = getAllPosts();
-  return posts.map((post: { slug: string; category: string }) => ({
+  const posts = getAllPostsIncludingDrafts();
+  return posts.map((post) => ({
     categoria: post.category,
     slug: post.slug,
   }));
