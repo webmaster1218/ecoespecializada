@@ -40,19 +40,36 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# internal tools
-.skills/
-.agents/
-.agent/
-_agents/
-_agent/
-brain/
-nul
-.next-old/
-
-# Secrets vault
-.secrets/
-*.key
-*.secret
-auth.json
-src/lib/blog/posts-data.ts
+|# internal tools
+|.skills/
+|.agents/
+|.agent/
+|_agents/
+|_agent/
+|brain/
+|nul
+|.next-old/
+|
+|# methodology — solo va el producto final al repo del cliente
+|scripts/generate-images.py
+|scripts/generate-images-v2.py
+|scripts/generate-images-v3.py
+|scripts/image-gen-results.json
+|public/preview-*
+|public/preview-*.html
+|public/registro-completo-*.html
+|src/app/api/debug-*/
+|
+|# test / intermediate images
+|public/images/blog/articulo*.webp
+|public/images/blog/empresas-*.webp
+|public/images/blog/hf_schnell_*.png
+|public/images/blog/*-clipdrop.*
+|public/images/blog/video-promo-*.mp4
+|
+|# Secrets vault
+|.secrets/
+|*.key
+|*.secret
+|auth.json
+|src/lib/blog/posts-data.ts
