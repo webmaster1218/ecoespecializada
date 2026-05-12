@@ -23,6 +23,8 @@ Si estás abriendo tu consultorio o pensando en sumar ecografía a tus servicios
 
 La respuesta corta: entre **$12.9 millones y $516 millones de pesos** (unos **$3,000 a $120,000 USD**), dependiendo del tipo, la marca y las funciones que necesites. La respuesta larga —la que realmente te ayuda a tomar una decisión financiera inteligente— es lo que vas a encontrar en esta guía.
 
+Si ya sabes que alquilar es tu mejor opción, consulta nuestra [guía de alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota) o nuestra [guía de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota) para precios de arriendo y disponibilidad.
+
 Vamos a desglosar precios reales verificados a 2026, costos ocultos que nadie te cuenta, y una comparativa directa entre comprar y alquilar para que tomes la mejor decisión para tu bolsillo y tu práctica médica.
 
 > 💱 **Tasa de cambio de referencia:** USD 1 ≈ $4,300 COP (TRM mayo 2026)
@@ -63,13 +65,13 @@ Mindray es la marca más popular entre los profesionales que buscan calidad sin 
 
 ### Mindray Z6: La Opción Más Accesible
 
-El **Mindray Z6** es el modelo de entrada de la marca. Con un peso de solo 6.5 kg y tres sondas incluidas (convexo, transvaginal y lineal), es ideal para medicina general, obstetricia básica y ginecología. Su precio de compra ronda los **$64.5 a $86 millones de pesos** (**$15,000 a $20,000 USD**).
+El **Mindray Z6** es el modelo de entrada de la marca. Con un peso de solo 6.5 kg y tres sondas incluidas (convexo, transvaginal y lineal), es ideal para medicina general, obstetricia básica y ginecología. Su precio de compra ronda los **$64.5 a $86 millones de pesos** (**$15,000 a $20,000 USD**). Conoce más sobre este equipo en nuestra [página del Mindray Z6](/ecografo-z6/).
 
 Es el equipo que eligen los médicos generales que quieren ofrecer ecografía como servicio diferenciador sin una inversión inicial desproporcionada.
 
 ### Mindray Z60: El Equilibrio entre Precio y Tecnología
 
-El **Mindray Z60** sube la apuesta con pantalla de 15 pulgadas LCD, tecnologías iClear™ e iBeam™ para mejora automática de imagen, y Doppler avanzado. Su precio oscila entre **$107.5 y $150.5 millones de pesos** (**$25,000 a $35,000 USD**).
+El **Mindray Z60** sube la apuesta con pantalla de 15 pulgadas LCD, tecnologías iClear™ e iBeam™ para mejora automática de imagen, y Doppler avanzado. Su precio oscila entre **$107.5 y $150.5 millones de pesos** (**$25,000 a $35,000 USD**). Para una comparativa detallada entre ambos modelos, visita nuestra [guía Mindray Z6 vs Z60](/blog/guias/mindray-z6-vs-z60-comparacion).
 
 Es el preferido de especialistas (ginecólogos, reumatólogos, fisiatras) que necesitan mejor resolución para diagnósticos más complejos.
 
@@ -164,7 +166,7 @@ Depende de tu especialidad. Para **medicina general**: un portátil como el Mind
 
 El precio de un ecógrafo en Colombia varía tanto como las necesidades de cada profesional. Lo que sí es constante es esto: **invertir más de $64 millones en un equipo sin estar seguro de la demanda es un riesgo financiero innecesario**.
 
-La opción más inteligente para muchos médicos -especialmente quienes están empezando o quieren probar- es alquilar primero. Sin inversión inicial, con mantenimiento y soporte incluidos, y con la libertad de cambiar de equipo si tus necesidades evolucionan.
+La opción más inteligente para muchos médicos -especialmente quienes están empezando o quieren probar- es alquilar primero. Sin inversión inicial, con mantenimiento y soporte incluidos, y con la libertad de cambiar de equipo si tus necesidades evolucionan. Lee sobre los [beneficios estratégicos del alquiler de ecógrafos](/blog/guias/beneficios-alquiler-ecografos) para entender por qué esta modalidad es la mejor decisión.
 
 **¿Listo para evaluar tu mejor opción?** Solicita una cotización de alquiler de ecógrafo Mindray por día y recibe tu equipo en menos de 24 horas: **[WhatsApp 300 3608621](https://wa.me/573003608621)** o visita [alquilerdeecografos.com](https://alquilerdeecografos.com)
 

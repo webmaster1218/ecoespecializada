@@ -25,7 +25,7 @@ Esta guía completa 2026 contiene precios reales por categoría, un checklist co
 
 ![Ecógrafo portátil Mindray Z60 para alquiler en Bogotá](/images/z60/z-60.webp)
 
-Si prefieres empezar por lo básico, te recomendamos leer primero nuestro artículo sobre los [beneficios estratégicos del alquiler de ecógrafos](/blog/beneficios-alquiler-ecografos).
+Si prefieres empezar por lo básico, te recomendamos leer primero nuestro artículo sobre los [beneficios estratégicos del alquiler de ecógrafos](/blog/guias/beneficios-alquiler-ecografos).
 
 ## Precios de Alquiler de Equipos Médicos en Bogotá por Categoría
 
@@ -43,7 +43,7 @@ Los precios de **alquiler equipos médicos Bogotá** varían según la categorí
 
 Los **ecógrafos** representan el equipo más demandado en alquiler en Bogotá, con más del **40% de las solicitudes totales** en clínicas pequeñas y medianas. Su versatilidad diagnóstica y el retorno inmediato por estudio los convierten en la inversión más rentable en modalidad de arriendo.
 
-Para profundizar en los precios de compra vs alquiler de ecógrafos, visita nuestra [guía de precios 2026](/blog/cuanto-cuesta-un-ecografo-en-colombia-precios-2026).
+Para profundizar en los precios de compra vs alquiler de ecógrafos, visita nuestra [guía de precios 2026](/blog/guias/cuanto-cuesta-un-ecografo-en-colombia).
 
 ## Comprar vs Alquilar: Comparativa Financiera Directa
 
@@ -66,7 +66,7 @@ La decisión entre comprar y alquilar equipos médicos en Bogotá no es binaria:
 2. **Si estás abriendo consultorio o tu demanda es variable** → alquila siempre. Proteges tu flujo de caja
 3. **Si necesitas un equipo para un proyecto específico** (campaña, reemplazo, evento) → alquiler por día es la única opción lógica
 
-Para un análisis financiero detallado, consulta nuestra [comparativa completa comprar vs alquilar](/blog/cuanto-cuesta-un-ecografo-en-colombia).
+Para un análisis financiero detallado, consulta nuestra [comparativa completa comprar vs alquilar](/blog/guias/cuanto-cuesta-un-ecografo-en-colombia).
 
 ## Checklist Contractual: 8 Puntos No Negociables
 
@@ -95,7 +95,7 @@ El contrato de **alquiler de equipos médicos en Bogotá** debe protegerte. Esto
 
 ## ¿Por Qué los Ecógrafos Son el Caso #1 en Demanda de Alquiler?
 
-Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre $80,000 y $250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra. Para una guía detallada sobre los modelos, precios y zonas de cobertura disponibles en la capital, visita nuestra [guía completa de alquiler de ecógrafos en Bogotá](/blog/alquiler-ecografos-bogota).
+Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre $80,000 y $250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra. Para una guía detallada sobre los modelos, precios y zonas de cobertura disponibles en la capital, visita nuestra [guía completa de alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota).
 
 **Mindray** es la marca líder en alquiler de ecógrafos en Bogotá. Sus dos modelos más solicitados son el Z6 y el Z60:
 
@@ -110,7 +110,7 @@ Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un l
 
 ![Ecógrafo Mindray Z6 para alquiler en Bogotá](/images/z6/z6.webp)
 
-Para una comparativa técnica detallada entre ambos modelos, lee nuestra [guía Mindray Z6 vs Z60](/blog/mindray-z6-vs-z60-comparacion). También te recomendamos el [caso de éxito de Clínica del Valle](/blog/caso-exito-clinica-valle), que transformó su operación en Cali con el alquiler de un Mindray Z6 —resultados verificables que aplican igual para clínicas en Bogotá.
+Para una comparativa técnica detallada entre ambos modelos, lee nuestra [guía Mindray Z6 vs Z60](/blog/guias/mindray-z6-vs-z60-comparacion). También te recomendamos el [caso de éxito de Clínica del Valle](/blog/casos-exito/caso-exito-clinica-valle), que transformó su operación en Cali con el alquiler de un Mindray Z6 —resultados verificables que aplican igual para clínicas en Bogotá.
 
 Consulta nuestra [página de Bogotá](/colombia/bogota/) para ver la disponibilidad de equipos en la capital.
 
@@ -125,7 +125,7 @@ Alquilar equipos médicos en Bogotá es más sencillo de lo que muchos creen. Es
 5. **Capacitación** — Recibes orientación de uso básico para que tú y tu equipo empiecen a operar de inmediato.
 6. **Soporte continuo** — Durante todo el alquiler, tienes soporte biomédico prioritario con respuesta en menos de 24 horas en Bogotá.
 
-Este modelo de alquiler está transformando la forma en que los profesionales de la salud acceden a la tecnología. Conoce más sobre [el futuro del ultrasonido móvil en Colombia](/blog/futuro-ultrasonido-movil-colombia) y cómo esta tendencia está democratizando el diagnóstico.
+Este modelo de alquiler está transformando la forma en que los profesionales de la salud acceden a la tecnología. Conoce más sobre [el futuro del ultrasonido móvil en Colombia](/blog/tecnica/futuro-ultrasonido-movil-colombia) y cómo esta tendencia está democratizando el diagnóstico.
 
 ## Preguntas Frecuentes sobre Alquiler de Equipos Médicos en Bogotá
 

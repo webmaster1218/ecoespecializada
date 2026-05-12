@@ -32,7 +32,7 @@ El ultrasonido móvil —equipos portátiles con calidad de imagen diagnóstica�
 
 El segmento de ecógrafos portátiles en Colombia crece cerca del 12 % anual. No es casualidad: el país tiene más de 1.100 municipios y la mayoría no cuenta con un especialista en imágenes diagnosticas. La brecha entre la oferta y la necesidad es enorme, y la tecnología portátil es la herramienta más realista para cerrarla.
 
-Consultorios pequeños, fundaciones de salud y EPS están adoptando equipos móviles no como reemplazo del ecógrafo de sala, sino como **primera línea de diagnóstico**.
+Consultorios pequeños, fundaciones de salud y EPS están adoptando equipos móviles no como reemplazo del ecógrafo de sala, sino como **primera línea de diagnóstico**. Consulta nuestra [guía de precios de ecógrafos 2026](/blog/guias/cuanto-cuesta-un-ecografo-en-colombia) para entender el panorama financiero.
 
 ---
 
@@ -40,7 +40,7 @@ Consultorios pequeños, fundaciones de salud y EPS están adoptando equipos móv
 
 **1. Equipos más livianos, sin sacrificar imagen**
 
-El Mindray Z6 pesa menos de 6 kg y ofrece imagen doppler a color. El Z60 sube la apuesta con pantalla táctil y batería para más de dos horas. Estos equipos ya no son "versiones reducidas" de los de sala —son herramientas diagnósticas completas que caben en un maletín.
+El Mindray Z6 pesa menos de 6 kg y ofrece imagen doppler a color. El Z60 sube la apuesta con pantalla táctil y batería para más de dos horas. Estos equipos ya no son "versiones reducidas" de los de sala —son herramientas diagnósticas completas que caben en un maletín. Enfrentamos ambos en nuestra [guía comparativa Mindray Z6 vs Z60](/blog/guias/mindray-z6-vs-z60-comparacion).
 
 **2. Inteligencia artificial como copiloto**
 
@@ -56,7 +56,7 @@ Transmisión de estudios en tiempo real, almacenamiento en nube y consulta remot
 
 La barrera más grande para adoptar ultrasonido móvil no es la tecnología —es el precio. Un ecógrafo portátil nuevo puede costar entre $25 y $80 millones. Para un consultorio independiente o una fundación, esa cifra es inalcanzable.
 
-El alquiler elimina esa barrera. Por una fracción del costo de compra, un médico tiene acceso a equipos actualizados, con mantenimiento incluido y sin riesgo de obsolescencia. En un mercado donde la tecnología se renueva cada 18 meses, alquilar es la decisión financiera más inteligente.
+El alquiler elimina esa barrera. Por una fracción del costo de compra, un médico tiene acceso a equipos actualizados, con mantenimiento incluido y sin riesgo de obsolescencia. En un mercado donde la tecnología se renueva cada 18 meses, alquilar es la decisión financiera más inteligente. Descubre los [beneficios del alquiler de ecógrafos](/blog/guias/beneficios-alquiler-ecografos) y cómo este modelo está transformando la práctica médica en el país.
 
 ---
 
@@ -76,7 +76,7 @@ El país que resuelva esas tres cosas no solo mejora su sistema de salud —tran
 
 ---
 
-Si estás pensando en llevar ultrasonido a tu práctica médica, tu consultorio o tu programa de salud, podemos ayudarte a elegir el equipo y el plan que mejor se adapte a tu realidad.
+Si estás pensando en llevar ultrasonido a tu práctica médica, tu consultorio o tu programa de salud, podemos ayudarte a elegir el equipo y el plan que mejor se adapte a tu realidad. Disponibles en [Bogotá](/colombia/bogota/), [Medellín](/colombia/medellin/), [Cali](/colombia/cali/) y [todas las ciudades principales](/colombia/).
 
 **Habla con nosotros y recibe una asesoría personalizada sin compromiso.**
 

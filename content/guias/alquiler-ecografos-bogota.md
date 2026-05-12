@@ -23,7 +23,7 @@ Si eres médico en Bogotá y estás considerando sumar ecografía a tu consultor
 
 **El alquiler de ecógrafos en Bogotá se ha convertido en la solución más inteligente para cientos de especialistas** que necesitan equipos de última generación sin comprometer su capital. En esta guía completa te contamos todo lo que necesitas saber: por qué alquilar, qué zonas de la ciudad concentran mayor demanda, qué equipos están disponibles y cómo funciona el proceso paso a paso.
 
-Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
+Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
 
 ![Ecógrafo portátil en consultorio médico de Bogotá](/images/blog/alquiler-ecografos-bogota-1.webp)
 
@@ -31,11 +31,11 @@ Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardi
 
 ## Por qué Alquilar un Ecógrafo en Bogotá y No Comprar
 
-La decisión entre alquilar y comprar un ecógrafo no es solo financiera — es estratégica. En una ciudad como Bogotá, donde la tecnología médica avanza rápido y los pacientes son cada vez más exigentes, el modelo tradicional de compra tiene varias desventajas que conviene analizar con cuidado. Conoce los **[beneficios estratégicos del alquiler de ecógrafos](/blog/beneficios-alquiler-ecografos)** para entender por qué cada vez más especialistas eligen esta vía.
+La decisión entre alquilar y comprar un ecógrafo no es solo financiera — es estratégica. En una ciudad como Bogotá, donde la tecnología médica avanza rápido y los pacientes son cada vez más exigentes, el modelo tradicional de compra tiene varias desventajas que conviene analizar con cuidado. Conoce los **[beneficios estratégicos del alquiler de ecógrafos](/blog/guias/beneficios-alquiler-ecografos)** para entender por qué cada vez más especialistas eligen esta vía.
 
 ### De CAPEX a OPEX: libera tu capital
 
-Comprar un ecógrafo Mindray Z60 nuevo puede costarte entre **$107 y $150 millones de pesos**. Un Z6 ronda los **$64 a $86 millones**. Son cifras que inmovilizan tu capital durante años y que, para un consultorio independiente o una clínica pequeña en Bogotá, pueden significar descapitalizarse justo cuando más necesitas liquidez para crecer. Para una visión completa de precios de compra y alquiler por modelo, visita nuestra **[guía de precios de ecógrafos 2026](/blog/cuanto-cuesta-un-ecografo-en-colombia)**.
+Comprar un ecógrafo Mindray Z60 nuevo puede costarte entre **$107 y $150 millones de pesos**. Un Z6 ronda los **$64 a $86 millones**. Son cifras que inmovilizan tu capital durante años y que, para un consultorio independiente o una clínica pequeña en Bogotá, pueden significar descapitalizarse justo cuando más necesitas liquidez para crecer. Para una visión completa de precios de compra y alquiler por modelo, visita nuestra **[guía de precios de ecógrafos 2026](/blog/guias/cuanto-cuesta-un-ecografo-en-colombia)**.
 
 El alquiler transforma ese gasto de capital (CAPEX) en un gasto operativo (OPEX) manejable. En lugar de desembolsar $100 millones de una sola vez, pagas solo por los días que usas el equipo. Esto te permite:
 
@@ -128,7 +128,7 @@ En Equibiomed contamos con tres modelos estrella de Mindray, cada uno diseñado 
 | **Almacenamiento** | iStation™ con 500GB |
 | **Precio alquiler** | $550.000 COP/día |
 
-**Ideal para:** Especialistas con casos complejos (cardiología, ginecología avanzada, urología), clínicas con alto volumen de pacientes, estudios que requieren alta precisión diagnóstica. Enfrentamos el Z60 con el Z6 en nuestra **[guía comparativa Mindray Z6 vs Z60](/blog/mindray-z6-vs-z60-comparacion)** para que elijas el equipo ideal.
+**Ideal para:** Especialistas con casos complejos (cardiología, ginecología avanzada, urología), clínicas con alto volumen de pacientes, estudios que requieren alta precisión diagnóstica. Enfrentamos el Z60 con el Z6 en nuestra **[guía comparativa Mindray Z6 vs Z60](/blog/guias/mindray-z6-vs-z60-comparacion)** para que elijas el equipo ideal.
 
 ### Mindray Z6: Compacto y Versátil
 
@@ -141,7 +141,7 @@ En Equibiomed contamos con tres modelos estrella de Mindray, cada uno diseñado 
 | **Transductores** | Convexo, TV, lineal |
 | **Precio alquiler** | $350.000 COP/día |
 
-**Ideal para:** Médicos generales, obstetricia básica, visitas domiciliarias, prácticas con volumen moderado, quienes inician su consultorio. Si quieres entender qué tipo de sonda necesitas según tu especialidad, revisa nuestra **[guía de transductores de ultrasonido](/blog/guia-transductores-ultrasonido)**.
+**Ideal para:** Médicos generales, obstetricia básica, visitas domiciliarias, prácticas con volumen moderado, quienes inician su consultorio. Si quieres entender qué tipo de sonda necesitas según tu especialidad, revisa nuestra **[guía de transductores de ultrasonido](/blog/guias/guia-transductores-ultrasonido)**.
 
 ### Mindray M7: Alta Gama Cart-Based
 
@@ -215,7 +215,7 @@ Sí. Realizamos entregas en **Chapinero, Chicó, Usaquén, Centro Internacional,
 
 El alquiler de ecógrafos en Bogotá es la solución más inteligente para médicos y clínicas que quieren ofrecer servicios de ultrasonido de calidad sin realizar inversiones millonarias. Con equipos Mindray Z60, Z6 y M7, entrega en 24-48 horas en toda la ciudad, mantenimiento incluido y soporte biomédico prioritario, tienes todo lo que necesitas para hacer crecer tu práctica.
 
-Ya sea que atiendas en Chapinero, el Chicó, Usaquén o el Centro Internacional, tenemos el equipo adecuado para tu especialidad. Sin cláusulas ocultas, sin inversión inicial, sin compromisos de largo plazo. Conoce cómo la **[Clínica del Valle transformó su operación](/blog/caso-exito-clinica-valle)** con el alquiler de un Mindray Z6 —resultados que se replican en Bogotá.
+Ya sea que atiendas en Chapinero, el Chicó, Usaquén o el Centro Internacional, tenemos el equipo adecuado para tu especialidad. Sin cláusulas ocultas, sin inversión inicial, sin compromisos de largo plazo. Conoce cómo la **[Clínica del Valle transformó su operación](/blog/casos-exito/caso-exito-clinica-valle)** con el alquiler de un Mindray Z6 —resultados que se replican en Bogotá.
 
 **Solicita tu cotización sin compromiso hoy mismo** y descubre por qué más de 10 clínicas en Colombia confían en Equibiomed para el alquiler de sus ecógrafos.
 

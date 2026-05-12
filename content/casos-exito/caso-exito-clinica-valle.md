@@ -23,13 +23,13 @@ status: published
 
 Cuando la dra. Patricia Henao llegó a su consultorio un lunes de enero y encontró la agenda con tres pacientes derivados a otros centros —otra vez—, supo que algo tenía que cambiar. Clínica del Valle, su centro de diagnóstico por imagen en el sur de Cali, llevaba meses perdiendo pacientes por una razón sencilla: su único ecógrafo, un equipo de escritorio con más de cinco años de uso, ya no daba abasto.
 
-No era solo cuestión de volumen. Las imágenes perdían nitidez, los transductores mostraban desgaste y los tiempos de espera se habían extendido a dos, a veces tres semanas. En un barrio donde hay cuatro centros médicos en tres cuadras, los pacientes simplemente cruzaban la calle.
+No era solo cuestión de volumen. Las imágenes perdían nitidez, los transductores mostraban desgaste y los tiempos de espera se habían extendido a dos, a veces tres semanas. En un barrio donde hay cuatro centros médicos en tres cuadras, los pacientes simplemente cruzaban la calle. Para entender qué transductores necesita cada especialidad, consulta nuestra [guía de transductores de ultrasonido](/blog/guias/guia-transductores-ultrasonido).
 
 ## La encrucijada de los números
 
 Patricia hizo números. Comprar un ecógrafo nuevo de gama media-alta rondaba los 45 millones de pesos, una cifra que su clínica no podía absorber de golpe sin comprometer el flujo de caja del resto del año. El crédito bancero era una opción, pero las tasas no ayudaban. Fue su colega el dr. Andrés Gaviria, también radicado en Cali, quien le mencionó la alternativa del renting de equipos médicos en el Valle del Cauca. "No es alquilar por alquilar", le dijo. "Es pagar por lo que usas y mantener tu capital trabajando en otras cosas."
 
-Patricia investigó, comparó proveedores y finalmente optó por un alquiler de ecógrafo para clínica pequeña con un equipo específico: el Mindray Z6, un equipo portátil con doppler color y transductores lineal y convexo incluidos. El contrato era flexible, con mantenimiento cubierto y opción a renovar o cambiar de modelo.
+Patricia investigó, comparó proveedores y finalmente optó por un alquiler de ecógrafo para clínica pequeña con un equipo específico: el Mindray Z6, un equipo portátil con doppler color y transductores lineal y convexo incluidos. El contrato era flexible, con mantenimiento cubierto y opción a renovar o cambiar de modelo. Conoce el [Mindray Z6](/ecografo-z6/) y el [Mindray Z60](/ecografo-z60/) en detalle.
 
 ## Las primeras semanas
 
@@ -50,7 +50,7 @@ El impacto financiero fue notable sin ser espectacular. Los ingresos por ecograf
 
 ## Lo que aprendió la dra. Henao
 
-Para Patricia, la experiencia Mindray Z6 en su clínica de Cali confirmó algo que siempre sospechó: en ciudades del Valle del Cauca donde la competencia médica es intensa, la calidad de imagen no es un lujo, es un requisito para mantener la confianza del paciente. El alquiler le permitió acceder a esa calidad sin descapitalizarse.
+Para Patricia, la experiencia Mindray Z6 en su clínica de Cali confirmó algo que siempre sospechó: en ciudades del Valle del Cauca donde la competencia médica es intensa, la calidad de imagen no es un lujo, es un requisito para mantener la confianza del paciente. El alquiler le permitió acceder a esa calidad sin descapitalizarse. Conoce más [beneficios del alquiler de ecógrafos](/blog/guias/beneficios-alquiler-ecografos) y cómo replicar esta experiencia en tu clínica.
 
 También descubrió que la flexibilidad del contrato le daba tranquilidad. "Si en seis meses necesito un equipo con sonda transvaginal o con 4D, puedo ajustar. Con una compra, estaría atada."
 
@@ -59,3 +59,5 @@ Hoy, Clínica del Valle evalúa sumar un segundo equipo en modalidad alquiler pa
 ---
 
 Si quieres explorar cómo el alquiler de ecógrafos puede funcionar para tu clínica, podemos conversar sin compromiso. 📞 Contáctanos: 300 360 8621
+
+También disponible en [Bogotá](/colombia/bogota/), [Medellín](/colombia/medellin/), [Cali](/colombia/cali/) y [más ciudades](/colombia/).

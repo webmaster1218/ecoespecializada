@@ -59,7 +59,7 @@ El ciclo de renovación tecnológica en ultrasonido médico es cada vez más cor
 
 ![Mindray Z6 con trípode](/images/z6/z6-Tripode.webp)
 
-- La última generación de [transductores y aplicaciones clínicas](/blog/guia-transductores-ultrasonido/)
+- La última generación de [transductores y aplicaciones clínicas](/blog/guias/guia-transductores-ultrasonido)
 - Actualizaciones de software incluidas en el contrato
 - Modelos recientes con mejoras en resolución y velocidad
 - Funcionalidades avanzadas (elastografía, contraste, 3D/4D)
