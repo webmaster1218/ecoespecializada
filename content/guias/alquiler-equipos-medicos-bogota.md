@@ -95,7 +95,7 @@ El contrato de **alquiler de equipos médicos en Bogotá** debe protegerte. Esto
 
 ## ¿Por Qué los Ecógrafos Son el Caso #1 en Demanda de Alquiler?
 
-Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre $80,000 y $250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra.
+Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre $80,000 y $250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra. Para una guía detallada sobre los modelos, precios y zonas de cobertura disponibles en la capital, visita nuestra [guía completa de alquiler de ecógrafos en Bogotá](/blog/alquiler-ecografos-bogota).
 
 **Mindray** es la marca líder en alquiler de ecógrafos en Bogotá. Sus dos modelos más solicitados son el Z6 y el Z60:
 
