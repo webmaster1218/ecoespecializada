@@ -94,7 +94,7 @@ En el mercado colombiano, este modelo está disponible a través de nuestro alia
 
 La cobertura abarca más de 8 ciudades principales del país, con entregas en un rango de 24 a 48 horas. El mantenimiento está completamente incluido en la tarifa diaria, sin costos adicionales ni sorpresas en la factura.
 
-Si te interesa el servicio en la capital, puedes consultar nuestra guía específica sobre [alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota/).
+Si te interesa el servicio en la capital, puedes consultar nuestra guía específica sobre [alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota/).
 
 ## Rango de Precios de Alquiler por Modelo de Ecógrafo
 

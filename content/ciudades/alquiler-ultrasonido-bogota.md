@@ -143,7 +143,7 @@ La decisión entre rentar o adquirir un equipo de ultrasonido depende de múltip
 
 **Flexibilidad total:** El profesional puede escalar el servicio según la demanda, añadir equipos durante temporadas altas y reducirlos cuando la actividad disminuye, sin incurrir en penalidades ni cargos fijos.
 
-Para una comparación detallada de ambas opciones, te recomendamos leer nuestra guía de [alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota/).
+Para una comparación detallada de ambas opciones, te recomendamos leer nuestra guía de [alquiler de ecógrafos en Bogotá](/blog/ciudades/alquiler-ecografos-bogota/).
 
 ## Información y Disponibilidad de Alquiler de Equipo de Ultrasonido en Bogotá
 

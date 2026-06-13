@@ -6,7 +6,7 @@ excerpt: Descubre todo sobre el alquiler de ecógrafos en Bogotá. Equipos Mindr
   Z6 y M7 con entrega 24-48h en Chapinero, Chicó y Usaquén. ¡Cotiza ya!
 date: '2026-05-08'
 image: /images/blog/alquiler-ecografos-bogota-v5.webp
-category: guias
+category: ciudades
 author: Dr. Juan Pérez
 readTime: 9
 tags:
@@ -23,7 +23,7 @@ Si eres médico en Bogotá y estás considerando sumar ecografía a tu consultor
 
 **El alquiler de ecógrafos en Bogotá se ha convertido en la solución más inteligente para cientos de especialistas** que necesitan equipos de última generación sin comprometer su capital. En esta guía completa te contamos todo lo que necesitas saber: por qué alquilar, qué zonas de la ciudad concentran mayor demanda, qué equipos están disponibles y cómo funciona el proceso paso a paso.
 
-Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
+Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
 
 ![Ecógrafo portátil en consultorio médico de Bogotá](/images/blog/alquiler-ecografos-bogota-1.webp)
 

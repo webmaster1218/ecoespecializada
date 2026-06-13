@@ -18,6 +18,26 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        source: '/blog/guias/alquiler-equipos-medicos-bogota',
+        destination: '/blog/ciudades/alquiler-equipos-medicos-bogota',
+        permanent: true,
+      },
+      {
+        source: '/blog/guias/alquiler-equipos-medicos-bogota/',
+        destination: '/blog/ciudades/alquiler-equipos-medicos-bogota/',
+        permanent: true,
+      },
+      {
+        source: '/blog/guias/alquiler-ecografos-bogota',
+        destination: '/blog/ciudades/alquiler-ecografos-bogota',
+        permanent: true,
+      },
+      {
+        source: '/blog/guias/alquiler-ecografos-bogota/',
+        destination: '/blog/ciudades/alquiler-ecografos-bogota/',
+        permanent: true,
+      },
+      {
         source: '/blog/beneficios-alquiler-ecografos',
         destination: '/blog/guias/beneficios-alquiler-ecografos',
         permanent: true,

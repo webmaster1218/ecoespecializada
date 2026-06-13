@@ -131,7 +131,7 @@ La decisión entre rentar o adquirir un equipo de ultrasonido depende de múltip
 
 **Flexibilidad total:** El profesional puede escalar el servicio según la demanda, añadir equipos durante temporadas altas y reducirlos cuando la actividad disminuye, sin incurrir en penalidades ni cargos fijos.
 
-Para una comparación detallada de ambas opciones, te recomendamos leer nuestra guía de [alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota/).
+Para una comparación detallada de ambas opciones, te recomendamos leer nuestra guía de [alquiler de ecógrafos en Bogotá](/blog/ciudades/alquiler-ecografos-bogota/).
 
 ## Información y Disponibilidad de Alquiler de Equipo de Ultrasonido en Bogotá
 
@@ -397,7 +397,7 @@ En el mercado colombiano, este modelo está disponible a través de nuestro alia
 
 La cobertura abarca más de 8 ciudades principales del país, con entregas en un rango de 24 a 48 horas. El mantenimiento está completamente incluido en la tarifa diaria, sin costos adicionales ni sorpresas en la factura.
 
-Si te interesa el servicio en la capital, puedes consultar nuestra guía específica sobre [alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota/).
+Si te interesa el servicio en la capital, puedes consultar nuestra guía específica sobre [alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota/).
 
 ## Rango de Precios de Alquiler por Modelo de Ecógrafo
 
@@ -585,7 +585,7 @@ Si eres médico en Bogotá y estás considerando sumar ecografía a tu consultor
 
 **El alquiler de ecógrafos en Bogotá se ha convertido en la solución más inteligente para cientos de especialistas** que necesitan equipos de última generación sin comprometer su capital. En esta guía completa te contamos todo lo que necesitas saber: por qué alquilar, qué zonas de la ciudad concentran mayor demanda, qué equipos están disponibles y cómo funciona el proceso paso a paso.
 
-Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
+Si necesitas otros tipos de equipos —monitores de signos vitales, electrocardiógrafos o rayos X portátiles— consulta nuestra **[guía completa de alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota)** con precios y checklist contractual.
 
 ![Ecógrafo portátil en consultorio médico de Bogotá](/images/blog/alquiler-ecografos-bogota-1.webp)
 
@@ -790,7 +790,7 @@ Ya sea que atiendas en Chapinero, el Chicó, Usaquén o el Centro Internacional,
     author: "Dr. Juan Pérez",
     date: "2026-05-08",
     image: "/images/blog/alquiler-ecografos-bogota-v5.webp",
-    category: "guias",
+    category: "ciudades",
     readTime: 9,
     tags: [],
     status: "published" as const,
@@ -878,7 +878,7 @@ El contrato de **alquiler de equipos médicos en Bogotá** debe protegerte. Esto
 
 ## ¿Por Qué los Ecógrafos Son el Caso #1 en Demanda de Alquiler?
 
-Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre \$80,000 y \$250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra. Para una guía detallada sobre los modelos, precios y zonas de cobertura disponibles en la capital, visita nuestra [guía completa de alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota).
+Dentro del universo del alquiler de equipos médicos, los ecógrafos ocupan un lugar especial. Son el equipo más versátil, el de mayor retorno por estudio (un ecografía puede cobrarse entre \$80,000 y \$250,000 COP según la complejidad) y el que más rápidamente se deprecia si se compra. Para una guía detallada sobre los modelos, precios y zonas de cobertura disponibles en la capital, visita nuestra [guía completa de alquiler de ecógrafos en Bogotá](/blog/ciudades/alquiler-ecografos-bogota).
 
 **Mindray** es la marca líder en alquiler de ecógrafos en Bogotá. Sus dos modelos más solicitados son el Z6 y el Z60:
 
@@ -954,7 +954,7 @@ El **alquiler equipos médicos Bogotá** no es solo una alternativa financiera: 
     author: "Dr. Juan Pérez",
     date: "2026-05-05",
     image: "/images/blog/alquiler-equipos-medicos-bogota-v2.webp",
-    category: "guias",
+    category: "ciudades",
     readTime: 10,
     tags: [],
     status: "published" as const,
@@ -968,7 +968,7 @@ El **alquiler equipos médicos Bogotá** no es solo una alternativa financiera: 
 
 La respuesta corta: entre **\$12.9 millones y \$516 millones de pesos** (unos **\$3,000 a \$120,000 USD**), dependiendo del tipo, la marca y las funciones que necesites. La respuesta larga —la que realmente te ayuda a tomar una decisión financiera inteligente— es lo que vas a encontrar en esta guía.
 
-Si ya sabes que alquilar es tu mejor opción, consulta nuestra [guía de alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota) o nuestra [guía de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota) para precios de arriendo y disponibilidad.
+Si ya sabes que alquilar es tu mejor opción, consulta nuestra [guía de alquiler de ecógrafos en Bogotá](/blog/ciudades/alquiler-ecografos-bogota) o nuestra [guía de alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota) para precios de arriendo y disponibilidad.
 
 Vamos a desglosar precios reales verificados a 2026, costos ocultos que nadie te cuenta, y una comparativa directa entre comprar y alquilar para que tomes la mejor decisión para tu bolsillo y tu práctica médica.
 

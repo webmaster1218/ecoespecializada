@@ -23,7 +23,7 @@ Si estás abriendo tu consultorio o pensando en sumar ecografía a tus servicios
 
 La respuesta corta: entre **$12.9 millones y $516 millones de pesos** (unos **$3,000 a $120,000 USD**), dependiendo del tipo, la marca y las funciones que necesites. La respuesta larga —la que realmente te ayuda a tomar una decisión financiera inteligente— es lo que vas a encontrar en esta guía.
 
-Si ya sabes que alquilar es tu mejor opción, consulta nuestra [guía de alquiler de ecógrafos en Bogotá](/blog/guias/alquiler-ecografos-bogota) o nuestra [guía de alquiler de equipos médicos en Bogotá](/blog/guias/alquiler-equipos-medicos-bogota) para precios de arriendo y disponibilidad.
+Si ya sabes que alquilar es tu mejor opción, consulta nuestra [guía de alquiler de ecógrafos en Bogotá](/blog/ciudades/alquiler-ecografos-bogota) o nuestra [guía de alquiler de equipos médicos en Bogotá](/blog/ciudades/alquiler-equipos-medicos-bogota) para precios de arriendo y disponibilidad.
 
 Vamos a desglosar precios reales verificados a 2026, costos ocultos que nadie te cuenta, y una comparativa directa entre comprar y alquilar para que tomes la mejor decisión para tu bolsillo y tu práctica médica.
 
