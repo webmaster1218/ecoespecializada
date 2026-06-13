@@ -73,3 +73,5 @@ next-env.d.ts
 |*.secret
 |auth.json
 |src/lib/blog/posts-data.ts
+.next-old/
+src/app/bersel/

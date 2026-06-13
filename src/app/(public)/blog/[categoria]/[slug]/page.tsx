@@ -308,8 +308,9 @@ function renderContent(content: string) {
     if (paragraph.startsWith('#')) {
       const level = paragraph.match(/^#+/)?.[0].length || 1;
       const text = paragraph.replace(/^#+\s/, '');
-      if (level === 1) elements.push(<h1 key={keyCounter++}>{text}</h1>);
-      else if (level === 2) elements.push(<h2 key={keyCounter++}>{text}</h2>);
+      // Skip H1 in markdown — frontmatter title is already rendered as H1 (line 97).
+      if (level === 1) continue;
+      if (level === 2) elements.push(<h2 key={keyCounter++}>{text}</h2>);
       else if (level === 3) elements.push(<h3 key={keyCounter++}>{text}</h3>);
       else if (level === 4) elements.push(<h4 key={keyCounter++}>{text}</h4>);
       else if (level === 5) elements.push(<h5 key={keyCounter++}>{text}</h5>);
