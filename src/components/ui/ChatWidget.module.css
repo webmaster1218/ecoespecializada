@@ -350,3 +350,61 @@
   background: #ccc;
   border-radius: 3px;
 }
+
+/* ===== Call Button ===== */
+.callButton {
+  position: fixed;
+  bottom: 100px;
+  left: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #007bff, #0056b3);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(0, 123, 255, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 998;
+  text-decoration: none;
+}
+
+.callButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+/* ===== WhatsApp Left Button ===== */
+.whatsappLeftButton {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #25d366, #1da851);
+  color: white;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4), 0 0 0 2px rgba(255, 255, 255, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  z-index: 998;
+  text-decoration: none;
+}
+
+.whatsappLeftButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6), 0 0 0 3px rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 480px) {
+  .callButton, .whatsappLeftButton {
+    display: none !important;
+  }
+}
