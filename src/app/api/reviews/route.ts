@@ -33,9 +33,10 @@ type Cached = { data: ReviewsPayload; at: number };
 let cache: Cached | null = null;
 
 async function fetchFromGoogle(): Promise<ReviewsPayload["place"]> {
-  const url = `https://places.googleapis.com/v1/places/${PLACE_ID}?key=${API_KEY}`;
+  const url = `https://places.googleapis.com/v1/places/${PLACE_ID}`;
   const res = await fetch(url, {
     headers: {
+      "X-Goog-Api-Key": API_KEY!,
       "X-Goog-FieldMask":
         "displayName,rating,userRatingCount,googleMapsUri,reviews(authorName,rating,text,publishTime)",
     },
@@ -76,8 +77,9 @@ export async function GET() {
     const payload: ReviewsPayload = { ok: true, place };
     cache = { data: payload, at: Date.now() };
     return NextResponse.json(payload);
-  } catch {
+  } catch (err) {
     // Si la API falla pero hay caché previo, servimos el caché.
+    console.error("reviews: fallo al consultar Google Places API", err);
     if (cache) return NextResponse.json(cache.data);
     return NextResponse.json({ ok: false, error: "fetch_failed" } satisfies ReviewsPayload);
   }
