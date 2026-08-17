@@ -15,6 +15,7 @@ const LogoLoop = dynamic(() => import("@/components/sections/LogoLoop"), { ssr: 
 const CityLinks = dynamic(() => import("@/components/sections/CityLinks"), { ssr: true });
 const AdditionalServices = dynamic(() => import("@/components/sections/AdditionalServices"), { ssr: true });
 const Testimonials = dynamic(() => import("@/components/sections/Testimonials"), { ssr: true });
+const GoogleReviews = dynamic(() => import("@/components/sections/GoogleReviews"), { ssr: true });
 const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
 
 export const metadata: Metadata = {
@@ -79,6 +80,7 @@ export default function Home() {
             <CityLinks />
             <AdditionalServices />
             <Testimonials />
+            <GoogleReviews />
             <FAQ />
             <Footer />
         </main>
