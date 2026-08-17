@@ -27,6 +27,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Medellín | Alquiler de ecografos",
         description: "Potencia tu consultorio en Medellín con ecografía avanzada. Cubrimos El Poblado, Laureles y todas las zonas médicas de la ciudad.",
         url: "https://alquilerdeecografos.com/colombia/medellin",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Medellín | Alquiler de ecografos",
+        description: "Potencia tu consultorio en Medellín con ecografía avanzada. Cubrimos El Poblado, Laureles y todas las zonas médicas de la ciudad.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

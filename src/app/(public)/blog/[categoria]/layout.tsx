@@ -25,6 +25,20 @@ export async function generateMetadata({ params }: { params: Promise<{ categoria
       title: `${catMeta.name} | Blog - Alquiler de Ecógrafos`,
       description: catMeta.description,
       type: 'website',
+      images: [
+        {
+          url: "/images/logo/logo_alquilerdeecografos.webp",
+          width: 1200,
+          height: 630,
+          alt: "Alquiler de ecografos Logo",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${catMeta.name} | Blog - Alquiler de Ecógrafos`,
+      description: catMeta.description,
+      images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
   };
 }

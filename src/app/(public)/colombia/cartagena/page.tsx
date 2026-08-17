@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Cartagena | Alquiler de ecografos",
         description: "El respaldo técnico que los médicos de Bolívar necesitan. Servicio premium en Bocagrande y el Centro Histórico.",
         url: "https://alquilerdeecografos.com/colombia/cartagena",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Cartagena | Alquiler de ecografos",
+        description: "El respaldo técnico que los médicos de Bolívar necesitan. Servicio premium en Bocagrande y el Centro Histórico.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

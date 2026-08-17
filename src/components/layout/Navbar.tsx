@@ -82,6 +82,7 @@ export default function Navbar() {
                                 <Link href={getHref("#equipos")} onClick={() => setMobileMenuOpen(false)}>Ver Todos</Link>
                                 <Link href="/ecografo-z6" onClick={() => setMobileMenuOpen(false)}>Mindray Z6</Link>
                                 <Link href="/ecografo-z60" onClick={() => setMobileMenuOpen(false)}>Mindray Z60</Link>
+                                <Link href="/ecografo-mx3" onClick={() => setMobileMenuOpen(false)}>Mindray MX3</Link>
                                 <Link href="/ecografo-m7" onClick={() => setMobileMenuOpen(false)}>Mindray M7</Link>
                             </div>
                         </div>

@@ -27,6 +27,20 @@ export const metadata: Metadata = {
         title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecógrafos",
         description: "Equipos de ecografía de alta gama con cobertura nacional. Soluciones flexibles para médicos y especialistas en toda Colombia.",
         url: "https://alquilerdeecografos.com",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecógrafos",
+        description: "Equipos de ecografía de alta gama con cobertura nacional. Soluciones flexibles para médicos y especialistas en toda Colombia.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

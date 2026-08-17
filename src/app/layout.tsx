@@ -20,7 +20,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   metadataBase: new URL("https://alquilerdeecografos.com"),
   title: "Alquiler y Venta de Ecógrafos en Medellín y Antioquia | Mindray",
-  description: "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Medellín y Antioquia. Equipos Z6, Z60 y M7 con respaldo de Equibiomedic. Entrega rápida y soporte técnico.",
+  description: "Líderes en ALQUILER y VENTA de ecógrafos Mindray en Medellín y Antioquia. Equipos Z6, Z60, MX3 y M7 con respaldo de Equibiomedic. Entrega rápida y soporte técnico.",
   keywords: ["alquiler ecografos medellin", "venta ecografos medellin", "ecografos medellin", "mindray colombia", "ecografos portatiles", "equibiomedic", "alquiler equipos medicos"],
   icons: {
     icon: "/images/logo/logo-pestaña.webp",
@@ -44,6 +44,12 @@ export const metadata: Metadata = {
     ],
     locale: "es_CO",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alquiler y Venta de Ecógrafos en Medellín y Antioquia | Mindray",
+    description: "Equipos Mindray de alta gama con respaldo de Equibiomedic. Líderes en alquiler y venta para médicos en Medellín y Antioquia.",
+    images: ["/images/logo/logo_alquilerdeecografos.webp"],
   },
 };
 

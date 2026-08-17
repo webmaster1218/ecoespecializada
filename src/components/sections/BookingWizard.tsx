@@ -49,6 +49,7 @@ interface BookingData {
     z6: number;
     z60: number;
     m7: number;
+    mx3: number;
   };
   includeCart: boolean;
   includePrinter: boolean;
@@ -73,7 +74,7 @@ const INITIAL_DATA: BookingData = {
   taxId: "",
   startDate: "",
   endDate: "",
-  quantities: { z6: 0, z60: 0, m7: 0 },
+  quantities: { z6: 0, z60: 0, m7: 0, mx3: 0 },
   includeCart: false,
   includePrinter: false,
   city: "",
@@ -99,12 +100,14 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
     z6: number;
     z60: number;
     m7: number;
-  }>({ z6: 0, z60: 0, m7: 0 });
+    mx3: number;
+  }>({ z6: 0, z60: 0, m7: 0, mx3: 0 });
   const [availabilitySuggestions, setAvailabilitySuggestions] = useState<{
     z6: string | null;
     z60: string | null;
     m7: string | null;
-  }>({ z6: null, z60: null, m7: null });
+    mx3: string | null;
+  }>({ z6: null, z60: null, m7: null, mx3: null });
   const [isCheckingAvailability, setIsCheckingAvailability] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -113,9 +116,9 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
     const fetchAvailability = async () => {
       if (formData.startDate && formData.endDate) {
         setIsCheckingAvailability(true);
-        setAvailabilitySuggestions({ z6: null, z60: null, m7: null }); // Reset suggestions
+        setAvailabilitySuggestions({ z6: null, z60: null, m7: null, mx3: null }); // Reset suggestions
         // Reset quantities if dates change to avoid holding invalid stock
-        setFormData((prev) => ({ ...prev, quantities: { z6: 0, z60: 0, m7: 0 } }));
+        setFormData((prev) => ({ ...prev, quantities: { z6: 0, z60: 0, m7: 0, mx3: 0 } }));
 
         const result = await checkAvailability(
           formData.startDate,
@@ -132,6 +135,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
         let suggestionZ6 = null;
         let suggestionZ60 = null;
         let suggestionM7 = null;
+        let suggestionMx3 = null;
 
         if (result.z6 === 0) {
           suggestionZ6 = await getNextAvailableDate("z6", days);
@@ -142,9 +146,12 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
         if (result.m7 === 0) {
           suggestionM7 = await getNextAvailableDate("m7", days);
         }
+        if (result.mx3 === 0) {
+          suggestionMx3 = await getNextAvailableDate("mx3", days);
+        }
 
-        setMaxAvailability({ z6: result.z6, z60: result.z60, m7: result.m7 });
-        setAvailabilitySuggestions({ z6: suggestionZ6, z60: suggestionZ60, m7: suggestionM7 });
+        setMaxAvailability({ z6: result.z6, z60: result.z60, m7: result.m7, mx3: result.mx3 });
+        setAvailabilitySuggestions({ z6: suggestionZ6, z60: suggestionZ60, m7: suggestionM7, mx3: suggestionMx3 });
         setIsCheckingAvailability(false);
       }
     };
@@ -190,6 +197,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
             quantity_z6: formData.quantities.z6,
             quantity_z60: formData.quantities.z60,
             quantity_m7: formData.quantities.m7,
+            quantity_mx3: formData.quantities.mx3,
             include_cart: formData.includeCart,
             include_printer: formData.includePrinter,
             selected_transducers: formData.selectedTransducers,
@@ -209,6 +217,11 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
       // Generate Equipment Summary
       const summaryParts = [];
+      if (formData.quantities.mx3 > 0) {
+        summaryParts.push(
+          `ECOGRAFO MX3${formData.includeCart ? " CON CARRITO" : ""}`,
+        );
+      }
       if (formData.quantities.m7 > 0) {
         summaryParts.push(
           `ECOGRAFO M7${formData.includeCart ? " CON CARRITO" : ""}`,
@@ -275,6 +288,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
         duration: `${totalDays} ${totalDays === 1 ? "día" : "días"}`,
         total_days: totalDays,
         quantity_m7: formData.quantities.m7,
+        quantity_mx3: formData.quantities.mx3,
         quantity_z6: formData.quantities.z6,
         quantity_z60: formData.quantities.z60,
         selected_transducers: formData.selectedTransducers || [],
@@ -348,7 +362,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
     }
   };
 
-  const updateQuantity = (model: "z6" | "z60" | "m7", delta: number) => {
+  const updateQuantity = (model: "z6" | "z60" | "m7" | "mx3", delta: number) => {
     setFormData((prev) => {
       const current = prev.quantities[model];
       const max = maxAvailability[model]; // Use dynamic max
@@ -425,7 +439,8 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
       const totalUnits =
         formData.quantities.z6 +
         formData.quantities.z60 +
-        formData.quantities.m7;
+        formData.quantities.m7 +
+        formData.quantities.mx3;
       if (totalUnits === 0)
         newErrors.quantities = "Selecciona al menos un equipo";
 
@@ -478,6 +493,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
       quantityZ6: formData.quantities.z6,
       quantityZ60: formData.quantities.z60,
       quantityM7: formData.quantities.m7,
+      quantityMx3: formData.quantities.mx3,
       includeCart: formData.includeCart,
       includePrinter: formData.includePrinter,
       days: totalDays,
@@ -835,11 +851,19 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                     <div className="grid md:grid-cols-2 gap-4">
                       {[
                         {
+                          id: "mx3",
+                          name: "Mindray MX3",
+                          price: PRICING_CONFIG.EQUIPMENT.mx3,
+                          img: "/images/mx3/mx3.jpeg",
+                          badge: "Nuevo y compacto",
+                          desc: "ZST+ Ultraportátil",
+                        },
+                        {
                           id: "m7",
                           name: "Mindray M7",
                           price: PRICING_CONFIG.EQUIPMENT.m7,
                           img: "/images/m7/m7-abierto-derecha.webp",
-                          badge: "Nuevo",
+                          badge: "Alta gama",
                           desc: "3D/4D Premium",
                         },
                         {
@@ -861,7 +885,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                         <div
                           key={item.id}
                           className={`relative p-4 rounded-[28px] border-2 transition-all duration-300 ${
-                            formData.quantities[item.id as "z6" | "z60" | "m7"] > 0
+                            formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"] > 0
                               ? "border-blue-500 bg-white shadow-xl shadow-blue-500/5 translate-y-[-2px]"
                               : "border-slate-100 bg-slate-50/30 hover:border-slate-200"
                           }`}
@@ -902,11 +926,11 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
-                                updateQuantity(item.id as "z6" | "z60" | "m7", -1);
+                                updateQuantity(item.id as "z6" | "z60" | "m7" | "mx3", -1);
                               }}
-                              className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as "z6" | "z60" | "m7"] > 0 ? "bg-slate-100 text-slate-700 hover:bg-slate-200" : "text-slate-200 cursor-not-allowed"}`}
+                              className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"] > 0 ? "bg-slate-100 text-slate-700 hover:bg-slate-200" : "text-slate-200 cursor-not-allowed"}`}
                               disabled={
-                                formData.quantities[item.id as "z6" | "z60" | "m7"] ===
+                                formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"] ===
                                 0
                               }
                             >
@@ -915,7 +939,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
                             <div className="flex flex-col items-center">
                               <span className="font-extrabold text-slate-900 text-base">
-                                {formData.quantities[item.id as "z6" | "z60" | "m7"]}
+                                {formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"]}
                               </span>
                               <span className="text-[8px] uppercase font-bold text-slate-400 tracking-tighter">
                                 Unidades
@@ -925,19 +949,19 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                             <button
                               onClick={(e) => {
                                 e.preventDefault();
-                                updateQuantity(item.id as "z6" | "z60" | "m7", 1);
+                                updateQuantity(item.id as "z6" | "z60" | "m7" | "mx3", 1);
                               }}
-                              className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as "z6" | "z60" | "m7"] < maxAvailability[item.id as "z6" | "z60" | "m7"] ? "bg-blue-600 text-white shadow-md hover:bg-blue-700 hover:scale-105" : "bg-slate-200 text-slate-400 cursor-not-allowed"}`}
+                              className={`w-9 h-9 flex items-center justify-center rounded-xl transition-all ${formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"] < maxAvailability[item.id as "z6" | "z60" | "m7" | "mx3"] ? "bg-blue-600 text-white shadow-md hover:bg-blue-700 hover:scale-105" : "bg-slate-200 text-slate-400 cursor-not-allowed"}`}
                               disabled={
-                                formData.quantities[item.id as "z6" | "z60" | "m7"] >=
-                                maxAvailability[item.id as "z6" | "z60" | "m7"]
+                                formData.quantities[item.id as "z6" | "z60" | "m7" | "mx3"] >=
+                                maxAvailability[item.id as "z6" | "z60" | "m7" | "mx3"]
                               }
                             >
                               <Plus size={16} strokeWidth={3} />
                             </button>
                           </div>
 
-                          {availabilitySuggestions[item.id as "z6" | "z60" | "m7"] && (
+                          {availabilitySuggestions[item.id as "z6" | "z60" | "m7" | "mx3"] && (
                             <div className="mt-3 text-[10px] text-amber-600 font-bold bg-amber-50 p-2 rounded-xl border border-amber-100 flex items-start gap-2 animate-in fade-in slide-in-from-top-1">
                               <CalendarIcon
                                 size={14}
@@ -948,7 +972,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                                 <strong className="text-amber-800 underline">
                                   {
                                     availabilitySuggestions[
-                                      item.id as "z6" | "z60" | "m7"
+                                      item.id as "z6" | "z60" | "m7" | "mx3"
                                     ]
                                   }
                                 </strong>
@@ -1260,6 +1284,21 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
                     <ul className="space-y-2 relative z-10">
                       {/* Quantities Breakdown */}
+                      {formData.quantities.mx3 > 0 && (
+                        <li className="flex justify-between items-center text-sm">
+                          <span className="text-slate-600">
+                            {formData.quantities.mx3}x Mindray MX3
+                          </span>
+                          <span className="font-semibold text-slate-800">
+                            $
+                            {(
+                              formData.quantities.mx3 *
+                              PRICING_CONFIG.EQUIPMENT.mx3 *
+                              totalDays
+                            ).toLocaleString()}
+                          </span>
+                        </li>
+                      )}
                       {formData.quantities.m7 > 0 && (
                         <li className="flex justify-between items-center text-sm">
                           <span className="text-slate-600">

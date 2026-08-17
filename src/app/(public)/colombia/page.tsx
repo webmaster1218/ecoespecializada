@@ -16,7 +16,7 @@ import CityLinks from "@/components/sections/CityLinks";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Alquiler y Venta de Ecógrafos en Colombia | Mindray Z6, Z60 y M7 | Envíos Nacionales",
+    title: "Alquiler y Venta de Ecógrafos en Colombia | Mindray Z6, Z60, MX3 y M7 | Envíos Nacionales",
     description:
         "ALQUILER y VENTA de ecógrafos Mindray en toda Colombia. Cobertura en Bogotá, Medellín, Cali, Barranquilla, Cartagena y toda la nación. Equipos certificados con entrega inmediata.",
     keywords: ["alquiler ecógrafos Colombia", "venta ecógrafos Colombia", "ecógrafo Mindray Colombia", "equipos médicos Colombia", "arriendo de ecógrafos"],
@@ -25,6 +25,20 @@ export const metadata: Metadata = {
         title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecografos",
         description: "Equipos Mindray certificados con entrega en las principales ciudades de Colombia. Servicio ágil y respaldo técnico garantizado.",
         url: "https://alquilerdeecografos.com/colombia",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecografos",
+        description: "Equipos Mindray certificados con entrega en las principales ciudades de Colombia. Servicio ágil y respaldo técnico garantizado.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

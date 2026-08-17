@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Cúcuta | Alquiler de ecografos",
         description: "Tecnología de punta para la salud en la frontera. Servicio ágil cerca a la Clínica Norte y Clínica San José.",
         url: "https://alquilerdeecografos.com/colombia/cucuta",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Cúcuta | Alquiler de ecografos",
+        description: "Tecnología de punta para la salud en la frontera. Servicio ágil cerca a la Clínica Norte y Clínica San José.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

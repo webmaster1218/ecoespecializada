@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Barranquilla | Alquiler de ecografos",
         description: "Equipos médicos de alta gama para el sector salud de Barranquilla. Cubrimiento en Villa Santos y cercanías a la Clínica Portoazul.",
         url: "https://alquilerdeecografos.com/colombia/barranquilla",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Barranquilla | Alquiler de ecografos",
+        description: "Equipos médicos de alta gama para el sector salud de Barranquilla. Cubrimiento en Villa Santos y cercanías a la Clínica Portoazul.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

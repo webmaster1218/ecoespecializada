@@ -7,6 +7,7 @@ export const PRICING_CONFIG = {
         z6: 350000,
         z60: 550000,
         m7: 650000,
+        mx3: 600000,
     },
     EXTRAS: {
         cart: 50000,
@@ -41,6 +42,7 @@ export const calculateTotalPrice = (params: {
     quantityZ6: number;
     quantityZ60: number;
     quantityM7: number;
+    quantityMx3?: number;
     includeCart: boolean;
     includePrinter: boolean;
     days: number;
@@ -50,6 +52,7 @@ export const calculateTotalPrice = (params: {
         quantityZ6,
         quantityZ60,
         quantityM7,
+        quantityMx3 = 0,
         includeCart,
         includePrinter,
         days,
@@ -62,6 +65,7 @@ export const calculateTotalPrice = (params: {
     total += quantityZ6 * PRICING_CONFIG.EQUIPMENT.z6 * days;
     total += quantityZ60 * PRICING_CONFIG.EQUIPMENT.z60 * days;
     total += quantityM7 * PRICING_CONFIG.EQUIPMENT.m7 * days;
+    total += quantityMx3 * PRICING_CONFIG.EQUIPMENT.mx3 * days;
     
     // Extras (one-time fee per reservation, or should it be per day/unit?)
     // Based on current logic in BookingWizard.tsx, it's a one-time fee per order

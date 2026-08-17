@@ -249,7 +249,7 @@ function BlogContent() {
                 ¿Necesitas un Ecógrafo para tu Práctica?
               </h2>
               <p className={styles.ctaText}>
-                Alquiler de equipos Mindray Z6, Z60 y M7. Calidad garantizada,
+                Alquiler de equipos Mindray Z6, Z60, MX3 y M7. Calidad garantizada,
                 mantenimiento incluido y entrega rápida.
               </p>
               <CallButton text="Cotizar Ahora" />

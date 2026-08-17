@@ -75,3 +75,4 @@ next-env.d.ts
 |src/lib/blog/posts-data.ts
 .next-old/
 src/app/bersel/
+.agents/

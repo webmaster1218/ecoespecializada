@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Pereira | Alquiler de ecografos",
         description: "Ecografía de alta gama para médicos en Pereira. Servicio ágil cerca a Megacentro Pinares y Clínica Los Rosales.",
         url: "https://alquilerdeecografos.com/colombia/pereira",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Pereira | Alquiler de ecografos",
+        description: "Ecografía de alta gama para médicos en Pereira. Servicio ágil cerca a Megacentro Pinares y Clínica Los Rosales.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

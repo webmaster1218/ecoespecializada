@@ -67,7 +67,10 @@ function parseFrontmatter(raw) {
 }
 
 function parseMarkdownFile(filepath) {
-  const raw = fs.readFileSync(filepath, 'utf-8');
+  // Normalize line endings (CRLF / lone CR -> LF). Editors on Windows save
+  // .md files as CRLF, which would otherwise break the LF-anchored regex below
+  // and cause every file to fail with "Invalid frontmatter".
+  const raw = fs.readFileSync(filepath, 'utf-8').replace(/\r\n?/g, '\n');
   const fmMatch = raw.match(/^---\n([\s\S]*?)\n---\n\n?([\s\S]*)$/);
   if (!fmMatch) {
     throw new Error(`Invalid frontmatter in ${filepath}`);

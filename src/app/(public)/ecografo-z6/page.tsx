@@ -107,6 +107,7 @@ export default function EcografoZ6Page() {
                   <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-slate-100 opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-300 flex flex-col overflow-hidden">
                     <Link href="/ecografo-z6" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors">Mindray Z6</Link>
                     <Link href="/ecografo-z60" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors border-t border-slate-50">Mindray Z60</Link>
+                    <Link href="/ecografo-mx3" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors border-t border-slate-50">Mindray MX3</Link>
                     <Link href="/ecografo-m7" className="px-4 py-3 text-sm text-slate-700 hover:bg-slate-50 hover:text-blue-600 font-medium transition-colors border-t border-slate-50">Mindray M7</Link>
                   </div>
                 </div>
@@ -181,6 +182,7 @@ export default function EcografoZ6Page() {
                     <div className="text-[1.1rem] font-bold text-[#1e293b] px-3">Equipos</div>
                     <Link href="/ecografo-z6" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray Z6</Link>
                     <Link href="/ecografo-z60" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray Z60</Link>
+                    <Link href="/ecografo-mx3" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray MX3</Link>
                     <Link href="/ecografo-m7" onClick={() => setIsMenuOpen(false)} className="text-[1rem] font-medium text-slate-500 hover:text-blue-600 transition-colors py-1 px-5 border-l-2 border-slate-100 ml-4 hover:border-blue-500">Mindray M7</Link>
                 </div>
 

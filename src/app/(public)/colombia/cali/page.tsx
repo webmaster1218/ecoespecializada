@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Cali | Alquiler de ecografos",
         description: "Equipos Mindray certificados en la Sultana del Valle. Servicio ágil cerca a la Clínica Valle del Lili e Imbanaco.",
         url: "https://alquilerdeecografos.com/colombia/cali",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Cali | Alquiler de ecografos",
+        description: "Equipos Mindray certificados en la Sultana del Valle. Servicio ágil cerca a la Clínica Valle del Lili e Imbanaco.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

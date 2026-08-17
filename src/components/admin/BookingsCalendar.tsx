@@ -58,11 +58,13 @@ export default function BookingsCalendar({ onEditBooking, onCreateBooking }: { o
                 if (booking.quantity_z6 > 0) titleParts.push(`${booking.quantity_z6}x Z6`);
                 if (booking.quantity_z60 > 0) titleParts.push(`${booking.quantity_z60}x Z60`);
                 if (booking.quantity_m7 > 0) titleParts.push(`${booking.quantity_m7}x M7`);
+                if (booking.quantity_mx3 > 0) titleParts.push(`${booking.quantity_mx3}x MX3`);
 
                 const title = `${titleParts.join(', ')} - ${booking.client_name}`;
                 const isZ6 = booking.quantity_z6 > 0;
                 const isZ60 = booking.quantity_z60 > 0;
                 const isM7 = booking.quantity_m7 > 0;
+                const isMx3 = booking.quantity_mx3 > 0;
 
                 // Color Logic based on Logistics Status (Status overrides Model color)
                 let bgColor = '#3b82f6'; // Default Blue

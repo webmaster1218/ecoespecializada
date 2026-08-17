@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Bucaramanga | Alquiler de ecografos",
         description: "Ecógrafos certificados INVIMA para la Ciudad de los Parques. Servicio cerca a FOSCAL y centros médicos de Santander.",
         url: "https://alquilerdeecografos.com/colombia/bucaramanga",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Bucaramanga | Alquiler de ecografos",
+        description: "Ecógrafos certificados INVIMA para la Ciudad de los Parques. Servicio cerca a FOSCAL y centros médicos de Santander.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

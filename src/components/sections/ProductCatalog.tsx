@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Eye } from "lucide-react";
 import { m } from "framer-motion";
 import styles from "./ProductCatalog.module.css";
@@ -76,6 +77,27 @@ const M7_DATA = {
     psychology: "Tecnología premium multipropósito"
 };
 
+const MX3_DATA = {
+    id: 'mx3',
+    name: "Mindray MX3",
+    tagline: "Ultracompacto de Alta Definición",
+    description: "La revolución de la ecografía portátil en el punto de atención. Basado en la plataforma avanzada ZST+, el MX3 ofrece calidad de imagen superior con un peso extremadamente reducido, ideal para atención domiciliaria y urgencias.",
+    price: "$ 600.000",
+    images: [
+        "/images/mx3/mx3.jpeg"
+    ],
+    features: [
+        "Tecnología ZST+ (Procesamiento por píxel)",
+        "Pantalla LED HD 15.6\" Reclinable 185°",
+        "Diseño ultraligero: solo 3.5kg - 3.8kg",
+        "Puerto de carga magnética de grado médico",
+        "Batería Li-ion (90 min autonomía extendible)",
+        "Panel de control sellado para fácil desinfección"
+    ],
+    specialties: ["POCUS / Urgencias", "Atención Domiciliaria", "Anestesia", "Ginecología Básica"],
+    psychology: "Movilidad extrema sin comprometer calidad"
+};
+
 export type ProductDetails = typeof Z6_DATA;
 
 export default function ProductCatalog({ city }: { city?: string }) {
@@ -89,7 +111,7 @@ export default function ProductCatalog({ city }: { city?: string }) {
         setSelectedProduct(null);
     };
 
-    const productsSchema = [Z6_DATA, Z60_DATA, M7_DATA].map(product => ({
+    const productsSchema = [Z6_DATA, Z60_DATA, MX3_DATA, M7_DATA].map(product => ({
         "@context": "https://schema.org",
         "@type": "Product",
         "name": product.name,
@@ -230,6 +252,67 @@ export default function ProductCatalog({ city }: { city?: string }) {
                                 Ver detalles
                             </button>
                             <a href="#reservar" className="btn-primary w-full shadow-lg shadow-blue-600/20 text-center flex items-center justify-center py-2.5 px-2 text-sm rounded-xl">Reservar ahora</a>
+                            <div className="col-span-2">
+                                <CallButton
+                                    text="Llamar"
+                                    subtext="300 3608621"
+                                    variant="highlight"
+                                    className="w-full justify-center"
+                                />
+                            </div>
+                        </div>
+                    </m.div>
+
+                    {/* Card MX3 */}
+                    <m.div className={`${styles.card} glass-card hover:shadow-lg transition-all`} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}>
+                        <div className={styles.cardHeader}>
+                            <h3 className={styles.productName}>Mindray MX3</h3>
+                            <span className="inline-block px-3 py-1 bg-slate-100 text-slate-600 text-xs font-bold uppercase tracking-wider rounded-full">ZST+ Ultraportátil</span>
+                        </div>
+
+                        <div className={styles.priceContainer}>
+                            <p className={styles.equipmentDescription}>
+                                Ultracompacto de última generación con tecnología ZST+. Rendimiento y movilidad extrema para atención a domicilio y POCUS.
+                            </p>
+                            <div className={`${styles.currentPrice} text-slate-900`}>$ 600.000<span className={styles.period}>/día</span></div>
+                        </div>
+
+                        <div className={`${styles.stock} text-emerald-600 font-bold`}>
+                            <span className={`${styles.dot} bg-emerald-500 animate-pulse`}></span> ¡Disponible ahora!
+                        </div>
+
+                        <div className={styles.imagePlaceholder}>
+                            <Image
+                                src="/images/mx3/mx3.jpeg"
+                                alt="Mindray MX3"
+                                fill
+                                style={{ objectFit: 'contain' }}
+                                sizes="(max-width: 768px) 90vw, (max-width: 1200px) 45vw, 444px"
+                            />
+                            <button
+                                className={styles.galleryBtn}
+                                onClick={() => handleOpenGallery(MX3_DATA)}
+                            >
+                                <Eye size={18} /> Ver galería
+                            </button>
+                        </div>
+
+                        <ul className={styles.specs}>
+                            <li>✓ <strong>Tecnología ZST+ (Procesamiento por Píxel)</strong></li>
+                            <li>✓ Pantalla LED HD 15.6" con inclinación 185°</li>
+                            <li>✓ Ultraligero y compacto: Solo 3.5kg - 3.8kg</li>
+                            <li>✓ Carga magnética y panel sellado impermeable</li>
+                            <li>✓ Batería integrada de larga duración (90 min)</li>
+                        </ul>
+
+                        <div className="grid grid-cols-2 gap-3 mt-auto pt-4 w-full">
+                            <Link
+                                href="/ecografo-mx3"
+                                className={`px-2 py-2.5 rounded-xl font-bold border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all text-slate-600 w-full text-center text-sm hover:bg-slate-50`}
+                            >
+                                Ver detalles
+                            </Link>
+                            <a href="#reservar" className="btn-primary w-full text-center flex items-center justify-center py-2.5 px-2 text-sm rounded-xl">Reservar ahora</a>
                             <div className="col-span-2">
                                 <CallButton
                                     text="Llamar"

@@ -18,7 +18,7 @@ interface AdminBookingModalProps {
 
 export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingToEdit, initialDateRange, isBlockingMode }: AdminBookingModalProps) {
     const [isLoading, setIsLoading] = useState(false);
-    const [availableStock, setAvailableStock] = useState({ z6: 2, z60: 2, m7: 1 });
+    const [availableStock, setAvailableStock] = useState({ z6: 2, z60: 2, m7: 1, mx3: 1 });
     const [isCheckingStock, setIsCheckingStock] = useState(false);
     const [formData, setFormData] = useState({
         clientName: "",
@@ -35,6 +35,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
         quantityZ6: 0,
         quantityZ60: 0,
         quantityM7: 0,
+        quantityMx3: 0,
         includeCart: false,
         includePrinter: false,
         selectedTransducers: [] as string[],
@@ -46,7 +47,9 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
         z60StartDate: "",
         z60EndDate: "",
         m7StartDate: "",
-        m7EndDate: ""
+        m7EndDate: "",
+        mx3StartDate: "",
+        mx3EndDate: ""
     });
 
     const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
@@ -68,6 +71,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 quantityZ6: bookingToEdit.quantity_z6 || 0,
                 quantityZ60: bookingToEdit.quantity_z60 || 0,
                 quantityM7: bookingToEdit.quantity_m7 || 0,
+                quantityMx3: bookingToEdit.quantity_mx3 || 0,
                 includeCart: bookingToEdit.include_cart || false,
                 includePrinter: bookingToEdit.include_printer || false,
                 selectedTransducers: bookingToEdit.selected_transducers || [],
@@ -78,7 +82,9 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 z60StartDate: bookingToEdit.start_date || "",
                 z60EndDate: bookingToEdit.end_date || "",
                 m7StartDate: bookingToEdit.start_date || "",
-                m7EndDate: bookingToEdit.end_date || ""
+                m7EndDate: bookingToEdit.end_date || "",
+                mx3StartDate: bookingToEdit.start_date || "",
+                mx3EndDate: bookingToEdit.end_date || ""
             });
         } else if (!bookingToEdit && isOpen) {
             setFormData({
@@ -96,6 +102,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 quantityZ6: 0,
                 quantityZ60: 0,
                 quantityM7: 0,
+                quantityMx3: 0,
                 includeCart: false,
                 includePrinter: false,
                 selectedTransducers: [],
@@ -106,7 +113,9 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                 z60StartDate: initialDateRange?.start || "",
                 z60EndDate: initialDateRange?.end || "",
                 m7StartDate: initialDateRange?.start || "",
-                m7EndDate: initialDateRange?.end || ""
+                m7EndDate: initialDateRange?.end || "",
+                mx3StartDate: initialDateRange?.start || "",
+                mx3EndDate: initialDateRange?.end || ""
             });
         }
     }, [bookingToEdit, isOpen, initialDateRange, isBlockingMode]);
@@ -143,6 +152,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
             quantityZ6: formData.quantityZ6,
             quantityZ60: formData.quantityZ60,
             quantityM7: formData.quantityM7,
+            quantityMx3: formData.quantityMx3,
             includeCart: formData.includeCart,
             includePrinter: formData.includePrinter,
             days: getDays(),
@@ -175,6 +185,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                     quantity_z6: formData.quantityZ6,
                     quantity_z60: formData.quantityZ60,
                     quantity_m7: formData.quantityM7,
+                    quantity_mx3: formData.quantityMx3,
                     include_cart: formData.includeCart,
                     include_printer: formData.includePrinter,
                     selected_transducers: formData.selectedTransducers,
@@ -194,6 +205,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                         quantity_z6: formData.quantityZ6,
                         quantity_z60: 0,
                         quantity_m7: 0,
+                        quantity_mx3: 0,
                         start_date: formData.z6StartDate || formData.startDate,
                         end_date: formData.z6EndDate || formData.endDate,
                         notes: `Bloqueo masivo: ${formData.notes}`.trim()
@@ -206,6 +218,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                         quantity_z6: 0,
                         quantity_z60: formData.quantityZ60,
                         quantity_m7: 0,
+                        quantity_mx3: 0,
                         start_date: formData.z60StartDate || formData.startDate,
                         end_date: formData.z60EndDate || formData.endDate,
                         notes: `Bloqueo masivo: ${formData.notes}`.trim()
@@ -218,8 +231,22 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                         quantity_z6: 0,
                         quantity_z60: 0,
                         quantity_m7: formData.quantityM7,
+                        quantity_mx3: 0,
                         start_date: formData.m7StartDate || formData.startDate,
                         end_date: formData.m7EndDate || formData.endDate,
+                        notes: `Bloqueo masivo: ${formData.notes}`.trim()
+                    });
+                }
+                if (formData.quantityMx3 > 0) {
+                    blocks.push({
+                        client_name: "BLOQUEO MX3",
+                        status: 'maintenance',
+                        quantity_z6: 0,
+                        quantity_z60: 0,
+                        quantity_m7: 0,
+                        quantity_mx3: formData.quantityMx3,
+                        start_date: formData.mx3StartDate || formData.startDate,
+                        end_date: formData.mx3EndDate || formData.endDate,
                         notes: `Bloqueo masivo: ${formData.notes}`.trim()
                     });
                 }
@@ -248,6 +275,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                     quantity_z6: formData.quantityZ6,
                     quantity_z60: formData.quantityZ60,
                     quantity_m7: formData.quantityM7,
+                    quantity_mx3: formData.quantityMx3,
                     include_cart: formData.includeCart,
                     include_printer: formData.includePrinter,
                     selected_transducers: formData.selectedTransducers,
@@ -337,6 +365,7 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                             { key: 'quantityZ6' as const, startKey: 'z6StartDate' as const, endKey: 'z6EndDate' as const, label: 'Mindray Z6', color: 'blue', max: availableStock.z6 },
                                             { key: 'quantityZ60' as const, startKey: 'z60StartDate' as const, endKey: 'z60EndDate' as const, label: 'Mindray Z60', color: 'blue', max: availableStock.z60 },
                                             { key: 'quantityM7' as const, startKey: 'm7StartDate' as const, endKey: 'm7EndDate' as const, label: 'Mindray M7', color: 'indigo', max: availableStock.m7 },
+                                            { key: 'quantityMx3' as const, startKey: 'mx3StartDate' as const, endKey: 'mx3EndDate' as const, label: 'Mindray MX3', color: 'indigo', max: availableStock.mx3 },
                                         ].map(({ key, startKey, endKey, label, color, max }) => (
                                             <div key={key} className={`bg-slate-50 p-6 rounded-3xl border ${formData[key] > 0 ? 'border-blue-200 bg-blue-50/30' : 'border-slate-100'} space-y-4 transition-all`}>
                                                 <div className="flex items-center justify-between">
@@ -563,6 +592,24 @@ export default function AdminBookingModal({ isOpen, onClose, onSuccess, bookingT
                                                 </div>
                                                 <div className="absolute -top-2 right-2 px-2 py-0.5 bg-blue-600 text-[8px] font-black text-white rounded-full shadow-sm">
                                                     Disp: {availableStock.m7 - formData.quantityM7}
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col items-center bg-slate-50 p-4 rounded-3xl border border-slate-100 relative">
+                                                <span className="text-[10px] font-black text-blue-600 uppercase tracking-wider mb-2">Mindray MX3</span>
+                                                <div className="flex items-center gap-3">
+                                                    <button type="button" onClick={() => setFormData(p => ({ ...p, quantityMx3: Math.max(0, p.quantityMx3 - 1) }))}
+                                                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm">
+                                                        <Minus size={14} />
+                                                    </button>
+                                                    <span className="w-8 text-center font-black text-xl text-slate-800">{formData.quantityMx3}</span>
+                                                    <button type="button" disabled={formData.quantityMx3 >= availableStock.mx3}
+                                                        onClick={() => setFormData(p => ({ ...p, quantityMx3: Math.min(availableStock.mx3, p.quantityMx3 + 1) }))}
+                                                        className="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-blue-600 transition-all shadow-sm disabled:opacity-30 disabled:cursor-not-allowed">
+                                                        <Plus size={14} />
+                                                    </button>
+                                                </div>
+                                                <div className="absolute -top-2 right-2 px-2 py-0.5 bg-blue-600 text-[8px] font-black text-white rounded-full shadow-sm">
+                                                    Disp: {availableStock.mx3 - formData.quantityMx3}
                                                 </div>
                                             </div>
                                         </div>

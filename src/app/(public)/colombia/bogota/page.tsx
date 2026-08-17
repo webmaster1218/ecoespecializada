@@ -26,6 +26,20 @@ export const metadata: Metadata = {
         title: "Alquiler de Ecógrafos en Bogotá | Alquiler de ecografos",
         description: "Potencia tu consultorio en Bogotá con ecografía avanzada. Cubrimos Chapinero, Usaquén y todas las zonas médicas de la capital.",
         url: "https://alquilerdeecografos.com/colombia/bogota",
+        images: [
+            {
+                url: "/images/logo/logo_alquilerdeecografos.webp",
+                width: 1200,
+                height: 630,
+                alt: "Alquiler de ecografos Logo",
+            },
+        ],
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "Alquiler de Ecógrafos en Bogotá | Alquiler de ecografos",
+        description: "Potencia tu consultorio en Bogotá con ecografía avanzada. Cubrimos Chapinero, Usaquén y todas las zonas médicas de la capital.",
+        images: ["/images/logo/logo_alquilerdeecografos.webp"],
     },
 };
 

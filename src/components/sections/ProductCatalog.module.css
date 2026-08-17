@@ -33,14 +33,27 @@
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    max-width: 1340px;
     margin: 0 auto;
+    padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 .card {
-    padding: 1.25rem;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -72,12 +85,12 @@
 }
 
 .cardHeader {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
     text-align: center;
 }
 
 .productName {
-    font-size: 1.25rem;
+    font-size: 1.15rem;
     font-weight: 800;
     color: var(--color-dark);
     margin-bottom: 0.25rem;
@@ -86,36 +99,35 @@
 .tag {
     display: inline-block;
     background: rgba(0, 0, 0, 0.05);
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     color: var(--color-text-body);
 }
 
 .priceContainer {
     text-align: center;
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.5rem;
 }
 
 .equipmentDescription {
     color: #64748b;
-    font-size: 0.85rem;
-    line-height: 1.4;
+    font-size: 0.8rem;
+    line-height: 1.35;
     display: block;
-    margin-bottom: 0.75rem;
-    min-height: 2.8rem;
-    /* Enough for 2 lines */
+    margin-bottom: 0.5rem;
+    min-height: 2.4rem;
     text-align: center;
 }
 
 .currentPrice {
-    font-size: 1.75rem;
+    font-size: 1.45rem;
     font-weight: 800;
     color: var(--color-primary);
 }
 
 .period {
-    font-size: 1rem;
+    font-size: 0.85rem;
     color: var(--color-text-body);
     font-weight: 400;
 }
@@ -123,8 +135,8 @@
 .stock {
     text-align: center;
     font-weight: 600;
-    font-size: 0.8rem;
-    margin-bottom: 0.75rem;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -155,7 +167,7 @@
 
 .imagePlaceholder {
     width: 100%;
-    height: 170px;
+    height: 140px;
     position: relative;
     background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.03);
@@ -163,16 +175,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     overflow: hidden;
     padding: 10px;
 }
 
 .specs {
     list-style: none;
-    font-size: 0.85rem;
+    font-size: 0.78rem;
     color: var(--color-text-body);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     flex-grow: 1;
     /* Empujar botón hacia abajo */
 }
