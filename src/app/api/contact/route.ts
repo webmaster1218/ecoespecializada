@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 
 const N8N_WEBHOOK_URL =
   process.env.N8N_WEBHOOK_URL ||
-  'https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71';
+  'https://n8n.srv1054162.hstgr.cloud/webhook/2b6fce59-1519-4f25-bfa2-f81564f58ffc';
 
 export async function POST(req: Request) {
   try {
