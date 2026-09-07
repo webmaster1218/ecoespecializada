@@ -110,6 +110,8 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
   }>({ z6: null, z60: null, m7: null, mx3: null });
   const [isCheckingAvailability, setIsCheckingAvailability] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [renderTime] = useState<number>(() => Date.now());
+  const [hpWebsite, setHpWebsite] = useState<string>("");
 
   // Check Availability when dates change
   useEffect(() => {
@@ -177,6 +179,13 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
   const saveBooking = async () => {
     try {
       setIsSubmitting(true);
+
+      // Verificación Anti-Bot (Honeypot + Time-gate)
+      if (hpWebsite.trim().length > 0 || (Date.now() - renderTime < 2500)) {
+        console.warn("[Anti-Spam] Bot bloqueado silenciosamente en BookingWizard");
+        return true;
+      }
+
       const totalPrice = getTotalPrice();
 
       // 2. Guardar en Supabase para que aparezca en el Admin
@@ -210,10 +219,6 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
           // La reserva continúa aunque falle Supabase (el webhook/email sigue funcionando)
         }
       }
-
-      // 3. Enviar PDF vía Webhook (n8n)
-      const webhookUrl =
-        "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
 
       // Generate Equipment Summary
       const summaryParts = [];
@@ -300,10 +305,13 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
         total_price: totalPrice,
         status: "pending_delivery",
         pdfBase64: pdfBase64,
+        hp_website: hpWebsite,
+        render_time: renderTime,
         created_at: new Date().toISOString(),
       };
 
-      await fetch(webhookUrl, {
+      // 3. Enviar PDF vía Webhook seguro de Backend
+      await fetch("/api/booking", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -600,6 +608,19 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                   </div>
 
                   <div className="grid md:grid-cols-2 gap-5">
+                    {/* Campo Honeypot para capturar bots - Invisible para usuarios humanos */}
+                    <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none", height: 0, overflow: "hidden" }} aria-hidden="true">
+                      <label htmlFor="hp_website_booking">Dejar este campo vacío</label>
+                      <input
+                        id="hp_website_booking"
+                        type="text"
+                        value={hpWebsite}
+                        onChange={(e) => setHpWebsite(e.target.value)}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     <div className="space-y-1.5">
                       <label className="text-sm font-bold text-slate-700 ml-1">
                         Nombre completo <span className="text-red-500">*</span>

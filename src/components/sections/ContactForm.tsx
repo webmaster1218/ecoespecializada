@@ -10,25 +10,27 @@ export default function ContactForm() {
     const router = useRouter();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [renderTime] = useState<number>(() => Date.now());
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setIsSubmitting(true);
-        setError(false);
+        setError(null);
 
         const formData = new FormData(e.currentTarget);
         const data = {
             client_name: formData.get("name"),
             city: formData.get("city"),
             equipment: formData.get("equipment"),
+            hp_website: formData.get("hp_website"),
+            render_time: renderTime,
             created_at: new Date().toISOString(),
             source: 'landing_contact_form'
         };
 
         try {
-            const webhookUrl = "https://n8n.srv1054162.hstgr.cloud/webhook/20114322-9cd8-4eea-91c4-3d8ff32a4c71";
-            const response = await fetch(webhookUrl, {
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,11 +41,12 @@ export default function ContactForm() {
             if (response.ok) {
                 router.push('/gracias');
             } else {
-                throw new Error("Webhook failed");
+                const resData = await response.json().catch(() => ({}));
+                throw new Error(resData.error || "Error al procesar la solicitud.");
             }
-        } catch (err) {
-            console.error("Error sending to webhook:", err);
-            setError(true);
+        } catch (err: any) {
+            console.error("Error sending contact form:", err);
+            setError(err.message || "Hubo un error. Por favor intenta de nuevo o contáctanos por WhatsApp.");
         } finally {
             setIsSubmitting(false);
         }
@@ -79,6 +82,18 @@ export default function ContactForm() {
                     </div>
 
                     <form className={styles.form} onSubmit={handleSubmit}>
+                        {/* Campo Honeypot para capturar bots - Invisible para usuarios humanos */}
+                        <div style={{ position: "absolute", left: "-9999px", opacity: 0, pointerEvents: "none", height: 0, overflow: "hidden" }} aria-hidden="true">
+                            <label htmlFor="hp_website_contact">Dejar este campo vacío</label>
+                            <input
+                                id="hp_website_contact"
+                                name="hp_website"
+                                type="text"
+                                tabIndex={-1}
+                                autoComplete="off"
+                            />
+                        </div>
+
                         <div className={styles.inputGroup}>
                             <input name="name" type="text" placeholder="Nombre del especialista" required className={styles.input} />
                         </div>
@@ -98,7 +113,7 @@ export default function ContactForm() {
 
                         {error && (
                             <p style={{ color: '#ff4d4f', fontSize: '0.8rem', textAlign: 'center', marginTop: '10px' }}>
-                                Hubo un error. Por favor intenta de nuevo o contáctanos por WhatsApp.
+                                {error}
                             </p>
                         )}
 

@@ -1,10 +1,32 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
+import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
 
 export const dynamic = 'force-dynamic';
 
 export async function POST(req: Request) {
     try {
+        // 1. Validar origen de la petición (anti-CSRF y anti-scripts externos)
+        if (!isValidOrigin(req)) {
+            return NextResponse.json(
+                { error: 'Origen no autorizado.' },
+                { status: 403 }
+            );
+        }
+
+        // 2. Rate Limiting por IP (máximo 3 envíos de correo cada 5 minutos por IP)
+        const clientIp = getClientIp(req);
+        const rateCheck = checkRateLimit(`email:${clientIp}`, 3, 5 * 60 * 1000);
+        if (!rateCheck.success) {
+            return NextResponse.json(
+                {
+                    error: `Demasiados intentos de envío. Por favor espera ${rateCheck.resetInSeconds} segundos.`,
+                    code: 'RATE_LIMIT_EXCEEDED'
+                },
+                { status: 429 }
+            );
+        }
+
         const body = await req.json();
         const {
             client_name,
@@ -16,8 +38,34 @@ export async function POST(req: Request) {
             duration,
             total_price,
             full_address,
-            pdfBase64
+            pdfBase64,
+            hp_website,
+            render_time
         } = body;
+
+        // 3. Verificación Anti-Bot (Honeypot + Time-gate)
+        const botCheck = isBotSubmission({ hp_website, render_time });
+        if (botCheck.isBot) {
+            console.warn(`[Anti-Spam Email] Intento de bot descartado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
+            // Retornar 200 para no alertar al bot
+            return NextResponse.json({ success: true });
+        }
+
+        // 4. Validación de correo y nombre
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!client_email || !emailRegex.test(client_email)) {
+            return NextResponse.json({
+                error: 'Dirección de correo electrónico inválida.',
+                code: 'INVALID_EMAIL'
+            }, { status: 400 });
+        }
+
+        if (!client_name || String(client_name).trim().length < 2) {
+            return NextResponse.json({
+                error: 'Nombre de cliente inválido.',
+                code: 'INVALID_NAME'
+            }, { status: 400 });
+        }
 
         // Usar variables de entorno para las credenciales
         const SMTP_HOST = process.env.SMTP_HOST;
