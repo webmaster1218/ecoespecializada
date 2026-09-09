@@ -1,11 +1,9 @@
 import { NextResponse } from 'next/server';
+import nodemailer from 'nodemailer';
 import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
+import { ContactFormSchema } from '@/lib/validations/forms';
 
 export const dynamic = 'force-dynamic';
-
-const N8N_WEBHOOK_URL =
-  process.env.N8N_WEBHOOK_URL ||
-  'https://n8n.srv1054162.hstgr.cloud/webhook/2b6fce59-1519-4f25-bfa2-f81564f58ffc';
 
 export async function POST(req: Request) {
   try {
@@ -23,67 +21,91 @@ export async function POST(req: Request) {
     if (!rateCheck.success) {
       return NextResponse.json(
         {
-          error: `Demasiados intentos. Por favor espera ${rateCheck.resetInSeconds} segundos.`,
+          error: `Demasiados intentos. Por favor espera ${rateCheck.resetInSeconds} segundos antes de reintentar.`,
         },
         { status: 429 }
       );
     }
 
-    const body = await req.json();
-    const { client_name, city, equipment, hp_website, render_time, source } = body;
+    const rawBody = await req.json().catch(() => null);
+    if (!rawBody) {
+      return NextResponse.json(
+        { error: 'Cuerpo de solicitud inválido o ausente.' },
+        { status: 400 }
+      );
+    }
 
     // 3. Verificación Anti-Bot (Honeypot + Time-gate)
+    const { hp_website, render_time } = rawBody;
     const botCheck = isBotSubmission({ hp_website, render_time });
     if (botCheck.isBot) {
-      console.warn(`[Anti-Spam] Bot bloqueado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
-      // Respuesta 200 silenciosa para engañar al bot
+      console.warn(`[Anti-Spam Contact] Bot bloqueado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
       return NextResponse.json({
         success: true,
         message: 'Solicitud procesada correctamente.',
       });
     }
 
-    // 4. Validación básica de campos
-    const cleanName = String(client_name || '').trim();
-    const cleanCity = String(city || '').trim();
-
-    if (!cleanName || cleanName.length < 2 || cleanName.length > 120) {
+    // 4. Validación Estricta con Zod (rechaza inyecciones HTML, CRLF, plantillas)
+    const parseResult = ContactFormSchema.safeParse(rawBody);
+    if (!parseResult.success) {
+      const errorMessages = parseResult.error.issues.map((e) => e.message);
       return NextResponse.json(
-        { error: 'Por favor ingresa un nombre válido.' },
+        {
+          error: 'Datos del formulario inválidos.',
+          details: errorMessages,
+        },
         { status: 400 }
       );
     }
 
-    if (!cleanCity || cleanCity.length < 2 || cleanCity.length > 100) {
-      return NextResponse.json(
-        { error: 'Por favor ingresa una ciudad válida.' },
-        { status: 400 }
-      );
+    const validData = parseResult.data;
+
+    // 5. Enviar notificación directa por correo al equipo comercial (sin intermediarios ni n8n)
+    const SMTP_HOST = process.env.SMTP_HOST;
+    const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465');
+    const SMTP_USER = process.env.SMTP_USER;
+    const SMTP_PASS = process.env.SMTP_PASS;
+
+    if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+      try {
+        const transporter = nodemailer.createTransport({
+          host: SMTP_HOST,
+          port: SMTP_PORT,
+          secure: SMTP_PORT === 465,
+          auth: {
+            user: SMTP_USER,
+            pass: SMTP_PASS,
+          },
+          tls: {
+            rejectUnauthorized: false,
+          },
+        });
+
+        await transporter.sendMail({
+          from: `"Alquiler de Ecógrafos - Web" <${SMTP_USER}>`,
+          to: [SMTP_USER, 'ecoespecializada@gmail.com'],
+          subject: `📢 Nuevo Contacto Web: ${validData.client_name} (${validData.city})`,
+          html: `
+            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e2e8f0; rounded: 12px;">
+              <h2 style="color: #1e40af; border-bottom: 2px solid #3b82f6; padding-bottom: 8px;">Nuevo Mensaje de Contacto</h2>
+              <p><strong>Nombre:</strong> ${validData.client_name}</p>
+              <p><strong>Ciudad:</strong> ${validData.city}</p>
+              <p><strong>Equipo de interés:</strong> ${validData.equipment}</p>
+              <p><strong>Origen:</strong> ${validData.source}</p>
+              <p style="font-size: 11px; color: #64748b; margin-top: 20px;">IP de origen: ${clientIp} | Fecha: ${new Date().toLocaleString('es-CO')}</p>
+            </div>
+          `,
+        });
+      } catch (mailErr) {
+        console.error('[Contact API] Error al enviar notificación por correo:', mailErr);
+      }
     }
 
-    // 5. Enviar de manera segura a n8n desde el backend
-    const webhookPayload = {
-      client_name: cleanName,
-      city: cleanCity,
-      equipment: equipment || 'z6',
-      created_at: new Date().toISOString(),
-      source: source || 'landing_contact_form',
-      ip: clientIp,
-    };
-
-    const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(webhookPayload),
+    return NextResponse.json({
+      success: true,
+      message: 'Solicitud procesada correctamente.',
     });
-
-    if (!webhookResponse.ok) {
-      console.error('[Contact API] Error al reenviar a webhook n8n:', webhookResponse.status);
-    }
-
-    return NextResponse.json({ success: true });
   } catch (error: any) {
     console.error('[Contact API] Error inesperado:', error);
     return NextResponse.json(

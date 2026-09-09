@@ -1,11 +1,8 @@
 import { NextResponse } from 'next/server';
 import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
+import { BookingFormSchema } from '@/lib/validations/forms';
 
 export const dynamic = 'force-dynamic';
-
-const N8N_WEBHOOK_URL =
-  process.env.N8N_WEBHOOK_URL ||
-  'https://n8n.srv1054162.hstgr.cloud/webhook/2b6fce59-1519-4f25-bfa2-f81564f58ffc';
 
 export async function POST(req: Request) {
   try {
@@ -29,10 +26,16 @@ export async function POST(req: Request) {
       );
     }
 
-    const body = await req.json();
-    const { hp_website, render_time } = body;
+    const rawBody = await req.json().catch(() => null);
+    if (!rawBody) {
+      return NextResponse.json(
+        { error: 'Cuerpo de solicitud inválido o ausente.' },
+        { status: 400 }
+      );
+    }
 
     // 3. Verificación Anti-Bot (Honeypot + Time-gate)
+    const { hp_website, render_time } = rawBody;
     const botCheck = isBotSubmission({ hp_website, render_time });
     if (botCheck.isBot) {
       console.warn(`[Anti-Spam Booking] Bot bloqueado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
@@ -42,23 +45,24 @@ export async function POST(req: Request) {
       });
     }
 
-    // 4. Enviar de manera segura a n8n desde el backend
-    const webhookResponse = await fetch(N8N_WEBHOOK_URL, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        ...body,
-        ip: clientIp,
-      }),
-    });
-
-    if (!webhookResponse.ok) {
-      console.error('[Booking API] Error al reenviar a webhook n8n:', webhookResponse.status);
+    // 4. Validación Estricta con Zod (rechaza inyecciones XSS, CRLF, plantillas)
+    const parseResult = BookingFormSchema.safeParse(rawBody);
+    if (!parseResult.success) {
+      const errorMessages = parseResult.error.issues.map((e) => e.message);
+      return NextResponse.json(
+        {
+          error: 'Datos de la reserva inválidos.',
+          details: errorMessages,
+        },
+        { status: 400 }
+      );
     }
 
-    return NextResponse.json({ success: true });
+    // Reserva validada con éxito. Ya no depende de n8n.
+    return NextResponse.json({
+      success: true,
+      message: 'Reserva validada correctamente.',
+    });
   } catch (error: any) {
     console.error('[Booking API] Error inesperado:', error);
     return NextResponse.json(

@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
+import { SendEmailSchema } from '@/lib/validations/forms';
 
 export const dynamic = 'force-dynamic';
 
@@ -27,7 +28,33 @@ export async function POST(req: Request) {
             );
         }
 
-        const body = await req.json();
+        const rawBody = await req.json().catch(() => null);
+        if (!rawBody) {
+            return NextResponse.json({
+                error: 'Cuerpo de solicitud inválido o ausente.',
+                code: 'INVALID_BODY'
+            }, { status: 400 });
+        }
+
+        // 3. Verificación Anti-Bot (Honeypot + Time-gate)
+        const { hp_website, render_time } = rawBody;
+        const botCheck = isBotSubmission({ hp_website, render_time });
+        if (botCheck.isBot) {
+            console.warn(`[Anti-Spam Email] Intento de bot descartado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
+            return NextResponse.json({ success: true });
+        }
+
+        // 4. Validación Estricta con Zod (rechaza inyecciones XSS, CRLF, campos maliciosos)
+        const parseResult = SendEmailSchema.safeParse(rawBody);
+        if (!parseResult.success) {
+            const errorMessages = parseResult.error.issues.map(e => e.message);
+            return NextResponse.json({
+                error: 'Datos del correo inválidos.',
+                details: errorMessages,
+                code: 'VALIDATION_ERROR'
+            }, { status: 400 });
+        }
+
         const {
             client_name,
             client_email,
@@ -38,34 +65,8 @@ export async function POST(req: Request) {
             duration,
             total_price,
             full_address,
-            pdfBase64,
-            hp_website,
-            render_time
-        } = body;
-
-        // 3. Verificación Anti-Bot (Honeypot + Time-gate)
-        const botCheck = isBotSubmission({ hp_website, render_time });
-        if (botCheck.isBot) {
-            console.warn(`[Anti-Spam Email] Intento de bot descartado silenciosamente (${botCheck.reason}) desde IP ${clientIp}`);
-            // Retornar 200 para no alertar al bot
-            return NextResponse.json({ success: true });
-        }
-
-        // 4. Validación de correo y nombre
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!client_email || !emailRegex.test(client_email)) {
-            return NextResponse.json({
-                error: 'Dirección de correo electrónico inválida.',
-                code: 'INVALID_EMAIL'
-            }, { status: 400 });
-        }
-
-        if (!client_name || String(client_name).trim().length < 2) {
-            return NextResponse.json({
-                error: 'Nombre de cliente inválido.',
-                code: 'INVALID_NAME'
-            }, { status: 400 });
-        }
+            pdfBase64
+        } = parseResult.data;
 
         // Usar variables de entorno para las credenciales
         const SMTP_HOST = process.env.SMTP_HOST;
@@ -203,7 +204,7 @@ export async function POST(req: Request) {
                                 </tr>
                                 <tr>
                                     <td class="label">VALOR TOTAL</td>
-                                    <td class="value" style="color: #0070c0; font-size: 18px;">$${total_price.toLocaleString()} COP</td>
+                                    <td class="value" style="color: #0070c0; font-size: 18px;">$${Number(total_price || 0).toLocaleString('es-CO')} COP</td>
                                 </tr>
                             </table>
                         </div>
