@@ -19,7 +19,7 @@ const GoogleReviews = dynamic(() => import("@/components/sections/GoogleReviews"
 const FAQ = dynamic(() => import("@/components/sections/FAQ"), { ssr: true });
 
 export const metadata: Metadata = {
-    title: "Alquiler de ecógrafos | Alquiler y Venta de Ecógrafos en Colombia | Mindray Z6 y Z60",
+    title: "Alquiler y Venta de Ecógrafos en Colombia | Mindray",
     description:
         "Líderes en alquiler y venta de ecógrafos Mindray en Colombia. Entrega inmediata en Medellín, Bogotá, Cali, Barranquilla y más. Equipos certificados INVIMA con respaldo total.",
     keywords: ["alquiler de ecógrafos", "venta de ecógrafos", "ecógrafos Mindray Colombia", "equipos médicos", "alquiler ecógrafo medellin", "alquiler ecografo bogota"],

@@ -59,7 +59,7 @@ function Advantages({ city, subtitle, title }: { city?: string, subtitle?: strin
                 <m.div className="text-center mb-16" initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className="block text-xs uppercase tracking-[0.2em] text-blue-200 font-bold mb-3">Beneficios exclusivos</span>
                     <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-8 leading-tight">
-                        {title || `Por qué elegir alquiler de ecógrafos ${city ? `en ${city}` : "con nosotros"}`}
+                        {title || `¿Por qué elegir el alquiler de ecógrafos ${city ? `en ${city}` : "con nosotros"}?`}
                     </h2>    <p className="text-lg text-blue-100/90 max-w-2xl mx-auto leading-relaxed">{subtitle || "Reducimos su riesgo operativo y maximizamos su rentabilidad clínica con un servicio diseñado para profesionales."}</p>
                 </m.div>
 

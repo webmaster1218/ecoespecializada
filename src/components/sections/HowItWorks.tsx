@@ -34,12 +34,30 @@ function HowItWorks({ city, title }: { city?: string, title?: string }) {
         }
     ];
 
+    const howToSchema = {
+        "@context": "https://schema.org",
+        "@type": "HowTo",
+        "name": city ? `Cómo alquilar un ecógrafo en ${city}` : "Cómo alquilar un ecógrafo portátil en Colombia",
+        "description": "Proceso paso a paso para el alquiler de ecógrafos Mindray con entrega rápida y soporte técnico.",
+        "step": steps.map((step, idx) => ({
+            "@type": "HowToStep",
+            "position": idx + 1,
+            "name": step.title,
+            "text": step.desc,
+            "url": "https://alquilerdeecografos.com/#como-funciona"
+        }))
+    };
+
     return (
         <section className={styles.section} id="como-funciona">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+            />
             <div className="container">
                 <m.div className={styles.header} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }}>
                     <span className={styles.overline}>Proceso simplificado</span>
-                    <h2 className={styles.title}>{title || (<>Flujo de <span className="text-gradient">alquiler profesional</span></>)}</h2>
+                    <h2 className={styles.title}>{title || (<>¿Cómo funciona el <span className="text-gradient">alquiler de ecógrafos</span>?</>)}</h2>
                     <p className={styles.subtitle}>{city ? `Optimizamos cada etapa en ${city} para garantizar rapidez y seguridad en su práctica médica.` : "Optimizamos cada etapa para garantizar rapidez y seguridad en su práctica médica."}</p>
                 </m.div>
 
