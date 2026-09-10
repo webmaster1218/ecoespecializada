@@ -55,11 +55,24 @@ export const metadata: Metadata = {
 
 const organizationSchema = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": ["Organization", "MedicalBusiness"],
   "name": "Alquiler de ecografos",
   "alternateName": "Alquiler de Ecógrafos Colombia",
+  "description": "Líderes en alquiler y venta de ecógrafos Mindray en Colombia. Equipos Z6, Z60, MX3 y M7 con respaldo de Equibiomedic.",
   "url": "https://alquilerdeecografos.com",
   "logo": "https://alquilerdeecografos.com/images/logo/logo_alquilerdeecografos.webp",
+  "telephone": "+573003608621",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Medellín",
+    "addressRegion": "Antioquia",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "6.2442",
+    "longitude": "-75.5812"
+  },
   "contactPoint": {
     "@type": "ContactPoint",
     "telephone": "+573003608621",

@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "Equipos Mindray de alta gama para médicos en Bogotá. Entrega rápida en Chapinero, Usaquén, Teusaquillo y Cedritos. Ecógrafos certificados INVIMA con respaldo técnico.",
     keywords: ["alquiler ecógrafo Bogotá", "venta ecógrafo Bogotá", "ecógrafo Mindray Bogotá", "equipos médicos Bogotá", "ecógrafo portátil Bogotá", "arriendo ecógrafo Bogotá"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/bogota" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/bogota/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Bogotá | Alquiler de ecografos",
         description: "Potencia tu consultorio en Bogotá con ecografía avanzada. Cubrimos Chapinero, Usaquén y todas las zonas médicas de la capital.",
-        url: "https://alquilerdeecografos.com/colombia/bogota",
+        url: "https://alquilerdeecografos.com/colombia/bogota/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -189,8 +189,8 @@ export default function BogotaPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Bogotá - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/bogota",
-                        "url": "https://alquilerdeecografos.com/bogota",
+                        "@id": "https://alquilerdeecografos.com/colombia/bogota/",
+                        "url": "https://alquilerdeecografos.com/colombia/bogota/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

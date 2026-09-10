@@ -787,7 +787,7 @@ Ya sea que atiendas en Chapinero, el Chicó, Usaquén o el Centro Internacional,
 ---
 
 *Precios verificados a mayo 2026. Disponibilidad sujeta a stock. Los precios de compra mencionados son referenciales del mercado colombiano y pueden variar según distribuidor. Equibiomed S.A.S. — Tecnología que impulsa tu crecimiento.*`,
-    author: "Dr. Juan Pérez",
+    author: "Comité Técnico Biomédico",
     date: "2026-05-08",
     image: "/images/blog/alquiler-ecografos-bogota-v5.webp",
     category: "ciudades",
@@ -951,7 +951,7 @@ El **alquiler equipos médicos Bogotá** no es solo una alternativa financiera: 
 ---
 
 *Artículo producido por el Equipo Editorial de Equibiomed — Alquiler de Ecógrafos. Precios de alquiler verificados contra base de datos de alquilerdeecografos.com (2026). Los valores son referenciales y pueden variar según disponibilidad, duración del contrato y configuración del equipo. Tasa de cambio referencia: USD 1 ≈ \$4,300 COP (TRM mayo 2026).*`,
-    author: "Dr. Juan Pérez",
+    author: "Comité Técnico Biomédico",
     date: "2026-05-05",
     image: "/images/blog/alquiler-equipos-medicos-bogota-v2.webp",
     category: "ciudades",
@@ -1194,7 +1194,7 @@ Si estás pensando en llevar ultrasonido a tu práctica médica, tu consultorio 
 **Habla con nosotros y recibe una asesoría personalizada sin compromiso.**
 
 [WhatsApp: +57 300 3608621](https://wa.me/573003608621) | [alquilerdeecografos.com](https://alquilerdeecografos.com)`,
-    author: "Dr. Juan Pérez",
+    author: "Comité Técnico Biomédico",
     date: "2026-04-27",
     image: "/images/blog/futuro-ultrasonido-movil-colombia.webp",
     category: "tecnica",
@@ -1351,7 +1351,7 @@ El alquiler de ecógrafos no es simplemente una alternativa de financiamiento: e
 </div>
 
 ---`,
-    author: "Dr. Juan Pérez",
+    author: "Comité Técnico Biomédico",
     date: "2026-04-11",
     image: "/images/blog/beneficios-alquiler-ecografos.webp",
     category: "guias",

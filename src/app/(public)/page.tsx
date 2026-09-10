@@ -23,11 +23,11 @@ export const metadata: Metadata = {
     description:
         "Líderes en alquiler y venta de ecógrafos Mindray en Colombia. Entrega inmediata en Medellín, Bogotá, Cali, Barranquilla y más. Equipos certificados INVIMA con respaldo total.",
     keywords: ["alquiler de ecógrafos", "venta de ecógrafos", "ecógrafos Mindray Colombia", "equipos médicos", "alquiler ecógrafo medellin", "alquiler ecografo bogota"],
-    alternates: { canonical: "https://alquilerdeecografos.com" },
+    alternates: { canonical: "https://alquilerdeecografos.com/" },
     openGraph: {
         title: "Alquiler y Venta de Ecógrafos en Colombia | Alquiler de ecógrafos",
         description: "Equipos de ecografía de alta gama con cobertura nacional. Soluciones flexibles para médicos y especialistas en toda Colombia.",
-        url: "https://alquilerdeecografos.com",
+        url: "https://alquilerdeecografos.com/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",

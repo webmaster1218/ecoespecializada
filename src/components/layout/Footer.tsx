@@ -105,8 +105,9 @@ export default function Footer() {
                             <p>&copy; 2026 Alquiler de Ecógrafos Colombia. Todos los derechos reservados.</p>
                         </div>
                         <div className={styles.legalLinks}>
-                            <Link href="/politicas" className={styles.link}>Política de privacidad</Link>
+                            <Link href="/politicas/" className={styles.link}>Política de privacidad</Link>
                         </div>
+
                     </div>
                     <div className={styles.partners}>
                         <span className={styles.partnerLabel}>Respaldado por:</span>

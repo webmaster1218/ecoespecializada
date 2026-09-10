@@ -9,7 +9,7 @@ excerpt: Descubre por qué cada vez más clínicas en Bogotá, Medellín y Cali 
 date: '2026-04-11'
 image: /images/blog/beneficios-alquiler-ecografos.webp
 category: guias
-author: Dr. Juan Pérez
+author: Comité Técnico Biomédico
 readTime: 5
 tags:
 - alquiler

@@ -27,6 +27,12 @@ export async function generateMetadata({ params }: { params: Promise<{ categoria
   return {
     title: `${post.title} | Alquiler de Ecógrafos`,
     description: post.excerpt,
+    alternates: {
+      canonical: `https://alquilerdeecografos.com/blog/${resolvedParams.categoria}/${post.slug}/`,
+      types: {
+        'text/markdown': `https://alquilerdeecografos.com/api/md/${resolvedParams.categoria}/${post.slug}`,
+      },
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,

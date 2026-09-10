@@ -307,9 +307,10 @@ export default function ProductCatalog({ city }: { city?: string }) {
 
                         <div className="grid grid-cols-2 gap-3 mt-auto pt-4 w-full">
                             <Link
-                                href="/ecografo-mx3"
+                                href="/ecografo-mx3/"
                                 className={`px-2 py-2.5 rounded-xl font-bold border border-slate-200 hover:border-blue-400 hover:text-blue-600 transition-all text-slate-600 w-full text-center text-sm hover:bg-slate-50`}
                             >
+
                                 Ver detalles
                             </Link>
                             <a href="#reservar" className="btn-primary w-full text-center flex items-center justify-center py-2.5 px-2 text-sm rounded-xl">Reservar ahora</a>

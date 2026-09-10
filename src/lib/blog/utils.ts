@@ -52,6 +52,12 @@ export function generateArticleSchema(post: BlogPost) {
     author: {
       '@type': 'Person',
       name: post.author,
+      jobTitle: 'Especialista en Ultrasonido y Tecnología Médica',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'Alquiler de Ecógrafos',
+        url: 'https://alquilerdeecografos.com',
+      },
     },
     datePublished: post.date,
     dateModified: post.date,

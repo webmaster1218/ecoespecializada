@@ -80,35 +80,35 @@ export default function Navbar() {
                             </Link>
                             <div className={styles.dropdownMenu}>
                                 <Link href={getHref("#equipos")} onClick={() => setMobileMenuOpen(false)}>Ver Todos</Link>
-                                <Link href="/ecografo-z6" onClick={() => setMobileMenuOpen(false)}>Mindray Z6</Link>
-                                <Link href="/ecografo-z60" onClick={() => setMobileMenuOpen(false)}>Mindray Z60</Link>
-                                <Link href="/ecografo-mx3" onClick={() => setMobileMenuOpen(false)}>Mindray MX3</Link>
-                                <Link href="/ecografo-m7" onClick={() => setMobileMenuOpen(false)}>Mindray M7</Link>
+                                <Link href="/ecografo-z6/" onClick={() => setMobileMenuOpen(false)}>Mindray Z6</Link>
+                                <Link href="/ecografo-z60/" onClick={() => setMobileMenuOpen(false)}>Mindray Z60</Link>
+                                <Link href="/ecografo-mx3/" onClick={() => setMobileMenuOpen(false)}>Mindray MX3</Link>
+                                <Link href="/ecografo-m7/" onClick={() => setMobileMenuOpen(false)}>Mindray M7</Link>
                             </div>
                         </div>
 
                         {/* Dropdown Colombia — click va a página pilar, hover muestra ciudades */}
                         <div className={styles.dropdown}>
-                            <Link href="/colombia" className={styles.dropdownTrigger} onClick={() => setMobileMenuOpen(false)}>
+                            <Link href="/colombia/" className={styles.dropdownTrigger} onClick={() => setMobileMenuOpen(false)}>
                                 Colombia
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                                 </svg>
                             </Link>
                             <div className={styles.dropdownMenu}>
-                                <Link href="/colombia/bogota" onClick={() => setMobileMenuOpen(false)}>Bogotá</Link>
-                                <Link href="/colombia/medellin" onClick={() => setMobileMenuOpen(false)}>Medellín</Link>
-                                <Link href="/colombia/cali" onClick={() => setMobileMenuOpen(false)}>Cali</Link>
-                                <Link href="/colombia/barranquilla" onClick={() => setMobileMenuOpen(false)}>Barranquilla</Link>
-                                <Link href="/colombia/cartagena" onClick={() => setMobileMenuOpen(false)}>Cartagena</Link>
-                                <Link href="/colombia/bucaramanga" onClick={() => setMobileMenuOpen(false)}>Bucaramanga</Link>
-                                <Link href="/colombia/pereira" onClick={() => setMobileMenuOpen(false)}>Pereira</Link>
-                                <Link href="/colombia/cucuta" onClick={() => setMobileMenuOpen(false)}>Cúcuta</Link>
+                                <Link href="/colombia/bogota/" onClick={() => setMobileMenuOpen(false)}>Bogotá</Link>
+                                <Link href="/colombia/medellin/" onClick={() => setMobileMenuOpen(false)}>Medellín</Link>
+                                <Link href="/colombia/cali/" onClick={() => setMobileMenuOpen(false)}>Cali</Link>
+                                <Link href="/colombia/barranquilla/" onClick={() => setMobileMenuOpen(false)}>Barranquilla</Link>
+                                <Link href="/colombia/cartagena/" onClick={() => setMobileMenuOpen(false)}>Cartagena</Link>
+                                <Link href="/colombia/bucaramanga/" onClick={() => setMobileMenuOpen(false)}>Bucaramanga</Link>
+                                <Link href="/colombia/pereira/" onClick={() => setMobileMenuOpen(false)}>Pereira</Link>
+                                <Link href="/colombia/cucuta/" onClick={() => setMobileMenuOpen(false)}>Cúcuta</Link>
                             </div>
                         </div>
 
                         <Link href={getHref("#nosotros")} onClick={() => setMobileMenuOpen(false)}>Nosotros</Link>
-                        <Link href="/blog" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
+                        <Link href="/blog/" onClick={() => setMobileMenuOpen(false)}>Blog</Link>
                         <Link href={getHref("#servicios-complementarios")} onClick={() => setMobileMenuOpen(false)}>Servicios</Link>
                         <Link href={getHref("#testimonios")} onClick={() => setMobileMenuOpen(false)}>Testimonios</Link>
                         <div className={styles.mobileButtons}>

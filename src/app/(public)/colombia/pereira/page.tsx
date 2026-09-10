@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "El aliado tecnológico ideal para tu consultorio en el Eje Cafetero. Alquiler de ecógrafos Mindray en Pinares, Álamos y Cerritos. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Pereira", "venta ecógrafo Pereira", "ecógrafo Mindray Pereira", "equipos médicos Eje Cafetero", "ecógrafo portátil Risaralda", "arriendo ecógrafo Pereira"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/pereira" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/pereira/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Pereira | Alquiler de ecografos",
         description: "Ecografía de alta gama para médicos en Pereira. Servicio ágil cerca a Megacentro Pinares y Clínica Los Rosales.",
-        url: "https://alquilerdeecografos.com/colombia/pereira",
+        url: "https://alquilerdeecografos.com/colombia/pereira/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function PereiraPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Pereira - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/pereira",
-                        "url": "https://alquilerdeecografos.com/pereira",
+                        "@id": "https://alquilerdeecografos.com/colombia/pereira/",
+                        "url": "https://alquilerdeecografos.com/colombia/pereira/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

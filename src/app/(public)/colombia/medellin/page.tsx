@@ -22,11 +22,11 @@ export const metadata: Metadata = {
     description:
         "Alquiler de ecógrafos Mindray en Medellín. Entrega inmediata en El Poblado, Laureles, Envigado y cercanías a la Torre Médica El Tesoro. Equipos de alta gama con respaldo técnico.",
     keywords: ["alquiler ecógrafo Medellín", "venta ecógrafo Medellín", "ecógrafo Mindray Medellín", "equipos médicos Medellín", "ecógrafo portátil Medellín", "arriendo ecógrafo Medellín"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/medellin" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/medellin/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Medellín | Alquiler de ecografos",
         description: "Potencia tu consultorio en Medellín con ecografía avanzada. Cubrimos El Poblado, Laureles y todas las zonas médicas de la ciudad.",
-        url: "https://alquilerdeecografos.com/colombia/medellin",
+        url: "https://alquilerdeecografos.com/colombia/medellin/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -111,8 +111,8 @@ export default function MedellinPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Medellín - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/colombia/medellin",
-                        "url": "https://alquilerdeecografos.com/colombia/medellin",
+                        "@id": "https://alquilerdeecografos.com/colombia/medellin/",
+                        "url": "https://alquilerdeecografos.com/colombia/medellin/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

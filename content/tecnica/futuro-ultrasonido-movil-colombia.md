@@ -8,7 +8,7 @@ excerpt: Equipos que pesan menos de 6 kg, IA que asiste en diagnóstico y alquil
 date: '2026-04-27'
 image: /images/blog/futuro-ultrasonido-movil-colombia.webp
 category: tecnica
-author: Dr. Juan Pérez
+author: Comité Técnico Biomédico
 readTime: 6
 tags:
 - futuro

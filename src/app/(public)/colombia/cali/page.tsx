@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "La solución premium para médicos de Cali y el Valle. Alquiler de ecógrafos Mindray con cobertura en Tequendama, San Fernando y Ciudad Jardín. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Cali", "venta ecógrafo Cali", "ecógrafo Mindray Cali", "equipos médicos Valle del Cauca", "ecógrafo portátil Cali", "arriendo ecógrafo Cali"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cali" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cali/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Cali | Alquiler de ecografos",
         description: "Equipos Mindray certificados en la Sultana del Valle. Servicio ágil cerca a la Clínica Valle del Lili e Imbanaco.",
-        url: "https://alquilerdeecografos.com/colombia/cali",
+        url: "https://alquilerdeecografos.com/colombia/cali/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function CaliPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Cali - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/colombia/cali",
-                        "url": "https://alquilerdeecografos.com/colombia/cali",
+                        "@id": "https://alquilerdeecografos.com/colombia/cali/",
+                        "url": "https://alquilerdeecografos.com/colombia/cali/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

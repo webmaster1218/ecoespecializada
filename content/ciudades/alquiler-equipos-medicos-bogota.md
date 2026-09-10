@@ -7,7 +7,7 @@ excerpt: 'Alquiler de equipos médicos en Bogotá 2026: ecógrafos, monitores y 
 date: '2026-05-05'
 image: /images/blog/alquiler-equipos-medicos-bogota-v2.webp
 category: ciudades
-author: Dr. Juan Pérez
+author: Comité Técnico Biomédico
 readTime: 10
 tags:
 - alquiler equipos médicos Bogotá

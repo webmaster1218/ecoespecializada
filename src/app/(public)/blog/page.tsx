@@ -89,13 +89,13 @@ function BlogContent() {
       <section className={styles.categories}>
         <div className="container">
           <div className={styles.categoriesList}>
-            <Link href="/blog" className={`${styles.category} ${!category && !tag ? styles.categoryActive : ''}`}>
+            <Link href="/blog/" className={`${styles.category} ${!category && !tag ? styles.categoryActive : ''}`}>
               Todos
             </Link>
             {cats.map((cat) => (
               <Link
                 key={cat.slug}
-                href={`/blog/${cat.slug}`}
+                href={`/blog/${cat.slug}/`}
                 className={`${styles.category} ${category === cat.slug ? styles.categoryActive : ''}`}
               >
                 {cat.name} ({cat.count})
@@ -113,7 +113,7 @@ function BlogContent() {
             <div className={styles.filterIndicator}>
               <span>Filtrando por: </span>
               <strong>#{tag}</strong>
-              <Link href="/blog" className={styles.clearFilter}>
+              <Link href="/blog/" className={styles.clearFilter}>
                 ✕ Limpiar filtro
               </Link>
             </div>
@@ -131,7 +131,8 @@ function BlogContent() {
                   transition={{ delay: index * 0.1 }}
                   whileHover={{ y: -8 }}
                 >
-                  <Link href={`/blog/${post.category}/${post.slug}`} className={styles.postLink}>
+                  <Link href={`/blog/${post.category}/${post.slug}/`} className={styles.postLink}>
+
                     <div className={styles.postImage}>
                       <Image
                         src={post.image}

@@ -67,13 +67,14 @@ export default function BlogPostPage() {
               Inicio
             </Link>
             <span className={styles.breadcrumbSeparator}>/</span>
-            <Link href="/blog" className={styles.breadcrumbLink}>
+            <Link href="/blog/" className={styles.breadcrumbLink}>
               Blog
             </Link>
             <span className={styles.breadcrumbSeparator}>/</span>
-            <Link href={`/blog/${post.category}`} className={styles.breadcrumbLink}>
+            <Link href={`/blog/${post.category}/`} className={styles.breadcrumbLink}>
               {catMeta?.name || post.category}
             </Link>
+
             <span className={styles.breadcrumbSeparator}>/</span>
             <span className={styles.breadcrumbCurrent}>{post.title}</span>
           </div>

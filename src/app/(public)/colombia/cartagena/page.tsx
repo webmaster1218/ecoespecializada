@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "Equipa tu consulta en la Ciudad Heroica con ecografía de alta resolución. Entrega inmediata en Bocagrande, Castillogrande y Manga. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Cartagena", "venta ecógrafo Cartagena", "ecógrafo Mindray Cartagena", "equipos médicos Bolívar", "ecógrafo portátil Cartagena de Indias"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cartagena" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cartagena/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Cartagena | Alquiler de ecografos",
         description: "El respaldo técnico que los médicos de Bolívar necesitan. Servicio premium en Bocagrande y el Centro Histórico.",
-        url: "https://alquilerdeecografos.com/colombia/cartagena",
+        url: "https://alquilerdeecografos.com/colombia/cartagena/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function CartagenaPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Cartagena - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/cartagena",
-                        "url": "https://alquilerdeecografos.com/cartagena",
+                        "@id": "https://alquilerdeecografos.com/colombia/cartagena/",
+                        "url": "https://alquilerdeecografos.com/colombia/cartagena/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

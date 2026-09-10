@@ -7,7 +7,7 @@ excerpt: Descubre todo sobre el alquiler de ecógrafos en Bogotá. Equipos Mindr
 date: '2026-05-08'
 image: /images/blog/alquiler-ecografos-bogota-v5.webp
 category: ciudades
-author: Dr. Juan Pérez
+author: Comité Técnico Biomédico
 readTime: 9
 tags:
 - alquiler de ecografos bogota

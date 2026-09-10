@@ -4,7 +4,77 @@ Allow: /gracias
 Allow: /politicas
 Disallow: /admin
 Disallow: /login
+Allow: /api/md
 Disallow: /api
 Disallow: /_next
+
+# Agentes y Rastreadores de IA (ChatGPT, SearchGPT)
+User-agent: GPTBot
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+User-agent: ChatGPT-User
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+# Agentes de Anthropic (Claude)
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+User-agent: anthropic-ai
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+# Agentes de Perplexity
+User-agent: PerplexityBot
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+User-agent: Perplexity-Search
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+# Apple Intelligence y Siri
+User-agent: Applebot-Extended
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+# Google Gemini / Vertex
+User-agent: Google-Extended
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
+
+# Cohere AI
+User-agent: cohere-ai
+Allow: /
+Disallow: /admin
+Disallow: /login
+Allow: /api/md
+Disallow: /api
 
 Sitemap: https://alquilerdeecografos.com/sitemap.xml

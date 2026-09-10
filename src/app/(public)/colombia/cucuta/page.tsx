@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "Respaldo y tecnología para los médicos de Norte de Santander. Alquiler de ecógrafos Mindray con entrega en Caobos, La Riviera y el sector Blanco.",
     keywords: ["alquiler ecógrafo Cúcuta", "venta ecógrafo Cúcuta", "ecógrafo Mindray Cúcuta", "equipos médicos Norte de Santander", "ecógrafo portátil Cúcuta", "arriendo ecógrafo Cúcuta"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cucuta" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/cucuta/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Cúcuta | Alquiler de ecografos",
         description: "Tecnología de punta para la salud en la frontera. Servicio ágil cerca a la Clínica Norte y Clínica San José.",
-        url: "https://alquilerdeecografos.com/colombia/cucuta",
+        url: "https://alquilerdeecografos.com/colombia/cucuta/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function CucutaPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Cúcuta - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/cucuta",
-                        "url": "https://alquilerdeecografos.com/cucuta",
+                        "@id": "https://alquilerdeecografos.com/colombia/cucuta/",
+                        "url": "https://alquilerdeecografos.com/colombia/cucuta/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

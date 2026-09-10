@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "Eleva el nivel de tu diagnóstico en Barranquilla. Alquiler de ecógrafos con entrega rápida en Alto Prado, Buenavista y El Golf. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Barranquilla", "venta ecógrafo Barranquilla", "ecógrafo Mindray Barranquilla", "equipos médicos Costa Atlántica", "ecógrafo portátil Barranquilla"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/barranquilla" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/barranquilla/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Barranquilla | Alquiler de ecografos",
         description: "Equipos médicos de alta gama para el sector salud de Barranquilla. Cubrimiento en Villa Santos y cercanías a la Clínica Portoazul.",
-        url: "https://alquilerdeecografos.com/colombia/barranquilla",
+        url: "https://alquilerdeecografos.com/colombia/barranquilla/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function BarranquillaPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Barranquilla - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/barranquilla",
-                        "url": "https://alquilerdeecografos.com/barranquilla",
+                        "@id": "https://alquilerdeecografos.com/colombia/barranquilla/",
+                        "url": "https://alquilerdeecografos.com/colombia/barranquilla/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",

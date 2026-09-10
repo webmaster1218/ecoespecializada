@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     description:
         "Tu consultorio en Bucaramanga con la mejor tecnología en ecografía. Alquiler de equipos Mindray en Cabecera, Sotomayor y Cañaveral. Certificados INVIMA.",
     keywords: ["alquiler ecógrafo Bucaramanga", "venta ecógrafo Bucaramanga", "ecógrafo Mindray Bucaramanga", "equipos médicos Santander", "ecógrafo portátil Bucaramanga"],
-    alternates: { canonical: "https://alquilerdeecografos.com/colombia/bucaramanga" },
+    alternates: { canonical: "https://alquilerdeecografos.com/colombia/bucaramanga/" },
     openGraph: {
         title: "Alquiler de Ecógrafos en Bucaramanga | Alquiler de ecografos",
         description: "Ecógrafos certificados INVIMA para la Ciudad de los Parques. Servicio cerca a FOSCAL y centros médicos de Santander.",
-        url: "https://alquilerdeecografos.com/colombia/bucaramanga",
+        url: "https://alquilerdeecografos.com/colombia/bucaramanga/",
         images: [
             {
                 url: "/images/logo/logo_alquilerdeecografos.webp",
@@ -186,8 +186,8 @@ export default function BucaramangaPage() {
                         "@type": "LocalBusiness",
                         "name": "Alquiler de Ecógrafos en Bucaramanga - Alquiler de ecografos",
                         "image": "https://alquilerdeecografos.com/images/z60/z-60-abierto-izquierda.webp",
-                        "@id": "https://alquilerdeecografos.com/bucaramanga",
-                        "url": "https://alquilerdeecografos.com/bucaramanga",
+                        "@id": "https://alquilerdeecografos.com/colombia/bucaramanga/",
+                        "url": "https://alquilerdeecografos.com/colombia/bucaramanga/",
                         "telephone": "+573003608621",
                         "address": {
                             "@type": "PostalAddress",
