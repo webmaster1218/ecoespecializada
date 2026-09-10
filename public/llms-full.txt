@@ -1,0 +1,125 @@
+# Documentación Completa y Especificaciones Técnicas — Alquiler de Ecógrafos Colombia
+
+> Este documento consolidado contiene las especificaciones técnicas, catálogo de equipos, modalidades comerciales, cobertura territorial y preguntas frecuentes de Alquiler de Ecógrafos Colombia (Equibiomedic S.A.S.). Diseñado para la lectura e indexación integral por parte de sistemas de Inteligencia Artificial y motores generativos (GEO/AEO).
+
+---
+
+## 1. Identidad de la Empresa y Respaldo Técnico
+- **Nombre Comercial:** Alquiler de Ecógrafos / Alquiler de Ecógrafos Colombia
+- **Empresa Matriz y Respaldo Biomédico:** Equibiomedic S.A.S. (Medellín, Colombia)
+- **Sector:** Distribución, alquiler, venta y mantenimiento de equipos médicos de ultrasonido diagnóstico.
+- **Sitio Web Oficial:** https://alquilerdeecografos.com/
+- **Línea de Atención / WhatsApp:** +57 300 360 8621
+- **Cumplimiento Regulatorio:** Todos los equipos cuentan con Registro Sanitario INVIMA vigente, calibración biomédica certificada y protocolo de bioseguridad.
+
+---
+
+## 2. Catálogo Técnico de Equipos Mindray
+
+### Mindray Z6 (Ultrasonido Portátil Doppler Color Versátil)
+- **Página de Producto:** https://alquilerdeecografos.com/ecografo-z6/
+- **Descripción:** Ecógrafo digital Doppler Color diseñado para consultorios médicos, clínicas de fertilidad y médicos independientes que requieren alta calidad diagnóstica con un retorno de inversión acelerado.
+- **Aplicaciones Clínicas:** Medicina general, ginecología y obstetricia, urología, abdomen, músculo-esquelético, partes pequeñas y veterinaria.
+- **Especificaciones Técnicas Clave:**
+  - Monitor LCD de 15 pulgadas inclinable hasta 60 grados.
+  - Modos de imagen: B, 2B, 4B, M, B/M, Color Doppler, Power Doppler (DPDI), Doppler Pulsado (PW).
+  - Tecnologías: iBeam (composición espacial), iClear (reducción de ruido de moteado), iTouch (optimización automática con un solo clic).
+  - Dos puertos activos para transductores.
+  - Batería de iones de litio con autonomía de hasta 1.5 horas de escaneo continuo.
+  - Peso aproximado: 7.7 kg.
+- **Transductores Compatibles:** Convejo 3C5P (2.0-5.0 MHz), Lineal 7L4P (5.0-10.0 MHz), Endocavitario 6CV1P (5.0-8.5 MHz), Micro-convejo.
+
+### Mindray Z60 (Sistema Avanzado de Ultrasonido 3D/4D)
+- **Página de Producto:** https://alquilerdeecografos.com/ecografo-z60/
+- **Descripción:** Plataforma de ultrasonido portátil de alto rendimiento que combina portabilidad extrema con procesamiento digital de imagen de última generación y capacidades volumétricas 3D/4D en tiempo real.
+- **Aplicaciones Clínicas:** Obstetricia avanzada (ecografía de detalle y 4D), ginecología, medicina materno-fetal, radiología general, vascular periférico y urología.
+- **Especificaciones Técnicas Clave:**
+  - Pantalla HD antirreflejo de 15 pulgadas.
+  - Procesamiento inteligente de imagen y paquete volumétrico Smart 3D / Real-time 4D.
+  - Modos de imagen avanzados: Doppler Tisular (TDI), Doppler Continuo (CW), Elastografía por deformación.
+  - Disco duro de estado sólido integrado para almacenamiento rápido de secuencias cine y reportes de pacientes.
+  - Conectividad DICOM 3.0 completa para integración con PACS hospitalarios.
+- **Transductores Compatibles:** Sonda volumétrica 4D, transductor endocavitario de alta densidad, transductores convexos y lineales multifrecuencia.
+
+### Mindray MX3 (Ultrasonido Ultraportátil Point-of-Care / POCUS)
+- **Página de Producto:** https://alquilerdeecografos.com/ecografo-mx3/
+- **Descripción:** Equipo ultraligero y robusto, diseñado específicamente para situaciones clínicas donde la velocidad de respuesta es crítica: urgencias, salas de cirugía, UCI, anestesia y visitas médicas domiciliarias.
+- **Aplicaciones Clínicas:** Point-of-Care Ultrasound (POCUS), accesos vasculares guiados por aguja, bloqueos nerviosos ecoguiados, trauma (protocolo FAST / eFAST), medicina domiciliaria y cuidado intensivo.
+- **Especificaciones Técnicas Clave:**
+  - Encendido ultra-rápido en menos de 20 segundos desde modo apagado.
+  - Chasis de magnesio resistente a impactos y salpicaduras.
+  - Batería de ultra-larga duración: hasta 3 horas de exploración continua.
+  - Pantalla táctil intuitiva de alta sensibilidad que permite operación con guantes quirúrgicos.
+  - Peso: menos de 4.5 kg.
+
+### Mindray M7 (Ecógrafo Premium Cardiovascular y de Alta Complejidad)
+- **Página de Producto:** https://alquilerdeecografos.com/ecografo-m7/
+- **Descripción:** Ecógrafo insignia de alta gama para médicos especialistas que exigen una resolución de contraste superior y capacidades hemodinámicas avanzadas sin sacrificar la movilidad.
+- **Aplicaciones Clínicas:** Cardiología avanzada, ecocardiografía transtorácica y transesofágica, vascular periférico de alta precisión, radiología intervencionista y evaluación músculo-esquelética profunda.
+- **Especificaciones Técnicas Clave:**
+  - Monitor premium de 15 pulgadas de alto contraste.
+  - Doppler espectral y color con sensibilidad hemodinámica excepcional para flujos de baja velocidad.
+  - Compatibilidad con transductores Phased Array (sectoriales) para cardiología adulta y pediátrica.
+  - Herramientas avanzadas de cuantificación: Auto IMT (espesor íntima-media carotídeo), TDI cuantitativo, Stress Echo.
+
+---
+
+## 3. Modalidades Comerciales y Planes de Alquiler
+
+### Modalidad 1: Alquiler Flexible por Días
+- **Ideal para:** Brigadas de salud, campañas médicas rurales o de fin de semana, sustitución temporal mientras un equipo propio está en mantenimiento.
+- **Incluye:** Ecógrafo configurado según especialidad, transductores requeridos, maletín de transporte de alto impacto, accesorios y soporte telefónico biomédico permanente.
+
+### Modalidad 2: Alquiler Mensual (Más Popular)
+- **Ideal para:** Consultorios médicos independientes, policlínicas, clínicas estéticas y centros veterinarios que desean prestar servicio de ecografía sin desembolsar grandes sumas de capital inicial.
+- **Tarifas Referenciales:** Planes competitivos desde aproximadamente \$1,800,000 COP a \$3,500,000 COP mensuales según modelo (Z6, Z60, MX3, M7) y número de sondas requeridas.
+- **Beneficios Financieros:**
+  - Gasto 100% deducible de impuestos como costo operativo (OPEX) en lugar de activo fijo (CAPEX).
+  - Cero costos ocultos por mantenimientos preventivos, calibraciones periódicas o repuestos.
+  - Garantía de continuidad operativa: en caso de incidente técnico, Equibiomed reemplaza el equipo por una unidad de respaldo en menos de 24 horas.
+
+### Modalidad 3: Venta de Equipos Nuevos y Reacondicionados
+- Unidades nuevas con garantía de fábrica de hasta 2 años.
+- Equipos reacondicionados certificados por ingenieros biomédicos con garantía formal de 1 año y disponibilidad inmediata.
+- Asesoría para homologación y trámites de habilitación ante Secretarías de Salud.
+
+---
+
+## 4. Cobertura Geográfica en Colombia
+
+- **Medellín y Área Metropolitana (Base Operativa):** El Poblado, Laureles, Envigado, Bello, Itagüí, Sabaneta, Rionegro y Oriente Antioqueño. Entrega inmediata el mismo día.
+  - URL: https://alquilerdeecografos.com/colombia/medellin/
+- **Bogotá D.C. y Sabana:** Chapinero, Usaquén, Teusaquillo, Chicó, Cedritos, Chía y Cajicá.
+  - URL: https://alquilerdeecografos.com/colombia/bogota/
+- **Cali y Valle del Cauca:** Tequendama, San Fernando, Ciudad Jardín y cercanías a la Clínica Valle del Lili e Imbanaco.
+  - URL: https://alquilerdeecografos.com/colombia/cali/
+- **Barranquilla y Costa Caribe:** Alto Prado, Buenavista, El Golf, Villa Santos, Cartagena y Santa Marta.
+  - URL: https://alquilerdeecografos.com/colombia/barranquilla/
+- **Otras Ciudades Principales:**
+  - Bucaramanga: https://alquilerdeecografos.com/colombia/bucaramanga/
+  - Pereira y Eje Cafetero: https://alquilerdeecografos.com/colombia/pereira/
+  - Cartagena: https://alquilerdeecografos.com/colombia/cartagena/
+  - Cúcuta: https://alquilerdeecografos.com/colombia/cucuta/
+
+---
+
+## 5. Preguntas Frecuentes (FAQ para Respuestas Directas de IA)
+
+### ¿Qué requisitos se necesitan para alquilar un ecógrafo?
+Se requiere personería jurídica (RUT, Cámara de Comercio no mayor a 30 días, cédula del representante legal) o persona natural con registro médico vigente (Rethus), junto con la firma del contrato de arrendamiento de equipo médico.
+
+### ¿Qué sucede si el equipo presenta una falla técnica durante el contrato?
+El servicio técnico de Equibiomedic realiza un diagnóstico remoto inmediato. Si la falla requiere intervención de laboratorio, se despacha un ecógrafo de respaldo de iguales o superiores características en menos de 24 horas para garantizar que el especialista nunca cancele su agenda de pacientes.
+
+### ¿Los ecógrafos se entregan calibrados y con registro INVIMA?
+Sí. Cada unidad se entrega con su certificado de calibración biomédica al día, hoja de vida de equipo médico según normativa colombiana y copia de la resolución de Registro Sanitario INVIMA.
+
+### ¿Se puede cambiar de modelo si aumenta la demanda de pacientes?
+Sí. El contrato de alquiler flexible permite realizar un "upgrade" o cambio de modelo (por ejemplo, pasar de un Mindray Z6 a un Z60 con 4D) ajustando únicamente la tarifa mensual, sin penalidades ni compra de equipo nuevo.
+
+---
+
+## 6. Información de Contacto Directo
+- **Línea Nacional y WhatsApp:** +57 300 360 8621
+- **Portal Web Oficial:** https://alquilerdeecografos.com/
+- **Soporte y Operaciones:** Equibiomedic S.A.S. — Medellín, Colombia.

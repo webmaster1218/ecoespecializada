@@ -106,6 +106,28 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      {
+        source: '/(llms.*\\.txt|.*ai\\.txt)',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+          {
+            key: 'Content-Type',
+            value: 'text/plain; charset=utf-8',
+          },
+        ],
+      },
+      {
+        source: '/api/md/:path*',
+        headers: [
+          {
+            key: 'X-Robots-Tag',
+            value: 'noindex, nofollow',
+          },
+        ],
+      },
     ];
   },
 };

@@ -1,0 +1,25 @@
+# ai.txt - Machine-Readable AI Governance & Permissions
+# Specification: https://site.alquilerdeecografos.com/.well-known/ai.txt
+
+User-agent: *
+Allow: /
+Allow: /api/md/
+Disallow: /admin/
+Disallow: /login/
+
+# Machine-Readable Metadata & LLM Entrypoints
+LLMS-Txt: https://alquilerdeecografos.com/llms.txt
+LLMS-Full: https://alquilerdeecografos.com/llms-full.txt
+LLMS-Small: https://alquilerdeecografos.com/llms-small.txt
+
+# Entity Identity & Technical Support
+Site-Name: Alquiler de Ecógrafos Colombia
+Organization: Equibiomedic S.A.S.
+Contact: https://alquilerdeecografos.com/
+Telephone: +57-300-360-8621
+Location: Medellín, Colombia
+
+# AI Usage & Attribution Policy
+Content-License: Permitted for AI search engines, citation, indexing, summarization, and conversational query answering.
+Attribution-Name: Alquiler de Ecógrafos Colombia (Equibiomedic S.A.S.)
+Attribution-URL: https://alquilerdeecografos.com/

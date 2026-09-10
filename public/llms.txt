@@ -1,6 +1,8 @@
 # Alquiler de Ecógrafos Colombia
 
 > Plataforma líder en Colombia para el alquiler y venta de ecógrafos portátiles Mindray (Z6, Z60, MX3, M7) con respaldo técnico certificado de Equibiomedic. Servicio para clínicas, consultorios médicos, veterinarias y especialistas independientes en todo el país.
+>
+> **Documentación extendida para IA:** [llms-full.txt](https://alquilerdeecografos.com/llms-full.txt) | **Versión compacta:** [llms-small.txt](https://alquilerdeecografos.com/llms-small.txt)
 
 ## Modelos y Equipos Disponibles
 - [Mindray Z6](https://alquilerdeecografos.com/ecografo-z6/): Ecógrafo portátil Doppler Color versátil para medicina general, ginecología, obstetricia, urología y músculo-esquelético. Excelente relación costo-beneficio.
