@@ -3,13 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "next dev --webpack -p 3000",
     "prebuild": "node scripts/generate-posts-data.js",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "@marsidev/react-turnstile": "^1.6.1",
     "@radix-ui/react-slot": "^1.2.4",
     "@react-pdf/renderer": "^4.3.2",
     "@supabase/supabase-js": "^2.87.3",

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
 import { ContactFormSchema } from '@/lib/validations/forms';
+import { verifyTurnstileToken } from '@/lib/turnstile';
 
 export const dynamic = 'force-dynamic';
 
@@ -61,7 +62,18 @@ export async function POST(req: Request) {
 
     const validData = parseResult.data;
 
-    // 5. Enviar notificación directa por correo al equipo comercial (sin intermediarios ni n8n)
+    // 5. Verificación Criptográfica Cloudflare Turnstile (Anti-Bot)
+    if (process.env.TURNSTILE_SECRET_KEY) {
+      const turnstileCheck = await verifyTurnstileToken(validData.turnstile_token, clientIp);
+      if (!turnstileCheck.success) {
+        return NextResponse.json(
+          { error: turnstileCheck.error || 'Verificación de seguridad fallida.' },
+          { status: 400 }
+        );
+      }
+    }
+
+    // 6. Enviar notificación directa por correo al equipo comercial (sin intermediarios ni n8n)
     const SMTP_HOST = process.env.SMTP_HOST;
     const SMTP_PORT = parseInt(process.env.SMTP_PORT || '465');
     const SMTP_USER = process.env.SMTP_USER;

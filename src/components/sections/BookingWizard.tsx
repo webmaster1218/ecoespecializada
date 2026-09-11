@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
 import { useRouter } from "next/navigation";
 import { m, AnimatePresence } from "framer-motion";
+import { Turnstile } from "@marsidev/react-turnstile";
 import {
   User,
   Building2,
@@ -112,6 +113,7 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [renderTime] = useState<number>(() => Date.now());
   const [hpWebsite, setHpWebsite] = useState<string>("");
+  const [turnstileToken, setTurnstileToken] = useState<string>("");
 
   // Check Availability when dates change
   useEffect(() => {
@@ -307,17 +309,24 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
         pdfBase64: pdfBase64,
         hp_website: hpWebsite,
         render_time: renderTime,
+        turnstile_token: turnstileToken,
         created_at: new Date().toISOString(),
       };
 
-      // 3. Enviar PDF vía Webhook seguro de Backend
-      await fetch("/api/booking", {
+      // 3. Validar y procesar reserva en backend seguro
+      const bookingResponse = await fetch("/api/booking", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       });
+
+      if (!bookingResponse.ok) {
+        const errData = await bookingResponse.json().catch(() => ({}));
+        alert(`⚠️ No se pudo procesar la reserva: ${errData.error || "Validación de seguridad fallida"}`);
+        return false;
+      }
 
       // Re-estableciendo el envío de correo con diagnóstico detallado
       try {
@@ -1487,18 +1496,31 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
           {/* Footer Actions */}
           {step < 4 && (
-            <div className="p-4 md:p-6 border-t border-slate-100 flex justify-between bg-slate-50 items-center">
-              {step > 1 ? (
-                <button
-                  onClick={prevStep}
-                  className="px-4 py-3 md:px-5 md:py-3 rounded-full font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100/80 transition-all flex items-center gap-1 md:gap-2 text-sm md:text-base"
-                >
-                  <ChevronLeft size={18} className="md:w-5 md:h-5" />{" "}
-                  <span className="hidden xs:inline">Anterior</span>
-                </button>
-              ) : (
-                <div></div>
+            <div className="p-4 md:p-6 border-t border-slate-100 flex flex-col gap-3 bg-slate-50">
+              {step === 3 && process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                <div className="flex justify-center mb-1">
+                  <Turnstile
+                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                    onSuccess={(token) => setTurnstileToken(token)}
+                    options={{
+                      theme: "light",
+                      size: "normal",
+                    }}
+                  />
+                </div>
               )}
+              <div className="flex justify-between items-center">
+                {step > 1 ? (
+                  <button
+                    onClick={prevStep}
+                    className="px-4 py-3 md:px-5 md:py-3 rounded-full font-bold text-slate-500 hover:text-slate-800 hover:bg-slate-100/80 transition-all flex items-center gap-1 md:gap-2 text-sm md:text-base"
+                  >
+                    <ChevronLeft size={18} className="md:w-5 md:h-5" />{" "}
+                    <span className="hidden xs:inline">Anterior</span>
+                  </button>
+                ) : (
+                  <div></div>
+                )}
 
               <button
                 onClick={nextStep}
@@ -1513,7 +1535,8 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
                 <ChevronRight size={20} className="md:w-[22px]" />
               </button>
             </div>
-          )}
+          </div>
+        )}
         </m.div>
       </div>
     </section>

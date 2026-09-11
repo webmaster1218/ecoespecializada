@@ -52,6 +52,7 @@ export const ContactFormSchema = z.object({
   equipment: z.string().trim().max(50).optional().default('z6'),
   hp_website: z.string().optional().default(''),
   render_time: z.number().optional().default(0),
+  turnstile_token: z.string().optional().default(''),
   source: z.string().trim().max(60).optional().default('landing_contact_form')
 }).strict();
 
@@ -89,6 +90,7 @@ export const BookingFormSchema = z.object({
   pdfBase64: z.string().optional().default(''),
   hp_website: z.string().optional().default(''),
   render_time: z.number().optional().default(0),
+  turnstile_token: z.string().optional().default(''),
   created_at: z.string().optional()
 }).passthrough(); // Permite campos de transporte necesarios
 
@@ -109,7 +111,9 @@ export const SendEmailSchema = z.object({
   full_address: z.string().trim().max(250).refine((val) => !/[<>{}\r\n]/.test(val), 'Dirección inválida.').optional().default(''),
   pdfBase64: z.string().optional(),
   hp_website: z.string().optional().default(''),
-  render_time: z.number().optional().default(0)
+  render_time: z.number().optional().default(0),
+  turnstile_token: z.string().optional().default('')
 }).passthrough();
 
 export type SendEmailData = z.infer<typeof SendEmailSchema>;
+

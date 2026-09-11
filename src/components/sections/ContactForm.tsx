@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { m } from "framer-motion";
+import { Turnstile } from "@marsidev/react-turnstile";
 import styles from "./ContactForm.module.css";
 import CallButton from "../ui/CallButton";
 
@@ -12,6 +13,7 @@ export default function ContactForm() {
     const [submitted, setSubmitted] = useState(false);
     const [error, setError] = useState<string | null>(null);
     const [renderTime] = useState<number>(() => Date.now());
+    const [turnstileToken, setTurnstileToken] = useState<string>("");
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -25,6 +27,7 @@ export default function ContactForm() {
             equipment: formData.get("equipment"),
             hp_website: formData.get("hp_website"),
             render_time: renderTime,
+            turnstile_token: turnstileToken,
             created_at: new Date().toISOString(),
             source: 'landing_contact_form'
         };
@@ -106,6 +109,19 @@ export default function ContactForm() {
                                 <option value="z60">Mindray Z60 - Doppler Avanzado ($550k/día)</option>
                             </select>
                         </div>
+
+                        {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
+                            <div style={{ display: 'flex', justifyContent: 'center', margin: '12px 0' }}>
+                                <Turnstile
+                                    siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY}
+                                    onSuccess={(token) => setTurnstileToken(token)}
+                                    options={{
+                                        theme: 'light',
+                                        size: 'normal',
+                                    }}
+                                />
+                            </div>
+                        )}
 
                         <button type="submit" className={styles.submitBtn} disabled={isSubmitting}>
                             {isSubmitting ? "Enviando..." : "Solicitar reserva sin riesgo"}

@@ -16,7 +16,7 @@ export default function Footer() {
                     <div className={styles.column}>
                         <div className={styles.headerWithLogo}>
                             <h3 className={styles.logo}>Alquiler de Ecógrafos Colombia</h3>
-                            <Link href="/login" className="hover:opacity-80 transition-opacity">
+                            <Link href="/" className="hover:opacity-80 transition-opacity">
                                 <Image
                                     src="/images/logo/logo_alquilerdeecografos.webp"
                                     alt="Logo Alquiler de Ecógrafos"

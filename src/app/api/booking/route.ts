@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { getClientIp, checkRateLimit, isValidOrigin, isBotSubmission } from '@/lib/rate-limit';
 import { BookingFormSchema } from '@/lib/validations/forms';
+import { verifyTurnstileToken } from '@/lib/turnstile';
 
 export const dynamic = 'force-dynamic';
 
@@ -56,6 +57,19 @@ export async function POST(req: Request) {
         },
         { status: 400 }
       );
+    }
+
+    const validData = parseResult.data;
+
+    // 5. Verificación Criptográfica Cloudflare Turnstile (Anti-Bot)
+    if (process.env.TURNSTILE_SECRET_KEY) {
+      const turnstileCheck = await verifyTurnstileToken(validData.turnstile_token, clientIp);
+      if (!turnstileCheck.success) {
+        return NextResponse.json(
+          { error: turnstileCheck.error || 'Verificación de seguridad fallida.' },
+          { status: 400 }
+        );
+      }
     }
 
     // Reserva validada con éxito. Ya no depende de n8n.
