@@ -353,12 +353,6 @@
 
 /* ===== FAB: botón único de contacto con menú ===== */
 
-/* Oculta la burbuja flotante de Chatwoot: todo el contacto pasa por el FAB */
-:global(.woot-widget-bubble),
-:global(.woot--bubble-holder) {
-  display: none !important;
-}
-
 .fabRoot {
   position: fixed;
   bottom: 20px;

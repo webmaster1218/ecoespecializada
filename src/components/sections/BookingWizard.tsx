@@ -32,6 +32,7 @@ import { pdf } from "@react-pdf/renderer";
 import TestContractPDF, {
   ContractData,
 } from "@/components/pdf/TestContractPDF";
+import { triggerWhatsAppAlerts } from "@/lib/alerts";
 
 type BookingStep = 1 | 2 | 3 | 4;
 
@@ -192,33 +193,48 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
       // 2. Guardar en Supabase para que aparezca en el Admin
       if (supabase) {
-        const { error: dbError } = await supabase
+        const basePayload: Record<string, any> = {
+          client_name: formData.name,
+          client_email: formData.email,
+          client_phone: formData.phone,
+          client_address: `${formData.address}, ${formData.city}`,
+          document_number: formData.documentNumber,
+          tax_id: formData.taxId,
+          start_date: formData.startDate,
+          end_date: formData.endDate,
+          delivery_time: formData.deliveryTime,
+          collection_time: formData.collectionTime,
+          quantity_z6: formData.quantities.z6,
+          quantity_z60: formData.quantities.z60,
+          quantity_m7: formData.quantities.m7,
+          include_cart: formData.includeCart,
+          include_printer: formData.includePrinter,
+          selected_transducers: formData.selectedTransducers,
+          total_price: totalPrice,
+          status: 'pending_delivery',
+        };
+
+        // Intentar primero con quantity_mx3 por si la columna existe en el schema
+        let { error: dbError } = await supabase
           .from('bookings')
-          .insert([{
-            client_name: formData.name,
-            client_email: formData.email,
-            client_phone: formData.phone,
-            client_address: `${formData.address}, ${formData.city}`,
-            document_number: formData.documentNumber,
-            tax_id: formData.taxId,
-            start_date: formData.startDate,
-            end_date: formData.endDate,
-            delivery_time: formData.deliveryTime,
-            collection_time: formData.collectionTime,
-            quantity_z6: formData.quantities.z6,
-            quantity_z60: formData.quantities.z60,
-            quantity_m7: formData.quantities.m7,
-            quantity_mx3: formData.quantities.mx3,
-            include_cart: formData.includeCart,
-            include_printer: formData.includePrinter,
-            selected_transducers: formData.selectedTransducers,
-            total_price: totalPrice,
-            status: 'pending_delivery',
-          }]);
+          .insert([{ ...basePayload, quantity_mx3: formData.quantities.mx3 }]);
+
+        // Si la columna quantity_mx3 no existe en Supabase (PGRST204), reintentar sin ella
+        if (dbError && (dbError.message?.includes('quantity_mx3') || dbError.code === 'PGRST204')) {
+          console.warn("[Booking] Columna quantity_mx3 no encontrada en Supabase, reintentando insert compatible...");
+          const noteExtra = formData.quantities.mx3 > 0 ? `Unidades MX3: ${formData.quantities.mx3}` : '';
+          const fallbackPayload = {
+            ...basePayload,
+            notes: noteExtra
+          };
+          const fallbackRes = await supabase.from('bookings').insert([fallbackPayload]);
+          dbError = fallbackRes.error;
+        }
 
         if (dbError) {
           console.error("Error saving to database:", dbError.message, dbError.code, dbError.details);
-          // La reserva continúa aunque falle Supabase (el webhook/email sigue funcionando)
+        } else {
+          console.info("[Booking] Reserva registrada exitosamente en Supabase");
         }
       }
 
@@ -354,6 +370,26 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
       } catch (emailErr: any) {
         alert(`❌ Error de conexión: ${emailErr.message}`);
       }
+
+      // 4. Enviar alerta automática por WhatsApp vía Evolution API (configurada desde el CRM)
+      triggerWhatsAppAlerts({
+        client_name: formData.name,
+        client_email: formData.email,
+        client_phone: formData.phone,
+        client_type: "Cliente Directo",
+        document_number: formData.documentNumber,
+        tax_id: formData.taxId,
+        full_address: `${formData.address}, ${formData.city}`,
+        start_date: formData.startDate,
+        end_date: formData.endDate,
+        delivery_time: formData.deliveryTime,
+        collection_time: formData.collectionTime,
+        total_days: totalDays,
+        equipment_summary: equipmentSummary,
+        total_price: totalPrice,
+      }).catch((alertErr) => {
+        console.error("Error triggering WhatsApp alert:", alertErr);
+      });
 
       return true;
     } catch (err) {

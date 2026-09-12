@@ -171,3 +171,9 @@ a {
   box-shadow: var(--shadow-lg);
   border-color: rgba(37, 99, 235, 0.2);
 }
+
+/* Oculta la burbuja flotante por defecto de Chatwoot: todo el contacto pasa por el FAB */
+.woot-widget-bubble,
+.woot--bubble-holder {
+  display: none !important;
+}
