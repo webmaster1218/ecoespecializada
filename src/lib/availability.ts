@@ -23,13 +23,27 @@ export async function getTotalStock(): Promise<{ z6: number; z60: number; m7: nu
     try {
         if (!supabase) return DEFAULT_STOCK;
 
-        const { data, error } = await supabase
-            .from('equipment_settings')
-            .select('value')
-            .eq('key', 'inventory')
-            .single();
+        // Try Spanish table configuracion_equipos first
+        let data: any = null;
+        const { data: esData, error: esErr } = await supabase
+            .from('configuracion_equipos')
+            .select('valor')
+            .in('clave', ['inventario', 'inventory'])
+            .limit(1);
 
-        if (error || !data || !data.value) {
+        if (!esErr && esData && esData.length > 0 && esData[0]?.valor) {
+            data = { value: esData[0].valor };
+        } else {
+            // Fallback to equipment_settings
+            const { data: legacyData } = await supabase
+                .from('equipment_settings')
+                .select('value')
+                .eq('key', 'inventory')
+                .single();
+            data = legacyData;
+        }
+
+        if (!data || !data.value) {
             console.warn('Inventory setting not found, using default stock');
             return DEFAULT_STOCK;
         }
@@ -62,92 +76,97 @@ export async function checkAvailability(startDate?: string, endDate?: string, ex
             };
         }
 
-        // Query bookings that overlap with the requested range
-        // Include all active statuses including maintenance (admin blocks)
-        let query = supabase
-            .from('bookings')
-            .select('quantity_z6, quantity_z60, quantity_m7, quantity_mx3')
-            .filter('status', 'not.in', '(cancelled,completed)')
-            .lte('start_date', endDate)
-            .gte('end_date', startDate);
-
-        // Exclude the booking being edited so its own stock is not double-counted
-        if (excludeId) {
-            query = query.neq('id', excludeId);
-        }
-
-        const { data: bookings, error } = await query;
-
-        if (error) {
-            console.error('Error checking availability:', error?.message, error?.code, error?.details);
-            
-            // If the error is a missing column (quantity_mx3 not yet added), retry without it
-            if (error?.message?.includes('quantity_mx3') || error?.message?.includes('quantity_m7') || error?.code === '42703') {
-                // Determine what columns we can fetch
-                // First try to fetch z6, z60, m7
-                try {
-                    const { data: bookingsFallback, error: errorFallback } = await supabase
-                        .from('bookings')
-                        .select('quantity_z6, quantity_z60, quantity_m7')
-                        .filter('status', 'not.in', '(cancelled,completed)')
-                        .lte('start_date', endDate)
-                        .gte('end_date', startDate);
-                    
-                    if (!errorFallback && bookingsFallback) {
-                        let blockedZ6 = 0, blockedZ60 = 0, blockedM7 = 0;
-                        bookingsFallback.forEach(b => {
-                            blockedZ6 += (b.quantity_z6 || 0);
-                            blockedZ60 += (b.quantity_z60 || 0);
-                            blockedM7 += (b.quantity_m7 || 0);
-                        });
-                        const av6 = Math.max(0, totalStock.z6 - blockedZ6);
-                        const av60 = Math.max(0, totalStock.z60 - blockedZ60);
-                        const avM7 = Math.max(0, totalStock.m7 - blockedM7);
-                        return { z6: av6, z60: av60, m7: avM7, mx3: totalStock.mx3, available: av6 > 0 || av60 > 0 || avM7 > 0 };
-                    }
-                } catch (innerErr) {
-                    console.warn("Failed querying quantity_m7 too", innerErr);
-                }
-
-                // Hard fallback: just z6 and z60
-                const { data: bookingsFallback2, error: errorFallback2 } = await supabase
-                    .from('bookings')
-                    .select('quantity_z6, quantity_z60')
-                    .filter('status', 'not.in', '(cancelled,completed)')
-                    .lte('start_date', endDate)
-                    .gte('end_date', startDate);
-
-                if (errorFallback2) throw errorFallback2;
-
-                let blockedZ6 = 0, blockedZ60 = 0;
-                (bookingsFallback2 || []).forEach(b => {
-                    blockedZ6 += (b.quantity_z6 || 0);
-                    blockedZ60 += (b.quantity_z60 || 0);
-                });
-                const av6 = Math.max(0, totalStock.z6 - blockedZ6);
-                const av60 = Math.max(0, totalStock.z60 - blockedZ60);
-                return { z6: av6, z60: av60, m7: totalStock.m7, mx3: totalStock.mx3, available: av6 > 0 || av60 > 0 };
-            }
-            throw error;
-        }
-
         // Sum up blocked quantities
         let blockedZ6 = 0;
         let blockedZ60 = 0;
         let blockedM7 = 0;
         let blockedMx3 = 0;
 
-        if (bookings && bookings.length > 0) {
-            bookings.forEach(booking => {
-                blockedZ6 += (booking.quantity_z6 || 0);
-                blockedZ60 += (booking.quantity_z60 || 0);
-                blockedM7 += (booking.quantity_m7 || 0);
-                blockedMx3 += (booking.quantity_mx3 || 0);
-            });
+        // 1. Try Spanish table 'alquileres'
+        let hasFetchedRentals = false;
+        try {
+            let esQuery = supabase
+                .from('alquileres')
+                .select('cantidad_z6, cantidad_z60, cantidad_m7, cantidad_mx3')
+                .filter('estado', 'not.in', '(cancelado,completado,cancelled,completed)')
+                .lte('fecha_inicio', endDate)
+                .gte('fecha_fin', startDate);
+
+            if (excludeId) esQuery = esQuery.neq('id', excludeId);
+            const { data: esData, error: esErr } = await esQuery;
+
+            if (!esErr && esData) {
+                hasFetchedRentals = true;
+                esData.forEach(r => {
+                    blockedZ6 += (r.cantidad_z6 || 0);
+                    blockedZ60 += (r.cantidad_z60 || 0);
+                    blockedM7 += (r.cantidad_m7 || 0);
+                    blockedMx3 += (r.cantidad_mx3 || 0);
+                });
+            }
+        } catch {
+            // Table might not exist yet
+        }
+
+        // 2. Fallback to 'bookings' if 'alquileres' was not fetched
+        if (!hasFetchedRentals) {
+            let query = supabase
+                .from('bookings')
+                .select('quantity_z6, quantity_z60, quantity_m7, quantity_mx3')
+                .filter('status', 'not.in', '(cancelled,completed)')
+                .lte('start_date', endDate)
+                .gte('end_date', startDate);
+
+            if (excludeId) query = query.neq('id', excludeId);
+            const { data: bookings, error } = await query;
+
+            if (error) {
+                console.warn('Fallback checking bookings without quantity_mx3:', error.message);
+                const { data: bFallback } = await supabase
+                    .from('bookings')
+                    .select('quantity_z6, quantity_z60, quantity_m7')
+                    .filter('status', 'not.in', '(cancelled,completed)')
+                    .lte('start_date', endDate)
+                    .gte('end_date', startDate);
+
+                if (bFallback) {
+                    bFallback.forEach(b => {
+                        blockedZ6 += (b.quantity_z6 || 0);
+                        blockedZ60 += (b.quantity_z60 || 0);
+                        blockedM7 += (b.quantity_m7 || 0);
+                    });
+                }
+            } else if (bookings) {
+                bookings.forEach(b => {
+                    blockedZ6 += (b.quantity_z6 || 0);
+                    blockedZ60 += (b.quantity_z60 || 0);
+                    blockedM7 += (b.quantity_m7 || 0);
+                    blockedMx3 += (b.quantity_mx3 || 0);
+                });
+            }
+        }
+
+        // 3. Query technical blocks from 'bloqueos_equipos'
+        try {
+            const { data: blocks, error: blocksErr } = await supabase
+                .from('bloqueos_equipos')
+                .select('cantidad_z6, cantidad_z60, cantidad_m7, cantidad_mx3')
+                .lte('fecha_inicio', endDate)
+                .gte('fecha_fin', startDate);
+
+            if (!blocksErr && blocks && blocks.length > 0) {
+                blocks.forEach(b => {
+                    blockedZ6 += (b.cantidad_z6 || 0);
+                    blockedZ60 += (b.cantidad_z60 || 0);
+                    blockedM7 += (b.cantidad_m7 || 0);
+                    blockedMx3 += (b.cantidad_mx3 || 0);
+                });
+            }
+        } catch {
+            // Graceful fallback if table not yet created
         }
 
         // Calculate available stock
-        // Ensure we don't return negative numbers if overbooked manually
         const availableZ6 = Math.max(0, totalStock.z6 - blockedZ6);
         const availableZ60 = Math.max(0, totalStock.z60 - blockedZ60);
         const availableM7 = Math.max(0, totalStock.m7 - blockedM7);
@@ -192,14 +211,75 @@ export async function getNextAvailableDate(model: 'z6' | 'z60' | 'm7' | 'mx3', d
         const maxDate = new Date(today);
         maxDate.setDate(maxDate.getDate() + 60);
 
-        const { data: bookings } = await supabase
-            .from('bookings')
-            .select(`start_date, end_date, quantity_${model}`)
-            .in('status', ['confirmed', 'pending_delivery', 'delivered', 'pending_pickup'])
-            .lte('start_date', maxDate.toISOString())
-            .gte('end_date', checkDate.toISOString());
+        let activeRentals: { start_date: string; end_date: string; qty: number }[] = [];
 
-        const activeBookings = bookings || [];
+        // 1. Try Spanish table 'alquileres'
+        try {
+            const { data: esRentals, error: esErr } = await supabase
+                .from('alquileres')
+                .select(`fecha_inicio, fecha_fin, cantidad_${model}`)
+                .in('estado', ['confirmado', 'en_camino', 'entregado', 'por_confirmar'])
+                .lte('fecha_inicio', maxDate.toISOString())
+                .gte('fecha_fin', checkDate.toISOString());
+
+            if (!esErr && esRentals && esRentals.length > 0) {
+                esRentals.forEach(r => {
+                    activeRentals.push({
+                        start_date: r.fecha_inicio,
+                        end_date: r.fecha_fin,
+                        qty: (r[`cantidad_${model}` as keyof typeof r] as number) || 0
+                    });
+                });
+            }
+        } catch {
+            // Table might not exist yet
+        }
+
+        // 2. Fallback to 'bookings' if alquileres was empty
+        if (activeRentals.length === 0) {
+            try {
+                const { data: bookings } = await supabase
+                    .from('bookings')
+                    .select(`start_date, end_date, quantity_${model}`)
+                    .in('status', ['confirmed', 'pending_delivery', 'delivered', 'pending_pickup'])
+                    .lte('start_date', maxDate.toISOString())
+                    .gte('end_date', checkDate.toISOString());
+
+                if (bookings) {
+                    bookings.forEach(b => {
+                        activeRentals.push({
+                            start_date: b.start_date,
+                            end_date: b.end_date,
+                            qty: (b[`quantity_${model}` as keyof typeof b] as number) || 0
+                        });
+                    });
+                }
+            } catch {
+                // Table might not exist
+            }
+        }
+
+        // 3. Technical blocks from 'bloqueos_equipos'
+        try {
+            const { data: blocks } = await supabase
+                .from('bloqueos_equipos')
+                .select(`fecha_inicio, fecha_fin, cantidad_${model}`)
+                .lte('fecha_inicio', maxDate.toISOString())
+                .gte('fecha_fin', checkDate.toISOString());
+
+            if (blocks) {
+                blocks.forEach(b => {
+                    activeRentals.push({
+                        start_date: b.fecha_inicio,
+                        end_date: b.fecha_fin,
+                        qty: (b[`cantidad_${model}` as keyof typeof b] as number) || 0
+                    });
+                });
+            }
+        } catch {
+            // Table might not exist yet
+        }
+
         const stock = totalStock[model];
 
         while (checkDate <= maxDate) {
@@ -211,9 +291,9 @@ export async function getNextAvailableDate(model: 'z6' | 'z60' | 'm7' | 'mx3', d
                 const dateStr = currentDay.toISOString().split('T')[0];
 
                 let usage = 0;
-                activeBookings.forEach(b => {
+                activeRentals.forEach(b => {
                     if (b.start_date <= dateStr && b.end_date >= dateStr) {
-                        usage += (b[`quantity_${model}` as keyof typeof b] as number) || 0;
+                        usage += b.qty;
                     }
                 });
 

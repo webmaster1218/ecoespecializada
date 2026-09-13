@@ -193,48 +193,72 @@ export default function BookingWizard({ city, titleText, titleHighlight }: { cit
 
       // 2. Guardar en Supabase para que aparezca en el Admin
       if (supabase) {
-        const basePayload: Record<string, any> = {
-          client_name: formData.name,
-          client_email: formData.email,
-          client_phone: formData.phone,
-          client_address: `${formData.address}, ${formData.city}`,
-          document_number: formData.documentNumber,
-          tax_id: formData.taxId,
-          start_date: formData.startDate,
-          end_date: formData.endDate,
-          delivery_time: formData.deliveryTime,
-          collection_time: formData.collectionTime,
-          quantity_z6: formData.quantities.z6,
-          quantity_z60: formData.quantities.z60,
-          quantity_m7: formData.quantities.m7,
-          include_cart: formData.includeCart,
-          include_printer: formData.includePrinter,
-          selected_transducers: formData.selectedTransducers,
-          total_price: totalPrice,
-          status: 'pending_delivery',
+        // 1. Intentar registrar en la tabla en español 'alquileres'
+        const spanishPayload: Record<string, any> = {
+          nombre_cliente: formData.name,
+          email_cliente: formData.email,
+          telefono_cliente: formData.phone,
+          direccion_cliente: `${formData.address}, ${formData.city}`,
+          numero_documento: formData.documentNumber,
+          nit: formData.taxId,
+          fecha_inicio: formData.startDate,
+          fecha_fin: formData.endDate,
+          hora_entrega: formData.deliveryTime,
+          hora_recogida: formData.collectionTime,
+          cantidad_z6: formData.quantities.z6,
+          cantidad_z60: formData.quantities.z60,
+          cantidad_m7: formData.quantities.m7,
+          cantidad_mx3: formData.quantities.mx3,
+          incluye_carrito: formData.includeCart,
+          incluye_impresora: formData.includePrinter,
+          transductores_seleccionados: formData.selectedTransducers,
+          precio_total: totalPrice,
+          estado: 'pending_delivery',
         };
 
-        // Intentar primero con quantity_mx3 por si la columna existe en el schema
         let { error: dbError } = await supabase
-          .from('bookings')
-          .insert([{ ...basePayload, quantity_mx3: formData.quantities.mx3 }]);
+          .from('alquileres')
+          .insert([spanishPayload]);
 
-        // Si la columna quantity_mx3 no existe en Supabase (PGRST204), reintentar sin ella
-        if (dbError && (dbError.message?.includes('quantity_mx3') || dbError.code === 'PGRST204')) {
-          console.warn("[Booking] Columna quantity_mx3 no encontrada en Supabase, reintentando insert compatible...");
-          const noteExtra = formData.quantities.mx3 > 0 ? `Unidades MX3: ${formData.quantities.mx3}` : '';
-          const fallbackPayload = {
-            ...basePayload,
-            notes: noteExtra
+        // 2. Si la tabla alquileres no existe todavía, usar la tabla 'bookings' como fallback
+        if (dbError && (dbError.code === '42P01' || dbError.code === 'PGRST205' || dbError.message?.includes('alquileres'))) {
+          console.warn("[Booking] Tabla 'alquileres' no disponible aún, usando fallback 'bookings'...");
+          const basePayload: Record<string, any> = {
+            client_name: formData.name,
+            client_email: formData.email,
+            client_phone: formData.phone,
+            client_address: `${formData.address}, ${formData.city}`,
+            document_number: formData.documentNumber,
+            tax_id: formData.taxId,
+            start_date: formData.startDate,
+            end_date: formData.endDate,
+            delivery_time: formData.deliveryTime,
+            collection_time: formData.collectionTime,
+            quantity_z6: formData.quantities.z6,
+            quantity_z60: formData.quantities.z60,
+            quantity_m7: formData.quantities.m7,
+            include_cart: formData.includeCart,
+            include_printer: formData.includePrinter,
+            selected_transducers: formData.selectedTransducers,
+            total_price: totalPrice,
+            status: 'pending_delivery',
           };
-          const fallbackRes = await supabase.from('bookings').insert([fallbackPayload]);
+
+          let fallbackRes = await supabase
+            .from('bookings')
+            .insert([{ ...basePayload, quantity_mx3: formData.quantities.mx3 }]);
+
+          if (fallbackRes.error && (fallbackRes.error.message?.includes('quantity_mx3') || fallbackRes.error.code === 'PGRST204')) {
+            const noteExtra = formData.quantities.mx3 > 0 ? `Unidades MX3: ${formData.quantities.mx3}` : '';
+            fallbackRes = await supabase.from('bookings').insert([{ ...basePayload, notes: noteExtra }]);
+          }
           dbError = fallbackRes.error;
         }
 
         if (dbError) {
           console.error("Error saving to database:", dbError.message, dbError.code, dbError.details);
         } else {
-          console.info("[Booking] Reserva registrada exitosamente en Supabase");
+          console.info("[Booking] Reserva registrada exitosamente en base de datos");
         }
       }
 

@@ -74,18 +74,37 @@ export async function triggerWhatsAppAlerts(payload: AlertPayload): Promise<void
     if (!supabase) return;
 
     // Obtener la configuración guardada desde el CRM
-    const { data, error } = await supabase
-      .from('equipment_settings')
-      .select('value')
-      .eq('key', 'rental_alerts_config')
-      .maybeSingle();
+    // Primero intenta configuracion_equipos (español), luego equipment_settings (legacy)
+    let configData: any = null;
+    try {
+      const { data: espData, error: espErr } = await supabase
+        .from('configuracion_equipos')
+        .select('valor')
+        .eq('clave', 'rental_alerts_config')
+        .maybeSingle();
 
-    if (error || !data?.value) {
-      console.warn('[WhatsApp Alert] Configuración de alertas no encontrada en Supabase');
-      return;
+      if (!espErr && espData?.valor) {
+        configData = espData.valor;
+      }
+    } catch {
+      // Ignorar error y usar fallback
     }
 
-    const config = data.value;
+    if (!configData) {
+      const { data, error } = await supabase
+        .from('equipment_settings')
+        .select('value')
+        .eq('key', 'rental_alerts_config')
+        .maybeSingle();
+
+      if (error || !data?.value) {
+        console.warn('[WhatsApp Alert] Configuración de alertas no encontrada en Supabase');
+        return;
+      }
+      configData = data.value;
+    }
+
+    const config = configData;
     if (!config.enabled || !config.apiUrl || !config.apiKey || !config.instanceName) {
       console.info('[WhatsApp Alert] Alertas desactivadas o configuración incompleta');
       return;

@@ -8,10 +8,18 @@ export async function GET() {
         }
 
         // Realizamos una consulta muy ligera para mantener la conexión activa
-        const { data, error } = await supabase
-            .from('equipment_settings')
-            .select('key')
+        let { error } = await supabase
+            .from('configuracion_equipos')
+            .select('clave')
             .limit(1);
+
+        if (error) {
+            const fallback = await supabase
+                .from('equipment_settings')
+                .select('key')
+                .limit(1);
+            error = fallback.error;
+        }
 
         if (error) {
             console.error('Keep-alive error:', error);
